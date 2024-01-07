@@ -29,12 +29,9 @@ func update(delta):
 		state.update_state("Airdodge")
 		return
 	# Process inputs
-	if controller.movement_direction.x != 0:
-		if sign(controller.movement_direction.x) == sign(body.velocity.x):
-			if abs(body.velocity.x + (base_air_acceleration + (additional_air_acceleration * controller.movement_direction.x))) <= air_speed:
-				delta_v.x = (base_air_acceleration + (additional_air_acceleration * controller.movement_direction.x)) * delta
-		else:
-			delta_v.x = (base_air_acceleration + (additional_air_acceleration * controller.movement_direction.x)) * delta
+	
+	delta_v.x = sign(controller.movement_direction.x) * (base_air_acceleration + abs(additional_air_acceleration * controller.movement_direction.x)) * delta
+	
 	delta_v.y -= gravity * delta
 	if body.velocity.y - delta_v.y < -falling_speed:
 		delta_v.y = 0

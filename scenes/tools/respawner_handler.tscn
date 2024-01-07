@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://btuch2skaq6tn"]
+
+[ext_resource type="Script" path="res://scripts/tools/Respawner Handler.gd" id="1_wowq1"]
+
+[node name="Respawner Handler" type="Node3D"]
+script = ExtResource("1_wowq1")
+
+[node name="Respawners" type="Node3D" parent="."]

@@ -27,6 +27,7 @@ func _process(delta):
 	
 	velocity += Vector3(delta_v.x, delta_v.y, 0) * delta
 	move_and_slide()
+	delta_v = Vector2.ZERO
 	pass
 
 func apply_friction(friction):

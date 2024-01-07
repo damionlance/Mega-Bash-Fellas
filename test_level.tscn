@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://clfwbndiph4dn"]
+[gd_scene load_steps=5 format=3 uid="uid://clfwbndiph4dn"]
 
 [ext_resource type="Script" path="res://scripts/Levels/initiate level.gd" id="1_5j3o7"]
 [ext_resource type="PackedScene" uid="uid://c7q70xy1ck3i6" path="res://test_character.tscn" id="1_rmiam"]
+[ext_resource type="PackedScene" uid="uid://btuch2skaq6tn" path="res://scenes/tools/respawner_handler.tscn" id="3_hw7x1"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cc4rc"]
+size = Vector3(45, 45, 2)
 
 [node name="Test Level" type="Node3D"]
 script = ExtResource("1_5j3o7")
@@ -63,26 +67,23 @@ polygon = PackedVector2Array(-3, 0, 3, 0, 3, -0.5, -3, -0.5)
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 6, -17.556)
 fov = 52.5
 
+[node name="Respawner Handler" parent="." instance=ExtResource("3_hw7x1")]
+
+[node name="Node3D" type="Node3D" parent="Respawner Handler/Respawners" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.41273, 4.3584, 0)
+
+[node name="Node3D2" type="Node3D" parent="Respawner Handler/Respawners" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.6977, 4.3584, 0)
+
 [node name="Body" parent="." instance=ExtResource("1_rmiam")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.042, 6.825, 0)
 
-[node name="Idle" parent="Body/State Machine/Grounded Movement" index="0"]
-sprint_speed = null
-frames_to_sprint = null
-dash_speed = null
-base_dash_acceleration = null
-additional_dash_acceleration = null
-walk_speed = null
-landing_lag = null
-traction = null
+[node name="Blast Zone" type="Area3D" parent="."]
+collision_layer = 8
+collision_mask = 0
 
-[node name="Walk" parent="Body/State Machine/Grounded Movement" index="1"]
-sprint_speed = 1320.0
-frames_to_sprint = 11
-dash_speed = 1140.0
-base_dash_acceleration = 120.0
-additional_dash_acceleration = 600.0
-walk_speed = 960.0
-traction = 1.6
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Blast Zone"]
+shape = SubResource("BoxShape3D_cc4rc")
 
+[editable path="Respawner Handler"]
 [editable path="Body"]

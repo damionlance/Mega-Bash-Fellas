@@ -15,7 +15,6 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if is_colliding() and not drop_thru and not fall_thru:
-		print("Hello!")
 		body.set_collision_mask_value(2, true)
 		on_passthru_platform = true
 	else:

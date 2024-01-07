@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://c7q70xy1ck3i6"]
+[gd_scene load_steps=20 format=3 uid="uid://c7q70xy1ck3i6"]
 
 [ext_resource type="Script" path="res://scripts/character controllers/Test Character.gd" id="1_pt3vo"]
 [ext_resource type="Script" path="res://State Machine.gd" id="2_07h50"]
@@ -15,7 +15,12 @@
 [ext_resource type="Script" path="res://scripts/character controllers/state machine/Jump Squat.gd" id="11_aas1e"]
 [ext_resource type="Script" path="res://scripts/character controllers/state machine/Airdodge.gd" id="14_wwjej"]
 [ext_resource type="Script" path="res://scripts/character controllers/state machine/Inactive Fall.gd" id="15_4cc3n"]
+[ext_resource type="Script" path="res://scripts/character controllers/state machine/Respawn.gd" id="16_feir7"]
 [ext_resource type="Script" path="res://scripts/character controllers/Passable Platform Checker.gd" id="16_wn286"]
+[ext_resource type="Script" path="res://scripts/character controllers/Blast Zone Checker.gd" id="18_p2svf"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_nctgj"]
+radius = 0.25
 
 [node name="Body" type="CharacterBody3D"]
 script = ExtResource("1_pt3vo")
@@ -65,16 +70,6 @@ script = ExtResource("6_cd5dj")
 
 [node name="Fall" type="Node" parent="State Machine/Aerial Movement"]
 script = ExtResource("7_xnpba")
-air_speed = null
-base_air_acceleration = null
-additional_air_acceleration = null
-falling_speed = null
-gravity = null
-jump_force = null
-double_jump_force = null
-short_force = null
-jump_squat = null
-jumps_allowed = null
 
 [node name="Jump" type="Node" parent="State Machine/Aerial Movement"]
 script = ExtResource("10_txtwa")
@@ -91,6 +86,9 @@ script = ExtResource("14_wwjej")
 [node name="Inactive Fall" type="Node" parent="State Machine/Aerial Movement"]
 script = ExtResource("15_4cc3n")
 
+[node name="Respawn" type="Node" parent="State Machine/Aerial Movement"]
+script = ExtResource("16_feir7")
+
 [node name="Controller" type="Node" parent="."]
 
 [node name="Passable Platform Checker" type="RayCast3D" parent="."]
@@ -98,3 +96,13 @@ target_position = Vector3(0, -2, 0)
 collision_mask = 2
 hit_from_inside = true
 script = ExtResource("16_wn286")
+
+[node name="Blast Zone Checker" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 8
+script = ExtResource("18_p2svf")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Blast Zone Checker"]
+shape = SubResource("SphereShape3D_nctgj")
+
+[connection signal="area_exited" from="Blast Zone Checker" to="Blast Zone Checker" method="_on_area_exited"]
