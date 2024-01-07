@@ -52,5 +52,5 @@ func reset(delta):
 	ready_to_jump = not controller.attempting_jump
 	
 	body.velocity.y = double_jump_force * delta
-	body.velocity.x *= -1 if sign(controller.movement_direction.x) != sign(body.velocity.x) else 1
+	body.velocity.x *= -1 if sign(controller.movement_direction.x) != sign(body.velocity.x) and abs(controller.movement_direction.x) > .3 else 1
 	pass

@@ -36,8 +36,8 @@ func update(delta):
 	pass
 
 func reset(delta):
+	body.facing_direction = sign(controller.movement_direction.x)
 	current_speed = dash_speed
 	current_frame = 0
-	body.facing_direction = sign(controller.movement_direction.x)
 	body.velocity.x = dash_speed * body.facing_direction * delta
 	pass
