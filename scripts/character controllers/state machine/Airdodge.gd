@@ -29,6 +29,7 @@ func update(delta):
 		delta_v.y = 0
 	# Handle all relevant timers
 	body.delta_v = delta_v
+	regular_aerial_movement_processing(delta, delta_v)
 	# Process physics
 	pass
 

@@ -6,6 +6,8 @@ class_name Idle
 #private variables
 var state_name = "Idle"
 
+var can_drop_thru_platform := false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	state.state_dictionary[state_name] = self
@@ -13,6 +15,10 @@ func _ready():
 	pass # Replace with function body.
 
 func update(delta):
+	
+	if controller.movement_direction.y > -.4:
+		can_drop_thru_platform = true
+	
 	var delta_v = Vector2.ZERO
 	# Handle all states
 	
@@ -31,7 +37,7 @@ func update(delta):
 			return
 		state.update_state("Walk")
 		return
-	if controller.movement_direction.y < -0.4 and passthru_platform_checker.on_passthru_platform:
+	if controller.movement_direction.y < -0.4 and passthru_platform_checker.on_passthru_platform and can_drop_thru_platform:
 		passthru_platform_checker.drop_thru_platform()
 	# Process inputs
 	
@@ -42,5 +48,6 @@ func update(delta):
 	pass
 
 func reset(_delta):
+	can_drop_thru_platform = false
 	body.consecutive_jumps = 0
 	pass

@@ -35,7 +35,7 @@ func regular_aerial_movement_processing(delta, delta_v) -> Vector2:
 	if Input.is_action_just_pressed("Down") and body.velocity.y <= 0:
 		body.velocity.y = -falling_speed * delta
 		delta_v.y = 0
-	if Input.is_action_pressed("Down"):
+	if controller.movement_direction.y < -.4 and state.current_state.state_name != "Airdodge":
 		passthru_platform_checker.fall_thru = true
 	else:
 		passthru_platform_checker.fall_thru = false
