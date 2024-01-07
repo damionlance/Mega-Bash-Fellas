@@ -2,6 +2,7 @@ extends GroundedMovement
 
 class_name Idle
 
+
 #private variables
 var state_name = "Idle"
 
@@ -30,6 +31,8 @@ func update(delta):
 			return
 		state.update_state("Walk")
 		return
+	if controller.movement_direction.y < -0.4 and passthru_platform_checker.on_passthru_platform:
+		passthru_platform_checker.drop_thru_platform()
 	# Process inputs
 	
 	# Handle all relevant timers

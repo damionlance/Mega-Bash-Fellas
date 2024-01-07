@@ -27,6 +27,10 @@ func update(delta):
 	if controller.movement_direction.x > 0.4 and frame_one:
 		state.update_state("Dash")
 		return
+	
+	if controller.movement_direction.y < -0.4 and passthru_platform_checker.on_passthru_platform:
+		passthru_platform_checker.drop_thru_platform()
+	
 	var target_speed = walk_speed * controller.movement_direction.x * delta
 	if abs(target_speed) < abs(body.velocity.x):
 		body.apply_friction(traction)

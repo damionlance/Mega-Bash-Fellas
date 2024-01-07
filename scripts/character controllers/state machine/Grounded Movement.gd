@@ -17,6 +17,7 @@ class_name GroundedMovement
 @onready var controller = body.find_child("Controller", false)
 @onready var animation_tree = body.find_child("AnimationTree")
 
+@onready var passthru_platform_checker := $"../../../Passable Platform Checker"
 var current_speed := 0
 
 func grounded_movement_processing(delta, delta_v) -> Vector2:

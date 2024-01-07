@@ -39,16 +39,17 @@ landing_lag = 10
 
 [node name="Idle" type="Node" parent="State Machine/Grounded Movement"]
 script = ExtResource("4_v7fld")
-
-[node name="Walk" type="Node" parent="State Machine/Grounded Movement"]
-script = ExtResource("5_r44kh")
 sprint_speed = null
 frames_to_sprint = null
 dash_speed = null
 base_dash_acceleration = null
 additional_dash_acceleration = null
 walk_speed = null
+landing_lag = null
 traction = null
+
+[node name="Walk" type="Node" parent="State Machine/Grounded Movement"]
+script = ExtResource("5_r44kh")
 
 [node name="Run" type="Node" parent="State Machine/Grounded Movement"]
 script = ExtResource("6_mwcvv")

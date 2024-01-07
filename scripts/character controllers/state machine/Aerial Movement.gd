@@ -22,8 +22,8 @@ var entering_jump_angle
 @onready var body = find_parent("Body")
 @onready var state = find_parent("State Machine")
 @onready var controller = body.find_child("Controller", false)
-@onready var raycasts := body.find_child("RaycastHandler", false)
 @onready var animation_tree = body.find_child("AnimationTree")
+@onready var passthru_platform_checker := $"../../../Passable Platform Checker"
 
 # Helper Functions
 func regular_aerial_movement_processing(delta, delta_v) -> Vector2:
@@ -31,5 +31,8 @@ func regular_aerial_movement_processing(delta, delta_v) -> Vector2:
 	if Input.is_action_just_pressed("Down") and body.velocity.y <= 0:
 		body.velocity.y = -falling_speed * delta
 		delta_v.y = 0
-	
+	if Input.is_action_pressed("Down"):
+		passthru_platform_checker.fall_thru = true
+	else:
+		passthru_platform_checker.fall_thru = false
 	return delta_v
