@@ -1,2 +1,2 @@
-# Mega-Bash-Fellas
+# Mega Bash Fellas
 Game jam!
