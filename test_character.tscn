@@ -1,0 +1,93 @@
+[gd_scene load_steps=17 format=3 uid="uid://c7q70xy1ck3i6"]
+
+[ext_resource type="Script" path="res://scripts/character controllers/Test Character.gd" id="1_pt3vo"]
+[ext_resource type="Script" path="res://State Machine.gd" id="2_07h50"]
+[ext_resource type="Script" path="res://scripts/character controllers/state machine/Grounded Movement.gd" id="3_obx8a"]
+[ext_resource type="Script" path="res://scripts/character controllers/state machine/Idle.gd" id="4_v7fld"]
+[ext_resource type="Script" path="res://scripts/character controllers/state machine/Walk.gd" id="5_r44kh"]
+[ext_resource type="Script" path="res://scripts/character controllers/state machine/Aerial Movement.gd" id="6_cd5dj"]
+[ext_resource type="Script" path="res://scripts/character controllers/state machine/Dash.gd" id="6_j3qyx"]
+[ext_resource type="Script" path="res://scripts/character controllers/state machine/Run.gd" id="6_mwcvv"]
+[ext_resource type="Script" path="res://scripts/character controllers/state machine/Falling.gd" id="7_xnpba"]
+[ext_resource type="Script" path="res://scripts/character controllers/state machine/Landing Lag.gd" id="8_gpem8"]
+[ext_resource type="Script" path="res://scripts/character controllers/state machine/Jump.gd" id="10_txtwa"]
+[ext_resource type="Script" path="res://scripts/character controllers/state machine/Double Jump.gd" id="11_3lmxw"]
+[ext_resource type="Script" path="res://scripts/character controllers/state machine/Jump Squat.gd" id="11_aas1e"]
+[ext_resource type="Script" path="res://scripts/character controllers/state machine/Airdodge.gd" id="14_wwjej"]
+[ext_resource type="Script" path="res://scripts/character controllers/state machine/Inactive Fall.gd" id="15_4cc3n"]
+[ext_resource type="Script" path="res://scripts/character controllers/Passable Platform Checker.gd" id="16_wn286"]
+
+[node name="Body" type="CharacterBody3D"]
+script = ExtResource("1_pt3vo")
+
+[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.724, 0)
+depth = 0.0
+polygon = PackedVector2Array(0, -0.724, 0.4, 0, 0, 0.724, -0.4, 0)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.724, 0)
+radius = 0.4
+height = 1.448
+
+[node name="State Machine" type="Node" parent="."]
+script = ExtResource("2_07h50")
+
+[node name="Grounded Movement" type="Node" parent="State Machine"]
+script = ExtResource("3_obx8a")
+landing_lag = 10
+
+[node name="Idle" type="Node" parent="State Machine/Grounded Movement"]
+script = ExtResource("4_v7fld")
+
+[node name="Walk" type="Node" parent="State Machine/Grounded Movement"]
+script = ExtResource("5_r44kh")
+sprint_speed = null
+frames_to_sprint = null
+dash_speed = null
+base_dash_acceleration = null
+additional_dash_acceleration = null
+walk_speed = null
+traction = null
+
+[node name="Run" type="Node" parent="State Machine/Grounded Movement"]
+script = ExtResource("6_mwcvv")
+
+[node name="Dash" type="Node" parent="State Machine/Grounded Movement"]
+script = ExtResource("6_j3qyx")
+
+[node name="Landing Lag" type="Node" parent="State Machine/Grounded Movement"]
+script = ExtResource("8_gpem8")
+
+[node name="Aerial Movement" type="Node" parent="State Machine"]
+script = ExtResource("6_cd5dj")
+
+[node name="Fall" type="Node" parent="State Machine/Aerial Movement"]
+script = ExtResource("7_xnpba")
+
+[node name="Jump" type="Node" parent="State Machine/Aerial Movement"]
+script = ExtResource("10_txtwa")
+
+[node name="Double Jump" type="Node" parent="State Machine/Aerial Movement"]
+script = ExtResource("11_3lmxw")
+
+[node name="Jump Squat" type="Node" parent="State Machine/Aerial Movement"]
+script = ExtResource("11_aas1e")
+air_speed = null
+base_air_acceleration = null
+additional_air_acceleration = null
+falling_speed = null
+gravity = null
+jump_squat = null
+
+[node name="Airdodge" type="Node" parent="State Machine/Aerial Movement"]
+script = ExtResource("14_wwjej")
+
+[node name="Inactive Fall" type="Node" parent="State Machine/Aerial Movement"]
+script = ExtResource("15_4cc3n")
+
+[node name="Controller" type="Node" parent="."]
+
+[node name="Passable Platform Checker" type="RayCast3D" parent="."]
+collision_mask = 2
+script = ExtResource("16_wn286")

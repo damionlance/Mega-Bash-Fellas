@@ -1,0 +1,69 @@
+[gd_scene load_steps=3 format=3 uid="uid://clfwbndiph4dn"]
+
+[ext_resource type="Script" path="res://scripts/Levels/initiate level.gd" id="1_5j3o7"]
+[ext_resource type="PackedScene" uid="uid://c7q70xy1ck3i6" path="res://test_character.tscn" id="1_rmiam"]
+
+[node name="Test Level" type="Node3D"]
+script = ExtResource("1_5j3o7")
+
+[node name="Stage" type="StaticBody3D" parent="."]
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="Stage"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+polygon = PackedVector2Array(-15, 0, 15, 0, 15, -2, -15, -2)
+depth = 2.0
+
+[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="Stage"]
+depth = 2.0
+polygon = PackedVector2Array(-15, 0, 15, 0, 15, -2, -15, -2)
+
+[node name="Side Plat" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 3, 0)
+collision_layer = 2
+collision_mask = 0
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="Side Plat"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+polygon = PackedVector2Array(-3, 0, 3, 0, 3, -0.5, -3, -0.5)
+depth = 2.0
+
+[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="Side Plat"]
+depth = 2.0
+polygon = PackedVector2Array(-3, 0, 3, 0, 3, -0.5, -3, -0.5)
+
+[node name="Middle Plat" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
+collision_layer = 2
+collision_mask = 0
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="Middle Plat"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+polygon = PackedVector2Array(-3, 0, 3, 0, 3, -0.5, -3, -0.5)
+depth = 2.0
+
+[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="Middle Plat"]
+depth = 2.0
+polygon = PackedVector2Array(-3, 0, 3, 0, 3, -0.5, -3, -0.5)
+
+[node name="Side Plat2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 3, 0)
+collision_layer = 2
+collision_mask = 0
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="Side Plat2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+polygon = PackedVector2Array(-3, 0, 3, 0, 3, -0.5, -3, -0.5)
+depth = 2.0
+
+[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="Side Plat2"]
+depth = 2.0
+polygon = PackedVector2Array(-3, 0, 3, 0, 3, -0.5, -3, -0.5)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 6, -17.556)
+fov = 52.5
+
+[node name="Body" parent="." instance=ExtResource("1_rmiam")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.042, 6.825, 0)
+
+[editable path="Body"]
