@@ -64,6 +64,16 @@ script = ExtResource("6_cd5dj")
 
 [node name="Fall" type="Node" parent="State Machine/Aerial Movement"]
 script = ExtResource("7_xnpba")
+air_speed = null
+base_air_acceleration = null
+additional_air_acceleration = null
+falling_speed = null
+gravity = null
+jump_force = null
+double_jump_force = null
+short_force = null
+jump_squat = null
+jumps_allowed = null
 
 [node name="Jump" type="Node" parent="State Machine/Aerial Movement"]
 script = ExtResource("10_txtwa")
@@ -73,12 +83,6 @@ script = ExtResource("11_3lmxw")
 
 [node name="Jump Squat" type="Node" parent="State Machine/Aerial Movement"]
 script = ExtResource("11_aas1e")
-air_speed = null
-base_air_acceleration = null
-additional_air_acceleration = null
-falling_speed = null
-gravity = null
-jump_squat = null
 
 [node name="Airdodge" type="Node" parent="State Machine/Aerial Movement"]
 script = ExtResource("14_wwjej")
@@ -89,5 +93,7 @@ script = ExtResource("15_4cc3n")
 [node name="Controller" type="Node" parent="."]
 
 [node name="Passable Platform Checker" type="RayCast3D" parent="."]
+target_position = Vector3(0, -2, 0)
 collision_mask = 2
+hit_from_inside = true
 script = ExtResource("16_wn286")

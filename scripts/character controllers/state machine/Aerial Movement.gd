@@ -26,7 +26,10 @@ var entering_jump_angle
 @onready var animation_tree = body.find_child("AnimationTree")
 
 # Helper Functions
-func regular_aerial_movement_processing() -> Vector3:
-	delta_v = Vector3.ZERO
+func regular_aerial_movement_processing(delta, delta_v) -> Vector2:
+	
+	if Input.is_action_just_pressed("Down") and body.velocity.y <= 0:
+		body.velocity.y = -falling_speed * delta
+		delta_v.y = 0
 	
 	return delta_v

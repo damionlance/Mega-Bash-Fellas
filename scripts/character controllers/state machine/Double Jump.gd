@@ -42,6 +42,7 @@ func update(delta):
 		delta_v.y = 0
 	
 	# Handle all relevant timers
+	delta_v = regular_aerial_movement_processing(delta, delta_v)
 	body.delta_v = delta_v
 	# Process physics
 	ready_to_jump = not controller.attempting_jump
