@@ -12,7 +12,7 @@ class_name GroundedMovement
 
 @export var traction := 1.6
 
-@onready var body = find_parent("Body")
+@onready var body := find_parent("Body*")
 @onready var state = find_parent("State Machine")
 @onready var controller = body.find_child("Controller", false)
 @onready var animation_tree = body.find_child("AnimationTree")

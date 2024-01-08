@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://cbumli8wbtwox"]
+
+[ext_resource type="Script" path="res://scripts/character controllers/state machine/AI Finite State Machine/AI Finite State Machine.gd" id="1_ubygn"]
+[ext_resource type="Script" path="res://scripts/character controllers/state machine/AI Finite State Machine/Idle.gd" id="2_p85bk"]
+[ext_resource type="Script" path="res://scripts/character controllers/state machine/AI Finite State Machine/Random Dash Dance.gd" id="3_atddx"]
+[ext_resource type="Script" path="res://scripts/character controllers/state machine/AI Finite State Machine/Jump Up To Platform.gd" id="4_fnqgb"]
+
+[node name="State Machine" type="Node"]
+script = ExtResource("1_ubygn")
+
+[node name="Idle" type="Node" parent="."]
+script = ExtResource("2_p85bk")
+
+[node name="Random Dash Dance" type="Node" parent="."]
+script = ExtResource("3_atddx")
+
+[node name="Jump Up To Platform" type="Node" parent="."]
+script = ExtResource("4_fnqgb")

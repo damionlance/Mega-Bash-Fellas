@@ -28,9 +28,10 @@ func update(delta):
 	if not body.is_on_floor():
 		state.update_state("Fall")
 		return
+	
 	if controller.movement_direction.x != 0 and sign(controller.movement_direction.x) != sign(body.facing_direction):
-		print("PIVOT!!")
 		body.velocity.x *= -1
+	
 	if abs(controller.movement_direction.x) > controller.neutral_zone:
 		if abs(controller.movement_direction.x) > 0.4:
 			state.update_state("Dash")

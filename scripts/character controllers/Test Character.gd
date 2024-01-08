@@ -17,6 +17,10 @@ func _ready():
 		controller.set_script(load("res://scripts/character controllers/Controller Inputs.gd"))
 		controller._ready()
 		controller.set_process(true)
+	else:
+		controller.set_script(load("res://scripts/character controllers/AI Inputs.gd"))
+		controller._ready()
+		controller.set_process(true)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

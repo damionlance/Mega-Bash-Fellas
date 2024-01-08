@@ -11,6 +11,9 @@ class_name AerialMovement
 @export var falling_speed := 1680.0
 @export var gravity := 13800.0
 
+var time_of_jump
+var time_of_double_jump
+
 @export var jump_force := 2208.0
 @export var double_jump_force := 2649.6
 @export var short_force := 1260.0
@@ -20,11 +23,16 @@ class_name AerialMovement
 var delta_v
 var entering_jump_angle
 
-@onready var body = find_parent("Body")
+@onready var body := find_parent("Body*")
 @onready var state = find_parent("State Machine")
 @onready var controller = body.find_child("Controller", false)
 @onready var animation_tree = body.find_child("AnimationTree")
 @onready var passthru_platform_checker := $"../../../Passable Platform Checker"
+
+func _ready():
+	time_of_jump = jump_force / gravity
+	time_of_double_jump = double_jump_force / gravity
+	print(time_of_jump)
 
 # Helper Functions
 func regular_aerial_movement_processing(delta, delta_v) -> Vector2:

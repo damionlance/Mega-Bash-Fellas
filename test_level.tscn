@@ -76,17 +76,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.41273, 4.3584, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.6977, 4.3584, 0)
 
 [node name="Body" parent="." instance=ExtResource("1_rmiam")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.042, 6.825, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.933423, 0.294456, 0)
+player = false
 
-[node name="Idle" parent="Body/State Machine/Grounded Movement" index="0"]
-sprint_speed = 1320.0
-frames_to_sprint = 11
-dash_speed = 1140.0
-base_dash_acceleration = 120.0
-additional_dash_acceleration = 600.0
-walk_speed = 960.0
-landing_lag = 4
-traction = 1.6
+[node name="Body2" parent="." instance=ExtResource("1_rmiam")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.933423, 0.294456, 0)
+player = false
+
+[node name="Body3" parent="." instance=ExtResource("1_rmiam")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.933423, 0.294456, 0)
+player = false
 
 [node name="Blast Zone" type="Area3D" parent="."]
 collision_layer = 8
@@ -97,3 +96,5 @@ shape = SubResource("BoxShape3D_cc4rc")
 
 [editable path="Respawner Handler"]
 [editable path="Body"]
+[editable path="Body2"]
+[editable path="Body3"]
