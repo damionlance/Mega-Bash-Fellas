@@ -23,6 +23,7 @@
 radius = 0.25
 
 [node name="Body" type="CharacterBody3D"]
+collision_layer = 4
 script = ExtResource("1_pt3vo")
 
 [node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="."]

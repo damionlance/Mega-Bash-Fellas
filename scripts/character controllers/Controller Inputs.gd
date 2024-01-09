@@ -84,7 +84,7 @@ func _ready():
 	pass # Replace with function body.
 
 func _process(_delta):
-	movement_direction = Input.get_vector("Right", "Left", "Down", "Up")
+	movement_direction = Input.get_vector("Left","Right", "Down", "Up")
 	input_strength = movement_direction.length()
 	if input_strength > .9:
 		input_strength = 1

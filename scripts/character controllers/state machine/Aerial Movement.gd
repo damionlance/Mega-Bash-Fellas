@@ -32,7 +32,6 @@ var entering_jump_angle
 func _ready():
 	time_of_jump = jump_force / gravity
 	time_of_double_jump = double_jump_force / gravity
-	print(time_of_jump)
 
 # Helper Functions
 func regular_aerial_movement_processing(delta, delta_v) -> Vector2:

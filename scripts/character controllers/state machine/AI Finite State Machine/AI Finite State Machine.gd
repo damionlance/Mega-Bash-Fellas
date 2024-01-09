@@ -9,7 +9,12 @@ var target_body
 
 #onready variables
 @onready var body = get_parent().get_parent()
+@onready var astar = get_tree().get_current_scene().get_node("%AStar")
+var point_path := []
+
 var _delta := 0.0166
+
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -24,7 +29,6 @@ func _physics_process(delta):
 	current_state.update(delta)
 
 func update_state( newstate ):
-	print(newstate)
 	previous_state = current_state
 	current_state = state_dictionary[newstate]
 	current_state.reset(_delta)

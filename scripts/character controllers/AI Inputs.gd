@@ -77,6 +77,8 @@ enum {
 
 var pivot_entered := false
 
+var move_control_stick_allowed := true
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var state = load("res://scenes/tools/AI Finite State Machine.tscn").instantiate()
@@ -88,9 +90,6 @@ func _process(_delta):
 	
 	if jump_input == true:
 		jump_state = jump_pressed if jump_state == 0 else jump_held
-	elif jump_state == jump_held and jump_buffer < jump_timer:
-		attempting_jump = true
-		jump_buffer += 1
 	else: jump_state = jump_released
 	if shield_input == true:
 		shield_state = shield_pressed if shield_state == 0 else shield_held
@@ -110,17 +109,49 @@ func input_handling():
 		if pivot_timer == pivot_time_buffer:
 			pivot_allowed = false
 			pivot_timer = 0
-	
-	if jump_state == jump_pressed and allow_jump:
+	if jump_state == jump_pressed:
 		attempting_jump = true
+	elif jump_state == jump_held and jump_buffer < jump_timer:
+		attempting_jump = true
+		jump_buffer += 1
 	else: 
 		attempting_jump = false
+		jump_buffer = 0
 	if shield_state == shield_pressed:
 		attempting_shield = true
 	else: 
 		attempting_shield = false
 	
 
-var stayed_still_buffer = 5
-var stayed_still_timer = 0
-var resetplz = false
+func wave_dash(direction : int, max_length : bool):
+	if move_control_stick_allowed:
+		move_control_stick_allowed = false
+		if can_jump:
+			short_hop()
+			await get_tree().process_frame
+			movement_direction.x = direction
+			movement_direction.y = -0.15
+			shield_input = true
+			await get_tree().process_frame
+			shield_input = false
+			movement_direction.y = 0
+			move_control_stick_allowed = true
+		else:
+			move_control_stick_allowed = true
+
+var can_jump := true
+func full_hop():
+	if can_jump:
+		can_jump = false
+		jump_input = true
+		await get_tree().create_timer(.15).timeout
+		jump_input = false
+		can_jump = true
+
+func short_hop():
+	if can_jump:
+		can_jump = false
+		jump_input = true
+		await get_tree().process_frame
+		jump_input = false
+		can_jump = true

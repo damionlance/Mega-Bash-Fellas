@@ -19,7 +19,7 @@ func _ready():
 func update(delta):
 	
 	if body.is_on_floor():
-		state.update_state("Random Dash Dance")
+		state.update_state("Approach Target")
 	pass
 
 func reset(_delta):

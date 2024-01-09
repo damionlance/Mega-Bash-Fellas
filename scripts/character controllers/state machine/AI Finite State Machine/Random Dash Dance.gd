@@ -21,12 +21,9 @@ func update(delta):
 	var from
 	var to
 	var collision_mask
-	#check if there's a platform to jump up to
-	from = body.global_position + body.velocity * aerial_movement.time_of_jump+ Vector3(0, 0.1, 0)
-	to = from + Vector3.UP * (aerial_movement.jump_force * delta) * (aerial_movement.time_of_jump / 2)
-	collision_mask = 3
-	if state.probe_for_object(from, to, collision_mask).size() != 0:
-		state.update_state("Jump Up To Platform")
+	
+	if (state.target_body.global_position - body.global_position).length() > 5:
+		state.update_state("Approach Target")
 		return
 	
 	#Check if there's ground where you're dashing

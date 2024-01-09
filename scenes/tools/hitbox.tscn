@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://ugrfkn6s0brw"]
+
+[ext_resource type="Script" path="res://scripts/tools/hitbox.gd" id="1_du57p"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_upeux"]
+radius = 2.0
+height = 6.45979
+
+[node name="hitbox" type="Area3D"]
+script = ExtResource("1_du57p")
+hitbox_radius = 2.0
+
+[node name="hitbox point" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0312632, 2.45959, 0)
+
+[node name="HitCapsule" type="CollisionShape3D" parent="."]
+transform = Transform3D(-0.999918, 0.0127096, 0, -0.0127096, -0.999918, 0, 0, 0, 1, -0.0156316, 1.2298, 0)
+shape = SubResource("CapsuleShape3D_upeux")

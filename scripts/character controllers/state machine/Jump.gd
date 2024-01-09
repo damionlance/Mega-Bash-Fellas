@@ -22,7 +22,7 @@ func update(delta):
 	if body.velocity.y < 0:
 		state.update_state("Fall")
 		return
-	if controller.attempting_jump and ready_to_jump and body.can_jump:
+	if controller.jump_state == controller.jump_pressed and ready_to_jump and body.can_jump:
 		state.update_state("Double Jump")
 		return
 	if controller.attempting_shield:

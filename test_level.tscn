@@ -1,70 +1,82 @@
-[gd_scene load_steps=5 format=3 uid="uid://clfwbndiph4dn"]
+[gd_scene load_steps=11 format=3 uid="uid://clfwbndiph4dn"]
 
 [ext_resource type="Script" path="res://scripts/Levels/initiate level.gd" id="1_5j3o7"]
 [ext_resource type="PackedScene" uid="uid://c7q70xy1ck3i6" path="res://test_character.tscn" id="1_rmiam"]
+[ext_resource type="Script" path="res://scripts/tools/AStar.gd" id="2_crqly"]
 [ext_resource type="PackedScene" uid="uid://btuch2skaq6tn" path="res://scenes/tools/respawner_handler.tscn" id="3_hw7x1"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ob63o"]
+size = Vector3(30, 2, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_mupgb"]
+size = Vector3(6, 0.5, 2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cc4rc"]
 size = Vector3(45, 45, 2)
 
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_w0hmw"]
+
+[sub_resource type="Sky" id="Sky_whvvx"]
+sky_material = SubResource("ProceduralSkyMaterial_w0hmw")
+
+[sub_resource type="Environment" id="Environment_1s338"]
+background_mode = 2
+sky = SubResource("Sky_whvvx")
+
 [node name="Test Level" type="Node3D"]
 script = ExtResource("1_5j3o7")
 
-[node name="Stage" type="StaticBody3D" parent="."]
+[node name="Stage" type="StaticBody3D" parent="." groups=["pathable"]]
 
-[node name="CSGPolygon3D" type="CSGPolygon3D" parent="Stage"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
-polygon = PackedVector2Array(-15, 0, 15, 0, 15, -2, -15, -2)
-depth = 2.0
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Stage"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+mesh = SubResource("BoxMesh_ob63o")
 
 [node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="Stage"]
 depth = 2.0
 polygon = PackedVector2Array(-15, 0, 15, 0, 15, -2, -15, -2)
 
-[node name="Side Plat" type="StaticBody3D" parent="."]
+[node name="Side Plat" type="StaticBody3D" parent="." groups=["pathable"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 3, 0)
 collision_layer = 2
 collision_mask = 0
 
-[node name="CSGPolygon3D" type="CSGPolygon3D" parent="Side Plat"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
-polygon = PackedVector2Array(-3, 0, 3, 0, 3, -0.5, -3, -0.5)
-depth = 2.0
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Side Plat"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+mesh = SubResource("BoxMesh_mupgb")
 
 [node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="Side Plat"]
 depth = 2.0
 polygon = PackedVector2Array(-3, 0, 3, 0, 3, -0.5, -3, -0.5)
 
-[node name="Middle Plat" type="StaticBody3D" parent="."]
+[node name="Middle Plat" type="StaticBody3D" parent="." groups=["pathable"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
 collision_layer = 2
 collision_mask = 0
 
-[node name="CSGPolygon3D" type="CSGPolygon3D" parent="Middle Plat"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
-polygon = PackedVector2Array(-3, 0, 3, 0, 3, -0.5, -3, -0.5)
-depth = 2.0
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Middle Plat"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+mesh = SubResource("BoxMesh_mupgb")
 
 [node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="Middle Plat"]
 depth = 2.0
 polygon = PackedVector2Array(-3, 0, 3, 0, 3, -0.5, -3, -0.5)
 
-[node name="Side Plat2" type="StaticBody3D" parent="."]
+[node name="Side Plat2" type="StaticBody3D" parent="." groups=["pathable"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 3, 0)
 collision_layer = 2
 collision_mask = 0
 
-[node name="CSGPolygon3D" type="CSGPolygon3D" parent="Side Plat2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
-polygon = PackedVector2Array(-3, 0, 3, 0, 3, -0.5, -3, -0.5)
-depth = 2.0
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Side Plat2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+mesh = SubResource("BoxMesh_mupgb")
 
 [node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="Side Plat2"]
 depth = 2.0
 polygon = PackedVector2Array(-3, 0, 3, 0, 3, -0.5, -3, -0.5)
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 6, -17.556)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 19)
 fov = 52.5
 
 [node name="Respawner Handler" parent="." instance=ExtResource("3_hw7x1")]
@@ -76,16 +88,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.41273, 4.3584, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.6977, 4.3584, 0)
 
 [node name="Body" parent="." instance=ExtResource("1_rmiam")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.933423, 0.294456, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.548, 0.294, 0)
 player = false
 
 [node name="Body2" parent="." instance=ExtResource("1_rmiam")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.933423, 0.294456, 0)
-player = false
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.548, 0.294, 0)
 
-[node name="Body3" parent="." instance=ExtResource("1_rmiam")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.933423, 0.294456, 0)
-player = false
+[node name="AStar" type="Node3D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_crqly")
 
 [node name="Blast Zone" type="Area3D" parent="."]
 collision_layer = 8
@@ -94,7 +105,12 @@ collision_mask = 0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Blast Zone"]
 shape = SubResource("BoxShape3D_cc4rc")
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_1s338")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.732875, 0.25499, -0.630772, -2.54639e-09, 0.927112, 0.374785, 0.680363, -0.27467, 0.679458, 0, 0, 0)
+
 [editable path="Respawner Handler"]
 [editable path="Body"]
 [editable path="Body2"]
-[editable path="Body3"]
