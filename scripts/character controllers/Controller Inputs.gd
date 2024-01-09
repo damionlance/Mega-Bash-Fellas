@@ -73,7 +73,19 @@ enum {
 	shield_released = 0
 }
 
-var pivot_entered := false
+var attack_state := 0
+enum {
+	attack_pressed = 1,
+	attack_held = 2,
+	attack_released = 0
+}
+
+var special_state := 0
+enum {
+	special_pressed = 1,
+	special_held = 2,
+	special_released = 0
+}
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -98,23 +110,19 @@ func _process(_delta):
 	if Input.get_action_strength("Shield"):
 		shield_state = shield_pressed if shield_state == 0 else shield_held
 	else: shield_state = shield_released
+	if Input.get_action_strength("Attack"):
+		attack_state = attack_pressed if attack_state == 0 else attack_held
+	else: attack_state = attack_released
+	if Input.get_action_strength("Special"):
+		special_state = special_pressed if special_state == 0 else special_held
+	else: special_state = special_released
 	
-	check_for_spin()
-	check_for_pivot()
 	input_handling()
 
 func input_handling():
 	
 	var resetting_collision = false
 	var jump_released_since_jump = false
-	
-	if pivot_entered:
-		pivot_allowed = true
-	if pivot_allowed:
-		pivot_timer += 1
-		if pivot_timer == pivot_time_buffer:
-			pivot_allowed = false
-			pivot_timer = 0
 	
 	if jump_state == jump_pressed and allow_jump:
 		attempting_jump = true
@@ -134,82 +142,3 @@ func input_handling():
 var stayed_still_buffer = 5
 var stayed_still_timer = 0
 var resetplz = false
-
-func check_for_spin():
-	if previous_direction == movement_direction or movement_direction == Vector2.ZERO:
-		stayed_still_timer += 1
-		if stayed_still_buffer == stayed_still_timer:
-			resetplz = true
-	else: stayed_still_timer = 0
-	if spin_entered or resetplz:
-		turning = 0
-		angle = [0.0, 0.0]
-		spin_entered = false
-		spin_jump_start = Vector2.ZERO
-		spin_jump_angle = 0.0
-		spin_jump_sign = 0
-		resetplz = false
-		stayed_still_timer = 0
-	
-	elif movement_direction != Vector2.ZERO:
-		var lengths = previous_direction.length() * movement_direction.length()
-		angle[1] = angle[0]
-		
-		if lengths:
-			angle[0] = movement_direction.angle()
-			if angle[0]<0:
-				angle[0] += 2*PI
-		else:
-			angle[0] = angle[1]
-		if abs(angle[0]-angle[1]) > .02 and sign(angle[0]-angle[1]) != spin_jump_sign:
-			turning = sign(angle[0] - angle[1])
-			if spin_jump_sign != -1 and not (angle[1] > deg_to_rad(300) and angle[0] > 0):
-				spin_jump_angle = 0
-				spin_jump_start = movement_direction
-				spin_jump_sign = sign(angle[0]-angle[1])
-			if spin_jump_sign != 1 and not (angle[0] > deg_to_rad(300) and angle[1] > 0):
-				spin_jump_angle = 0
-				spin_jump_start = movement_direction
-				spin_jump_sign = sign(angle[0]-angle[1])
-		else:
-			spin_jump_angle += angle[0] - angle[1]
-			if abs(spin_jump_angle) >= deg_to_rad(450):
-				spin_entered = true
-		previous_direction = movement_direction
-
-func check_for_pivot():
-	if pivot_entered:
-		pivot_entered = false
-		for i in 5:
-			pivot_buffer[i] = Vector2.ZERO
-		return
-	
-	var correct_input = null
-	var mag = null
-	var i = 0
-	for _angle in pivot_buffer:
-		i += 1
-		if i == 1: continue
-		if _angle == null:
-			pivot_entered = false
-			break
-		if pivot_buffer[0].dot(_angle) < -.5:
-			correct_input = _angle
-			break
-	
-	if correct_input == null:
-		return
-	var previous_mag
-	var previous_angle
-	for n in i:
-		if previous_angle == pivot_buffer[n]:
-			continue
-		mag = pivot_buffer[n].length()
-		if n != 0:
-			if mag == previous_mag:
-				break
-			if n == i - 1:
-				pivot_entered = true
-		previous_mag = mag
-		previous_angle = pivot_buffer[n]
-	pass

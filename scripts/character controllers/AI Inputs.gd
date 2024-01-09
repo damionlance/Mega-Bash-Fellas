@@ -75,6 +75,19 @@ enum {
 	shield_released = 0
 }
 
+var attack_state := 0
+enum {
+	attack_pressed = 1,
+	attack_held = 2,
+	attack_released = 0
+}
+
+var special_state := 0
+enum {
+	special_pressed = 1,
+	special_held = 2,
+	special_released = 0
+}
 var pivot_entered := false
 
 var move_control_stick_allowed := true

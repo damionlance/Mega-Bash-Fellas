@@ -23,7 +23,7 @@ func update(delta):
 	
 	if target_vector.length() > 2:
 		target_position = state.target_body.global_position
-		state.point_path = state.astar.find_path(body.global_position, target_position)
+		state.update_path(target_position)
 	
 	if next_path_point_to_target.length() < target_vector.length():
 		state.point_path.pop_front()
@@ -34,7 +34,7 @@ func update(delta):
 	
 	var difference_in_position = (state.point_path[0] - body.global_position)
 	
-	if difference_in_position.y > 2.9:
+	if difference_in_position.y > 2.9 and difference_in_position.x <= 5 * body.velocity.x:
 		controller.full_hop()
 	
 	if difference_in_position.length() > 0.3:

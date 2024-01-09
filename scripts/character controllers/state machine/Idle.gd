@@ -22,12 +22,16 @@ func update(delta):
 	var delta_v = Vector2.ZERO
 	# Handle all states
 	
+	if controller.attack_state == controller.attack_pressed:
+		state.update_state("Jab")
+		return
 	if controller.attempting_jump:
 		state.update_state("Jump Squat")
 		return
 	if not body.is_on_floor():
 		state.update_state("Fall")
 		return
+	
 	
 	if controller.movement_direction.x != 0 and sign(controller.movement_direction.x) != sign(body.facing_direction):
 		body.velocity.x *= -1

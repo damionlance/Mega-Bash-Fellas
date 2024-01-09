@@ -88,11 +88,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.41273, 4.3584, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.6977, 4.3584, 0)
 
 [node name="Body" parent="." instance=ExtResource("1_rmiam")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.548, 0.294, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.28947, 0.294, 0)
 player = false
+
+[node name="HitCapsule" parent="Body/Hitboxes/hitbox" index="1"]
+transform = Transform3D(-0.00720105, -0.999973, 0, 0.999973, -0.00720105, 0, 0, 0, 1, 0.158604, 0.00114215, 0)
+
+[node name="HitCapsule" parent="Body/Hurtboxes/hitbox" index="1"]
+transform = Transform3D(-0.999999, 8.74227e-08, 0, -8.74227e-08, -0.999999, 0, 0, 0, 1, 0, 0.724, 0)
 
 [node name="Body2" parent="." instance=ExtResource("1_rmiam")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.548, 0.294, 0)
+
+[node name="HitCapsule" parent="Body2/Hitboxes/hitbox" index="1"]
+transform = Transform3D(-0.00720105, -0.999973, 0, 0.999973, -0.00720105, 0, 0, 0, 1, 0.158604, 0.00114215, 0)
+
+[node name="HitCapsule" parent="Body2/Hurtboxes/hitbox" index="1"]
+transform = Transform3D(-0.999999, 8.74227e-08, 0, -8.74227e-08, -0.999999, 0, 0, 0, 1, 0, 0.724, 0)
 
 [node name="AStar" type="Node3D" parent="."]
 unique_name_in_owner = true
@@ -113,4 +125,16 @@ transform = Transform3D(0.732875, 0.25499, -0.630772, -2.54639e-09, 0.927112, 0.
 
 [editable path="Respawner Handler"]
 [editable path="Body"]
+[editable path="Body/Hitboxes/hitbox"]
+[editable path="Body/Hitboxes/hitbox2"]
+[editable path="Body/Hitboxes/hitbox3"]
+[editable path="Body/Hitboxes/hitbox4"]
+[editable path="Body/Hitboxes/hitbox5"]
+[editable path="Body/Hurtboxes/hitbox"]
 [editable path="Body2"]
+[editable path="Body2/Hitboxes/hitbox"]
+[editable path="Body2/Hitboxes/hitbox2"]
+[editable path="Body2/Hitboxes/hitbox3"]
+[editable path="Body2/Hitboxes/hitbox4"]
+[editable path="Body2/Hitboxes/hitbox5"]
+[editable path="Body2/Hurtboxes/hitbox"]

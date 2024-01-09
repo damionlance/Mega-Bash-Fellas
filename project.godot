@@ -70,3 +70,5 @@ Shield={
 3d_physics/layer_2="Passable Platforms"
 3d_physics/layer_3="Character Bodies"
 3d_physics/layer_4="Blast Zone"
+3d_physics/layer_5="Hitboxes"
+3d_physics/layer_6="Hurtboxes"

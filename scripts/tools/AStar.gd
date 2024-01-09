@@ -1,4 +1,3 @@
-@tool
 extends Node3D
 
 @export var draw_debug_cubes : bool = true

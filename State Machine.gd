@@ -5,6 +5,8 @@ var state_dictionary : Dictionary
 var current_state = null
 var previous_state = null
 
+signal animation_finished
+
 #onready variables
 @onready var body = get_parent()
 var _delta := 0.0166
@@ -16,6 +18,7 @@ func _ready():
 		return
 	await get_tree().get_current_scene().level_loaded
 	update_state("Idle")
+	body.connect("has_been_hit", enter_hitstun)
 
 func _physics_process(delta):
 	_delta = delta
@@ -26,3 +29,10 @@ func update_state( newstate ):
 	current_state = state_dictionary[newstate]
 	current_state.reset(_delta)
 
+func enter_hitstun(hitstun_frames):
+	update_state("Hitstun")
+	current_state.wait_time = hitstun_frames
+	print(current_state.wait_time)
+
+func finished_animation():
+	emit_signal("animation_finished")
