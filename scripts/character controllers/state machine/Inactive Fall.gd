@@ -1,7 +1,5 @@
 extends AerialMovement
 
-class_name InactiveFall
-
 #private variables
 var state_name = "Inactive Fall"
 

@@ -7,6 +7,10 @@ var state_name = "Jab"
 
 var can_drop_thru_platform := false
 
+var cancellable := false
+var current_jab := 0
+var animation_finished := false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	state.state_dictionary[state_name] = self
@@ -16,7 +20,7 @@ func _ready():
 func update(delta):
 	
 	# Process inputs
-	await state.animation_finished
+	
 	state.update_state("Idle")
 	# Handle all relevant timers
 	
@@ -24,4 +28,5 @@ func update(delta):
 	pass
 
 func reset(_delta):
-	pass
+	cancellable = false
+	animation_finished = false

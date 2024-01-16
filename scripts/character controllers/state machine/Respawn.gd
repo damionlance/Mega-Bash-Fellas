@@ -1,8 +1,6 @@
 extends AerialMovement
 
-class_name Respawn
-
-@onready var respawner := $"../../../../Respawner Handler"
+@onready var respawner := get_tree().get_current_scene().find_child("Respawner Handler")
 
 var can_move := false
 

@@ -1,7 +1,5 @@
 extends GroundedMovement
 
-
-
 #private variables
 var state_name = "Walk"
 var blend_parameter = "parameters/GroundedMovement/Running/blend_position"

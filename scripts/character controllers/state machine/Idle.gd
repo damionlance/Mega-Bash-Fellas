@@ -1,7 +1,5 @@
 extends GroundedMovement
 
-class_name Idle
-
 
 #private variables
 var state_name = "Idle"

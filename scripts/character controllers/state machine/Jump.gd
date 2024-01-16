@@ -1,7 +1,5 @@
 extends AerialMovement
 
-class_name Jump
-
 #private variables
 var state_name = "Jump"
 

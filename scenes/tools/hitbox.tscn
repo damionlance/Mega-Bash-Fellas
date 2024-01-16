@@ -3,15 +3,15 @@
 [ext_resource type="Script" path="res://scripts/tools/hitbox.gd" id="1_du57p"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_upeux"]
-radius = 0.382
-height = 1.448
+radius = 1.0
 
 [node name="hitbox" type="Area3D"]
 collision_layer = 0
 collision_mask = 32
+monitoring = false
+monitorable = false
 script = ExtResource("1_du57p")
 hitstun_frames = 1
-knockback = null
 
 [node name="hitbox point" type="Node3D" parent="."]
 

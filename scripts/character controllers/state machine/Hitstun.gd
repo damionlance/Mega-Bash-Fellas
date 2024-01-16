@@ -1,7 +1,5 @@
 extends GroundedMovement
 
-class_name Hitstun
-
 #private variables
 var state_name = "Hitstun"
 var hitstun_frames := 0

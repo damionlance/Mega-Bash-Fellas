@@ -1,7 +1,5 @@
 extends GroundedMovement
 
-class_name LandingLag
-
 #private variables
 var state_name = "Landing Lag"
 

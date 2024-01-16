@@ -1,7 +1,5 @@
 extends AerialMovement
 
-class_name Airdodge
-
 #private variables
 var state_name = "Airdodge"
 

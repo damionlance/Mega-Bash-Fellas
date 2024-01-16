@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://c7q70xy1ck3i6"]
+[gd_scene load_steps=55 format=3 uid="uid://c7q70xy1ck3i6"]
 
 [ext_resource type="Script" path="res://scripts/character controllers/Test Character.gd" id="1_pt3vo"]
 [ext_resource type="Script" path="res://State Machine.gd" id="2_07h50"]
@@ -171,30 +171,134 @@ _data = {
 "punch": SubResource("Animation_8f61i")
 }
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_i1twr"]
-animation = &"RESET"
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6uwk7"]
+animation = &"Double Jump"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_eyw0w"]
-animation = &"punch"
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_sfwr0"]
+animation = &"fall"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1sxgw"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pls0h"]
+animation = &"jump 1"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pqaw1"]
+advance_mode = 2
+advance_expression = "state.current_state.state_name == \"Fall\""
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_m42lk"]
+advance_mode = 2
+advance_expression = "state.current_state.state_name == \"Jump"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vbit2"]
+advance_mode = 2
+advance_expression = "state.current_state.state_name == \"Double Jump\""
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_5abvf"]
+"states/Double Jump/node" = SubResource("AnimationNodeAnimation_6uwk7")
+"states/Double Jump/position" = Vector2(383.667, 100.444)
+states/Start/position = Vector2(232, 99.5556)
+states/fall/node = SubResource("AnimationNodeAnimation_sfwr0")
+states/fall/position = Vector2(382.778, 219.333)
+"states/jump 1/node" = SubResource("AnimationNodeAnimation_pls0h")
+"states/jump 1/position" = Vector2(383.667, -6.66667)
+transitions = ["Start", "fall", SubResource("AnimationNodeStateMachineTransition_pqaw1"), "Start", "jump 1", SubResource("AnimationNodeStateMachineTransition_m42lk"), "Start", "Double Jump", SubResource("AnimationNodeStateMachineTransition_vbit2")]
+graph_offset = Vector2(9, -118)
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_53hdo"]
+animation = &"Dash"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6otpj"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_aqqfe"]
+animation = &"Sprint Pivot"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_yvmxq"]
+animation = &"Sprint"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8lbqw"]
+animation = &"Walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_thpqu"]
+priority = 2
 advance_mode = 2
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bfjy8"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2c1sg"]
 advance_mode = 2
-advance_expression = "state.current_state.state_name == \"Jab\""
+advance_expression = "state.current_state.state_name == \"Walk\""
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_f5no6"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pppkl"]
+advance_mode = 2
+advance_expression = "velocity.x == 0"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_so4cn"]
+advance_mode = 2
+advance_expression = "state.current_state.state_name == \"Dash\""
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_348k7"]
+advance_mode = 2
+advance_expression = "velocity.x == 0"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_fdqnh"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1c2sn"]
+advance_mode = 2
+advance_expression = "velocity.x == 0"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_n1hxb"]
+advance_mode = 2
+advance_expression = "sign(controller.movement_direction) != sign(velocity.x)"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dj5t1"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_yqoqx"]
+states/Dash/node = SubResource("AnimationNodeAnimation_53hdo")
+states/Dash/position = Vector2(473.901, 98.8148)
+states/Idle/node = SubResource("AnimationNodeAnimation_6otpj")
+states/Idle/position = Vector2(309.037, 100)
+states/Sprint/node = SubResource("AnimationNodeAnimation_yvmxq")
+states/Sprint/position = Vector2(474.444, 264.272)
+"states/Sprint Pivot/node" = SubResource("AnimationNodeAnimation_aqqfe")
+"states/Sprint Pivot/position" = Vector2(475.407, 427.333)
+states/Walk/node = SubResource("AnimationNodeAnimation_8lbqw")
+states/Walk/position = Vector2(310.099, 264.181)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_thpqu"), "Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_2c1sg"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_pppkl"), "Idle", "Dash", SubResource("AnimationNodeStateMachineTransition_so4cn"), "Dash", "Idle", SubResource("AnimationNodeStateMachineTransition_348k7"), "Dash", "Sprint", SubResource("AnimationNodeStateMachineTransition_fdqnh"), "Sprint", "Idle", SubResource("AnimationNodeStateMachineTransition_1c2sn"), "Sprint", "Sprint Pivot", SubResource("AnimationNodeStateMachineTransition_n1hxb"), "Sprint Pivot", "Sprint", SubResource("AnimationNodeStateMachineTransition_dj5t1")]
+graph_offset = Vector2(-97, -146)
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_o3qvo"]
+animation = &"jump squat"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_84qpy"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qqvg2"]
+advance_mode = 2
+advance_expression = "is_on_floor() != true"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_u5bct"]
+advance_mode = 2
+advance_expression = "is_on_floor() == true"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mm1gw"]
+advance_mode = 2
+advance_expression = "state.current_state.state_name == \"Jump Squat\""
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_rdlhr"]
 switch_mode = 2
 advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_5m5ya"]
-states/RESET/node = SubResource("AnimationNodeAnimation_i1twr")
-states/RESET/position = Vector2(317.667, 115.333)
+"states/Aerial Movement/node" = SubResource("AnimationNodeStateMachine_5abvf")
+"states/Aerial Movement/position" = Vector2(401, -14)
+states/End/position = Vector2(1516, 164)
+"states/Grounded Movement/node" = SubResource("AnimationNodeStateMachine_yqoqx")
+"states/Grounded Movement/position" = Vector2(401, 118.667)
 states/Start/position = Vector2(190, 106.667)
-states/punch/node = SubResource("AnimationNodeAnimation_eyw0w")
-states/punch/position = Vector2(329.667, -37.3333)
-transitions = ["Start", "RESET", SubResource("AnimationNodeStateMachineTransition_1sxgw"), "RESET", "punch", SubResource("AnimationNodeStateMachineTransition_bfjy8"), "punch", "RESET", SubResource("AnimationNodeStateMachineTransition_f5no6")]
+"states/jump squat/node" = SubResource("AnimationNodeAnimation_o3qvo")
+"states/jump squat/position" = Vector2(621.667, 118.593)
+transitions = ["Start", "Grounded Movement", SubResource("AnimationNodeStateMachineTransition_84qpy"), "Grounded Movement", "Aerial Movement", SubResource("AnimationNodeStateMachineTransition_qqvg2"), "Aerial Movement", "Grounded Movement", SubResource("AnimationNodeStateMachineTransition_u5bct"), "Grounded Movement", "jump squat", SubResource("AnimationNodeStateMachineTransition_mm1gw"), "jump squat", "Aerial Movement", SubResource("AnimationNodeStateMachineTransition_rdlhr")]
 graph_offset = Vector2(-69, -148)
 
 [node name="Body" type="CharacterBody3D"]
@@ -286,6 +390,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.510841, 0.952198, 0)
 visible = false
 collision_mask = 33
 monitoring = false
+monitorable = false
 hitbox_radius = 0.0
 launch_angle = 45.0
 knockback = 1.0
@@ -300,31 +405,48 @@ transform = Transform3D(-0.00720105, -0.999973, 0, 0.999973, -0.00720105, 0, 0, 
 visible = false
 collision_mask = 33
 monitoring = false
+monitorable = false
 knockback = 1.0
+
+[node name="HitCapsule" parent="Hitboxes/hitbox2" index="1"]
+transform = Transform3D(-4.37113e-08, -0.999999, 0, 0.999999, -4.37113e-08, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="hitbox3" parent="Hitboxes" instance=ExtResource("20_sae1l")]
 visible = false
 collision_mask = 33
 monitoring = false
+monitorable = false
 knockback = 1.0
+
+[node name="HitCapsule" parent="Hitboxes/hitbox3" index="1"]
+transform = Transform3D(-4.37113e-08, -0.999999, 0, 0.999999, -4.37113e-08, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="hitbox4" parent="Hitboxes" instance=ExtResource("20_sae1l")]
 visible = false
 collision_mask = 33
 monitoring = false
+monitorable = false
 knockback = 1.0
+
+[node name="HitCapsule" parent="Hitboxes/hitbox4" index="1"]
+transform = Transform3D(-4.37113e-08, -0.999999, 0, 0.999999, -4.37113e-08, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="hitbox5" parent="Hitboxes" instance=ExtResource("20_sae1l")]
 visible = false
 collision_mask = 33
 monitoring = false
+monitorable = false
 knockback = 1.0
+
+[node name="HitCapsule" parent="Hitboxes/hitbox5" index="1"]
+transform = Transform3D(-4.37113e-08, -0.999999, 0, 0.999999, -4.37113e-08, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="Hurtboxes" type="Node3D" parent="."]
 
 [node name="hitbox" parent="Hurtboxes" instance=ExtResource("20_sae1l")]
 visible = false
 collision_layer = 32
+monitoring = false
 hitbox_radius = 0.382
 active = true
 knockback = 1.0
