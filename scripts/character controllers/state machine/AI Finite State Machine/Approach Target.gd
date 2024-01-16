@@ -14,7 +14,7 @@ var target_position = Vector3(0, 0, 0)
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	state.state_dictionary[state_name] = self
-	state.target_body = get_tree().get_current_scene().find_child("Body2", false)
+	state.target_body = get_tree().get_current_scene().find_child("Body", false)
 	
 
 func update(delta):

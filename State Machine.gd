@@ -25,6 +25,7 @@ func _physics_process(delta):
 	current_state.update(delta)
 
 func update_state( newstate ):
+	print(newstate)
 	previous_state = current_state
 	current_state = state_dictionary[newstate]
 	current_state.reset(_delta)
@@ -32,7 +33,6 @@ func update_state( newstate ):
 func enter_hitstun(hitstun_frames):
 	update_state("Hitstun")
 	current_state.wait_time = hitstun_frames
-	print(current_state.wait_time)
 
 func finished_animation():
 	emit_signal("animation_finished")

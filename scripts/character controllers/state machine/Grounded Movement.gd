@@ -23,9 +23,8 @@ var current_speed := 0
 func grounded_movement_processing(delta, delta_v) -> Vector2:
 	if abs(body.velocity.x) > sprint_speed * delta:
 		body.apply_friction(traction * 2)
-	
-	if abs(body.velocity.x + delta_v.x) > current_speed * delta:
-		delta_v.x = 0
+		if abs(body.velocity.x) < sprint_speed * delta:
+			body.velocity.x = sign(body.velocity.x) * sprint_speed * delta
 	
 	return delta_v
 	

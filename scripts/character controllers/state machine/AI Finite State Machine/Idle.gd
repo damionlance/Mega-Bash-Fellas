@@ -19,8 +19,8 @@ func _ready():
 func update(delta):
 	
 	if body.is_on_floor():
-		return
 		state.update_state("Approach Target")
+		return
 	pass
 
 func reset(_delta):

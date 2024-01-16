@@ -1,9 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://clfwbndiph4dn"]
+[gd_scene load_steps=13 format=3 uid="uid://clfwbndiph4dn"]
 
 [ext_resource type="Script" path="res://scripts/Levels/initiate level.gd" id="1_5j3o7"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_6o67q"]
 [ext_resource type="Script" path="res://scripts/tools/AStar.gd" id="2_crqly"]
 [ext_resource type="PackedScene" uid="uid://btuch2skaq6tn" path="res://scenes/tools/respawner_handler.tscn" id="3_hw7x1"]
 [ext_resource type="PackedScene" uid="uid://cp0360gr6b02n" path="res://scenes/characters/PB.tscn" id="4_d5k7j"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3D.gd" id="6_k006f"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_ob63o"]
 size = Vector3(30, 2, 2)
@@ -76,8 +78,11 @@ depth = 2.0
 polygon = PackedVector2Array(-3, 0, 3, 0, 3, -0.5, -3, -0.5)
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 19)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 5)
 fov = 52.5
+
+[node name="PhantomCameraHost" type="Node" parent="Camera3D"]
+script = ExtResource("2_6o67q")
 
 [node name="Respawner Handler" parent="." instance=ExtResource("3_hw7x1")]
 
@@ -105,5 +110,28 @@ environment = SubResource("Environment_1s338")
 transform = Transform3D(0.732875, 0.25499, -0.630772, -2.54639e-09, 0.927112, 0.374785, 0.680363, -0.27467, 0.679458, 0, 0, 0)
 
 [node name="Body" parent="." instance=ExtResource("4_d5k7j")]
+
+[node name="Body2" parent="." instance=ExtResource("4_d5k7j")]
+player = false
+
+[node name="PhantomCamera3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 5)
+script = ExtResource("6_k006f")
+priority_override = false
+priority = 0
+follow_mode = 3
+follow_group = Array[NodePath]([NodePath("../Body"), NodePath("../Body2")])
+follow_parameters/auto_distance = true
+follow_parameters/min_distance = 5.0
+follow_parameters/max_distance = 25.0
+follow_parameters/auto_distance_divisor = 20.0
+follow_parameters/target_offset = Vector3(0, 1.5, 0)
+follow_parameters/damping = true
+follow_parameters/damping_value = 10.0
+look_at_mode = 0
+tween_parameters = null
+tween_on_load = true
+inactive_update_mode = 0
+camera_3D_resource = null
 
 [editable path="Respawner Handler"]

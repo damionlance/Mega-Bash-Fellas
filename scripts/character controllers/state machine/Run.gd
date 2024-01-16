@@ -23,6 +23,9 @@ func update(delta):
 	if body.velocity.x == 0.0:
 		state.update_state("Idle")
 		return
+	if controller.movement_direction.y < -0.4:
+		state.update_state("Crouch")
+		return
 	
 	delta_v.x = sign(controller.movement_direction.x) * (base_dash_acceleration + abs(additional_dash_acceleration * controller.movement_direction.x)) * delta
 	
@@ -35,6 +38,5 @@ func update(delta):
 
 func reset(_delta):
 	current_speed = sprint_speed
-	body.facing_direction = sign(controller.movement_direction.x)
 	body.consecutive_jumps = 0
 	pass

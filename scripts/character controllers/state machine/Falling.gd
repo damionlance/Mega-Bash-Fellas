@@ -16,7 +16,7 @@ func update(delta):
 	var delta_v = Vector2.ZERO
 	# Handle all states
 	if body.is_on_floor():
-		state.update_state("Idle")
+		state.update_state("Landing Lag")
 		return
 	if controller.attempting_jump and ready_to_jump and body.can_jump:
 		state.update_state("Double Jump")
