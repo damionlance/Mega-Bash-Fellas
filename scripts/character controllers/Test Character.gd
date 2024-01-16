@@ -11,12 +11,15 @@ var max_horizontal_velocity := 0.0
 var can_jump := true
 var consecutive_jumps := 0
 
+var attacking = false
+
 var active_attack : Node
 
 signal has_been_hit
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$"Animation Tree".active = true
 	if player:
 		controller.set_script(load("res://scripts/character controllers/Controller Inputs.gd"))
 		controller._ready()

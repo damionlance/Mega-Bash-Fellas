@@ -51,6 +51,7 @@ func update(delta):
 	pass
 
 func reset(_delta):
+	body.attacking = false
 	can_drop_thru_platform = false
 	body.consecutive_jumps = 0
 	pass

@@ -20,11 +20,13 @@ func update(delta):
 	# Process inputs
 	match current_jab:
 		3:
-			if animation_finished:
+			if animation_finished and controller.attack_state != controller.attack_released:
+				current_jab = 0
 				state.update_state("Idle")
 				return
 		2:
-			if animation_finished and controller.attack_state == controller.attack_released:
+			if animation_finished:
+				current_jab = 0
 				state.update_state("Idle")
 				return
 		1:
@@ -36,11 +38,19 @@ func update(delta):
 				state.update_state("Idle")
 				current_jab = 0
 				return
+			if cancellable:
+				if controller.attack_state == controller.attack_pressed:
+					state.update_state("Jab")
+					current_jab += 1
 		_:
 			if cancellable:
 				if controller.attack_state == controller.attack_pressed:
 					state.update_state("Jab")
 					current_jab += 1
+			if animation_finished:
+				state.update_state("Idle")
+				current_jab = 0
+				return
 	
 	
 	# Handle all relevant timers
@@ -49,5 +59,6 @@ func update(delta):
 	pass
 
 func reset(_delta):
+	body.attacking = true
 	cancellable = false
 	animation_finished = false

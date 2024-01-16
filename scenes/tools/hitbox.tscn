@@ -3,7 +3,8 @@
 [ext_resource type="Script" path="res://scripts/tools/hitbox.gd" id="1_du57p"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_upeux"]
-radius = 1.0
+radius = 0.234
+height = 0.468
 
 [node name="hitbox" type="Area3D"]
 collision_layer = 0
