@@ -15,6 +15,11 @@ func update(delta):
 	current_frame += 1
 	var delta_v = Vector2.ZERO
 		# Handle all states
+	if current_frame <= 3:
+		if controller.attempting_shield:
+			pass # INSERT DODGE HERE
+		if controller.attempting_attack:
+			pass # INSERT ATTACK LOGIC HERE
 	if controller.attempting_jump:
 		state.update_state("Jump")
 		return

@@ -32,6 +32,7 @@ func update(delta):
 	pass
 
 func reset(_delta):
+	body.attacking = false
 	current_frame = 0
 	body.consecutive_jumps = 0
 	pass

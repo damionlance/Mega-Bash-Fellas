@@ -23,5 +23,6 @@ func update(delta):
 	pass
 
 func reset(_delta):
+	can_crush = true
 	jump_timer = 0
 	pass

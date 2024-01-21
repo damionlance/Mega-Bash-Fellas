@@ -21,9 +21,11 @@ func update(delta):
 	
 	var delta_v = Vector2.ZERO
 	# Handle all states
-	
-	if controller.attack_state == controller.attack_pressed:
-		state.update_state("Jab")
+	if controller.attempting_shield:
+		state.update_state("Shield")
+		return
+	if controller.attempting_attack:
+		decide_attack()
 		return
 	if controller.attempting_jump:
 		state.update_state("Jump Squat")
@@ -47,6 +49,8 @@ func update(delta):
 		return
 	if controller.movement_direction.y < -0.4 and passthru_platform_checker.on_passthru_platform and can_drop_thru_platform:
 		passthru_platform_checker.drop_thru_platform()
+		state.update_state("Drop Through Platform")
+		return
 	# Process inputs
 	
 	# Handle all relevant timers
@@ -56,6 +60,8 @@ func update(delta):
 	pass
 
 func reset(_delta):
+	can_tilt = true
+	can_crush = true
 	can_dash = false
 	body.attacking = false
 	can_drop_thru_platform = false

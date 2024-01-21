@@ -15,6 +15,9 @@ func _ready():
 func update(delta):
 	var delta_v = Vector2.ZERO
 	# Handle all states
+	if controller.attempting_attack:
+		decide_attack()
+		return
 	if body.is_on_floor():
 		state.update_state("Landing Lag")
 		return
@@ -37,4 +40,5 @@ func update(delta):
 	ready_to_jump = not controller.attempting_jump
 
 func reset(_delta):
+	can_tilt = true
 	ready_to_jump = not controller.attempting_jump

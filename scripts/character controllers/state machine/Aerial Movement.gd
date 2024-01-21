@@ -9,7 +9,7 @@ class_name AerialMovement
 @export var additional_air_acceleration := 360.0
 @export var traction := 1.0
 @export var falling_speed := 1680.0
-@export var gravity := 13800.0
+@export var gravity := 10350.0
 
 var time_of_jump
 var time_of_double_jump
@@ -26,8 +26,10 @@ var entering_jump_angle
 @onready var body := find_parent("Body*")
 @onready var state = find_parent("State Machine")
 @onready var controller = body.find_child("Controller", false)
-@onready var animation_tree = body.find_child("AnimationTree")
+@onready var animation_tree = body.find_child("Animation Tree")
 @onready var passthru_platform_checker := $"../../../Passable Platform Checker"
+var can_crush := false
+var can_tilt := false
 
 func _ready():
 	time_of_jump = jump_force / gravity
@@ -47,3 +49,21 @@ func regular_aerial_movement_processing(delta, delta_v) -> Vector2:
 	else:
 		passthru_platform_checker.fall_thru = false
 	return delta_v
+
+func decide_attack():
+	
+	if controller.crush_direction != Vector2.ZERO and can_tilt:
+		if controller.crush_direction.y > .8:
+			state.update_state("Uair")
+			return
+		if controller.crush_direction.y < -.8:
+			state.update_state("Dair")
+			return
+		if abs(controller.crush_direction.x) > .8:
+			if sign(controller.crush_direction.x) == body.facing_direction:
+				state.update_state("Fair")
+				return
+			if sign(controller.crush_direction.x) != body.facing_direction:
+				state.update_state("Bair")
+				return
+	pass

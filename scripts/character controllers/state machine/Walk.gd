@@ -30,6 +30,8 @@ func update(delta):
 		return
 	if controller.movement_direction.y < -0.4 and passthru_platform_checker.on_passthru_platform:
 		passthru_platform_checker.drop_thru_platform()
+		state.update_state("Drop Through Platform")
+		return
 	if controller.movement_direction.y < 0:
 		state.update_state("Crouch")
 		return
@@ -49,6 +51,7 @@ func update(delta):
 	pass
 
 func reset(_delta):
+	can_tilt = true
 	can_drop_through_platform = false
 	current_speed = walk_speed
 	frame_one = true

@@ -14,7 +14,7 @@ func update(delta):
 	
 	var delta_v = Vector2.ZERO
 	# Handle all states
-	 
+	
 	if controller.attempting_jump:
 		state.update_state("Jump Squat")
 		return
@@ -45,6 +45,7 @@ func update(delta):
 	pass
 
 func reset(_delta):
+	can_tilt = true
 	body.attacking = false
 	body.consecutive_jumps = 0
 	pass

@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://dj13b3txqsxil"]
+
+[ext_resource type="Shader" path="res://shaders/shield.gdshader" id="1_cssjg"]
+[ext_resource type="Script" path="res://scripts/tools/Shield.gd" id="2_trm01"]
+[ext_resource type="PackedScene" uid="uid://ugrfkn6s0brw" path="res://scenes/tools/hitbox.tscn" id="3_brrpg"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_skdgi"]
+render_priority = 0
+shader = ExtResource("1_cssjg")
+shader_parameter/color = Color(1, 0, 0, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_cuxre"]
+material = SubResource("ShaderMaterial_skdgi")
+size = Vector2(1.994, 1.994)
+
+[node name="Shield" type="MeshInstance3D"]
+mesh = SubResource("QuadMesh_cuxre")
+script = ExtResource("2_trm01")
+
+[node name="hitbox" parent="." instance=ExtResource("3_brrpg")]
+visible = false
+collision_layer = 32
+monitorable = true
+hitbox_radius = 0.5
+active = true
+hurtbox = true
+shield = false
+invincible = true

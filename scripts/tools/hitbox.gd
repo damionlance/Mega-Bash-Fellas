@@ -16,10 +16,10 @@ var hitbox_point_position = Vector3.ZERO
 
 @export_group("Hurtbox Properties")
 @export var hurtbox := false
+@export var shield := false
 @export var invincible := false
 @export var hitbox_start_point : BoneAttachment3D
 @export var hitbox_end_point : BoneAttachment3D
-
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -51,7 +51,7 @@ func _process(delta):
 			hitcapsule.shape.height = hitbox_point_position.length()
 			hitbox_point_position = $"hitbox point".position
 			hitcapsule.shape.radius = hitbox_radius
-		else:
+		elif not shield:
 			global_position = hitbox_start_point.global_position
 			global_position.z = 0
 			var position_of_endpoint = (hitbox_end_point.global_position - global_position)
@@ -70,7 +70,7 @@ func _process(delta):
 			hitbox_point_position = $"hitbox point".position
 			hitcapsule.shape.radius = hitbox_radius
 			monitoring = active
-		else:
+		elif not shield:
 			global_position = hitbox_start_point.global_position
 			global_position.z = 0
 			var position_of_endpoint = (hitbox_end_point.global_position - global_position)
@@ -79,6 +79,8 @@ func _process(delta):
 			hitcapsule.rotation.z = atan2(position_of_endpoint.y, position_of_endpoint.x) + PI/2
 			hitcapsule.shape.height = position_of_endpoint.length()
 			hitcapsule.shape.radius = hitbox_radius
+			monitorable = active
+		else:
 			monitorable = active
 
 
@@ -91,5 +93,5 @@ func hit(launch_angle : float, facing_direction : float, damage : float, hitstun
 	pass
 
 func _on_area_entered(area):
-	if not area.invincible and area.body.name != body.name:
+	if not shield and not area.invincible and area.body.name != body.name:
 		area.hit(deg_to_rad(launch_angle), body.facing_direction, damage, hitstun_frames, knockback)

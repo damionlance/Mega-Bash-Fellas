@@ -1,6 +1,7 @@
 extends Node
 
 var movement_direction := Vector2.ZERO # Always Normalized
+var crush_direction := Vector2.ZERO
 var input_strength := 0.0
 var neutral_zone := 0.2
 
@@ -30,6 +31,7 @@ var pivot_time_buffer := 30
 var is_on_floor := false
 var attempting_throw := false
 var restricted_movement := false
+var attempting_attack := false
 
 # Spin variables
 var angle := [0.0, 0.0]
@@ -96,6 +98,7 @@ func _ready():
 	pass # Replace with function body.
 
 func _process(_delta):
+	crush_direction = Input.get_vector("Crush Left", "Crush Right", "Crush Down", "Crush Up")
 	movement_direction = Input.get_vector("Left","Right", "Down", "Up")
 	input_strength = movement_direction.length()
 	if input_strength > .9:
@@ -112,10 +115,22 @@ func _process(_delta):
 	else: shield_state = shield_released
 	if Input.get_action_strength("Attack"):
 		attack_state = attack_pressed if attack_state == 0 else attack_held
-	else: attack_state = attack_released
+		attempting_attack = true
+	else: 
+		attack_state = attack_released
+		attempting_attack = false
 	if Input.get_action_strength("Special"):
 		special_state = special_pressed if special_state == 0 else special_held
-	else: special_state = special_released
+		attempting_attack = true
+	else: 
+		special_state = special_released
+		if attack_state == 0:
+			attempting_attack = false
+	if crush_direction != Vector2.ZERO:
+		attempting_attack = true
+	elif attack_state == 0 and special_state == 0:
+		attempting_attack = false
+	
 	
 	input_handling()
 
