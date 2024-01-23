@@ -18,8 +18,8 @@ func _ready():
 
 func update(delta):
 	
-	if body.is_on_floor():
-		state.update_state("Approach Target")
+	if body.is_on_floor() and body.state.current_state.state_name == "Idle" and false: 
+		state.update_state("Shield")
 		return
 	pass
 

@@ -14,15 +14,14 @@ material = SubResource("ShaderMaterial_skdgi")
 size = Vector2(1.994, 1.994)
 
 [node name="Shield" type="MeshInstance3D"]
+top_level = true
 mesh = SubResource("QuadMesh_cuxre")
 script = ExtResource("2_trm01")
 
 [node name="hitbox" parent="." instance=ExtResource("3_brrpg")]
-visible = false
 collision_layer = 32
 monitorable = true
 hitbox_radius = 0.5
 active = true
 hurtbox = true
-shield = false
 invincible = true

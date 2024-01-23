@@ -1,6 +1,7 @@
 extends Node
 
 var movement_direction := Vector2.ZERO # Always Normalized
+var crush_direction := Vector2.ZERO
 var input_strength := 0.0
 var neutral_zone := 0.2
 
@@ -45,6 +46,10 @@ var spin_jump_sign := int(0)
 # button input states
 var jump_input := false
 var shield_input := false
+var attack_input := false
+var special_input := false
+
+var attempting_attack := false
 
 
 var jump_state := 0
@@ -101,12 +106,29 @@ func _process(_delta):
 	if input_strength > .9:
 		input_strength = 1
 	
-	if jump_input == true:
+	if jump_input:
 		jump_state = jump_pressed if jump_state == 0 else jump_held
 	else: jump_state = jump_released
-	if shield_input == true:
+	if shield_input:
 		shield_state = shield_pressed if shield_state == 0 else shield_held
 	else: shield_state = shield_released
+	if attack_input:
+		attack_state = attack_pressed if attack_state == 0 else attack_held
+		attempting_attack = true
+	else: 
+		attack_state = attack_released
+		attempting_attack = false
+	if special_input:
+		special_state = special_pressed if special_state == 0 else special_held
+		attempting_attack = true
+	else: 
+		special_state = special_released
+		if attack_state == 0:
+			attempting_attack = false
+	if crush_direction != Vector2.ZERO:
+		attempting_attack = true
+	elif attack_state == 0 and special_state == 0:
+		attempting_attack = false
 	
 	input_handling()
 

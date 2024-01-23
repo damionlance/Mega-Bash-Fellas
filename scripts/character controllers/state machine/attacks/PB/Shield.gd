@@ -43,7 +43,7 @@ func update(delta):
 		state.update_state("Drop Through Platform")
 		shield.visible = false
 		return
-	animation_tree["parameters/Grounded Movement/Shield/blend_position"] = controller.crush_direction
+	animation_tree["parameters/AnimationNodeStateMachine/Grounded Movement/Shield/blend_position"] = controller.crush_direction
 	shield.global_position = body.global_position + Vector3(controller.crush_direction.x, controller.crush_direction.y, 0) + mid_point
 	if abs(controller.movement_direction.x) > controller.neutral_zone:
 		pass # INSERT DODGE STUFF HERE

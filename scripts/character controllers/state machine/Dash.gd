@@ -26,10 +26,10 @@ func update(delta):
 	if not body.is_on_floor():
 		state.update_state("Fall")
 		return
-	if abs(body.velocity.x) >= (sprint_speed * delta) and sign(controller.movement_direction.x) == sign(body.velocity.x):
+	if abs(body.velocity.x) >= (sprint_speed * delta) and sign(controller.movement_direction.x) == sign(body.velocity.x) and current_frame >= frames_to_sprint:
 		state.update_state("Run")
 		return
-	if controller.movement_direction.length() < 0.29 or abs(body.velocity.x) >= (sprint_speed * delta):
+	if controller.movement_direction.length() < 0.29:
 		state.update_state("Idle")
 		return
 	delta_v.x = sign(controller.movement_direction.x) * (base_dash_acceleration + abs(additional_dash_acceleration * controller.movement_direction.x)) * delta

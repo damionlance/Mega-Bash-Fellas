@@ -92,6 +92,13 @@ func hit(launch_angle : float, facing_direction : float, damage : float, hitstun
 	body.emit_signal("has_been_hit", hitstun_frames)
 	pass
 
-func _on_area_entered(area):
-	if not shield and not area.invincible and area.body.name != body.name:
-		area.hit(deg_to_rad(launch_angle), body.facing_direction, damage, hitstun_frames, knockback)
+func _on_area_entered(_area):
+	var hit_shield := false
+	var hurtbox : Area3D
+	for hit_area in get_overlapping_areas():
+		if hit_area.shield:
+			hit_shield = true
+		elif hit_area.body.name != body.name and not hit_area.invincible:
+			hurtbox = hit_area
+	if hit_shield: return
+	hurtbox.hit(launch_angle, body.facing_direction, damage, hitstun_frames, knockback)

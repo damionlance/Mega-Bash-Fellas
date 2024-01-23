@@ -27,10 +27,12 @@ func update(delta):
 		state.update_state("Crouch")
 		return
 	
-	delta_v.x = sign(controller.movement_direction.x) * (base_dash_acceleration + abs(additional_dash_acceleration * controller.movement_direction.x)) * delta
 	
-	if sign(controller.movement_direction.x) != sign(body.velocity.x):
-		body.apply_friction(traction / 2)
+	if sign(controller.movement_direction.x) != sign(body.velocity.x) or sign(controller.movement_direction.x) != body.facing_direction:
+		body.apply_friction(traction * 0.5)
+	else:
+		delta_v.x = sign(controller.movement_direction.x) * (base_dash_acceleration + abs(additional_dash_acceleration * controller.movement_direction.x)) * delta
+	
 	
 	delta_v = grounded_movement_processing(delta, delta_v)
 	body.delta_v = delta_v
