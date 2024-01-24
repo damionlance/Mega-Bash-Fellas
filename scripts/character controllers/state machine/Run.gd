@@ -14,6 +14,9 @@ func _ready():
 func update(delta):
 	var delta_v = Vector2.ZERO
 		# Handle all states
+	if controller.attempting_shield:
+		state.update_state("Shield")
+		return
 	if controller.attempting_jump:
 		state.update_state("Jump Squat")
 		return

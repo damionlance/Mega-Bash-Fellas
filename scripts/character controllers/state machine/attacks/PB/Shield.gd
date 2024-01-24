@@ -5,7 +5,10 @@ extends GroundedMovement
 var state_name = "Shield"
 
 var can_drop_thru_platform := false
-var can_dash := false
+var can_dodge := false
+
+var drop_shield = false
+@export var animation_finished = false
 @onready var shield := $"../../../Shield"
 @export var mid_point := Vector3.UP
 # Called when the node enters the scene tree for the first time.
@@ -19,16 +22,25 @@ func update(delta):
 	if controller.movement_direction.y > -.4:
 		can_drop_thru_platform = true
 	if controller.movement_direction.length() == 0:
-		can_dash = true
+		can_dodge = true
 	
 	var delta_v = Vector2.ZERO
 	
 	# Handle all states
-	if controller.shield_state == 0:
+	if animation_finished:
 		state.update_state("Idle")
+		return
+	if abs(controller.movement_direction.x) > .8 and can_dodge:
+		state.update_state("Dodge Roll")
+		shield.visible = false
+		return
+	if controller.shield_state == 0:
+		can_dodge = false
+		drop_shield = true
 		shield.visible = false
 		return
 	if controller.attempting_attack:
+		grabbing = true
 		decide_attack()
 	if controller.attempting_jump:
 		state.update_state("Jump Squat")
@@ -43,7 +55,7 @@ func update(delta):
 		state.update_state("Drop Through Platform")
 		shield.visible = false
 		return
-	animation_tree["parameters/AnimationNodeStateMachine/Grounded Movement/Shield/blend_position"] = controller.crush_direction
+	animation_tree["parameters/AnimationNodeStateMachine/Grounded Movement/Shield/Shield/blend_position"] = controller.crush_direction
 	shield.global_position = body.global_position + Vector3(controller.crush_direction.x, controller.crush_direction.y, 0) + mid_point
 	if abs(controller.movement_direction.x) > controller.neutral_zone:
 		pass # INSERT DODGE STUFF HERE
@@ -54,6 +66,11 @@ func update(delta):
 	pass
 
 func reset(_delta):
+	body.slide_off_ledge = false
+	animation_finished = false
+	drop_shield = false
+	can_dodge = false
+	
 	shield.global_position = body.global_position + Vector3(controller.crush_direction.x, controller.crush_direction.y, 0) + mid_point
 	shield.visible = true
 	body.velocity = Vector3.ZERO

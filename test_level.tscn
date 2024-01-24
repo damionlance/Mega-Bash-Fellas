@@ -79,7 +79,7 @@ polygon = PackedVector2Array(-3, 0, 3, 0, 3, -0.5, -3, -0.5)
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 8.825)
-fov = 74.3473
+fov = 74.9076
 
 [node name="PhantomCameraHost" type="Node" parent="Camera3D"]
 script = ExtResource("2_6o67q")
@@ -110,10 +110,6 @@ environment = SubResource("Environment_1s338")
 transform = Transform3D(0.732875, 0.25499, -0.630772, -2.54639e-09, 0.927112, 0.374785, 0.680363, -0.27467, 0.679458, 0, 0, 0)
 
 [node name="Body" parent="." instance=ExtResource("4_d5k7j")]
-
-[node name="Body2" parent="." instance=ExtResource("4_d5k7j")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.41933, 0, 0)
-player = false
 
 [node name="PhantomCamera3D" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 8.825)

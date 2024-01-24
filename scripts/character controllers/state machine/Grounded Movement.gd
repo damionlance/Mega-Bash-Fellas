@@ -6,9 +6,12 @@ class_name GroundedMovement
 @export var dash_speed := 855.0
 @export var base_dash_acceleration := 420.0
 @export var additional_dash_acceleration := 1400.0
-@export var walk_speed := 960.0
+@export var walk_speed := 720.0
+@export var dodge_roll := 1980.0
+@export var tech_roll := 3500.0
 var can_crush := false
 var can_tilt := false
+var grabbing := false
 
 @export var landing_lag := 4
 
@@ -33,7 +36,6 @@ func grounded_movement_processing(delta, delta_v) -> Vector2:
 	pass
 
 func decide_attack():
-	
 	if controller.crush_direction != Vector2.ZERO and can_tilt:
 		if controller.crush_direction.y > .8:
 			state.update_state("UTilt")
@@ -46,6 +48,9 @@ func decide_attack():
 			return
 	elif controller.movement_direction == Vector2.ZERO:
 		if controller.attempting_attack:
+			if grabbing:
+				pass
+				return
 			state.update_state("Jab")
 			return
 	pass

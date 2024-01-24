@@ -20,6 +20,10 @@ func update(delta):
 			pass # INSERT DODGE HERE
 		if controller.attempting_attack:
 			pass # INSERT ATTACK LOGIC HERE
+	if controller.attempting_shield:
+		body.velocity.x = 0
+		state.update_state("Shield")
+		return
 	if controller.attempting_jump:
 		state.update_state("Jump")
 		return
