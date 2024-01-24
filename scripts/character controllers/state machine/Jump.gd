@@ -47,7 +47,7 @@ func reset(delta):
 	can_tilt = true
 	
 	ready_to_jump = not controller.attempting_jump
-	if not controller.attempting_jump:
+	if controller.jump_state == 0:
 		body.velocity.y = short_force * delta
 	else:
 		body.velocity.y = jump_force * delta

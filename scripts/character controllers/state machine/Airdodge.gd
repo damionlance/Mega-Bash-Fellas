@@ -35,5 +35,4 @@ func reset(delta):
 	velocity_tween = get_tree().create_tween()
 	body.velocity = Vector3(controller.movement_direction.x, controller.movement_direction.y, 0) * jump_force * delta
 	velocity_tween.tween_property(body, "velocity", Vector3.ZERO, 0.5).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_OUT)
-	body.facing_direction = sign(controller.movement_direction.x)
 	pass

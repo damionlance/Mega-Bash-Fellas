@@ -19,9 +19,12 @@ func update(delta):
 	var delta_v = Vector2.ZERO
 	
 	if body.is_on_floor():
+		body.facing_direction *= -1
 		state.update_state("Landing Lag")
+		return
 	if animation_finished:
 		state.update_state("Fall")
+		body.facing_direction *= -1
 		return
 	
 	# Handle all relevant timers

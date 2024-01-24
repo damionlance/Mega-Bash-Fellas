@@ -79,7 +79,7 @@ polygon = PackedVector2Array(-3, 0, 3, 0, 3, -0.5, -3, -0.5)
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 8.825)
-fov = 74.9076
+fov = 74.6307
 
 [node name="PhantomCameraHost" type="Node" parent="Camera3D"]
 script = ExtResource("2_6o67q")

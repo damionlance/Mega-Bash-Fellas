@@ -66,7 +66,6 @@ func test_edge(delta):
 			query = PhysicsRayQueryParameters3D.create(global_position + velocity * delta - Vector3(0, 0.01, 0), global_position - Vector3(0, 0.01, 0), 3)
 			result = space_state.intersect_ray(query)
 			if result:
-				print("Hello!")
 				global_position = result.position
 				global_position.x -= facing_direction * 0.01
 				velocity.x = 0

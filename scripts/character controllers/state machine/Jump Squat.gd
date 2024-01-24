@@ -4,7 +4,7 @@ extends AerialMovement
 var state_name = "Jump Squat"
 
 var jump_timer := 0
-
+@export var animation_finished := false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	state.state_dictionary[state_name] = self
@@ -15,7 +15,7 @@ func _ready():
 func update(delta):
 	jump_timer += 1
 	# Handle all states
-	if jump_timer == jump_squat:
+	if animation_finished:
 		state.update_state("Jump")
 		return
 	# Process inputs
@@ -23,6 +23,7 @@ func update(delta):
 	pass
 
 func reset(_delta):
+	animation_finished = false
 	can_crush = true
 	jump_timer = 0
 	pass

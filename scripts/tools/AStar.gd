@@ -1,6 +1,6 @@
 extends Node3D
 
-@export var draw_debug_cubes : bool = true
+@export var draw_debug_cubes : bool = false
 
 var grid_step := 1.0
 var points := {}
