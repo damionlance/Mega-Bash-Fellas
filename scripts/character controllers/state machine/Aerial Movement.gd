@@ -4,21 +4,21 @@ class_name AerialMovement
 
 #warning-ignore:unused_private_class_variable
 
-@export var air_speed := 1992.0
-@export var base_air_acceleration := 480.0
-@export var additional_air_acceleration := 1440.0
+@export var air_speed := 892.0 #1992
+@export var base_air_acceleration := 350.0 #480
+@export var additional_air_acceleration := 500.0 # 1440
 @export var traction := 1.0
-@export var falling_speed := 1680.0
-@export var gravity := 5821.88
+@export var falling_speed := 1280.0 #1680
+@export var gravity := 5200.88
 
 var time_of_jump
 var time_of_double_jump
 
-@export var jump_force := 1656.0
-@export var double_jump_force := 1987.2
-@export var short_force := 1260.0
+@export var jump_force := 1300.0
+@export var double_jump_force := 1600.2
+@export var short_force := 860.0 # 1260
 
-@export var jump_squat := 3
+@export var jump_squat := 4
 @export var jumps_allowed := 1
 var delta_v
 var entering_jump_angle

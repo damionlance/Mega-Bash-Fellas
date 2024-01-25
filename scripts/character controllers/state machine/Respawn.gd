@@ -26,7 +26,7 @@ func update(delta):
 func reset(_delta):
 	body.velocity = Vector3.ZERO
 	can_move = false
-	await get_tree().create_timer(5.0).timeout
+	await get_tree().create_timer(1.0).timeout
 	respawner.respawn_entity(body, false)
 
 func ready_to_move(body_name):

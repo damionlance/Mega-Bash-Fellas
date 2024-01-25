@@ -29,6 +29,7 @@ sky = SubResource("Sky_whvvx")
 script = ExtResource("1_5j3o7")
 
 [node name="Stage" type="StaticBody3D" parent="." groups=["pathable"]]
+transform = Transform3D(0.749051, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Stage"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
@@ -39,7 +40,7 @@ depth = 2.0
 polygon = PackedVector2Array(-15, 0, 15, 0, 15, -2, -15, -2)
 
 [node name="Side Plat" type="StaticBody3D" parent="." groups=["pathable"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 3, 0)
+transform = Transform3D(0.75, 0, 0, 0, 0.57, 0, 0, 0, 1, -7.5, 2.375, 0)
 collision_layer = 2
 collision_mask = 0
 
@@ -52,7 +53,7 @@ depth = 2.0
 polygon = PackedVector2Array(-3, 0, 3, 0, 3, -0.5, -3, -0.5)
 
 [node name="Middle Plat" type="StaticBody3D" parent="." groups=["pathable"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
+transform = Transform3D(0.808064, 0, 0, 0, 0.568934, 0, 0, 0, 1, 0, 5.27712, 0)
 collision_layer = 2
 collision_mask = 0
 
@@ -65,7 +66,7 @@ depth = 2.0
 polygon = PackedVector2Array(-3, 0, 3, 0, 3, -0.5, -3, -0.5)
 
 [node name="Side Plat2" type="StaticBody3D" parent="." groups=["pathable"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 3, 0)
+transform = Transform3D(0.75, 0, 0, 0, 0.57, 0, 0, 0, 1, 7.5, 2.376, 0)
 collision_layer = 2
 collision_mask = 0
 
@@ -78,8 +79,9 @@ depth = 2.0
 polygon = PackedVector2Array(-3, 0, 3, 0, 3, -0.5, -3, -0.5)
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 8.825)
-fov = 74.6307
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 6.25)
+fov = 72.3554
+near = 0.001
 
 [node name="PhantomCameraHost" type="Node" parent="Camera3D"]
 script = ExtResource("2_6o67q")
@@ -97,6 +99,7 @@ unique_name_in_owner = true
 script = ExtResource("2_crqly")
 
 [node name="Blast Zone" type="Area3D" parent="."]
+transform = Transform3D(1.392, 0, 0, 0, 0.945146, 0, 0, 0, 1, 0.000700951, 0.649168, -0.0200233)
 collision_layer = 8
 collision_mask = 0
 
@@ -112,13 +115,13 @@ transform = Transform3D(0.732875, 0.25499, -0.630772, -2.54639e-09, 0.927112, 0.
 [node name="Body" parent="." instance=ExtResource("4_d5k7j")]
 
 [node name="PhantomCamera3D" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 8.825)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 6.25)
 script = ExtResource("6_k006f")
 priority_override = false
 priority = 0
 follow_mode = 3
 follow_group = Array[NodePath]([NodePath("../Body")])
-follow_parameters/distance = 8.825
+follow_parameters/distance = 6.25
 follow_parameters/auto_distance = false
 follow_parameters/target_offset = Vector3(0, 1.5, 0)
 follow_parameters/damping = false

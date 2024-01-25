@@ -43,7 +43,7 @@ func _process(delta):
 	
 	velocity += Vector3(delta_v.x, delta_v.y, 0) * delta
 	move_and_slide()
-	test_edge(delta)
+	#test_edge(delta)
 	delta_v = Vector2.ZERO
 	slide_off_ledge = true
 

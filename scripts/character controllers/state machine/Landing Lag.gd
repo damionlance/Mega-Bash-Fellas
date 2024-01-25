@@ -14,14 +14,13 @@ func update(delta):
 	var delta_v = Vector2.ZERO
 	current_frame += 1
 	if current_frame == landing_lag:
-		if controller.movement_direction.x != 0:
-			state.update_state("Run")
-			return
 		state.update_state("Idle")
+		print(current_frame)
 		return
 	# Handle all states
 	if not body.is_on_floor():
 		state.update_state("Fall")
+		print(current_frame)
 		return
 	# Process inputs
 	
