@@ -50,7 +50,10 @@ func regular_aerial_movement_processing(delta, delta_v) -> Vector2:
 	return delta_v
 
 func decide_attack() -> bool:
-	
+	if controller.special_state == controller.special_pressed:
+		if controller.movement_direction.y >= .7:
+			state.update_state("Up Special")
+			return true
 	if controller.crush_direction != Vector2.ZERO and can_tilt:
 		if controller.crush_direction.y > .8:
 			state.update_state("Uair")

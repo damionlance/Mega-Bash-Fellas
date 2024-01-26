@@ -7,10 +7,13 @@ extends Area3D
 @export_range(0.1, 0.7) var hitbox_radius : float = 1.0
 @export var active := false
 @export_group("Hitbox Properties")
+@export var grab : bool = false
+@export var grab_position : Vector3 = Vector3.ZERO
 @export_range(0.0, 360.0) var launch_angle : float = 0.0
 @export_range(0.1, 50.0) var damage : float = 1.0
 @export_range(0, 10) var hitstun_frames : int = 3
 @export var knockback : float = 1.0
+@export var knockback_scaling : float = 80.0
 var collision_spheres := []
 var hitbox_point_position = Vector3.ZERO
 
@@ -85,20 +88,37 @@ func _process(delta):
 
 
 
-func hit(launch_angle : float, facing_direction : float, damage : float, hitstun_frames : float, knockback : float) :
+func hit(launch_angle : float, facing_direction : float, grab : bool = false, _grab_position : Vector3 = Vector3.ZERO, damage : float = 0.0, hitstun_frames : float = 0.0, knockback : float = 0.0) :
 	body.velocity = Vector3(1, 0, 0).rotated(Vector3(0,0,1),launch_angle)
 	body.velocity.x *= facing_direction
-	body.velocity *= knockback
-	body.emit_signal("has_been_hit", hitstun_frames)
+	body.current_damage += damage * 0.01
+	var adjusted_knockback = ( body.current_damage * .1 + body.current_damage * damage / 20)
+	adjusted_knockback *= (200/(body.weight + 100)) * 1.4
+	adjusted_knockback += 18
+	adjusted_knockback *= knockback_scaling * 0.01
+	adjusted_knockback += knockback
+	body.velocity *= adjusted_knockback
+	
+	if grab:
+		body.facing_direction = -facing_direction
+	body.emit_signal("has_been_hit", grab, _grab_position, hitstun_frames)
+	
 	pass
 
 func _on_area_entered(_area):
 	var hit_shield := false
 	var hurtbox : Area3D
 	for hit_area in get_overlapping_areas():
-		if hit_area.shield:
+		if hit_area.shield and not grab:
 			hit_shield = true
 		elif hit_area.body.name != body.name and not hit_area.invincible:
 			hurtbox = hit_area
 	if hit_shield: return
-	hurtbox.hit(launch_angle, body.facing_direction, damage, hitstun_frames, knockback)
+	if not hurtbox:
+		return
+	var adjusted_pos = grab_position
+	adjusted_pos.x *= body.facing_direction
+	adjusted_pos += body.global_position
+	hurtbox.hit(deg_to_rad(launch_angle), body.facing_direction, grab, adjusted_pos, damage, hitstun_frames, knockback)
+	if grab:
+		body.state.current_state.grab = true

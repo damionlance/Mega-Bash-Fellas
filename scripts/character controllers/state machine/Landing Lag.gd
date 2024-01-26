@@ -15,7 +15,6 @@ func update(delta):
 	current_frame += 1
 	if current_frame == landing_lag:
 		state.update_state("Idle")
-		print(current_frame)
 		return
 	# Handle all states
 	if not body.is_on_floor():

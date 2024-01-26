@@ -24,7 +24,7 @@ func update(delta):
 			pass # INSERT ATTACK LOGIC HERE
 	if current_frame >= frames_to_sprint and controller.movement_direction.x == 0:
 		body.apply_friction(traction)
-	if controller.movement_direction.length() < 0.28:
+	if abs(controller.movement_direction.x) <= 0.4:
 		can_dash = true
 	
 	if controller.attempting_shield:

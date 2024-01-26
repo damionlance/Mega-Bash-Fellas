@@ -15,5 +15,3 @@ func iterate(node):
 
 func set_save_custom_tracks(node):
 	var animation_names = node.get_animation_list()
-	for name in animation_names:
-		print(node.get_animation(name).get_property_list())

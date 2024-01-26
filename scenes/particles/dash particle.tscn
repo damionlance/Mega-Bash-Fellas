@@ -1,0 +1,50 @@
+[gd_scene load_steps=9 format=3 uid="uid://byikrbskiyuxo"]
+
+[ext_resource type="Script" path="res://scripts/tools/particles/dash particle.gd" id="1_42eps"]
+
+[sub_resource type="Curve" id="Curve_wxrxs"]
+max_value = 100.0
+_data = [Vector2(0.0141129, 0.453247), 0.0, -2.16647, 0, 0, Vector2(0.699597, 7.89599), 44.7467, 44.7467, 0, 0, Vector2(1, 99.6899), 560.334, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_nfi2w"]
+curve = SubResource("Curve_wxrxs")
+
+[sub_resource type="Curve" id="Curve_vhdvq"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_6ab1n"]
+curve = SubResource("Curve_vhdvq")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fio5c"]
+direction = Vector3(-1, 0, 0)
+flatness = 0.815
+initial_velocity_min = 4.0
+initial_velocity_max = 6.0
+gravity = Vector3(0, 0, 0)
+damping_max = 6.667
+damping_curve = SubResource("CurveTexture_nfi2w")
+scale_min = 0.0
+scale_curve = SubResource("CurveTexture_6ab1n")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oi8i4"]
+vertex_color_use_as_albedo = true
+billboard_mode = 1
+billboard_keep_scale = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_e80lb"]
+material = SubResource("StandardMaterial3D_oi8i4")
+size = Vector2(0.5, 0.5)
+
+[node name="Dash Particle" type="GPUParticles3D"]
+transform = Transform3D(0.911374, 0.411578, 0, -0.411578, 0.911374, 0, 0, 0, 1, 0, 0, 0)
+emitting = false
+lifetime = 0.25
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_fio5c")
+draw_pass_1 = SubResource("QuadMesh_e80lb")
+script = ExtResource("1_42eps")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

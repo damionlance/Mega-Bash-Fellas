@@ -57,7 +57,6 @@ func update(delta):
 	pass
 
 func reset(_delta):
-	print("Hello!")
 	body.facing_direction = sign(controller.movement_direction.x)
 	can_tilt = true
 	can_crush = true

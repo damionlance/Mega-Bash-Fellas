@@ -64,10 +64,12 @@ func update(delta):
 	pass
 
 func reset(_delta):
+	body.hitbox_handler.reset_hitboxes()
 	can_tilt = true
 	can_crush = true
 	can_dash = false
 	body.attacking = false
+	body.special = false
 	can_drop_thru_platform = false
 	body.consecutive_jumps = 0
 	pass

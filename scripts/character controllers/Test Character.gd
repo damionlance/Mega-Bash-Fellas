@@ -1,9 +1,12 @@
 extends CharacterBody3D
 
 @export var player := true
+@export var weight := 100
 
 @onready var state := $"State Machine"
 @onready var controller := $"Controller"
+@onready var hitbox_handler := $"Hitboxes"
+
 var delta_v := Vector2.ZERO
 var facing_direction := 1
 var max_horizontal_velocity := 0.0
@@ -13,7 +16,11 @@ var previous_grounded_position
 var can_jump := true
 var consecutive_jumps := 0
 
-var attacking = false
+var current_damage := 0.0
+
+var attacking := false
+var special := false
+var damaged := false
 
 var active_attack : Node
 
@@ -26,6 +33,7 @@ func _ready():
 		controller.set_script(load("res://scripts/character controllers/Controller Inputs.gd"))
 		controller._ready()
 		controller.set_process(true)
+		controller.set_process_input(true)
 	else:
 		controller.set_script(load("res://scripts/character controllers/AI Inputs.gd"))
 		controller._ready()

@@ -18,6 +18,8 @@ func update(delta):
 	hitstun_frames += 1
 
 func reset(_delta):
+	body.special = false
+	body.attacking = false
 	hitstun_frames = 0
 	velocity = body.velocity
 	body.velocity = Vector3.ZERO

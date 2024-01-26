@@ -47,6 +47,7 @@ var pivot_buffer = []
 var jump_buffer := 0
 var jump_timer := 5
 
+var previous_jump_state := 0
 var jump_state := 0
 enum {
 	jump_pressed = 1,
@@ -54,27 +55,22 @@ enum {
 	jump_released = 0
 }
 
-var dive_state := 0
+var previous_grab_state := 0
+var grab_state := 0
 enum {
-	dive_pressed = 1,
-	dive_held = 2,
-	dive_released = 0
+	grab_pressed = 1,
+	grab_held = 2,
+	grab_released = 0
 }
 
-var throw_state := 0
-enum {
-	throw_pressed = 1,
-	throw_held = 2,
-	throw_released = 0
-}
-
+var previous_shield_state := 0
 var shield_state := 0
 enum {
 	shield_pressed = 1,
 	shield_held = 2,
 	shield_released = 0
 }
-
+var previous_attack_state := 0
 var attack_state := 0
 enum {
 	attack_pressed = 1,
@@ -82,6 +78,7 @@ enum {
 	attack_released = 0
 }
 
+var previous_special_state := 0
 var special_state := 0
 enum {
 	special_pressed = 1,
@@ -91,51 +88,69 @@ enum {
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	#Input.use_accumulated_input = false
 	pivot_buffer.resize(5)
 	for i in 5:
 		pivot_buffer[i] = Vector2.ZERO
 	pass # Replace with function body.
 
-func _process(_delta):
-	crush_direction = Input.get_vector("Crush Left", "Crush Right", "Crush Down", "Crush Up")
-	movement_direction = Input.get_vector("Left","Right", "Down", "Up")
-	input_strength = movement_direction.length()
-	if input_strength > .9:
-		input_strength = 1
-	
-	pivot_buffer.push_front(movement_direction)
-	pivot_buffer.pop_back()
-	
-	if Input.get_action_strength("Jump"):
-		jump_state = jump_pressed if jump_state == 0 else jump_held
-	else: jump_state = jump_released
-	if Input.get_action_strength("Shield"):
-		shield_state = shield_pressed if shield_state == 0 else shield_held
-	else: shield_state = shield_released
-	if Input.get_action_strength("Attack"):
-		attack_state = attack_pressed if attack_state == 0 else attack_held
-		attempting_attack = true
-	else: 
-		attack_state = attack_released
+func _input(event):
+	if event.get_action_strength("Crush Up") - event.get_action_strength("Crush Down") - event.get_action_strength("Crush Left") - event.get_action_strength("Crush Right") == 0:
 		attempting_attack = false
-	if Input.get_action_strength("Special"):
-		special_state = special_pressed if special_state == 0 else special_held
+	if event.is_action_pressed("Attack"):
 		attempting_attack = true
-	else: 
-		special_state = special_released
-		if attack_state == 0:
-			attempting_attack = false
-	if crush_direction != Vector2.ZERO:
-		attempting_attack = true
-	elif attack_state == 0 and special_state == 0:
+		attack_state = 1
+	if event.is_action_released("Attack"):
 		attempting_attack = false
+		attack_state = 0
+	if event.is_action_pressed("Special"):
+		attempting_attack = true
+		special_state = 1
+	if event.is_action_released("Special"):
+		attempting_attack = false
+		special_state = 0
+	if event.is_action_pressed("Shield"):
+		shield_state = 1
+	if event.is_action_released("Shield"):
+		shield_state = 0
+	if event.is_action_pressed("Grab"):
+		attempting_attack = true
+		grab_state = 1
+	if event.is_action_released("Grab"):
+		attempting_attack = false
+		grab_state = 0
+	if event.is_action_pressed("Jump"):
+		jump_state = 1
+	if event.is_action_released("Jump"):
+		jump_state = 0
+
+func _process(delta):
+	crush_direction.x = Input.get_action_strength("Crush Right") - Input.get_action_strength("Crush Left")
+	crush_direction.y = Input.get_action_strength("Crush Up") - Input.get_action_strength("Crush Down")
+	movement_direction.x = Input.get_action_strength("Right") - Input.get_action_strength("Left")
+	movement_direction.y = Input.get_action_strength("Up") - Input.get_action_strength("Down")
 	
+	if attempting_attack == false:
+		if crush_direction != Vector2.ZERO:
+			attempting_attack = true
+	if grab_state == 1 and previous_grab_state == 1:
+		grab_state = 2
+	previous_grab_state = grab_state
+	if attack_state == 1 and previous_attack_state == 1:
+		attack_state = 2
+	previous_attack_state = attack_state
+	if shield_state == 1 and previous_shield_state == 1:
+		shield_state = 2
+	previous_shield_state = shield_state
+	if special_state == 1 and previous_special_state == 1:
+		special_state = 2
+	previous_special_state = special_state
+	if jump_state == 1 and previous_jump_state == 1:
+		jump_state = 2
+	previous_jump_state = jump_state
 	
 	input_handling()
 
 func input_handling():
-	
 	var resetting_collision = false
 	var jump_released_since_jump = false
 	

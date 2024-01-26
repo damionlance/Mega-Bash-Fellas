@@ -66,11 +66,11 @@ enum {
 	dive_released = 0
 }
 
-var throw_state := 0
+var grab_state := 0
 enum {
-	throw_pressed = 1,
-	throw_held = 2,
-	throw_released = 0
+	grab_pressed = 1,
+	grab_held = 2,
+	grab_released = 0
 }
 
 var shield_state := 0

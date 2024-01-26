@@ -25,12 +25,15 @@ func _physics_process(delta):
 	current_state.update(delta)
 
 func update_state( newstate ):
-	print(newstate)
 	previous_state = current_state
 	current_state = state_dictionary[newstate]
 	current_state.reset(_delta)
 
-func enter_hitstun(hitstun_frames):
+func enter_hitstun(grab, grab_position, hitstun_frames):
+	if grab:
+		update_state("Grabbed")
+		current_state.grab_position = grab_position
+		return
 	update_state("Hitstun")
 	current_state.wait_time = hitstun_frames
 

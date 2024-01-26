@@ -2,10 +2,12 @@ extends AerialMovement
 
 
 #private variables
-var state_name = "Uair"
+var state_name = "Up Special"
 
 var can_drop_thru_platform := false
-var can_dash := false
+var can_drift := false
+var delta_time := 0.0166
+var can_land := false
 
 @export var cancellable := false
 @export var animation_finished := false
@@ -18,24 +20,41 @@ func _ready():
 func update(delta):
 	var delta_v = Vector2.ZERO
 	
-	if body.is_on_floor():
+	if body.is_on_floor() == false:
+		can_land = true
+	
+	if can_land and body.is_on_floor():
 		state.update_state("Landing Lag")
+		return
 	if animation_finished:
 		state.update_state("Fall")
 		return
 	
 	# Handle all relevant timers
-	delta_v.y -= constants.gravity * delta
 	if body.velocity.y - delta_v.y < -constants.falling_speed:
 		delta_v.y = 0
 	# Handle all relevant timers
-	delta_v = regular_aerial_movement_processing(delta, delta_v)
+	if can_drift:
+		delta_v.y -= constants.gravity * delta
+		delta_v.x = sign(controller.movement_direction.x) * (constants.base_up_special_drift + abs(constants.additional_up_special_drift * controller.movement_direction.x)) * delta
+	
 	body.delta_v = delta_v
 	# Process physics
 	pass
 
 func reset(_delta):
-	body.attacking = true
+	can_land = false
+	delta_time = _delta
+	can_drift = false
+	body.velocity = Vector3.ZERO
+	body.special = true
 	cancellable = false
 	animation_finished = false
 	pass
+
+func start_jump():
+	body.facing_direction = sign(controller.movement_direction.x)
+	can_drift = true
+	body.velocity.y = constants.up_special_velocity * delta_time
+	body.velocity.x = constants.base_up_special_drift * sign(controller.movement_direction.x) * delta_time
+	body.velocity.x += constants.additional_up_special_drift * controller.movement_direction.x * delta_time
