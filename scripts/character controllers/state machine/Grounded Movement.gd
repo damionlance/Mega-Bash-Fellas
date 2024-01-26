@@ -15,7 +15,7 @@ var grabbing := false
 
 @export var landing_lag := 4
 
-@export var traction := 1.6
+@export var traction := 2.2
 
 @onready var body := find_parent("Body*")
 @onready var state = find_parent("State Machine")
@@ -35,22 +35,22 @@ func grounded_movement_processing(delta, delta_v) -> Vector2:
 	
 	pass
 
-func decide_attack():
+func decide_attack() -> bool:
 	if controller.crush_direction != Vector2.ZERO and can_tilt:
 		if controller.crush_direction.y > .8:
 			state.update_state("UTilt")
-			return
+			return true
 		if controller.crush_direction.y < -.8:
 			state.update_state("DTilt")
-			return
+			return true
 		if abs(controller.crush_direction.x) > .8:
 			state.update_state("FTilt")
-			return
+			return true
 	elif controller.movement_direction == Vector2.ZERO:
 		if controller.attempting_attack:
 			if grabbing:
 				pass
-				return
+				return false
 			state.update_state("Jab")
-			return
-	pass
+			return true
+	return false

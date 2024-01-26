@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bxe52o1h4f8en"]
+
+[ext_resource type="Script" path="res://scripts/tools/Ledge.gd" id="1_f4mqf"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_q4gfy"]
+radius = 0.2
+
+[node name="Ledge" type="Area3D"]
+collision_layer = 64
+collision_mask = 0
+script = ExtResource("1_f4mqf")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_q4gfy")

@@ -34,11 +34,10 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	
 	rotation.y = PI if facing_direction == -1 else 0
 	
 	can_jump = true
-	if consecutive_jumps == $"State Machine/Aerial Movement".jumps_allowed:
+	if consecutive_jumps == $"State Machine/Aerial Movement".constants.jumps_allowed:
 		can_jump = false
 	
 	velocity += Vector3(delta_v.x, delta_v.y, 0) * delta

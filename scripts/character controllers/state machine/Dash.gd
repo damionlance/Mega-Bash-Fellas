@@ -19,7 +19,7 @@ func update(delta):
 		# Handle all states
 	if current_frame <= 3:
 		if controller.attempting_shield:
-			state.update_state("Dodge")
+			state.update_state("Dodge Roll")
 		if controller.attempting_attack:
 			pass # INSERT ATTACK LOGIC HERE
 	if current_frame >= frames_to_sprint and controller.movement_direction.x == 0:

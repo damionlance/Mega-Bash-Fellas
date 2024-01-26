@@ -59,7 +59,7 @@ func update(delta):
 	
 	# Handle all relevant timers
 	body.delta_v = delta_v
-	body.apply_friction(traction)
+	body.apply_friction(traction * 2)
 	# Process physics
 	pass
 
