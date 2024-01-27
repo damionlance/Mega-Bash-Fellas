@@ -22,6 +22,9 @@ func update(delta):
 	
 	var delta_v = Vector2.ZERO
 	# Handle all states
+	if animation_finished:
+		state.update_state("Idle")
+		return
 	if controller.attempting_shield:
 		state.update_state("Shield")
 		return
