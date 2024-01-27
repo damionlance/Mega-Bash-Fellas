@@ -40,6 +40,9 @@ func decide_attack() -> bool:
 		if controller.movement_direction.y >= .7:
 			state.update_state("Up Special")
 			return true
+		if abs(controller.movement_direction.x) >= .7:
+			state.update_state("Side Special")
+			return true
 	if controller.grab_state == controller.grab_pressed:
 		state.update_state("Grab")
 		return true

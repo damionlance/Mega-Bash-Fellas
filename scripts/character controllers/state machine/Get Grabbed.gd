@@ -17,7 +17,7 @@ func _ready():
 
 func update(delta):
 	# Process inputs
-	body.global_position =  grab_position - ($"Get Grabbed Position".position * Vector3(body.facing_direction, 1 , 1))
+	body.global_position =  grab_position.global_position - ($"Get Grabbed Position".position * Vector3(body.facing_direction, 1 , 1))
 	# Handle all relevant timers
 	# Process physics
 	pass

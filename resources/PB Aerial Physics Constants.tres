@@ -20,3 +20,4 @@ additional_air_acceleration = 500.0
 up_special_velocity = 2000.0
 base_up_special_drift = 250.0
 additional_up_special_drift = 350.0
+side_special_velocity = 1000.0

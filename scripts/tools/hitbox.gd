@@ -8,12 +8,13 @@ extends Area3D
 @export var active := false
 @export_group("Hitbox Properties")
 @export var grab : bool = false
-@export var grab_position : Vector3 = Vector3.ZERO
 @export_range(0.0, 360.0) var launch_angle : float = 0.0
 @export_range(0.1, 50.0) var damage : float = 1.0
-@export_range(0, 10) var hitstun_frames : int = 3
+@export_range(0, 25) var hitstun_frames : int = 3
 @export var knockback : float = 1.0
 @export var knockback_scaling : float = 80.0
+@export var interruptable : bool = false
+
 var collision_spheres := []
 var hitbox_point_position = Vector3.ZERO
 
@@ -88,7 +89,7 @@ func _process(delta):
 
 
 
-func hit(launch_angle : float, facing_direction : float, grab : bool = false, _grab_position : Vector3 = Vector3.ZERO, damage : float = 0.0, hitstun_frames : float = 0.0, knockback : float = 0.0) :
+func hit(launch_angle : float, facing_direction : float, grab : bool = false, _grab_position : Node3D = Node3D.new(), damage : float = 0.0, hitstun_frames : float = 0.0, knockback : float = 0.0) :
 	body.velocity = Vector3(1, 0, 0).rotated(Vector3(0,0,1),launch_angle)
 	body.velocity.x *= facing_direction
 	body.current_damage += damage * 0.01
@@ -116,9 +117,8 @@ func _on_area_entered(_area):
 	if hit_shield: return
 	if not hurtbox:
 		return
-	var adjusted_pos = grab_position
-	adjusted_pos.x *= body.facing_direction
-	adjusted_pos += body.global_position
-	hurtbox.hit(deg_to_rad(launch_angle), body.facing_direction, grab, adjusted_pos, damage, hitstun_frames, knockback)
+	if interruptable:
+		body.state.current_state.interrupt()
+	hurtbox.hit(deg_to_rad(launch_angle), body.facing_direction, grab, body.grab_position, damage, hitstun_frames, knockback)
 	if grab:
 		body.state.current_state.grab = true

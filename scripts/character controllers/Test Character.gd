@@ -6,6 +6,7 @@ extends CharacterBody3D
 @onready var state := $"State Machine"
 @onready var controller := $"Controller"
 @onready var hitbox_handler := $"Hitboxes"
+@onready var grab_position := $"Grab Position"
 
 var delta_v := Vector2.ZERO
 var facing_direction := 1

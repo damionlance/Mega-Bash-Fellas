@@ -26,3 +26,6 @@ class_name AerialPhysicsConstants
 @export var up_special_velocity := 2000.0
 @export var base_up_special_drift := 250.0
 @export var additional_up_special_drift := 350.0
+
+@export_group("Side Special")
+@export var side_special_velocity := 350.0

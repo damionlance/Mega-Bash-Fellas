@@ -54,6 +54,9 @@ func decide_attack() -> bool:
 		if controller.movement_direction.y >= .7:
 			state.update_state("Up Special")
 			return true
+		if abs(controller.movement_direction.x) >= .7:
+			state.update_state("Side Special")
+			return true
 	if controller.crush_direction != Vector2.ZERO and can_tilt:
 		if controller.crush_direction.y > .8:
 			state.update_state("Uair")

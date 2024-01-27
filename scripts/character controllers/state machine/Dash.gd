@@ -21,7 +21,7 @@ func update(delta):
 		if controller.attempting_shield:
 			state.update_state("Dodge Roll")
 		if controller.attempting_attack:
-			pass # INSERT ATTACK LOGIC HERE
+			if decide_attack() == true: return
 	if current_frame >= frames_to_sprint and controller.movement_direction.x == 0:
 		body.apply_friction(traction)
 	if abs(controller.movement_direction.x) <= 0.4:
@@ -46,6 +46,8 @@ func update(delta):
 	if abs(controller.movement_direction.x) > 0.2 and sign(controller.movement_direction.x) != body.facing_direction and can_dash:
 		state.update_state("Turn")
 		return
+	if controller.attempting_attack:
+		if decide_attack() == true: return
 	delta_v.x = sign(controller.movement_direction.x) * (base_dash_acceleration + abs(additional_dash_acceleration * controller.movement_direction.x)) * delta
 	if abs(controller.movement_direction.x) > 0.2 and sign(controller.movement_direction.x) != sign(body.velocity.x):
 		body.apply_friction(traction * 2)

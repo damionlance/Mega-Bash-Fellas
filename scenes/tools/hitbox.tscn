@@ -12,6 +12,7 @@ monitoring = false
 monitorable = false
 script = ExtResource("1_du57p")
 hitstun_frames = 1
+interruptable = null
 
 [node name="hitbox point" type="Node3D" parent="."]
 
