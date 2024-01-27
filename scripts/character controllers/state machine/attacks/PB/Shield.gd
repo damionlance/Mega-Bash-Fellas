@@ -30,16 +30,17 @@ func update(delta):
 	if animation_finished:
 		state.update_state("Idle")
 		return
-	if abs(controller.movement_direction.x) > .8 and can_dodge:
+	
+	if Input.get_axis("Left","Right") > .8 and can_dodge:
 		state.update_state("Dodge Roll")
 		shield.visible = false
 		return
-	if controller.shield_state == 0:
+	if not Input.is_action_pressed("Shield"):
 		can_dodge = false
 		drop_shield = true
 		shield.visible = false
 		return
-	if controller.attempting_jump:
+	if Input.is_action_just_pressed("Jump"):
 		state.update_state("Jump Squat")
 		shield.visible = false
 		return
@@ -47,20 +48,19 @@ func update(delta):
 		state.update_state("Fall")
 		shield.visible = false
 		return
-	if controller.attack_state == controller.attack_held:
-		animation_tree["parameters/AnimationNodeStateMachine/Grounded Movement/Shield/Shield/blend_position"] = controller.movement_direction
+	if Input.is_action_pressed("Attack"):
+		animation_tree["parameters/StateMachine/General State/Grounded Movement/Shield/Shield/blend_position"] = controller.movement_direction
 		can_dodge = false
 		shield.global_position = body.global_position + Vector3(controller.movement_direction.x, controller.movement_direction.y, 0) + mid_point
-	elif controller.movement_direction.y < -0.8 and not can_dodge:
+	elif Input.get_action_strength("Down") < -0.8 and not can_dodge:
 		passthru_platform_checker.drop_thru_platform()
 		state.update_state("Drop Through Platform")
 		shield.visible = false
 		return
-	if abs(controller.movement_direction.x) > controller.neutral_zone:
-		pass # INSERT DODGE STUFF HERE
 	# Process inputs
 	
 	# Handle all relevant timers
+	
 	# Process physics
 	pass
 
@@ -70,7 +70,6 @@ func reset(_delta):
 	drop_shield = false
 	can_dodge = false
 	
-	shield.global_position = body.global_position + Vector3(controller.crush_direction.x, controller.crush_direction.y, 0) + mid_point
 	shield.visible = true
 	body.velocity = Vector3.ZERO
 	body.delta_v = Vector2.ZERO

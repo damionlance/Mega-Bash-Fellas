@@ -3,7 +3,7 @@ extends GroundedMovement
 
 #private variables
 var state_name = "Crouch"
-
+@export var can_drop_thru_platform := false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	state.state_dictionary[state_name] = self
@@ -22,18 +22,22 @@ func update(delta):
 		state.update_state("Fall")
 		return
 	
+	if Input.get_action_strength("Down") > 0.7 and passthru_platform_checker.on_passthru_platform and can_drop_thru_platform:
+		passthru_platform_checker.drop_thru_platform()
+		state.update_state("Drop Through Platform")
+		return
 	
 	if controller.movement_direction.x != 0 and sign(controller.movement_direction.x) != sign(body.facing_direction):
 		body.velocity.x *= -1
 	
-	if abs(controller.movement_direction.x) > controller.neutral_zone:
-		if abs(controller.movement_direction.x) > 0.8:
+	if abs(Input.get_axis("Left", "Right")) > .2:
+		if abs(Input.get_axis("Left", "Right")) > 0.7:
 			state.update_state("Dash")
 			return
-		if abs(controller.movement_direction.x) > 0.5:
+		if abs(Input.get_axis("Left", "Right")) > 0.7:
 			state.update_state("Walk")
 			return
-	if controller.movement_direction.y >= 0:
+	if Input.get_action_strength("Down") < 0.7:
 		state.update_state("Idle")
 		return
 	# Process inputs
@@ -45,6 +49,7 @@ func update(delta):
 	pass
 
 func reset(_delta):
+	can_drop_thru_platform = false
 	can_tilt = true
 	body.attacking = false
 	body.consecutive_jumps = 0

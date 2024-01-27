@@ -25,33 +25,25 @@ func update(delta):
 	if animation_finished:
 		state.update_state("Idle")
 		return
-	if controller.attempting_shield:
+	if Input.is_action_just_pressed("Shield"):
 		state.update_state("Shield")
 		return
-	if controller.attempting_attack:
-		decide_attack()
-		return
-	if controller.attempting_jump:
+	if Input.is_action_just_pressed("Attack") or Input.is_action_just_pressed("Special") or Input.get_vector("Crush Left","Crush Right","Crush Down","Crush Up") != Vector2.ZERO:
+		if decide_attack(): return
+	if Input.is_action_just_pressed("Jump"):
 		state.update_state("Jump Squat")
 		return
 	if not body.is_on_floor():
 		state.update_state("Fall")
 		return
-	if controller.movement_direction.y < 0 and controller.movement_direction.y > -0.4:
+	if Input.get_action_strength("Down") > .7:
 		state.update_state("Crouch")
 		return
 	
-	if abs(controller.movement_direction.x) > controller.neutral_zone:
-		if abs(controller.movement_direction.x) > 0.4:
-			state.update_state("Dash")
-			return
-		state.update_state("Walk")
+	if abs(Input.get_axis("Left","Right")) > .28:
+		state.update_state("Dash")
 		return
 	
-	if controller.movement_direction.y < -0.4 and passthru_platform_checker.on_passthru_platform and can_drop_thru_platform:
-		passthru_platform_checker.drop_thru_platform()
-		state.update_state("Drop Through Platform")
-		return
 	# Process inputs
 	
 	# Handle all relevant timers
@@ -62,7 +54,7 @@ func update(delta):
 
 func reset(_delta):
 	animation_finished = false
-	body.facing_direction = sign(controller.movement_direction.x)
+	body.facing_direction = sign(Input.get_axis("Left", "Right"))
 	can_tilt = true
 	can_crush = true
 	can_dash = false

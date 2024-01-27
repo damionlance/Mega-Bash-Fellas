@@ -34,6 +34,7 @@ func update(delta):
 func reset(delta):
 	can_fall_thru_platform = false
 	velocity_tween = get_tree().create_tween()
-	body.velocity = Vector3(controller.movement_direction.x, controller.movement_direction.y, 0) * constants.air_dodge_strength * delta
+	var axis = Input.get_vector("Left", "Right", "Down", "Up")
+	body.velocity = Vector3(axis.x, axis.y, 0) * constants.air_dodge_strength * delta
 	velocity_tween.tween_property(body, "velocity", Vector3.ZERO, 0.5).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_OUT)
 	pass

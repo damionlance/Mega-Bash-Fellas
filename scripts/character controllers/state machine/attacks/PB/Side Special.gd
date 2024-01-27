@@ -47,7 +47,6 @@ func reset(_delta):
 	pass
 
 func interrupt():
-	print("Hello")
 	if tween != null:
 		tween.stop()
 		body.velocity.x = 0

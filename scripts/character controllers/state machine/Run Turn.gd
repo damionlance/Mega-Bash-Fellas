@@ -21,45 +21,27 @@ func update(delta):
 	
 	var delta_v = Vector2.ZERO
 	# Handle all states
-	print("1")
-	if controller.attempting_shield:
+	if body.velocity.x == 0:
+		state.update_state("Idle")
+		return
+	if Input.is_action_just_pressed("Shield"):
 		state.update_state("Shield")
 		return
-	print("2")
-	if controller.attempting_attack:
-		decide_attack()
-		return
-	print("3")
-	if controller.attempting_jump:
+	if Input.is_action_just_pressed("Attack") or Input.is_action_just_pressed("Special") or Input.get_vector("Crush Left","Crush Right","Crush Down","Crush Up") != Vector2.ZERO:
+		if decide_attack(): return
+	if Input.is_action_just_pressed("Jump"):
 		state.update_state("Jump Squat")
 		return
-	print("4")
 	if not body.is_on_floor():
 		state.update_state("Fall")
 		return
-	print("5")
-	if controller.movement_direction.y < 0 and controller.movement_direction.y < -0.4:
+	if Input.get_action_strength("Down") > .7:
 		state.update_state("Crouch")
 		return
-	print("Here! ", controller.movement_direction.x)
-	if abs(controller.movement_direction.x) > 0.4:
-		body.facing_direction = sign(controller.movement_direction.x)
-		state.update_state("Dash")
-		print("Dash!")
-		return
-	if body.velocity.x == 0:
-		if controller.movement_direction.x == 0:
-			state.update_state("Idle")
-			return
-		body.facing_direction = sign(controller.movement_direction.x)
-		state.update_state("Run")
-		return
 	
 	
-	if controller.movement_direction.y < -0.4 and passthru_platform_checker.on_passthru_platform and can_drop_thru_platform:
-		passthru_platform_checker.drop_thru_platform()
-		state.update_state("Drop Through Platform")
-		return
+	
+	
 	# Process inputs
 	
 	# Handle all relevant timers
@@ -69,6 +51,7 @@ func update(delta):
 	pass
 
 func reset(_delta):
+	body.facing_direction = sign(controller.movement_direction.x)
 	can_tilt = true
 	can_crush = true
 	can_dash = false

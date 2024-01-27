@@ -30,7 +30,7 @@ func update(delta):
 			state.update_state("Fall")
 			return
 		
-		delta_v.x = sign(controller.movement_direction.x) * (constants.base_air_acceleration + abs(constants.additional_air_acceleration * controller.movement_direction.x)) * delta
+		delta_v.x = sign(Input.get_axis("Left", "Right")) * (constants.base_air_acceleration + abs(constants.additional_air_acceleration * Input.get_axis("Left", "Right"))) * delta
 		
 		delta_v.y -= constants.gravity * delta
 		if body.velocity.y - delta_v.y < -constants.falling_speed:

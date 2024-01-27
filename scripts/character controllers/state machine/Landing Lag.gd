@@ -19,7 +19,6 @@ func update(delta):
 	# Handle all states
 	if not body.is_on_floor():
 		state.update_state("Fall")
-		print(current_frame)
 		return
 	# Process inputs
 	

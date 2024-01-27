@@ -16,10 +16,10 @@ func update(delta):
 	if not can_move:
 		return
 	
-	if controller.attempting_jump:
+	if Input.is_action_just_pressed("Jump"):
 		state.update_state("Double Jump")
 		return
-	if controller.movement_direction != Vector2.ZERO:
+	if Input.get_vector("Left", "Right", "Down", "Up") != Vector2.ZERO:
 		state.update_state("Fall")
 		return
 

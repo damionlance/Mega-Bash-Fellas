@@ -20,18 +20,18 @@ func update(delta):
 	# Process inputs
 	match current_jab:
 		3:
-			if animation_finished and controller.attack_state != controller.attack_released:
+			if animation_finished and not Input.is_action_pressed("Attack"):
 				current_jab = 0
 				state.update_state("Idle")
 				return
 		2:
-			if animation_finished:
+			if animation_finished and not Input.is_action_pressed("Attack") :
 				current_jab = 0
 				state.update_state("Idle")
 				return
 		1:
 			if animation_finished:
-				if controller.attack_state == controller.attack_held:
+				if Input.is_action_pressed("Attack"):
 					state.update_state("Jab")
 					current_jab = 3
 					return
@@ -39,12 +39,12 @@ func update(delta):
 				current_jab = 0
 				return
 			if cancellable:
-				if controller.attack_state == controller.attack_pressed:
+				if Input.is_action_just_pressed("Attack"):
 					state.update_state("Jab")
 					current_jab += 1
 		_:
 			if cancellable:
-				if controller.attack_state == controller.attack_pressed:
+				if Input.is_action_just_pressed("Attack"):
 					state.update_state("Jab")
 					current_jab += 1
 			if animation_finished:

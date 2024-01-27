@@ -36,7 +36,7 @@ func update(delta):
 	# Handle all relevant timers
 	if can_drift:
 		delta_v.y -= constants.gravity * delta
-		delta_v.x = sign(controller.movement_direction.x) * (constants.base_up_special_drift + abs(constants.additional_up_special_drift * controller.movement_direction.x)) * delta
+		delta_v.x = sign(Input.get_axis("Left", "Right")) * (constants.base_up_special_drift + abs(constants.additional_up_special_drift * Input.get_axis("Left", "Right"))) * delta
 	
 	body.delta_v = delta_v
 	# Process physics
@@ -53,8 +53,8 @@ func reset(_delta):
 	pass
 
 func start_jump():
-	body.facing_direction = sign(controller.movement_direction.x)
+	body.facing_direction = sign(Input.get_axis("Left", "Right"))
 	can_drift = true
 	body.velocity.y = constants.up_special_velocity * delta_time
-	body.velocity.x = constants.base_up_special_drift * sign(controller.movement_direction.x) * delta_time
-	body.velocity.x += constants.additional_up_special_drift * controller.movement_direction.x * delta_time
+	body.velocity.x = constants.base_up_special_drift * sign(Input.get_axis("Left", "Right")) * delta_time
+	body.velocity.x += constants.additional_up_special_drift * Input.get_axis("Left", "Right") * delta_time

@@ -34,8 +34,9 @@ func _ready():
 # Helper Functions
 func regular_aerial_movement_processing(delta, delta_v) -> Vector2:
 	
-	if controller.movement_direction == Vector2.ZERO or sign(controller.movement_direction.x) != sign(body.velocity.x):
+	if Input.get_vector("Left", "Right", "Down", "Up") == Vector2.ZERO or sign(Input.get_axis("Left", "Right")) != sign(body.velocity.x):
 		body.apply_friction(constants.traction)
+	
 	if body.velocity.x <= constants.air_speed * delta and body.velocity.x + delta_v.x * delta > constants.air_speed * delta:
 		body.velocity.x = constants.air_speed * delta * sign(body.velocity.x)
 		delta_v.x = 0
@@ -43,35 +44,35 @@ func regular_aerial_movement_processing(delta, delta_v) -> Vector2:
 	if Input.is_action_just_pressed("Down") and body.velocity.y <= 0:
 		body.velocity.y = -constants.falling_speed * delta
 		delta_v.y = 0
-	if controller.movement_direction.y < -.4 and can_fall_thru_platform:
+	if Input.get_action_strength("Down") < -.4 and can_fall_thru_platform:
 		passthru_platform_checker.fall_thru = true
 	else:
 		passthru_platform_checker.fall_thru = false
 	return delta_v
 
 func decide_attack() -> bool:
-	if controller.special_state == controller.special_pressed:
+	if Input.is_action_just_pressed("Special"):
 		if controller.movement_direction.y >= .7:
 			state.update_state("Up Special")
 			return true
 		if abs(controller.movement_direction.x) >= .7:
 			state.update_state("Side Special")
 			return true
-	if controller.crush_direction != Vector2.ZERO and can_tilt:
-		if controller.crush_direction.y > .7:
+	if Input.get_vector("Crush Left", "Crush Right", "Crush Down", "Crush Up") != Vector2.ZERO and can_tilt:
+		if Input.get_action_strength("Crush Up") > .7:
 			state.update_state("Uair")
 			return true
-		if controller.crush_direction.y < -.7:
+		if Input.get_action_strength("Crush Down") > .7:
 			state.update_state("Dair")
 			return true
-		if abs(controller.crush_direction.x) > .7:
-			if sign(controller.crush_direction.x) == body.facing_direction:
+		if abs(Input.get_axis("Crush Left", "Crush Right")) > .7:
+			if sign(Input.get_axis("Crush Left", "Crush Right")) == body.facing_direction:
 				state.update_state("Fair")
 				return true
-			if sign(controller.crush_direction.x) != body.facing_direction:
+			if sign(Input.get_axis("Crush Left", "Crush Right")) != body.facing_direction:
 				state.update_state("Bair")
 				return true
-	elif controller.crush_direction == Vector2.ZERO and controller.attack_state == controller.attack_pressed:
+	elif Input.get_vector("Crush Left", "Crush Right", "Crush Down", "Crush Up") == Vector2.ZERO and Input.is_action_just_pressed("Attack"):
 		state.update_state("Nair") 
 		return true
 	return false

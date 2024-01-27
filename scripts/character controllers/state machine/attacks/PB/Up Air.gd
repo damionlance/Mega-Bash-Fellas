@@ -23,6 +23,7 @@ func update(delta):
 	if animation_finished:
 		state.update_state("Fall")
 		return
+	delta_v.x = sign(Input.get_axis("Left", "Right")) * (constants.base_air_acceleration + abs(constants.additional_air_acceleration * Input.get_axis("Left", "Right"))) * delta
 	
 	# Handle all relevant timers
 	delta_v.y -= constants.gravity * delta

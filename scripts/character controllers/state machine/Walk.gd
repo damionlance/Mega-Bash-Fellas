@@ -3,7 +3,6 @@ extends GroundedMovement
 #private variables
 var state_name = "Walk"
 var blend_parameter = "parameters/GroundedMovement/Running/blend_position"
-var previous_strength := 0.0
 var frame_one = false
 var can_drop_through_platform := false
 # Called when the node enters the scene tree for the first time.
@@ -15,49 +14,41 @@ func update(delta):
 	if controller.movement_direction.y == 0:
 		can_drop_through_platform == true
 	var delta_v = Vector2.ZERO
-	if controller.attempting_attack or controller.attempting_tilt:
-		if decide_attack() : return
-	if controller.attempting_jump:
-		state.update_state("Jump")
+	if Input.is_action_just_pressed("Shield"):
+		state.update_state("Shield")
+		return
+	if body.velocity.x == 0:
+		state.update_state("Idle")
+	if Input.is_action_just_pressed("Attack") or Input.is_action_just_pressed("Special") or Input.get_vector("Crush Left","Crush Right","Crush Down","Crush Up") != Vector2.ZERO:
+		if decide_attack(): return
+	if Input.is_action_just_pressed("Jump"):
+		state.update_state("Jump Squat")
 		return
 	if not body.is_on_floor():
 		state.update_state("Fall")
 		return
-	if controller.movement_direction.x == 0:
-		state.update_state("Idle")
-		return
-	if controller.movement_direction.x > 0.4 and frame_one:
-		state.update_state("Dash")
-		return
-	if controller.movement_direction.y < -0.4 and passthru_platform_checker.on_passthru_platform:
-		passthru_platform_checker.drop_thru_platform()
-		state.update_state("Drop Through Platform")
-		return
-	if controller.movement_direction.y < 0:
+	if Input.get_action_strength("Down") > .7:
 		state.update_state("Crouch")
 		return
-	if abs(controller.movement_direction.x) > 0.28 and sign(controller.movement_direction.x) != body.facing_direction:
-		body.facing_direction = -body.facing_direction
+	if abs(Input.get_axis("Left", "Right")) > 0.20 and sign(Input.get_axis("Left", "Right")) != body.facing_direction:
+		state.update_state("Turn")
+		return
 	
 	
 	
-	var target_speed = walk_speed * controller.movement_direction.x * delta
+	var target_speed = walk_speed * Input.get_axis("Left", "Right") * delta
 	if abs(target_speed) < abs(body.velocity.x):
 		body.apply_friction(traction * 2)
 	else:
-		delta_v.x = sign(controller.movement_direction.x) * traction
+		delta_v.x = sign(Input.get_axis("Left", "Right"))
 	
 	body.delta_v = delta_v
 	
-	previous_strength = controller.movement_direction.x
-	frame_one = false
 	pass
 
 func reset(_delta):
 	can_tilt = true
-	can_drop_through_platform = false
-	current_speed = walk_speed
-	frame_one = true
-	body.facing_direction = sign(controller.movement_direction.x)
+	
+	body.facing_direction = sign(Input.get_axis("Left", "Right"))
 	
 	pass
