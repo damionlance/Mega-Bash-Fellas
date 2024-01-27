@@ -13,10 +13,7 @@ func _ready():
 	pass # Replace with function body.
 
 func update(delta):
-	
-	if controller.movement_direction.y > -.4:
-		can_drop_thru_platform = true
-	if controller.movement_direction.length() == 0:
+	if Input.get_vector("Left", "Right", "Down", "Up").length() <= .20:
 		can_dash = true
 	
 	var delta_v = Vector2.ZERO
@@ -39,7 +36,7 @@ func update(delta):
 		state.update_state("Turn")
 		return
 	elif abs(Input.get_axis("Left", "Right")) > 0.2:
-		if abs(Input.get_axis("Left", "Right")) > 0.4 and can_dash:
+		if abs(Input.get_axis("Left", "Right")) > 0.7 and can_dash:
 			state.update_state("Dash")
 			return
 		state.update_state("Walk")

@@ -5,6 +5,7 @@ var state_name = "Dash"
 var blend_parameter = "parameters/GroundedMovement/Running/blend_position"
 
 var can_dash := false
+@export var animation_finished := false
 
 var current_frame := 0
 # Called when the node enters the scene tree for the first time.
@@ -23,11 +24,9 @@ func update(delta):
 		if Input.is_action_just_pressed("Attack") or Input.is_action_just_pressed("Special") or Input.get_vector("Crush Left","Crush Right","Crush Down","Crush Up") != Vector2.ZERO:
 			if decide_attack(): return
 	
-	
-	
 	if current_frame >= frames_to_sprint and Input.get_axis("Left", "Right") == 0:
 		body.apply_friction(traction)
-	if abs(Input.get_axis("Left", "Right")) <= 0.7:
+	if Input.get_vector("Left", "Right", "Down", "Up").length() <= 0.7:
 		can_dash = true
 	
 	if Input.is_action_just_pressed("Shield"):
@@ -40,7 +39,7 @@ func update(delta):
 	if not body.is_on_floor():
 		state.update_state("Fall")
 		return
-	if abs(Input.get_axis("Left", "Right")) >= (sprint_speed * delta) and sign(Input.get_axis("Left", "Right")) == sign(body.velocity.x) and current_frame >= frames_to_sprint:
+	if abs(body.velocity.x) >= (dash_speed * delta) and sign(Input.get_axis("Left", "Right")) == body.facing_direction and animation_finished:
 		state.update_state("Run")
 		return
 	if body.velocity.x == 0:
@@ -52,7 +51,11 @@ func update(delta):
 	if Input.is_action_just_pressed("Attack") or Input.is_action_just_pressed("Special") or Input.get_vector("Crush Left","Crush Right","Crush Down","Crush Up") != Vector2.ZERO:
 			if decide_attack(): return
 	
-	delta_v.x = sign(Input.get_axis("Left", "Right")) * (base_dash_acceleration + abs(additional_dash_acceleration *  Input.get_axis("Left", "Right"))) * delta
+	if abs(body.velocity.x) >= dash_speed * delta and animation_finished and sign(Input.get_axis("Left", "Right")) != body.facing_direction:
+		state.update_state("Run Turn")
+		return
+	else:
+		delta_v.x = sign(Input.get_axis("Left", "Right")) * (base_dash_acceleration + abs(additional_dash_acceleration *  Input.get_axis("Left", "Right"))) * delta
 	if abs(Input.get_axis("Left", "Right")) > 0.2 and sign(Input.get_axis("Left", "Right")) != sign(body.velocity.x):
 		body.apply_friction(traction * 2)
 	
@@ -61,9 +64,11 @@ func update(delta):
 	pass
 
 func reset(delta):
+	animation_finished = false
 	can_dash = false
 	body.slide_off_ledge = true
 	current_speed = dash_speed
 	current_frame = 0
+	body.facing_direction = body.facing_direction if Input.get_axis("Left", "Right") == 0 else sign(Input.get_axis("Left", "Right"))
 	body.velocity.x = dash_speed * body.facing_direction * delta
 	pass

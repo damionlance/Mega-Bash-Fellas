@@ -48,7 +48,7 @@ func update(delta):
 
 func reset(_delta):
 	can_tilt = true
-	
-	body.facing_direction = sign(Input.get_axis("Left", "Right"))
+	var turn = sign(Input.get_axis("Left", "Right")) 
+	body.facing_direction = turn if turn != 0 else body.facing_direction
 	
 	pass

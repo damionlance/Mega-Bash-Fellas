@@ -24,23 +24,28 @@ func update(delta):
 	# Handle all states
 	if animation_finished:
 		state.update_state("Idle")
+		body.facing_direction = -body.facing_direction
 		return
 	if Input.is_action_just_pressed("Shield"):
+		body.facing_direction = sign(Input.get_axis("Left", "Right"))
 		state.update_state("Shield")
 		return
 	if Input.is_action_just_pressed("Attack") or Input.is_action_just_pressed("Special") or Input.get_vector("Crush Left","Crush Right","Crush Down","Crush Up") != Vector2.ZERO:
 		if decide_attack(): return
 	if Input.is_action_just_pressed("Jump"):
+		
+		body.facing_direction = sign(Input.get_axis("Left", "Right"))
 		state.update_state("Jump Squat")
 		return
 	if not body.is_on_floor():
+		body.facing_direction = sign(Input.get_axis("Left", "Right"))
 		state.update_state("Fall")
 		return
 	if Input.get_action_strength("Down") > .7:
 		state.update_state("Crouch")
 		return
 	
-	if abs(Input.get_axis("Left","Right")) > .28:
+	if abs(Input.get_axis("Left","Right")) > .7:
 		state.update_state("Dash")
 		return
 	
@@ -54,7 +59,6 @@ func update(delta):
 
 func reset(_delta):
 	animation_finished = false
-	body.facing_direction = sign(Input.get_axis("Left", "Right"))
 	can_tilt = true
 	can_crush = true
 	can_dash = false
