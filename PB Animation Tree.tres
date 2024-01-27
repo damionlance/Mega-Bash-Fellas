@@ -465,7 +465,7 @@ advance_expression = "state.current_state.state_name == \"Walk\""
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pfu2e"]
 advance_mode = 2
-advance_expression = "state.current_state.state_name == \"Turn\""
+advance_expression = "state.current_state.state_name == \"Run Turn\""
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_doejr"]
 advance_mode = 2
@@ -507,7 +507,7 @@ states/Teeter/position = Vector2(402.667, -12.3333)
 states/Walk/node = SubResource("AnimationNodeAnimation_8lbqw")
 states/Walk/position = Vector2(310.099, 264.181)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_thpqu"), "Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_2c1sg"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_pppkl"), "Idle", "Dash", SubResource("AnimationNodeStateMachineTransition_so4cn"), "Dash", "Idle", SubResource("AnimationNodeStateMachineTransition_348k7"), "Dash", "Sprint", SubResource("AnimationNodeStateMachineTransition_fdqnh"), "Sprint", "Idle", SubResource("AnimationNodeStateMachineTransition_1c2sn"), "Sprint", "Sprint Pivot", SubResource("AnimationNodeStateMachineTransition_n1hxb"), "Sprint Pivot", "Sprint", SubResource("AnimationNodeStateMachineTransition_dj5t1"), "Dash", "Walk", SubResource("AnimationNodeStateMachineTransition_kvgxi"), "Idle", "Sprint", SubResource("AnimationNodeStateMachineTransition_iraa5"), "Dash", "Shield", SubResource("AnimationNodeStateMachineTransition_nksqx"), "Idle", "Shield", SubResource("AnimationNodeStateMachineTransition_e7s0f"), "Sprint", "Shield", SubResource("AnimationNodeStateMachineTransition_6skot"), "Walk", "Shield", SubResource("AnimationNodeStateMachineTransition_x4mtn"), "Shield", "Idle", SubResource("AnimationNodeStateMachineTransition_n6lvp"), "Shield", "Dodge Roll", SubResource("AnimationNodeStateMachineTransition_lvrra"), "Dodge Roll", "Idle", SubResource("AnimationNodeStateMachineTransition_oh5j2"), "Idle", "Teeter", SubResource("AnimationNodeStateMachineTransition_468bb"), "Walk", "Teeter", SubResource("AnimationNodeStateMachineTransition_gj2ww"), "Teeter", "Dash", SubResource("AnimationNodeStateMachineTransition_b03cd"), "Teeter", "Walk", SubResource("AnimationNodeStateMachineTransition_qongq"), "Dash", "Sprint Pivot 2", SubResource("AnimationNodeStateMachineTransition_pfu2e"), "Walk", "Sprint Pivot 2", SubResource("AnimationNodeStateMachineTransition_doejr"), "Idle", "Sprint Pivot 2", SubResource("AnimationNodeStateMachineTransition_easma"), "Sprint Pivot 2", "Dash", SubResource("AnimationNodeStateMachineTransition_gq6et"), "Sprint Pivot 2", "Walk", SubResource("AnimationNodeStateMachineTransition_7n1n5"), "Sprint Pivot 2", "Idle", SubResource("AnimationNodeStateMachineTransition_yomr2")]
-graph_offset = Vector2(-465, -266)
+graph_offset = Vector2(-440, -214)
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_eidcw"]
 animation = &"Ledge Get up"

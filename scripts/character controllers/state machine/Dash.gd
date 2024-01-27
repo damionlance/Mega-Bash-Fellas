@@ -26,6 +26,7 @@ func update(delta):
 		body.apply_friction(traction)
 	if abs(controller.movement_direction.x) <= 0.4:
 		can_dash = true
+		print("Hello You Can Dash")
 	
 	if controller.attempting_shield:
 		body.velocity.x = 0
@@ -44,7 +45,9 @@ func update(delta):
 		state.update_state("Idle")
 		return
 	if abs(controller.movement_direction.x) > 0.2 and sign(controller.movement_direction.x) != body.facing_direction and can_dash:
-		body.facing_direction = -body.facing_direction
+		state.update_state("Run Turn")
+		print("Start Dashin!")
+		return
 	
 	if controller.attempting_attack or controller.attempting_tilt:
 		if decide_attack() : return

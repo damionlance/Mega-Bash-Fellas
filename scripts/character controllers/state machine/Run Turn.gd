@@ -21,27 +21,38 @@ func update(delta):
 	
 	var delta_v = Vector2.ZERO
 	# Handle all states
+	print("1")
 	if controller.attempting_shield:
 		state.update_state("Shield")
 		return
+	print("2")
 	if controller.attempting_attack:
 		decide_attack()
 		return
+	print("3")
 	if controller.attempting_jump:
 		state.update_state("Jump Squat")
 		return
+	print("4")
 	if not body.is_on_floor():
 		state.update_state("Fall")
 		return
-	if controller.movement_direction.y < 0 and controller.movement_direction.y > -0.4:
+	print("5")
+	if controller.movement_direction.y < 0 and controller.movement_direction.y < -0.4:
 		state.update_state("Crouch")
+		return
+	print("Here! ", controller.movement_direction.x)
+	if abs(controller.movement_direction.x) > 0.4:
+		body.facing_direction = sign(controller.movement_direction.x)
+		state.update_state("Dash")
+		print("Dash!")
 		return
 	if body.velocity.x == 0:
 		if controller.movement_direction.x == 0:
 			state.update_state("Idle")
 			return
 		body.facing_direction = sign(controller.movement_direction.x)
-		state.update_state("Running")
+		state.update_state("Run")
 		return
 	
 	
