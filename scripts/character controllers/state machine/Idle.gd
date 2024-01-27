@@ -36,8 +36,7 @@ func update(delta):
 		state.update_state("Crouch")
 		return
 	if abs(controller.movement_direction.x) > 0.20 and sign(controller.movement_direction.x) != body.facing_direction:
-		state.update_state("Turn")
-		return
+		body.facing_direction = -body.facing_direction
 	
 	
 	if controller.movement_direction.x != 0 and sign(controller.movement_direction.x) != sign(body.facing_direction):

@@ -44,8 +44,8 @@ func update(delta):
 		state.update_state("Idle")
 		return
 	if abs(controller.movement_direction.x) > 0.2 and sign(controller.movement_direction.x) != body.facing_direction and can_dash:
-		state.update_state("Turn")
-		return
+		body.facing_direction = -body.facing_direction
+	
 	if controller.attempting_attack or controller.attempting_tilt:
 		if decide_attack() : return
 	delta_v.x = sign(controller.movement_direction.x) * (base_dash_acceleration + abs(additional_dash_acceleration * controller.movement_direction.x)) * delta
