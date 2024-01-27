@@ -24,7 +24,7 @@ func update(delta):
 	if controller.attempting_shield:
 		state.update_state("Shield")
 		return
-	if controller.attempting_attack:
+	if controller.attempting_attack or controller.attempting_tilt:
 		if decide_attack() : return
 	if controller.attempting_jump:
 		state.update_state("Jump Squat")

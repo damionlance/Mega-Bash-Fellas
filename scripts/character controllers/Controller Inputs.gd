@@ -32,6 +32,7 @@ var is_on_floor := false
 var attempting_throw := false
 var restricted_movement := false
 var attempting_attack := false
+var attempting_tilt := false
 
 # Spin variables
 var angle := [0.0, 0.0]
@@ -94,8 +95,6 @@ func _ready():
 	pass # Replace with function body.
 
 func _input(event):
-	if event.get_action_strength("Crush Up") - event.get_action_strength("Crush Down") - event.get_action_strength("Crush Left") - event.get_action_strength("Crush Right") == 0:
-		attempting_attack = false
 	if event.is_action_pressed("Attack"):
 		attempting_attack = true
 		attack_state = 1
@@ -129,6 +128,10 @@ func _process(delta):
 	movement_direction.x = Input.get_action_strength("Right") - Input.get_action_strength("Left")
 	movement_direction.y = Input.get_action_strength("Up") - Input.get_action_strength("Down")
 	
+	if crush_direction != Vector2.ZERO:
+		attempting_tilt = true
+	else:
+		attempting_tilt = false
 	if attempting_attack == false:
 		if crush_direction != Vector2.ZERO:
 			attempting_attack = true

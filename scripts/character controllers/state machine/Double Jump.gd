@@ -16,8 +16,8 @@ var ready_to_jump := false
 func update(delta):
 	var delta_v = Vector2.ZERO
 	# Handle all states
-	if controller.attempting_attack:
-		if decide_attack(): return
+	if controller.attempting_attack or controller.attempting_tilt:
+		if decide_attack() : return
 	if body.is_on_floor():
 		state.update_state("Idle")
 		return

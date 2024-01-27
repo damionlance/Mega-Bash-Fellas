@@ -58,13 +58,13 @@ func decide_attack() -> bool:
 			state.update_state("Side Special")
 			return true
 	if controller.crush_direction != Vector2.ZERO and can_tilt:
-		if controller.crush_direction.y > .8:
+		if controller.crush_direction.y > .7:
 			state.update_state("Uair")
 			return true
-		if controller.crush_direction.y < -.8:
+		if controller.crush_direction.y < -.7:
 			state.update_state("Dair")
 			return true
-		if abs(controller.crush_direction.x) > .8:
+		if abs(controller.crush_direction.x) > .7:
 			if sign(controller.crush_direction.x) == body.facing_direction:
 				state.update_state("Fair")
 				return true

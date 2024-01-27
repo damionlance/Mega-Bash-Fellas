@@ -47,17 +47,17 @@ func decide_attack() -> bool:
 		state.update_state("Grab")
 		return true
 	if controller.crush_direction != Vector2.ZERO and can_tilt:
-		if controller.crush_direction.y > .8:
+		if controller.crush_direction.y > .7:
 			state.update_state("UTilt")
 			return true
-		if controller.crush_direction.y < -.8:
+		if controller.crush_direction.y < -.7:
 			state.update_state("DTilt")
 			return true
-		if abs(controller.crush_direction.x) > .8:
+		if abs(controller.crush_direction.x) > .7:
 			state.update_state("FTilt")
 			return true
-	elif controller.movement_direction == Vector2.ZERO:
-		if controller.attempting_attack:
+	elif controller.movement_direction.length() < 0.25:
+		if controller.attack_state == controller.attack_pressed:
 			if grabbing:
 				pass
 				return false

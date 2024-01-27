@@ -15,7 +15,8 @@ func update(delta):
 	if controller.movement_direction.y == 0:
 		can_drop_through_platform == true
 	var delta_v = Vector2.ZERO
-		# Handle all states
+	if controller.attempting_attack or controller.attempting_tilt:
+		if decide_attack() : return
 	if controller.attempting_jump:
 		state.update_state("Jump")
 		return

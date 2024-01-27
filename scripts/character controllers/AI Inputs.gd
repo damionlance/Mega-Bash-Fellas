@@ -49,6 +49,7 @@ var shield_input := false
 var attack_input := false
 var special_input := false
 
+var attempting_tilt := false
 var attempting_attack := false
 
 

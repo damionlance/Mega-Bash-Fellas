@@ -14,8 +14,8 @@ func _ready():
 func update(delta):
 	var delta_v = Vector2.ZERO
 		# Handle all states
-	if controller.attempting_attack:
-		if decide_attack() == true: return
+	if controller.attempting_attack or controller.attempting_tilt:
+		if decide_attack() : return
 	if controller.attempting_shield:
 		state.update_state("Shield")
 		return
