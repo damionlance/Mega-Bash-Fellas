@@ -25,8 +25,7 @@ func update(delta):
 		state.update_state("Shield")
 		return
 	if controller.attempting_attack:
-		decide_attack()
-		return
+		if decide_attack() : return
 	if controller.attempting_jump:
 		state.update_state("Jump Squat")
 		return
