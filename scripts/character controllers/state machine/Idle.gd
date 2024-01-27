@@ -32,7 +32,7 @@ func update(delta):
 	if not body.is_on_floor():
 		state.update_state("Fall")
 		return
-	if controller.movement_direction.y < 0 and controller.movement_direction.y > -0.4 and abs(controller.movement_direction.x) < 0.28:
+	if controller.movement_direction.y < 0 and controller.movement_direction.y > -0.7 and abs(controller.movement_direction.x) < 0.28:
 		state.update_state("Crouch")
 		return
 	if abs(controller.movement_direction.x) > 0.20 and sign(controller.movement_direction.x) != body.facing_direction:

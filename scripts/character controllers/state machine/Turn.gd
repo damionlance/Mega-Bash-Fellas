@@ -6,6 +6,7 @@ var state_name = "Turn"
 
 var can_drop_thru_platform := false
 var can_dash := true
+@export var animation_finished := false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	state.state_dictionary[state_name] = self
@@ -57,6 +58,7 @@ func update(delta):
 	pass
 
 func reset(_delta):
+	animation_finished = false
 	body.facing_direction = sign(controller.movement_direction.x)
 	can_tilt = true
 	can_crush = true
