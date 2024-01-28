@@ -36,28 +36,28 @@ func grounded_movement_processing(delta, delta_v) -> Vector2:
 	pass
 
 func decide_attack() -> bool:
-	if Input.is_action_just_pressed("Special"):
+	if Input.is_action_just_pressed(state.player_number + "Special"):
 		if controller.movement_direction.y >= .7:
 			state.update_state("Up Special")
 			return true
-		if abs(Input.get_axis("Left", "Right")) >= .7:
+		if abs(Input.get_axis(state.player_number + "Left", state.player_number + "Right")) >= .7:
 			state.update_state("Side Special")
 			return true
-	if Input.is_action_just_pressed("Grab"):
+	if Input.is_action_just_pressed(state.player_number + "Grab"):
 		state.update_state("Grab")
 		return true
-	if Input.get_vector("Crush Left", "Crush Right", "Crush Down", "Crush Up") != Vector2.ZERO and can_tilt:
-		if Input.get_action_strength("Crush Up") > .7:
+	if Input.get_vector(state.player_number + "Crush Left", state.player_number + "Crush Right", state.player_number + "Crush Down", state.player_number + "Crush Up") != Vector2.ZERO and can_tilt:
+		if Input.get_action_strength(state.player_number + "Crush Up") > .7:
 			state.update_state("UTilt")
 			return true
-		if Input.get_action_strength("Crush Down") > .7:
+		if Input.get_action_strength(state.player_number + "Crush Down") > .7:
 			state.update_state("DTilt")
 			return true
-		if abs(Input.get_axis("Crush Left", "Crush Right")) > .7:
+		if abs(Input.get_axis(state.player_number + "Crush Left", state.player_number + "Crush Right")) > .7:
 			state.update_state("FTilt")
 			return true
-	elif Input.get_vector("Left", "Right", "Down", "Up").length() < 0.25:
-		if Input.is_action_just_pressed("Attack"):
+	elif Input.get_vector(state.player_number + "Left", state.player_number + "Right", state.player_number + "Down", state.player_number + "Up").length() < 0.25:
+		if Input.is_action_just_pressed(state.player_number + "Attack"):
 			state.update_state("Jab")
 			return true
 	return false

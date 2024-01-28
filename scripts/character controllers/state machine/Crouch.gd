@@ -22,7 +22,7 @@ func update(delta):
 		state.update_state("Fall")
 		return
 	
-	if Input.get_action_strength("Down") > 0.7 and passthru_platform_checker.on_passthru_platform and can_drop_thru_platform:
+	if Input.get_action_strength(state.player_number + "Down") > 0.7 and passthru_platform_checker.on_passthru_platform and can_drop_thru_platform:
 		passthru_platform_checker.drop_thru_platform()
 		state.update_state("Drop Through Platform")
 		return
@@ -30,14 +30,14 @@ func update(delta):
 	if controller.movement_direction.x != 0 and sign(controller.movement_direction.x) != sign(body.facing_direction):
 		body.velocity.x *= -1
 	
-	if abs(Input.get_axis("Left", "Right")) > .2:
-		if abs(Input.get_axis("Left", "Right")) > 0.7:
+	if abs(Input.get_axis(state.player_number + "Left", state.player_number + "Right")) > .2:
+		if abs(Input.get_axis(state.player_number + "Left", state.player_number + "Right")) > 0.7:
 			state.update_state("Dash")
 			return
-		if abs(Input.get_axis("Left", "Right")) > 0.7:
+		if abs(Input.get_axis(state.player_number + "Left", state.player_number + "Right")) > 0.7:
 			state.update_state("Walk")
 			return
-	if Input.get_action_strength("Down") < 0.7:
+	if Input.get_action_strength(state.player_number + "Down") < 0.7:
 		state.update_state("Idle")
 		return
 	# Process inputs

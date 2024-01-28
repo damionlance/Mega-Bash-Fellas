@@ -16,10 +16,10 @@ func update(delta):
 	if not can_move:
 		return
 	
-	if Input.is_action_just_pressed("Jump"):
+	if Input.is_action_just_pressed(state.player_number + "Jump"):
 		state.update_state("Double Jump")
 		return
-	if Input.get_vector("Left", "Right", "Down", "Up") != Vector2.ZERO:
+	if Input.get_vector(state.player_number + "Left", state.player_number + "Right", state.player_number + "Down", state.player_number + "Up") != Vector2.ZERO:
 		state.update_state("Fall")
 		return
 

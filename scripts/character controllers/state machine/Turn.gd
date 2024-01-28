@@ -26,26 +26,26 @@ func update(delta):
 		state.update_state("Idle")
 		body.facing_direction = -body.facing_direction
 		return
-	if Input.is_action_just_pressed("Shield"):
-		body.facing_direction = sign(Input.get_axis("Left", "Right"))
+	if Input.is_action_just_pressed(state.player_number + "Shield"):
+		body.facing_direction = sign(Input.get_axis(state.player_number + "Left", state.player_number + "Right"))
 		state.update_state("Shield")
 		return
-	if Input.is_action_just_pressed("Attack") or Input.is_action_just_pressed("Special") or Input.get_vector("Crush Left","Crush Right","Crush Down","Crush Up") != Vector2.ZERO:
+	if Input.is_action_just_pressed(state.player_number + "Attack") or Input.is_action_just_pressed(state.player_number + "Special") or Input.get_vector(state.player_number + "Crush Left",state.player_number + "Crush Right",state.player_number + "Crush Down",state.player_number + "Crush Up") != Vector2.ZERO:
 		if decide_attack(): return
 	if Input.is_action_just_pressed("Jump"):
 		
-		body.facing_direction = sign(Input.get_axis("Left", "Right"))
+		body.facing_direction = sign(Input.get_axis(state.player_number + "Left", state.player_number + "Right"))
 		state.update_state("Jump Squat")
 		return
 	if not body.is_on_floor():
-		body.facing_direction = sign(Input.get_axis("Left", "Right"))
+		body.facing_direction = sign(Input.get_axis(state.player_number + "Left", state.player_number + "Right"))
 		state.update_state("Fall")
 		return
-	if Input.get_action_strength("Down") > .7:
+	if Input.get_action_strength(state.player_number + "Down") > .7:
 		state.update_state("Crouch")
 		return
 	
-	if abs(Input.get_axis("Left","Right")) > .7:
+	if abs(Input.get_axis(state.player_number + "Left",state.player_number + "Right")) > .7:
 		state.update_state("Dash")
 		return
 	

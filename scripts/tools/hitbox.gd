@@ -8,7 +8,7 @@ extends Area3D
 @export var active := false
 @export_group("Hitbox Properties")
 @export var grab : bool = false
-@export_range(0.0, 360.0) var launch_angle : float = 0.0
+@export_range(-360.0, 360.0) var launch_angle : float = 0.0
 @export_range(0.1, 50.0) var damage : float = 1.0
 @export_range(0, 25) var hitstun_frames : int = 3
 @export var knockback : float = 1.0
@@ -90,7 +90,9 @@ func _process(delta):
 
 
 func hit(launch_angle : float, facing_direction : float, grab : bool = false, _grab_position : Node3D = Node3D.new(), damage : float = 0.0, hitstun_frames : float = 0.0, knockback : float = 0.0) :
-	body.velocity = Vector3(1, 0, 0).rotated(Vector3(0,0,1),launch_angle)
+	if launch_angle != 0:
+		body.velocity = Vector3(1, 0, 0).rotated(Vector3(0,0,1),launch_angle)
+	else: body.velocity = Vector3.ZERO
 	body.velocity.x *= facing_direction
 	body.current_damage += damage * 0.01
 	var adjusted_knockback = ( body.current_damage * .1 + body.current_damage * damage / 20)
@@ -107,6 +109,7 @@ func hit(launch_angle : float, facing_direction : float, grab : bool = false, _g
 	pass
 
 func _on_area_entered(_area):
+	print("Hey!")
 	var hit_shield := false
 	var hurtbox : Area3D
 	for hit_area in get_overlapping_areas():
@@ -122,3 +125,4 @@ func _on_area_entered(_area):
 	hurtbox.hit(deg_to_rad(launch_angle), body.facing_direction, grab, body.grab_position, damage, hitstun_frames, knockback)
 	if grab:
 		body.state.current_state.grab = true
+		body.state.grabbed_body = hurtbox.body

@@ -94,39 +94,7 @@ func _ready():
 		pivot_buffer[i] = Vector2.ZERO
 	pass # Replace with function body.
 
-func _input(event):
-	if event.is_action_pressed("Attack"):
-		attempting_attack = true
-		attack_state = 1
-	if event.is_action_released("Attack"):
-		attempting_attack = false
-		attack_state = 0
-	if event.is_action_pressed("Special"):
-		attempting_attack = true
-		special_state = 1
-	if event.is_action_released("Special"):
-		attempting_attack = false
-		special_state = 0
-	if event.is_action_pressed("Shield"):
-		shield_state = 1
-	if event.is_action_released("Shield"):
-		shield_state = 0
-	if event.is_action_pressed("Grab"):
-		attempting_attack = true
-		grab_state = 1
-	if event.is_action_released("Grab"):
-		attempting_attack = false
-		grab_state = 0
-	if event.is_action_pressed("Jump"):
-		jump_state = 1
-	if event.is_action_released("Jump"):
-		jump_state = 0
-
 func _process(delta):
-	crush_direction.x = Input.get_action_strength("Crush Right") - Input.get_action_strength("Crush Left")
-	crush_direction.y = Input.get_action_strength("Crush Up") - Input.get_action_strength("Crush Down")
-	movement_direction.x = Input.get_action_strength("Right") - Input.get_action_strength("Left")
-	movement_direction.y = Input.get_action_strength("Up") - Input.get_action_strength("Down")
 	
 	if crush_direction != Vector2.ZERO:
 		attempting_tilt = true

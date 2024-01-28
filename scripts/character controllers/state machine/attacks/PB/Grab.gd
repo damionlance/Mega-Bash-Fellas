@@ -25,7 +25,6 @@ func update(delta):
 	if animation_finished:
 		state.update_state("Idle")
 		return
-	
 	# Handle all relevant timers
 	body.delta_v = delta_v
 	body.apply_friction(traction)

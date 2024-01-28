@@ -29,7 +29,7 @@ func update(delta):
 	if body.velocity.y - delta_v.y < -constants.falling_speed:
 		delta_v.y = 0
 	# Handle all relevant timers
-	delta_v.x = sign(Input.get_axis("Left", "Right")) * (constants.base_air_acceleration + abs(constants.additional_air_acceleration * Input.get_axis("Left", "Right"))) * delta
+	delta_v.x = sign(Input.get_axis(state.player_number + "Left", state.player_number + "Right")) * (constants.base_air_acceleration + abs(constants.additional_air_acceleration * Input.get_axis(state.player_number + "Left", state.player_number + "Right"))) * delta
 	
 	delta_v = regular_aerial_movement_processing(delta, delta_v)
 	body.delta_v = delta_v

@@ -23,7 +23,14 @@ func update(delta):
 	if body.is_on_floor() == false:
 		can_land = true
 	
+	if cancellable:
+		if Input.is_action_just_pressed(state.player_number + "Jump"):
+			body.special = false
+			state.update_state("Jump Squat")
+			return
+	
 	if animation_finished:
+		body.special = false
 		state.update_state("Fall")
 		return
 	

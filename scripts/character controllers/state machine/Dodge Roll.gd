@@ -29,5 +29,5 @@ func reset(delta):
 	body.slide_off_ledge = false
 	body.attacking = false
 	body.consecutive_jumps = 0
-	body.velocity.x = dodge_roll * Input.get_axis("Left", "Right") * delta
+	body.velocity.x = dodge_roll * Input.get_axis(state.player_number + "Left", state.player_number + "Right") * delta
 	pass

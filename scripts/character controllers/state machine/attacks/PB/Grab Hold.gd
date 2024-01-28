@@ -19,7 +19,20 @@ func update(delta):
 	var delta_v = Vector2.ZERO
 	
 	# Process inputs
-	
+	if Input.get_vector(state.player_number + "Left", state.player_number + "Right", state.player_number + "Down", state.player_number + "Up").length() > .7:
+		if Input.get_action_strength(state.player_number + "Down") > .7:
+			state.update_state("Down Throw")
+			return
+		if Input.get_action_strength(state.player_number + "Up") > .7:
+			state.update_state("Up Throw")
+			return
+		if abs(Input.get_axis(state.player_number + "Left", state.player_number + "Right")) > .7:
+			if sign(Input.get_axis(state.player_number + "Left", state.player_number + "Right")) == body.facing_direction:
+				state.update_state("Cargo Carry")
+				return
+			else:
+				state.update_state("Back Throw")
+				return
 	# Handle all relevant timers
 	body.delta_v = delta_v
 	body.apply_friction(traction)

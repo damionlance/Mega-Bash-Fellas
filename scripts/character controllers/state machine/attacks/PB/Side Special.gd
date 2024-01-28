@@ -22,11 +22,12 @@ func _ready():
 
 func update(delta):
 	if active and not can_land:
-		body.velocity.x = constants.side_special_velocity * body.facing_direction * delta
-		tween = get_tree().create_tween()
-		tween.tween_property(body, "velocity", Vector3.ZERO, 1.0).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
+		body.velocity.x = constants.side_special_velocity * 1.5 * body.facing_direction * delta
+		tween = create_tween()
+		tween.tween_property(body, "velocity:x", 0, .5).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
 	
 	if animation_finished:
+		body.special = false
 		state.update_state("Fall")
 		return
 	
@@ -47,8 +48,7 @@ func reset(_delta):
 	pass
 
 func interrupt():
-	if tween != null:
-		tween.stop()
-		body.velocity.x = 0
+	tween.kill()
+	body.velocity.x = 0
 	body.delta_v.x = 0
 	state.update_state("Side Special Interrupt")

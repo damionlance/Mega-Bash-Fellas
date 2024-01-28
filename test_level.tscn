@@ -89,7 +89,7 @@ polygon = PackedVector2Array(-2, 0, 2, 0, 2, -0.1, -2, -0.1)
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.847994, 3.05495, 6.25)
-fov = 74.9827
+fov = 73.8933
 near = 0.001
 
 [node name="PhantomCameraHost" type="Node" parent="Camera3D"]
@@ -124,13 +124,17 @@ transform = Transform3D(0.732875, 0.25499, -0.630772, -2.54639e-09, 0.927112, 0.
 [node name="Body" parent="." instance=ExtResource("4_d5k7j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.847994, 1.55495, 0)
 
+[node name="Body2" parent="." instance=ExtResource("4_d5k7j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.847994, 1.55495, 0)
+player_number = 2
+
 [node name="PhantomCamera3D" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.847994, 3.05495, 6.25)
 script = ExtResource("6_k006f")
 priority_override = false
 priority = 0
 follow_mode = 3
-follow_group = Array[NodePath]([NodePath("../Body")])
+follow_group = Array[NodePath]([NodePath("../Body"), NodePath("../Body2")])
 follow_parameters/distance = 6.25
 follow_parameters/auto_distance = false
 follow_parameters/target_offset = Vector3(0, 1.5, 0)

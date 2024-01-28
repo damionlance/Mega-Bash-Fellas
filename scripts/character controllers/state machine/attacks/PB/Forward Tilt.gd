@@ -30,10 +30,10 @@ func update(delta):
 	pass
 
 func reset(_delta):
-	body.facing_direction = Input.get_axis("Crush Left", "Crush Right")
-	if Input.get_action_strength("Crush Up") > 0.2:
+	body.facing_direction = Input.get_axis(state.player_number + "Crush Left", state.player_number + "Crush Right")
+	if Input.get_action_strength(state.player_number + "Crush Up") > 0.2:
 		vertical_tilt = "Up"
-	elif Input.get_action_strength("Crush Down") > 0.2:
+	elif Input.get_action_strength(state.player_number + "Crush Down") > 0.2:
 		vertical_tilt = "Down"
 	else: vertical_tilt = "Neutral"
 	body.attacking = true

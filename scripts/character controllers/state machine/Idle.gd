@@ -13,30 +13,32 @@ func _ready():
 	pass # Replace with function body.
 
 func update(delta):
-	if Input.get_vector("Left", "Right", "Down", "Up").length() <= .20:
+	if Input.get_vector(state.player_number + "Left", state.player_number + "Right", state.player_number + "Down", state.player_number + "Up").length() <= .20:
 		can_dash = true
 	
 	var delta_v = Vector2.ZERO
 	# Handle all states
-	if Input.is_action_just_pressed("Shield"):
+	if Input.is_action_just_pressed(state.player_number + "Shield"):
 		state.update_state("Shield")
 		return
-	if Input.is_action_just_pressed("Attack") or Input.is_action_just_pressed("Special") or Input.get_vector("Crush Left","Crush Right","Crush Down","Crush Up") != Vector2.ZERO:
+	if Input.is_action_just_pressed(state.player_number + "Attack") or Input.is_action_just_pressed(state.player_number + "Special") or Input.get_vector(state.player_number + "Crush Left",state.player_number + "Crush Right",state.player_number + "Crush Down",state.player_number + "Crush Up") != Vector2.ZERO:
 		if decide_attack(): return
-	if Input.is_action_just_pressed("Jump"):
+	if Input.is_action_just_pressed(state.player_number + "Grab"):
+		if decide_attack():return
+	if Input.is_action_just_pressed(state.player_number + "Jump"):
 		state.update_state("Jump Squat")
 		return
 	if not body.is_on_floor():
 		state.update_state("Fall")
 		return
-	if Input.get_action_strength("Down") > .7:
+	if Input.get_action_strength(state.player_number + "Down") > .7:
 		state.update_state("Crouch")
 		return
-	if abs(Input.get_axis("Left", "Right")) > 0.20 and sign(Input.get_axis("Left", "Right")) != body.facing_direction:
+	if abs(Input.get_axis(state.player_number + "Left", state.player_number + "Right")) > 0.20 and sign(Input.get_axis(state.player_number + "Left", state.player_number + "Right")) != body.facing_direction:
 		state.update_state("Turn")
 		return
-	elif abs(Input.get_axis("Left", "Right")) > 0.2:
-		if abs(Input.get_axis("Left", "Right")) > 0.7 and can_dash:
+	elif abs(Input.get_axis(state.player_number + "Left", state.player_number + "Right")) > 0.2:
+		if abs(Input.get_axis(state.player_number + "Left", state.player_number + "Right")) > 0.7 and can_dash:
 			state.update_state("Dash")
 			return
 		state.update_state("Walk")
