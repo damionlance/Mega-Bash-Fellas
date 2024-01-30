@@ -43,6 +43,9 @@ func decide_attack() -> bool:
 		if abs(Input.get_axis(state.player_number + "Left", state.player_number + "Right")) >= .7:
 			state.update_state("Side Special")
 			return true
+		if Input.get_vector(state.player_number + "Left", state.player_number + "Right", state.player_number + "Down", state.player_number + "Up").length() < 0.2:
+			state.update_state("Neutral Special")
+			return true
 	if Input.is_action_just_pressed(state.player_number + "Grab"):
 		state.update_state("Grab")
 		return true
@@ -55,6 +58,7 @@ func decide_attack() -> bool:
 			return true
 		if abs(Input.get_axis(state.player_number + "Crush Left", state.player_number + "Crush Right")) > .7:
 			state.update_state("FTilt")
+			print("Hello!")
 			return true
 	elif Input.get_vector(state.player_number + "Left", state.player_number + "Right", state.player_number + "Down", state.player_number + "Up").length() < 0.25:
 		if Input.is_action_just_pressed(state.player_number + "Attack"):

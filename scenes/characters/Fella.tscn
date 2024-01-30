@@ -1,0 +1,1319 @@
+[gd_scene load_steps=182 format=3 uid="uid://bvg8potcgyin4"]
+
+[ext_resource type="Script" path="res://scripts/character controllers/Test Character.gd" id="1_ffcvg"]
+[ext_resource type="Animation" uid="uid://bmx6iaw0nj6nk" path="res://assets/characters/Fella/Shield N.res" id="2_cirtl"]
+[ext_resource type="Animation" uid="uid://d3etjil7hd2rh" path="res://assets/characters/Fella/Shield U.res" id="3_5layn"]
+[ext_resource type="Animation" uid="uid://bbu0fnh2lu8jv" path="res://assets/characters/PB/Air Dodge.res" id="3_64gdn"]
+[ext_resource type="Animation" uid="uid://deldplfpopgbq" path="res://assets/characters/PB/Back Throw.res" id="4_7yaf5"]
+[ext_resource type="Animation" uid="uid://do3o8yglov35a" path="res://assets/characters/Fella/Shield D.res" id="4_hilyx"]
+[ext_resource type="Animation" uid="uid://ckfw3tdgjs0am" path="res://assets/characters/Fella/Shield R.res" id="5_qhdbp"]
+[ext_resource type="Animation" uid="uid://cma8grgen22nj" path="res://assets/characters/Fella/Shield L.res" id="6_pnvvt"]
+[ext_resource type="Animation" uid="uid://djm6jckym75lf" path="res://assets/characters/Fella/Jumpsquat.res" id="7_u1wgw"]
+[ext_resource type="Animation" uid="uid://ddyai0un4c761" path="res://assets/characters/Fella/Jump1.res" id="8_pcufr"]
+[ext_resource type="Animation" uid="uid://breye1ugdnche" path="res://assets/characters/Fella/Fall 1.res" id="9_pir0r"]
+[ext_resource type="Animation" uid="uid://brmtm48b18i1v" path="res://assets/characters/Fella/Jump 2.res" id="10_0pr7t"]
+[ext_resource type="Animation" uid="uid://drgiaq268wpsr" path="res://assets/characters/Fella/Fall 2.res" id="11_gkg7k"]
+[ext_resource type="Animation" uid="uid://c2moxbwqkjmxx" path="res://assets/characters/Fella/Land from fall.res" id="12_imdf7"]
+[ext_resource type="Animation" uid="uid://buybcj7yeviap" path="res://assets/characters/Fella/Crouch Idle.res" id="13_ldj81"]
+[ext_resource type="Animation" uid="uid://ctsxx4vli8mve" path="res://assets/characters/Fella/Ledge Grab.res" id="14_hprer"]
+[ext_resource type="Animation" uid="uid://col0t5xolgblw" path="res://assets/characters/PB/Crouch.res" id="15_sscsv"]
+[ext_resource type="Animation" uid="uid://cltt8dhkaxbx5" path="res://assets/characters/Fella/Ledge Getup.res" id="15_vf3qn"]
+[ext_resource type="Animation" uid="uid://d3t15e6hit8yd" path="res://assets/characters/Fella/Tournament Winner.res" id="16_nm7tt"]
+[ext_resource type="Animation" uid="uid://b1svhr5s4bies" path="res://assets/characters/Fella/Lay on Tummy.res" id="17_1fi4b"]
+[ext_resource type="Animation" uid="uid://kki8nymuoy4u" path="res://assets/characters/Fella/Lay on Back.res" id="18_h8ij1"]
+[ext_resource type="Animation" uid="uid://x4dinc3p3577" path="res://assets/characters/PB/Dash.res" id="18_srp4k"]
+[ext_resource type="Animation" uid="uid://cihx5row46d4g" path="res://assets/characters/Fella/F Tilt.res" id="19_uohw1"]
+[ext_resource type="Animation" uid="uid://dpj6mj6wy2crw" path="res://assets/characters/Fella/U Tilt.res" id="20_83j3y"]
+[ext_resource type="Animation" uid="uid://dd1q7e2018og" path="res://assets/characters/Fella/D Tilt.res" id="21_3h3uh"]
+[ext_resource type="Animation" uid="uid://c6su2eml8q1fm" path="res://assets/characters/Fella/D Smash.res" id="22_eehtd"]
+[ext_resource type="Animation" uid="uid://o8j2hvwlw5jh" path="res://assets/characters/PB/Down Throw.res" id="22_sti72"]
+[ext_resource type="Animation" uid="uid://drog056wqalk6" path="res://assets/characters/Fella/D Smash Start.res" id="23_wnrvn"]
+[ext_resource type="Animation" uid="uid://c3f4cx5qw4h" path="res://assets/characters/PB/Drop Shield.res" id="23_xy3es"]
+[ext_resource type="Animation" uid="uid://cgukx1i1h5b0v" path="res://assets/characters/PB/Drop Thru.res" id="24_bfdf7"]
+[ext_resource type="Animation" uid="uid://b4rdkaivaah7k" path="res://assets/characters/Fella/D Smash Charge.res" id="24_v61rx"]
+[ext_resource type="Animation" uid="uid://dobedtviur2mi" path="res://assets/characters/Fella/F Smash.res" id="25_6bd2a"]
+[ext_resource type="Animation" uid="uid://dcglp84ib8llo" path="res://assets/characters/Fella/F Smash Charge.res" id="26_sud5t"]
+[ext_resource type="Animation" uid="uid://bpxclhjhca6ky" path="res://assets/characters/Fella/F Smash Start.res" id="27_8q1ff"]
+[ext_resource type="Animation" uid="uid://bfit61hbmxhqo" path="res://assets/characters/Fella/Jab 2.res" id="28_wi8p1"]
+[ext_resource type="Animation" uid="uid://cnqryxbg57udx" path="res://assets/characters/PB/Enter Shield.res" id="28_xs7rk"]
+[ext_resource type="Animation" uid="uid://bfsv8vdj1hp6f" path="res://assets/characters/Fella/Rapid Jab Start.res" id="29_rkw4r"]
+[ext_resource type="Animation" uid="uid://dkgp52ppr8ro0" path="res://assets/characters/Fella/Rapid Jab Continue.res" id="30_7dy2g"]
+[ext_resource type="Animation" uid="uid://dlj1b5f5bx01g" path="res://assets/characters/Fella/whoops.res" id="31_xds8r"]
+[ext_resource type="Animation" uid="uid://sihep6nwfpdv" path="res://assets/characters/PB/Forward Throw.res" id="32_06ye0"]
+[ext_resource type="Animation" uid="uid://dlwvc250gkovg" path="res://assets/characters/Fella/Rapid Jab End.res" id="32_xry1y"]
+[ext_resource type="Animation" uid="uid://ddyquge22w4bb" path="res://assets/characters/Fella/N Air.res" id="33_l6nxt"]
+[ext_resource type="Animation" uid="uid://jb0ixhh0jc1q" path="res://assets/characters/Fella/D Air.res" id="34_rs2l0"]
+[ext_resource type="Animation" uid="uid://b3vt25fd6lelu" path="res://assets/characters/Fella/U Smash.res" id="35_y55a7"]
+[ext_resource type="Animation" uid="uid://6gjk5i7t1a0x" path="res://assets/characters/Fella/B Air.res" id="36_ojvjn"]
+[ext_resource type="Animation" uid="uid://vyrdnxmb187i" path="res://assets/characters/Fella/U Air.res" id="37_8geap"]
+[ext_resource type="Animation" uid="uid://cbgj0oqoxg4vn" path="res://assets/characters/Fella/F Air.res" id="38_7f1vs"]
+[ext_resource type="Animation" uid="uid://deheri2cb2u20" path="res://assets/characters/PB/Get Cargo Carried.res" id="38_ybece"]
+[ext_resource type="Animation" uid="uid://c1pxow2iqolwo" path="res://assets/characters/Fella/N Special.res" id="39_6aa8y"]
+[ext_resource type="Animation" uid="uid://bwdwvsayfnyds" path="res://assets/characters/Fella/Unactionable fall.res" id="40_73hna"]
+[ext_resource type="Animation" uid="uid://qcixbu7ywnat" path="res://assets/characters/Fella/Walljump.res" id="41_snfjn"]
+[ext_resource type="Animation" uid="uid://ccui7hwtjiiok" path="res://assets/characters/Fella/D Special.res" id="42_bqaxi"]
+[ext_resource type="Animation" uid="uid://dynunnnpm7qtg" path="res://assets/characters/Fella/F Special.res" id="43_ckexf"]
+[ext_resource type="Animation" uid="uid://bocfwk5m1pent" path="res://assets/characters/PB/Grab Break.res" id="44_bx703"]
+[ext_resource type="Animation" uid="uid://bplj3xib0t14h" path="res://assets/characters/Fella/Grab Attempt.res" id="44_paalj"]
+[ext_resource type="Animation" uid="uid://d2sn0i5mugtod" path="res://assets/characters/Fella/Grab Hold.res" id="45_ap5lb"]
+[ext_resource type="Animation" uid="uid://cjo3f87uux2gj" path="res://assets/characters/Fella/Get Grabbed.res" id="46_r7a7q"]
+[ext_resource type="Animation" uid="uid://baeai2egprkb4" path="res://assets/characters/Fella/Get hit ground low knock.res" id="47_6bfoa"]
+[ext_resource type="Animation" uid="uid://c7ru6e2c0cohu" path="res://assets/characters/Fella/Neutral Getup.res" id="48_ir527"]
+[ext_resource type="Animation" uid="uid://ddjkosep37iag" path="res://assets/characters/Fella/Dash Attack.res" id="49_3ru60"]
+[ext_resource type="Animation" uid="uid://cgfre25ei5o7g" path="res://assets/characters/Fella/Neutral Getup attack.res" id="50_0rxaf"]
+[ext_resource type="Animation" uid="uid://bco5hmx2b2ve6" path="res://assets/characters/PB/Idle.res" id="50_hnnmj"]
+[ext_resource type="Animation" uid="uid://c35s0r2cecabj" path="res://assets/characters/Fella/Ledge Getup Attack.res" id="51_qjtva"]
+[ext_resource type="Animation" uid="uid://cqpcnqerfoqph" path="res://assets/characters/PB/Jab1.res" id="51_xhbkk"]
+[ext_resource type="Animation" uid="uid://dujgcvvcd5uc1" path="res://assets/characters/Fella/Get hit air low knock.res" id="52_wua3b"]
+[ext_resource type="Animation" uid="uid://cote832gkx7wj" path="res://assets/characters/Fella/Get hit ground high knock.res" id="53_qouw7"]
+[ext_resource type="Animation" uid="uid://c7dxffxsbitot" path="res://assets/characters/Fella/Get hit air high knock.res" id="54_8qeno"]
+[ext_resource type="Animation" uid="uid://dvn80bj8aphwc" path="res://assets/characters/Fella/Damage fly.res" id="55_3hmuk"]
+[ext_resource type="Animation" uid="uid://cc32f5sxfrfxo" path="res://assets/characters/Fella/Hitstun on ground.res" id="56_52a31"]
+[ext_resource type="Animation" uid="uid://dbsu46gpu6fmw" path="res://assets/characters/Fella/HeadAction.res" id="57_wvx1d"]
+[ext_resource type="Animation" uid="uid://1o7f7vvtlyn0" path="res://assets/characters/Fella/JacketAction.res" id="58_b52nq"]
+[ext_resource type="Animation" uid="uid://dktp7pu6jybw4" path="res://assets/characters/Fella/LegsAction.res" id="59_hcj0q"]
+[ext_resource type="Animation" uid="uid://3x183va82fi3" path="res://assets/characters/PB/Pummel.res" id="62_du0lh"]
+[ext_resource type="Animation" uid="uid://bba3nvuru3w0m" path="res://assets/characters/PB/Roll B.res" id="63_0yxcm"]
+[ext_resource type="Animation" uid="uid://dnodq5xqcgtfi" path="res://assets/characters/PB/Roll F.res" id="64_citnu"]
+[ext_resource type="Animation" uid="uid://beif5kd5lqmh8" path="res://assets/characters/PB/Shield Break.res" id="65_1pe3v"]
+[ext_resource type="Animation" uid="uid://do1dphpb6e4iw" path="res://assets/characters/PB/Spotdodge.res" id="66_138r8"]
+[ext_resource type="Animation" uid="uid://cvhip041hxm7c" path="res://assets/characters/PB/Sprint.res" id="67_htkuf"]
+[ext_resource type="Animation" uid="uid://bvpfv2aw38xyp" path="res://assets/characters/PB/Sprint Pivot.res" id="68_h35sc"]
+[ext_resource type="Animation" uid="uid://dulu0fyghuxt3" path="res://assets/characters/PB/Stunned.res" id="69_wxynp"]
+[ext_resource type="Animation" uid="uid://d2g5wki30llck" path="res://assets/characters/PB/Taunt.res" id="70_anexy"]
+[ext_resource type="Animation" uid="uid://2a5c5i1qqscg" path="res://assets/characters/PB/Tech in Place.res" id="71_ibtkm"]
+[ext_resource type="Animation" uid="uid://cetnmmwnmyjqi" path="res://assets/characters/PB/Teeter.res" id="72_bk7oc"]
+[ext_resource type="Animation" uid="uid://bc2kpd7cnk0pq" path="res://assets/characters/PB/Up Special.res" id="75_oir32"]
+[ext_resource type="Animation" uid="uid://ikqxssrp1f7a" path="res://assets/characters/PB/Up Throw.res" id="77_rdwvu"]
+[ext_resource type="Animation" uid="uid://di36r1o30ys7g" path="res://assets/characters/PB/Walk.res" id="81_6stc0"]
+[ext_resource type="Animation" uid="uid://cat6j3qqm6y0c" path="res://assets/characters/PB/Wall Tech.res" id="82_6cqxk"]
+[ext_resource type="Script" path="res://scripts/character controllers/state machine/attacks/Fella/Jab.gd" id="98_vo3fs"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://oe7qbmr1p7ld" path="res://PB Animation Tree.tres" id="100_gr2xq"]
+[ext_resource type="Script" path="res://State Machine.gd" id="101_8bjgm"]
+[ext_resource type="Script" path="res://scripts/character controllers/state machine/Grounded Movement.gd" id="102_ojcca"]
+[ext_resource type="Script" path="res://scripts/character controllers/state machine/Idle.gd" id="103_6lxsy"]
+[ext_resource type="Script" path="res://scripts/character controllers/state machine/Walk.gd" id="104_67ouy"]
+[ext_resource type="Script" path="res://scripts/character controllers/state machine/Run.gd" id="105_ke02q"]
+[ext_resource type="Script" path="res://scripts/character controllers/state machine/Dash.gd" id="106_hmecm"]
+[ext_resource type="Script" path="res://scripts/character controllers/state machine/Landing Lag.gd" id="107_x0ek6"]
+[ext_resource type="Script" path="res://scripts/character controllers/state machine/Hitstun.gd" id="108_fw3ak"]
+[ext_resource type="Script" path="res://scripts/character controllers/state machine/Crouch.gd" id="109_3mh1s"]
+[ext_resource type="Script" path="res://scripts/character controllers/state machine/attacks/PB/Forward Tilt.gd" id="111_iflef"]
+[ext_resource type="Script" path="res://scripts/character controllers/state machine/attacks/PB/Up Tilt.gd" id="112_v7r58"]
+[ext_resource type="Script" path="res://scripts/character controllers/state machine/attacks/Fella/Forward Throw.gd" id="113_eo57q"]
+[ext_resource type="Script" path="res://scripts/character controllers/state machine/attacks/PB/Down Tilt.gd" id="113_jqmpr"]
+[ext_resource type="Script" path="res://scripts/character controllers/state machine/attacks/PB/Shield.gd" id="114_covm0"]
+[ext_resource type="Script" path="res://scripts/character controllers/state machine/Dodge Roll.gd" id="115_uife7"]
+[ext_resource type="Resource" uid="uid://vr35t3yd73c2" path="res://resources/Fella Aerial Physics Constants.tres" id="116_ohx14"]
+[ext_resource type="Script" path="res://scripts/character controllers/state machine/Teeter.gd" id="116_x7iyi"]
+[ext_resource type="Script" path="res://scripts/character controllers/state machine/Turn.gd" id="117_fcrhc"]
+[ext_resource type="Script" path="res://scripts/character controllers/state machine/Run Turn.gd" id="118_tfx7w"]
+[ext_resource type="Script" path="res://scripts/character controllers/state machine/attacks/PB/Grab.gd" id="119_h6c4h"]
+[ext_resource type="Script" path="res://scripts/character controllers/state machine/attacks/PB/Grab Hold.gd" id="120_pvtsg"]
+[ext_resource type="Script" path="res://scripts/character controllers/state machine/Get Grabbed.gd" id="121_3t5y1"]
+[ext_resource type="Script" path="res://scripts/character controllers/state machine/attacks/PB/Down Throw.gd" id="122_tb0g8"]
+[ext_resource type="Script" path="res://scripts/character controllers/state machine/attacks/PB/Up Throw.gd" id="123_y3sdk"]
+[ext_resource type="Script" path="res://scripts/character controllers/state machine/attacks/PB/Back Throw.gd" id="124_cb35k"]
+[ext_resource type="Script" path="res://scripts/character controllers/state machine/Tech Roll.gd" id="131_rot6d"]
+[ext_resource type="Script" path="res://scripts/character controllers/state machine/Aerial Movement.gd" id="132_jnypa"]
+[ext_resource type="Script" path="res://scripts/character controllers/state machine/attacks/Fella/Up Special.gd" id="133_i0ryr"]
+[ext_resource type="Script" path="res://scripts/character controllers/state machine/Falling.gd" id="134_1ci26"]
+[ext_resource type="Script" path="res://scripts/character controllers/state machine/attacks/Fella/Side Special.gd" id="134_3s2ok"]
+[ext_resource type="Script" path="res://scripts/character controllers/state machine/Jump.gd" id="135_ors5k"]
+[ext_resource type="Script" path="res://scripts/character controllers/state machine/Double Jump.gd" id="136_yi4yy"]
+[ext_resource type="Script" path="res://scripts/character controllers/state machine/Jump Squat.gd" id="137_lddrb"]
+[ext_resource type="Script" path="res://scripts/character controllers/state machine/Airdodge.gd" id="138_yylum"]
+[ext_resource type="Script" path="res://scripts/character controllers/state machine/Inactive Fall.gd" id="139_04a66"]
+[ext_resource type="Script" path="res://scripts/character controllers/state machine/Respawn.gd" id="140_kstq6"]
+[ext_resource type="Script" path="res://scripts/character controllers/state machine/attacks/PB/Forward Air.gd" id="141_m7hus"]
+[ext_resource type="Script" path="res://scripts/character controllers/state machine/attacks/PB/Backward Air.gd" id="142_70wj6"]
+[ext_resource type="Script" path="res://scripts/character controllers/state machine/attacks/PB/Up Air.gd" id="143_xwsqj"]
+[ext_resource type="Script" path="res://scripts/character controllers/state machine/attacks/PB/Down Air.gd" id="144_i7a86"]
+[ext_resource type="Script" path="res://scripts/character controllers/state machine/attacks/PB/Neutral Air.gd" id="145_kc2aa"]
+[ext_resource type="Script" path="res://scripts/character controllers/state machine/Drop Thru Platform.gd" id="146_cxdo3"]
+[ext_resource type="Script" path="res://scripts/character controllers/state machine/Ledge Grab.gd" id="147_nl7f8"]
+[ext_resource type="Script" path="res://scripts/character controllers/state machine/Climb Ledge.gd" id="148_bew46"]
+[ext_resource type="Script" path="res://scripts/character controllers/state machine/Ledge Jump.gd" id="149_0ugpn"]
+[ext_resource type="PackedScene" uid="uid://bkg3kd68ff574" path="res://assets/characters/Fella/Fighter Fella.gltf" id="149_6y430"]
+[ext_resource type="Script" path="res://scripts/character controllers/state machine/Damage Fly.gd" id="153_j6fp6"]
+[ext_resource type="Script" path="res://scripts/character controllers/state machine/Get Cargo Carried.gd" id="154_5jh85"]
+[ext_resource type="Script" path="res://scripts/character controllers/state machine/attacks/PB/Neutral Special Charge.gd" id="158_fntr5"]
+[ext_resource type="Script" path="res://scripts/character controllers/Passable Platform Checker.gd" id="162_603xa"]
+[ext_resource type="Script" path="res://scripts/character controllers/Blast Zone Checker.gd" id="163_fiviu"]
+[ext_resource type="Script" path="res://scripts/tools/Hitbox Handler.gd" id="164_7t1sb"]
+[ext_resource type="PackedScene" uid="uid://ugrfkn6s0brw" path="res://scenes/tools/hitbox.tscn" id="165_a2tf4"]
+[ext_resource type="PackedScene" uid="uid://dj13b3txqsxil" path="res://scenes/tools/shield.tscn" id="166_vp1c8"]
+[ext_resource type="Script" path="res://scripts/tools/Set Default Animation Tree Keyframes.gd" id="168_ftlcd"]
+[ext_resource type="Script" path="res://scripts/tools/Ledge Sensor.gd" id="169_fngen"]
+[ext_resource type="Script" path="res://scripts/tools/particles/Particle Handler.gd" id="170_dxt8a"]
+
+[sub_resource type="Animation" id="Animation_3mglc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../State Machine/Grounded Movement/Up Tilt:animation_finished")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../State Machine/Grounded Movement/Down Tilt:animation_finished")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../State Machine/Grounded Movement/Forward Tilt:animation_finished")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../State Machine/Grounded Movement/Up Throw:animation_finished")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../State Machine/Grounded Movement/Back Throw:animation_finished")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../State Machine/Grounded Movement/Forward Throw:animation_finished")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../State Machine/Aerial Movement/Up Special:animation_finished")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../State Machine/Aerial Movement/Neutral Air:animation_finished")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../State Machine/Aerial Movement/Down Air:animation_finished")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../State Machine/Aerial Movement/Up Air:animation_finished")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("../State Machine/Aerial Movement/Backward Air:animation_finished")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("../State Machine/Aerial Movement/Forward Air:animation_finished")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("../State Machine/Grounded Movement/Dash:animation_finished")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("../State Machine/Grounded Movement/Jab:animation_finished")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("../State Machine/Grounded Movement/Jab:cancellable")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nj3dq"]
+_data = {
+"Air Dodge": ExtResource("3_64gdn"),
+"B Air": ExtResource("36_ojvjn"),
+"Back Throw": ExtResource("4_7yaf5"),
+"Crouch": ExtResource("15_sscsv"),
+"Crouch Idle": ExtResource("13_ldj81"),
+"D Air": ExtResource("34_rs2l0"),
+"D Smash": ExtResource("22_eehtd"),
+"D Smash Charge": ExtResource("24_v61rx"),
+"D Smash Start": ExtResource("23_wnrvn"),
+"D Special": ExtResource("42_bqaxi"),
+"D Tilt": ExtResource("21_3h3uh"),
+"Damage fly": ExtResource("55_3hmuk"),
+"Dash": ExtResource("18_srp4k"),
+"Dash Attack": ExtResource("49_3ru60"),
+"Down Throw": ExtResource("22_sti72"),
+"Drop Shield": ExtResource("23_xy3es"),
+"Drop Thru": ExtResource("24_bfdf7"),
+"Enter Shield": ExtResource("28_xs7rk"),
+"F Air": ExtResource("38_7f1vs"),
+"F Smash": ExtResource("25_6bd2a"),
+"F Smash Charge": ExtResource("26_sud5t"),
+"F Smash Start": ExtResource("27_8q1ff"),
+"F Special": ExtResource("43_ckexf"),
+"F Tilt": ExtResource("19_uohw1"),
+"Fall 1": ExtResource("9_pir0r"),
+"Fall 2": ExtResource("11_gkg7k"),
+"Forward Throw": ExtResource("32_06ye0"),
+"Get Cargo Carried": ExtResource("38_ybece"),
+"Get Grabbed": ExtResource("46_r7a7q"),
+"Get hit air high knock": ExtResource("54_8qeno"),
+"Get hit air low knock": ExtResource("52_wua3b"),
+"Get hit ground high knock": ExtResource("53_qouw7"),
+"Get hit ground low knock": ExtResource("47_6bfoa"),
+"Grab Attempt": ExtResource("44_paalj"),
+"Grab Break": ExtResource("44_bx703"),
+"Grab Hold": ExtResource("45_ap5lb"),
+"HeadAction": ExtResource("57_wvx1d"),
+"Hitstun on ground": ExtResource("56_52a31"),
+"Idle": ExtResource("50_hnnmj"),
+"Jab 2": ExtResource("28_wi8p1"),
+"Jab1": ExtResource("51_xhbkk"),
+"JacketAction": ExtResource("58_b52nq"),
+"Jump 2": ExtResource("10_0pr7t"),
+"Jump1": ExtResource("8_pcufr"),
+"Jumpsquat": ExtResource("7_u1wgw"),
+"Land from fall": ExtResource("12_imdf7"),
+"Lay on Back": ExtResource("18_h8ij1"),
+"Lay on Tummy": ExtResource("17_1fi4b"),
+"Ledge Getup": ExtResource("15_vf3qn"),
+"Ledge Getup Attack": ExtResource("51_qjtva"),
+"Ledge Grab": ExtResource("14_hprer"),
+"LegsAction": ExtResource("59_hcj0q"),
+"N Air": ExtResource("33_l6nxt"),
+"N Special": ExtResource("39_6aa8y"),
+"Neutral Getup": ExtResource("48_ir527"),
+"Neutral Getup attack": ExtResource("50_0rxaf"),
+"Pummel": ExtResource("62_du0lh"),
+"RESET": SubResource("Animation_3mglc"),
+"Rapid Jab Continue": ExtResource("30_7dy2g"),
+"Rapid Jab End": ExtResource("32_xry1y"),
+"Rapid Jab Start": ExtResource("29_rkw4r"),
+"Roll B": ExtResource("63_0yxcm"),
+"Roll F": ExtResource("64_citnu"),
+"Shield Break": ExtResource("65_1pe3v"),
+"Shield D": ExtResource("4_hilyx"),
+"Shield L": ExtResource("6_pnvvt"),
+"Shield N": ExtResource("2_cirtl"),
+"Shield R": ExtResource("5_qhdbp"),
+"Shield U": ExtResource("3_5layn"),
+"Spotdodge": ExtResource("66_138r8"),
+"Sprint": ExtResource("67_htkuf"),
+"Sprint Pivot": ExtResource("68_h35sc"),
+"Stunned": ExtResource("69_wxynp"),
+"Taunt": ExtResource("70_anexy"),
+"Tech in Place": ExtResource("71_ibtkm"),
+"Teeter": ExtResource("72_bk7oc"),
+"Tournament Winner": ExtResource("16_nm7tt"),
+"U Air": ExtResource("37_8geap"),
+"U Smash": ExtResource("35_y55a7"),
+"U Tilt": ExtResource("20_83j3y"),
+"Unactionable fall": ExtResource("40_73hna"),
+"Up Special": ExtResource("75_oir32"),
+"Up Throw": ExtResource("77_rdwvu"),
+"Walk": ExtResource("81_6stc0"),
+"Wall Tech": ExtResource("82_6cqxk"),
+"Walljump": ExtResource("41_snfjn"),
+"whoops": ExtResource("31_xds8r")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2fxgr"]
+animation = &"Get Cargo Carried"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_h3bnw"]
+animation = &"Get hit air high knock"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_nqh82"]
+animation = &"Get Grabbed"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_awh4v"]
+advance_mode = 2
+advance_expression = "state.current_state.state_name == \"Grabbed\""
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6ng3w"]
+advance_mode = 2
+advance_expression = "state.current_state.state_name == \"Damage Fly\""
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dg2yu"]
+advance_mode = 2
+advance_expression = "state.current_state.state_name == \"Damage Fly\""
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ncxld"]
+advance_mode = 2
+advance_expression = "state.current_state.state_name == \"Get Cargo Carried\""
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5k12d"]
+advance_mode = 2
+advance_expression = "state.current_state.state_name == \"Damage Fly\""
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_f7s31"]
+"states/Get Cargo Carried/node" = SubResource("AnimationNodeAnimation_2fxgr")
+"states/Get Cargo Carried/position" = Vector2(187, 412.333)
+"states/Get Hit Ait High Knock/node" = SubResource("AnimationNodeAnimation_h3bnw")
+"states/Get Hit Ait High Knock/position" = Vector2(452.333, 247)
+states/Grabbed/node = SubResource("AnimationNodeAnimation_nqh82")
+states/Grabbed/position = Vector2(201.333, 248)
+transitions = ["Start", "Grabbed", SubResource("AnimationNodeStateMachineTransition_awh4v"), "Start", "Get Hit Ait High Knock", SubResource("AnimationNodeStateMachineTransition_6ng3w"), "Grabbed", "Get Hit Ait High Knock", SubResource("AnimationNodeStateMachineTransition_dg2yu"), "Grabbed", "Get Cargo Carried", SubResource("AnimationNodeStateMachineTransition_ncxld"), "Get Cargo Carried", "Get Hit Ait High Knock", SubResource("AnimationNodeStateMachineTransition_5k12d")]
+graph_offset = Vector2(-509, 65)
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_gyw8k"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_c5lh6"]
+advance_mode = 2
+advance_expression = "damaged == true"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_63hfh"]
+advance_mode = 2
+advance_expression = "damaged == false"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_khprv"]
+"states/Damage State/node" = SubResource("AnimationNodeStateMachine_f7s31")
+"states/Damage State/position" = Vector2(455.667, 58.6667)
+"states/General State/node" = ExtResource("100_gr2xq")
+"states/General State/position" = Vector2(456.778, 193.333)
+transitions = ["Start", "General State", SubResource("AnimationNodeStateMachineTransition_gyw8k"), "General State", "Damage State", SubResource("AnimationNodeStateMachineTransition_c5lh6"), "Damage State", "General State", SubResource("AnimationNodeStateMachineTransition_63hfh")]
+graph_offset = Vector2(-129, -10)
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_1lm6q"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_kkkwt"]
+graph_offset = Vector2(-544.667, -87.3333)
+nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_khprv")
+nodes/StateMachine/position = Vector2(-320, 40)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_1lm6q")
+nodes/TimeScale/position = Vector2(80, 120)
+node_connections = [&"TimeScale", 0, &"StateMachine", &"output", 0, &"TimeScale"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_nctgj"]
+radius = 0.25
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_muabd"]
+radius = 0.474
+height = 1.37087
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jymbl"]
+radius = 1.0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0kn1e"]
+radius = 1.0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ia1c4"]
+radius = 1.0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wpvto"]
+radius = 1.0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_46165"]
+radius = 0.234
+height = 0.468
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_h4djl"]
+radius = 0.18
+height = 0.36
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5olja"]
+radius = 0.267
+height = 0.534
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1jua2"]
+radius = 0.113
+height = 0.226
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0534k"]
+radius = 0.1
+height = 0.2
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7sx8l"]
+radius = 0.113
+height = 0.226
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7sn5q"]
+radius = 0.1
+height = 0.2
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pgkit"]
+radius = 0.127
+height = 0.254
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_uyyfm"]
+radius = 0.1
+height = 0.2
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_04ir2"]
+radius = 0.127
+height = 0.254
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4b0s5"]
+radius = 0.1
+height = 0.241392
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uym2n"]
+size = Vector3(1.5, 0.75, 1)
+
+[node name="Body" type="CharacterBody3D"]
+collision_layer = 4
+script = ExtResource("1_ffcvg")
+
+[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.724, 0)
+depth = 0.0
+polygon = PackedVector2Array(0, -0.724, 0.4, 0, 0, 0.724, -0.4, 0)
+
+[node name="Animation Tree" type="AnimationTree" parent="."]
+unique_name_in_owner = true
+active = false
+root_node = NodePath("%Animation Tree/../Fighter Fella")
+libraries = {
+"": SubResource("AnimationLibrary_nj3dq")
+}
+tree_root = SubResource("AnimationNodeBlendTree_kkkwt")
+advance_expression_base_node = NodePath("..")
+anim_player = NodePath("../Fighter Fella/AnimationPlayer")
+"parameters/StateMachine/General State/Grounded Movement/Shield/Shield/blend_position" = Vector2(0.000789881, 0.998256)
+parameters/TimeScale/scale = 0.5
+
+[node name="State Machine" type="Node" parent="."]
+script = ExtResource("101_8bjgm")
+
+[node name="Grounded Movement" type="Node" parent="State Machine"]
+script = ExtResource("102_ojcca")
+landing_lag = 10
+
+[node name="Idle" type="Node" parent="State Machine/Grounded Movement"]
+script = ExtResource("103_6lxsy")
+
+[node name="Walk" type="Node" parent="State Machine/Grounded Movement"]
+script = ExtResource("104_67ouy")
+
+[node name="Run" type="Node" parent="State Machine/Grounded Movement"]
+script = ExtResource("105_ke02q")
+
+[node name="Dash" type="Node" parent="State Machine/Grounded Movement"]
+script = ExtResource("106_hmecm")
+animation_finished = true
+
+[node name="Landing Lag" type="Node" parent="State Machine/Grounded Movement"]
+script = ExtResource("107_x0ek6")
+
+[node name="Hitstun" type="Node" parent="State Machine/Grounded Movement"]
+script = ExtResource("108_fw3ak")
+
+[node name="Crouch" type="Node" parent="State Machine/Grounded Movement"]
+script = ExtResource("109_3mh1s")
+can_drop_thru_platform = true
+
+[node name="Jab" type="Node" parent="State Machine/Grounded Movement"]
+script = ExtResource("98_vo3fs")
+cancellable = true
+animation_finished = true
+
+[node name="Forward Tilt" type="Node" parent="State Machine/Grounded Movement"]
+script = ExtResource("111_iflef")
+animation_finished = true
+
+[node name="Up Tilt" type="Node" parent="State Machine/Grounded Movement"]
+script = ExtResource("112_v7r58")
+animation_finished = true
+
+[node name="Down Tilt" type="Node" parent="State Machine/Grounded Movement"]
+script = ExtResource("113_jqmpr")
+animation_finished = true
+
+[node name="Shield" type="Node" parent="State Machine/Grounded Movement"]
+script = ExtResource("114_covm0")
+animation_finished = true
+
+[node name="Dodge Roll" type="Node" parent="State Machine/Grounded Movement"]
+script = ExtResource("115_uife7")
+animation_finished = true
+
+[node name="Teeter" type="Node" parent="State Machine/Grounded Movement"]
+script = ExtResource("116_x7iyi")
+
+[node name="Turn" type="Node" parent="State Machine/Grounded Movement"]
+script = ExtResource("117_fcrhc")
+animation_finished = true
+
+[node name="Run Turn" type="Node" parent="State Machine/Grounded Movement"]
+script = ExtResource("118_tfx7w")
+
+[node name="Grab" type="Node" parent="State Machine/Grounded Movement"]
+script = ExtResource("119_h6c4h")
+
+[node name="Grab Hold" type="Node" parent="State Machine/Grounded Movement"]
+script = ExtResource("120_pvtsg")
+
+[node name="Get Grabbed" type="Node" parent="State Machine/Grounded Movement"]
+script = ExtResource("121_3t5y1")
+
+[node name="Get Grabbed Position" type="Node3D" parent="State Machine/Grounded Movement/Get Grabbed"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.519497, 1.31781, 0)
+
+[node name="Down Throw" type="Node" parent="State Machine/Grounded Movement"]
+script = ExtResource("122_tb0g8")
+animation_finished = true
+
+[node name="Up Throw" type="Node" parent="State Machine/Grounded Movement"]
+script = ExtResource("123_y3sdk")
+animation_finished = true
+
+[node name="Back Throw" type="Node" parent="State Machine/Grounded Movement"]
+script = ExtResource("124_cb35k")
+animation_finished = true
+
+[node name="Forward Throw" type="Node" parent="State Machine/Grounded Movement"]
+script = ExtResource("113_eo57q")
+animation_finished = true
+
+[node name="Tech Roll" type="Node" parent="State Machine/Grounded Movement"]
+script = ExtResource("131_rot6d")
+
+[node name="Aerial Movement" type="Node" parent="State Machine"]
+script = ExtResource("132_jnypa")
+constants = ExtResource("116_ohx14")
+
+[node name="Fall" type="Node" parent="State Machine/Aerial Movement"]
+script = ExtResource("134_1ci26")
+
+[node name="Jump" type="Node" parent="State Machine/Aerial Movement"]
+script = ExtResource("135_ors5k")
+
+[node name="Double Jump" type="Node" parent="State Machine/Aerial Movement"]
+script = ExtResource("136_yi4yy")
+
+[node name="Jump Squat" type="Node" parent="State Machine/Aerial Movement"]
+script = ExtResource("137_lddrb")
+animation_finished = true
+
+[node name="Airdodge" type="Node" parent="State Machine/Aerial Movement"]
+script = ExtResource("138_yylum")
+
+[node name="Inactive Fall" type="Node" parent="State Machine/Aerial Movement"]
+script = ExtResource("139_04a66")
+
+[node name="Respawn" type="Node" parent="State Machine/Aerial Movement"]
+script = ExtResource("140_kstq6")
+
+[node name="Forward Air" type="Node" parent="State Machine/Aerial Movement"]
+script = ExtResource("141_m7hus")
+animation_finished = true
+
+[node name="Backward Air" type="Node" parent="State Machine/Aerial Movement"]
+script = ExtResource("142_70wj6")
+animation_finished = true
+
+[node name="Up Air" type="Node" parent="State Machine/Aerial Movement"]
+script = ExtResource("143_xwsqj")
+animation_finished = true
+
+[node name="Down Air" type="Node" parent="State Machine/Aerial Movement"]
+script = ExtResource("144_i7a86")
+animation_finished = true
+
+[node name="Neutral Air" type="Node" parent="State Machine/Aerial Movement"]
+script = ExtResource("145_kc2aa")
+animation_finished = true
+
+[node name="Drop Thru Platform" type="Node" parent="State Machine/Aerial Movement"]
+script = ExtResource("146_cxdo3")
+
+[node name="Ledge Grab" type="Node" parent="State Machine/Aerial Movement"]
+script = ExtResource("147_nl7f8")
+
+[node name="Climb Ledge" type="Node" parent="State Machine/Aerial Movement"]
+script = ExtResource("148_bew46")
+animation_finished = true
+
+[node name="Ledge Jump" type="Node" parent="State Machine/Aerial Movement"]
+script = ExtResource("149_0ugpn")
+
+[node name="Up Special" type="Node" parent="State Machine/Aerial Movement"]
+script = ExtResource("133_i0ryr")
+animation_finished = true
+
+[node name="Side Special" type="Node" parent="State Machine/Aerial Movement"]
+script = ExtResource("134_3s2ok")
+cancellable = true
+animation_finished = true
+
+[node name="Damage Fly" type="Node" parent="State Machine/Aerial Movement"]
+script = ExtResource("153_j6fp6")
+
+[node name="Get Cargo Carried" type="Node" parent="State Machine/Aerial Movement"]
+script = ExtResource("154_5jh85")
+
+[node name="Neutral Special" type="Node" parent="State Machine/Aerial Movement"]
+script = ExtResource("158_fntr5")
+animation_finished = true
+
+[node name="Controller" type="Node" parent="."]
+
+[node name="Passable Platform Checker" type="RayCast3D" parent="."]
+target_position = Vector3(0, -2, 0)
+collision_mask = 2
+hit_from_inside = true
+script = ExtResource("162_603xa")
+
+[node name="Blast Zone Checker" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 8
+script = ExtResource("163_fiviu")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Blast Zone Checker"]
+shape = SubResource("SphereShape3D_nctgj")
+
+[node name="Hitboxes" type="Node3D" parent="."]
+script = ExtResource("164_7t1sb")
+
+[node name="hitbox" parent="Hitboxes" instance=ExtResource("165_a2tf4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0895778, 0.753941, 0)
+collision_mask = 33
+hitbox_radius = 0.474
+hitstun_frames = 5
+knockback = 24.0
+knockback_scaling = 100.0
+
+[node name="hitbox point" parent="Hitboxes/hitbox" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.203523, -1.35568, 0)
+
+[node name="HitCapsule" parent="Hitboxes/hitbox" index="1"]
+transform = Transform3D(0.988911, -0.148461, 0, 0.148461, 0.988911, 0, 0, 0, 1, 0.101761, -0.67784, 0)
+shape = SubResource("CapsuleShape3D_muabd")
+
+[node name="hitbox2" parent="Hitboxes" instance=ExtResource("165_a2tf4")]
+collision_mask = 33
+
+[node name="HitCapsule" parent="Hitboxes/hitbox2" index="1"]
+transform = Transform3D(-4.37113e-08, -0.999999, 0, 0.999999, -4.37113e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_jymbl")
+
+[node name="hitbox3" parent="Hitboxes" instance=ExtResource("165_a2tf4")]
+collision_mask = 33
+
+[node name="HitCapsule" parent="Hitboxes/hitbox3" index="1"]
+transform = Transform3D(-4.37113e-08, -0.999999, 0, 0.999999, -4.37113e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_0kn1e")
+
+[node name="hitbox4" parent="Hitboxes" instance=ExtResource("165_a2tf4")]
+collision_mask = 33
+
+[node name="HitCapsule" parent="Hitboxes/hitbox4" index="1"]
+transform = Transform3D(-4.37113e-08, -0.999999, 0, 0.999999, -4.37113e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_ia1c4")
+
+[node name="hitbox5" parent="Hitboxes" instance=ExtResource("165_a2tf4")]
+collision_mask = 33
+
+[node name="HitCapsule" parent="Hitboxes/hitbox5" index="1"]
+transform = Transform3D(-4.37113e-08, -0.999999, 0, 0.999999, -4.37113e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_wpvto")
+
+[node name="Hurtboxes" type="Node3D" parent="."]
+
+[node name="Bone Attachments" type="Node3D" parent="Hurtboxes"]
+
+[node name="Hips" type="BoneAttachment3D" parent="Hurtboxes/Bone Attachments"]
+transform = Transform3D(0.853756, 0.0460222, 0.518636, 1.49012e-07, 0.996086, -0.08839, -0.520674, 0.0754635, 0.850414, -0.00538911, 0.443766, -0.0218802)
+bone_name = "DEF-spine"
+bone_idx = 1
+use_external_skeleton = true
+external_skeleton = NodePath("../../../Fighter Fella/rig/Skeleton3D")
+
+[node name="Ribs" type="BoneAttachment3D" parent="Hurtboxes/Bone Attachments"]
+transform = Transform3D(0.853756, 0.0460222, 0.518636, 1.49012e-07, 0.996086, -0.08839, -0.520674, 0.0754635, 0.850414, -0.00538911, 0.443766, -0.0218802)
+bone_name = "DEF-spine"
+bone_idx = 1
+use_external_skeleton = true
+external_skeleton = NodePath("../../../Fighter Fella/rig/Skeleton3D")
+
+[node name="Neck" type="BoneAttachment3D" parent="Hurtboxes/Bone Attachments"]
+transform = Transform3D(0.781265, 0.33437, 0.527088, -0.000934754, 0.845048, -0.53469, -0.624199, 0.417242, 0.660519, -0.0241141, 0.898881, -0.036484)
+bone_name = "DEF-spine.004"
+bone_idx = 5
+use_external_skeleton = true
+external_skeleton = NodePath("../../../Fighter Fella/rig/Skeleton3D")
+
+[node name="Head" type="BoneAttachment3D" parent="Hurtboxes/Bone Attachments"]
+transform = Transform3D(0.853756, -0.460463, 0.243053, -1.2666e-07, 0.466805, 0.88436, -0.520674, -0.755028, 0.398537, 0.00269565, 1.13933, -0.00328826)
+bone_name = "DEF-spine.006"
+bone_idx = 7
+use_external_skeleton = true
+external_skeleton = NodePath("../../../Fighter Fella/rig/Skeleton3D")
+
+[node name="Left Shoulder" type="BoneAttachment3D" parent="Hurtboxes/Bone Attachments"]
+transform = Transform3D(0.569169, 0.659414, 0.498816, -0.593791, 0.774671, -0.261848, -0.543226, -0.155874, 0.80886, 0.127199, 0.857173, -0.131603)
+bone_name = "DEF-upper_arm.L"
+bone_idx = 140
+use_external_skeleton = true
+external_skeleton = NodePath("../../../Fighter Fella/rig/Skeleton3D")
+
+[node name="Left Elbow" type="BoneAttachment3D" parent="Hurtboxes/Bone Attachments"]
+transform = Transform3D(0.641618, 0.669599, 0.380311, -0.629507, 0.76086, -0.199852, -0.414681, -0.118996, 0.891823, 0.23652, 0.985602, -0.157444)
+bone_name = "DEF-forearm.L"
+bone_idx = 142
+use_external_skeleton = true
+external_skeleton = NodePath("../../../Fighter Fella/rig/Skeleton3D")
+
+[node name="Left Wrist" type="BoneAttachment3D" parent="Hurtboxes/Bone Attachments"]
+transform = Transform3D(0.96458, 0.246667, 0.133552, -0.203822, 0.964517, -0.144012, -0.166781, 0.0981777, 0.980995, 0.395996, 1.16681, -0.185785)
+bone_name = "DEF-hand.L"
+bone_idx = 144
+use_external_skeleton = true
+external_skeleton = NodePath("../../../Fighter Fella/rig/Skeleton3D")
+
+[node name="Right Shoulder" type="BoneAttachment3D" parent="Hurtboxes/Bone Attachments"]
+transform = Transform3D(0.999714, -0.0566977, -0.0312282, 0.0637814, 0.947946, 0.30183, 0.0125352, -0.301529, 0.954765, -0.121457, 0.857751, 0.0872288)
+bone_name = "DEF-upper_arm.R"
+bone_idx = 170
+use_external_skeleton = true
+external_skeleton = NodePath("../../../Fighter Fella/rig/Skeleton3D")
+
+[node name="Right Elbow" type="BoneAttachment3D" parent="Hurtboxes/Bone Attachments"]
+transform = Transform3D(0.841468, -0.306892, -0.448279, 0.209428, 0.941029, -0.252821, 0.500776, 0.122137, 0.858984, -0.130856, 1.01491, 0.0372396)
+bone_name = "DEF-forearm.R"
+bone_idx = 172
+use_external_skeleton = true
+external_skeleton = NodePath("../../../Fighter Fella/rig/Skeleton3D")
+
+[node name="Right Wrist" type="BoneAttachment3D" parent="Hurtboxes/Bone Attachments"]
+transform = Transform3D(0.841468, -0.306892, -0.448279, 0.209428, 0.941029, -0.252821, 0.500776, 0.122137, 0.858984, -0.130856, 1.01491, 0.0372396)
+bone_name = "DEF-forearm.R"
+bone_idx = 172
+use_external_skeleton = true
+external_skeleton = NodePath("../../../Fighter Fella/rig/Skeleton3D")
+
+[node name="Left Hip" type="BoneAttachment3D" parent="Hurtboxes/Bone Attachments"]
+transform = Transform3D(0.821184, 0.453435, -0.351409, 0.161297, -0.757444, -0.627344, -0.555641, 0.450255, -0.701461, 0.0950225, 0.466936, -0.0553947)
+bone_name = "DEF-thigh.L"
+bone_idx = 67
+use_external_skeleton = true
+external_skeleton = NodePath("../../../Fighter Fella/rig/Skeleton3D")
+
+[node name="Left Knee" type="BoneAttachment3D" parent="Hurtboxes/Bone Attachments"]
+transform = Transform3D(0.841619, -0.280872, -0.471112, 0.198407, -0.633626, 0.745416, -0.513812, -0.704738, -0.483837, 0.198755, 0.293655, 0.0476104)
+bone_name = "DEF-shin.L"
+bone_idx = 69
+use_external_skeleton = true
+external_skeleton = NodePath("../../../Fighter Fella/rig/Skeleton3D")
+
+[node name="Left Ankle" type="BoneAttachment3D" parent="Hurtboxes/Bone Attachments"]
+transform = Transform3D(0.463584, 0.221376, -0.866375, -0.200197, -0.914255, -0.337827, -0.863327, 0.338636, -0.368909, 0.146236, 0.175176, -0.0841652)
+bone_name = "DEF-foot.L"
+bone_idx = 71
+use_external_skeleton = true
+external_skeleton = NodePath("../../../Fighter Fella/rig/Skeleton3D")
+
+[node name="Right Hip" type="BoneAttachment3D" parent="Hurtboxes/Bone Attachments"]
+transform = Transform3D(0.846222, -0.133898, -0.521969, -0.320488, -0.898084, -0.284435, -0.433634, 0.402453, -0.808386, -0.0811535, 0.466936, 0.0520485)
+bone_name = "DEF-thigh.R"
+bone_idx = 86
+use_external_skeleton = true
+external_skeleton = NodePath("../../../Fighter Fella/rig/Skeleton3D")
+
+[node name="Right Knee" type="BoneAttachment3D" parent="Hurtboxes/Bone Attachments"]
+transform = Transform3D(0.773463, -0.631678, -0.0339744, -0.354529, -0.461544, 0.812694, -0.533643, -0.608924, -0.589164, -0.111785, 0.26148, 0.144118)
+bone_name = "DEF-shin.R"
+bone_idx = 88
+use_external_skeleton = true
+external_skeleton = NodePath("../../../Fighter Fella/rig/Skeleton3D")
+
+[node name="Right Ankle" type="BoneAttachment3D" parent="Hurtboxes/Bone Attachments"]
+transform = Transform3D(0.693455, -0.0412321, -0.721514, -0.482117, -0.767942, -0.415748, -0.535329, 0.639241, -0.553794, -0.2299, 0.175179, 0.0302582)
+bone_name = "DEF-foot.R"
+bone_idx = 90
+use_external_skeleton = true
+external_skeleton = NodePath("../../../Fighter Fella/rig/Skeleton3D")
+
+[node name="Belly" parent="Hurtboxes" node_paths=PackedStringArray("hitbox_start_point", "hitbox_end_point") instance=ExtResource("165_a2tf4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00538911, 0.443766, 0)
+collision_layer = 32
+monitorable = true
+hitbox_radius = 0.234
+active = true
+hurtbox = true
+hitbox_start_point = NodePath("../Bone Attachments/Hips")
+hitbox_end_point = NodePath("../Bone Attachments/Ribs")
+
+[node name="HitCapsule" parent="Hurtboxes/Belly" index="1"]
+transform = Transform3D(-4.37046e-08, -0.999845, 0, 0.999845, -4.37046e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_46165")
+
+[node name="Head" parent="Hurtboxes" node_paths=PackedStringArray("hitbox_start_point", "hitbox_end_point") instance=ExtResource("165_a2tf4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0241141, 0.898881, 0)
+collision_layer = 32
+monitorable = true
+hitbox_radius = 0.18
+active = true
+hurtbox = true
+hitbox_start_point = NodePath("../Bone Attachments/Neck")
+hitbox_end_point = NodePath("../Bone Attachments/Head")
+
+[node name="HitCapsule" parent="Hurtboxes/Head" index="1"]
+transform = Transform3D(-0.993706, -0.110796, 0, 0.110796, -0.993706, 0, 0, 0, 1, 0.0134049, 0.120226, 0)
+shape = SubResource("CapsuleShape3D_h4djl")
+
+[node name="Chest" parent="Hurtboxes" node_paths=PackedStringArray("hitbox_start_point", "hitbox_end_point") instance=ExtResource("165_a2tf4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00538911, 0.443766, 0)
+collision_layer = 32
+monitorable = true
+hitbox_radius = 0.267
+active = true
+hurtbox = true
+hitbox_start_point = NodePath("../Bone Attachments/Ribs")
+hitbox_end_point = NodePath("../Bone Attachments/Neck")
+
+[node name="HitCapsule" parent="Hurtboxes/Chest" index="1"]
+transform = Transform3D(-0.998987, 0.0411019, 0, -0.0411019, -0.998987, 0, 0, 0, 1, -0.0093625, 0.227558, 0)
+shape = SubResource("CapsuleShape3D_5olja")
+
+[node name="Left Thigh" parent="Hurtboxes" node_paths=PackedStringArray("hitbox_start_point", "hitbox_end_point") instance=ExtResource("165_a2tf4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0950225, 0.466936, 0)
+collision_layer = 32
+monitorable = true
+hitbox_radius = 0.113
+active = true
+hurtbox = true
+hitbox_start_point = NodePath("../Bone Attachments/Left Hip")
+hitbox_end_point = NodePath("../Bone Attachments/Left Knee")
+
+[node name="HitCapsule" parent="Hurtboxes/Left Thigh" index="1"]
+transform = Transform3D(0.857864, -0.513551, 0, 0.513551, 0.857864, 0, 0, 0, 1, 0.0518664, -0.0866405, 0)
+shape = SubResource("CapsuleShape3D_1jua2")
+
+[node name="Left Calf" parent="Hurtboxes" node_paths=PackedStringArray("hitbox_start_point", "hitbox_end_point") instance=ExtResource("165_a2tf4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.198755, 0.293655, 0)
+collision_layer = 32
+monitorable = true
+hitbox_radius = 0.1
+active = true
+hurtbox = true
+hitbox_start_point = NodePath("../Bone Attachments/Left Knee")
+hitbox_end_point = NodePath("../Bone Attachments/Left Ankle")
+
+[node name="HitCapsule" parent="Hurtboxes/Left Calf" index="1"]
+transform = Transform3D(0.914058, 0.40518, 0, -0.40518, 0.914058, 0, 0, 0, 1, -0.0262594, -0.0592394, 0)
+shape = SubResource("CapsuleShape3D_0534k")
+
+[node name="Right Thigh" parent="Hurtboxes" node_paths=PackedStringArray("hitbox_start_point", "hitbox_end_point") instance=ExtResource("165_a2tf4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0811535, 0.466936, 0)
+collision_layer = 32
+monitorable = true
+hitbox_radius = 0.113
+active = true
+hurtbox = true
+hitbox_start_point = NodePath("../Bone Attachments/Right Hip")
+hitbox_end_point = NodePath("../Bone Attachments/Right Knee")
+
+[node name="HitCapsule" parent="Hurtboxes/Right Thigh" index="1"]
+transform = Transform3D(0.988907, 0.147439, 0, -0.147439, 0.988907, 0, 0, 0, 1, -0.015316, -0.102728, 0)
+shape = SubResource("CapsuleShape3D_7sx8l")
+
+[node name="Right Calf" parent="Hurtboxes" node_paths=PackedStringArray("hitbox_start_point", "hitbox_end_point") instance=ExtResource("165_a2tf4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.111785, 0.26148, 0)
+collision_layer = 32
+monitorable = true
+hitbox_radius = 0.1
+active = true
+hurtbox = true
+hitbox_start_point = NodePath("../Bone Attachments/Right Knee")
+hitbox_end_point = NodePath("../Bone Attachments/Right Ankle")
+
+[node name="HitCapsule" parent="Hurtboxes/Right Calf" index="1"]
+transform = Transform3D(0.589864, 0.8073, 0, -0.8073, 0.589864, 0, 0, 0, 1, -0.0590572, -0.0431509, 0)
+shape = SubResource("CapsuleShape3D_7sn5q")
+
+[node name="Right Upper Arm" parent="Hurtboxes" node_paths=PackedStringArray("hitbox_start_point", "hitbox_end_point") instance=ExtResource("165_a2tf4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.121457, 0.857751, 0)
+collision_layer = 32
+monitorable = true
+hitbox_radius = 0.127
+active = true
+hurtbox = true
+hitbox_start_point = NodePath("../Bone Attachments/Right Shoulder")
+hitbox_end_point = NodePath("../Bone Attachments/Right Elbow")
+
+[node name="HitCapsule" parent="Hurtboxes/Right Upper Arm" index="1"]
+transform = Transform3D(-0.99803, 0.0596921, 0, -0.0596921, -0.99803, 0, 0, 0, 1, -0.00469972, 0.0785779, 0)
+shape = SubResource("CapsuleShape3D_pgkit")
+
+[node name="Right Forearm" parent="Hurtboxes" node_paths=PackedStringArray("hitbox_start_point", "hitbox_end_point") instance=ExtResource("165_a2tf4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.130856, 1.01491, 0)
+collision_layer = 32
+monitorable = true
+hitbox_radius = 0.1
+active = true
+hurtbox = true
+hitbox_start_point = NodePath("../Bone Attachments/Right Elbow")
+hitbox_end_point = NodePath("../Bone Attachments/Right Wrist")
+
+[node name="HitCapsule" parent="Hurtboxes/Right Forearm" index="1"]
+transform = Transform3D(-4.37047e-08, -0.999846, 0, 0.999846, -4.37047e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_uyyfm")
+
+[node name="Left Upper Arm" parent="Hurtboxes" node_paths=PackedStringArray("hitbox_start_point", "hitbox_end_point") instance=ExtResource("165_a2tf4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.127199, 0.857173, 0)
+collision_layer = 32
+monitorable = true
+hitbox_radius = 0.127
+active = true
+hurtbox = true
+hitbox_start_point = NodePath("../Bone Attachments/Left Shoulder")
+hitbox_end_point = NodePath("../Bone Attachments/Left Elbow")
+
+[node name="HitCapsule" parent="Hurtboxes/Left Upper Arm" index="1"]
+transform = Transform3D(-0.761357, -0.64808, 0, 0.64808, -0.761357, 0, 0, 0, 1, 0.0546606, 0.0642146, 0)
+shape = SubResource("CapsuleShape3D_04ir2")
+
+[node name="Left Forearm" parent="Hurtboxes" node_paths=PackedStringArray("hitbox_start_point", "hitbox_end_point") instance=ExtResource("165_a2tf4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.23652, 0.985602, 0)
+collision_layer = 32
+monitorable = true
+hitbox_radius = 0.1
+active = true
+hurtbox = true
+hitbox_start_point = NodePath("../Bone Attachments/Left Elbow")
+hitbox_end_point = NodePath("../Bone Attachments/Left Wrist")
+
+[node name="HitCapsule" parent="Hurtboxes/Left Forearm" index="1"]
+transform = Transform3D(-0.750577, -0.660549, 0, 0.660549, -0.750577, 0, 0, 0, 1, 0.0797381, 0.0906059, 0)
+shape = SubResource("CapsuleShape3D_4b0s5")
+
+[node name="Shield" parent="." instance=ExtResource("166_vp1c8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.100391, 0.788085, 0)
+visible = false
+radius = 1.994
+color = Color(1, 0, 0, 1)
+
+[node name="hitbox" parent="Shield" index="0"]
+shield = true
+
+[node name="Ledge Tracking" type="Node3D" parent="."]
+
+[node name="Ledge Sensor" type="Area3D" parent="Ledge Tracking"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.285145, 1.37339, 0)
+collision_layer = 0
+collision_mask = 64
+script = ExtResource("169_fngen")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ledge Tracking/Ledge Sensor"]
+shape = SubResource("BoxShape3D_uym2n")
+
+[node name="Ledge Position" type="Node3D" parent="Ledge Tracking"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.362827, 2.26294, 0)
+
+[node name="Climb Tracker" type="Node3D" parent="Ledge Tracking"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.263, 0)
+
+[node name="Particles" type="Node3D" parent="."]
+script = ExtResource("170_dxt8a")
+
+[node name="Grab Position" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.904295, 1.44753, 0)
+
+[node name="Fighter Fella" parent="." instance=ExtResource("149_6y430")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.065762, 0, -0.0210595)
+
+[node name="Skeleton3D" parent="Fighter Fella/rig" index="0"]
+bones/1/position = Vector3(0.000820721, 0.0711511, 0.443766)
+bones/1/rotation = Quaternion(0.643251, -0.361142, -0.330514, 0.588698)
+bones/2/rotation = Quaternion(-0.0710852, 2.72695e-15, -1.6948e-08, 0.99747)
+bones/3/rotation = Quaternion(0.0976134, 0.0320412, -0.00632178, 0.994688)
+bones/4/rotation = Quaternion(-0.227103, 0.0933457, 0.0118905, 0.969314)
+bones/5/rotation = Quaternion(0.425678, -0.0626177, 0.00850354, 0.902665)
+bones/6/rotation = Quaternion(-0.502855, -1.03041e-07, -5.9945e-08, 0.864371)
+bones/7/rotation = Quaternion(-0.292739, -0.044924, -0.0444423, 0.954102)
+bones/8/position = Vector3(0.136385, -0.170758, 0.985602)
+bones/8/rotation = Quaternion(0.383341, 0.877037, -0.224393, 0.18304)
+bones/8/scale = Vector3(1, 21.7759, 1)
+bones/9/position = Vector3(-0.0582992, 0.196618, 1.01491)
+bones/9/rotation = Quaternion(0.281177, 0.502152, 0.107946, -0.810636)
+bones/9/scale = Vector3(1, 19.2739, 1)
+bones/10/position = Vector3(-0.06867, -0.132993, 0.293655)
+bones/10/rotation = Quaternion(0.715698, -0.50422, 0.46961, 0.114036)
+bones/10/scale = Vector3(1, 16.4099, 1)
+bones/11/position = Vector3(-0.165178, 0.177547, 0.26148)
+bones/11/rotation = Quaternion(0.778195, -0.414386, 0.452441, 0.134141)
+bones/11/scale = Vector3(1, 20.2894, 1)
+bones/13/position = Vector3(-0.00420355, 0.00236002, -0.0188627)
+bones/13/rotation = Quaternion(0, 0, -0.489554, 0.871973)
+bones/15/rotation = Quaternion(-0.00411537, 0.000674563, 0.12613, 0.992005)
+bones/17/rotation = Quaternion(0.687838, 8.65298e-08, 8.19966e-08, 0.725865)
+bones/19/rotation = Quaternion(0.737696, 8.04822e-08, 8.79402e-08, 0.675133)
+bones/26/rotation = Quaternion(0.923138, 0.0949346, 0.0285355, 0.371469)
+bones/26/scale = Vector3(0.990986, 0.990986, 0.990987)
+bones/27/rotation = Quaternion(0.694085, -1.83497e-05, 1.73579e-05, 0.719893)
+bones/27/scale = Vector3(0.997436, 0.997436, 0.997436)
+bones/28/rotation = Quaternion(-0.540699, -0.207832, 0.253899, 0.774588)
+bones/28/scale = Vector3(1.01169, 1.01169, 1.01169)
+bones/29/rotation = Quaternion(-0.000488787, 0.97826, -0.207381, 8.16066e-05)
+bones/33/scale = Vector3(1.01169, 1.01169, 1.01169)
+bones/35/rotation = Quaternion(-2.47632e-07, -0.116321, -7.55997e-08, 0.993212)
+bones/35/scale = Vector3(1.01169, 1.01169, 1.01169)
+bones/37/scale = Vector3(1.0091, 1.0091, 1.0091)
+bones/38/rotation = Quaternion(8.08754e-08, -0.0172429, 5.33648e-08, 0.999851)
+bones/38/scale = Vector3(1.0091, 1.0091, 1.0091)
+bones/40/rotation = Quaternion(0.967631, -0.176288, -0.0430005, 0.175397)
+bones/40/scale = Vector3(0.993203, 0.993204, 0.993203)
+bones/41/rotation = Quaternion(0.608093, 1.99405e-05, -1.49694e-05, 0.793866)
+bones/41/scale = Vector3(0.998147, 0.998147, 0.998147)
+bones/42/rotation = Quaternion(-0.704344, -0.00458847, 0.075734, 0.705792)
+bones/42/scale = Vector3(1.00871, 1.00871, 1.00871)
+bones/43/rotation = Quaternion(-0.000489058, 0.97826, -0.207381, 8.02431e-05)
+bones/47/scale = Vector3(1.00871, 1.00871, 1.00871)
+bones/49/rotation = Quaternion(-2.38149e-07, -0.00268996, -5.65436e-08, 0.999996)
+bones/49/scale = Vector3(1.00871, 1.00871, 1.00871)
+bones/51/scale = Vector3(1.00684, 1.00684, 1.00684)
+bones/52/rotation = Quaternion(-1.49505e-08, 0.0356768, -6.20265e-09, 0.999363)
+bones/52/scale = Vector3(1.00684, 1.00684, 1.00684)
+bones/62/rotation = Quaternion(-0.70628, -0.0708763, -0.0692865, 0.70096)
+bones/63/rotation = Quaternion(-0.328455, 0.00122036, 0.000407701, 0.944519)
+bones/63/scale = Vector3(0.990986, 0.990986, 0.990986)
+bones/64/rotation = Quaternion(0.694085, -1.83499e-05, 1.73455e-05, 0.719893)
+bones/64/scale = Vector3(0.997436, 0.997436, 0.997436)
+bones/65/rotation = Quaternion(0.923578, 0.0838849, 0.00116667, 0.374119)
+bones/67/rotation = Quaternion(0.923578, 0.0838848, 0.00116653, 0.374119)
+bones/67/scale = Vector3(1.00454, 0.990986, 1.00454)
+bones/68/rotation = Quaternion(1.83997e-08, 0.0124067, -6.21824e-08, 0.999923)
+bones/69/rotation = Quaternion(0.693981, 0.0123816, -0.0119438, 0.719788)
+bones/69/scale = Vector3(1.00128, 0.983999, 1.01496)
+bones/70/rotation = Quaternion(1.18035e-09, -0.110981, -4.95707e-08, 0.993823)
+bones/71/rotation = Quaternion(-0.508831, -0.12132, 0.312227, 0.793024)
+bones/71/scale = Vector3(1.00092, 0.99565, 1.00362)
+bones/72/rotation = Quaternion(-0.000488669, 0.97826, -0.207381, 8.16046e-05)
+bones/81/rotation = Quaternion(-0.581436, 0.129907, 0.126964, 0.793055)
+bones/82/rotation = Quaternion(-0.284094, -0.0012388, -0.000352937, 0.958796)
+bones/82/scale = Vector3(0.993203, 0.993204, 0.993203)
+bones/83/rotation = Quaternion(0.608093, 1.99345e-05, -1.49664e-05, 0.793866)
+bones/83/scale = Vector3(0.998147, 0.998147, 0.998147)
+bones/84/rotation = Quaternion(0.9684, -0.164711, 0.0189647, 0.186311)
+bones/86/rotation = Quaternion(0.9684, -0.164711, 0.0189648, 0.186311)
+bones/86/scale = Vector3(1.00342, 0.993203, 1.00342)
+bones/87/rotation = Quaternion(-3.27705e-08, -0.0283147, 1.81369e-08, 0.999599)
+bones/88/rotation = Quaternion(0.607701, -0.028246, 0.0216778, 0.793367)
+bones/88/scale = Vector3(1.00093, 0.988681, 1.01052)
+bones/89/rotation = Quaternion(-2.77218e-08, -0.00806498, -6.25727e-08, 0.999967)
+bones/90/rotation = Quaternion(-0.70375, 0.00105985, 0.0813763, 0.705772)
+bones/90/scale = Vector3(0.995841, 0.995672, 1.00855)
+bones/91/rotation = Quaternion(-0.000489001, 0.97826, -0.207381, 8.02073e-05)
+bones/95/rotation = Quaternion(-0.00206181, 0.000337958, 0.0631915, 0.997999)
+bones/96/rotation = Quaternion(0.756986, 7.78951e-08, 9.02398e-08, 0.653431)
+bones/97/rotation = Quaternion(-0.0989385, -0.0315697, 0.00163502, 0.994591)
+bones/100/rotation = Quaternion(-0.756819, 0.0480559, 0.0410354, 0.650563)
+bones/101/rotation = Quaternion(0.589886, -2.64125e-14, 3.76315e-15, 0.807487)
+bones/102/rotation = Quaternion(0.425678, -0.0626177, 0.00850354, 0.902665)
+bones/104/rotation = Quaternion(-0.292739, -0.044924, -0.0444423, 0.954102)
+bones/105/rotation = Quaternion(-0.58704, -0.0375488, -0.050827, 0.807087)
+bones/106/rotation = Quaternion(0.767702, 7.56628e-08, 9.18087e-08, 0.640807)
+bones/107/rotation = Quaternion(-0.764845, -0.0487289, -0.0402342, 0.641108)
+bones/115/rotation = Quaternion(-0.454763, -0.376058, -0.514241, 0.622356)
+bones/116/rotation = Quaternion(0.502542, 0.580394, 0.0985351, 0.633155)
+bones/116/scale = Vector3(1.02919, 1.02919, 1.02919)
+bones/117/rotation = Quaternion(0.0202212, -9.01783e-07, 7.71938e-08, 0.999796)
+bones/117/scale = Vector3(0.991554, 0.991554, 0.991554)
+bones/118/rotation = Quaternion(0.0317641, -0.130232, 0.260335, 0.956168)
+bones/118/scale = Vector3(0.979912, 0.979912, 0.979912)
+bones/121/scale = Vector3(0.979912, 0.979912, 0.979912)
+bones/123/rotation = Quaternion(-5.80999e-08, -0.066428, 3.49143e-08, 0.997791)
+bones/123/scale = Vector3(0.979912, 0.979912, 0.979912)
+bones/125/scale = Vector3(0.971635, 0.971635, 0.971636)
+bones/126/rotation = Quaternion(-2.63195e-08, 0.0384347, 5.19384e-08, 0.999261)
+bones/126/scale = Vector3(0.971635, 0.971635, 0.971636)
+bones/135/rotation = Quaternion(0.762767, 0.116874, -0.335294, 0.540467)
+bones/136/rotation = Quaternion(-0.011881, 0.00419116, 4.9677e-05, 0.999921)
+bones/136/scale = Vector3(1.02919, 1.02919, 1.02919)
+bones/137/rotation = Quaternion(0.0202212, -9.00294e-07, 6.7253e-08, 0.999796)
+bones/137/scale = Vector3(0.991554, 0.991554, 0.991554)
+bones/138/rotation = Quaternion(0.49349, 0.627309, 0.136842, 0.586708)
+bones/140/rotation = Quaternion(0.493489, 0.627309, 0.136842, 0.586708)
+bones/140/scale = Vector3(0.985716, 1.02919, 0.985716)
+bones/141/rotation = Quaternion(3.32622e-08, -0.0384273, -1.98972e-08, 0.999261)
+bones/142/rotation = Quaternion(0.020224, -0.0384367, 0.000810828, 0.999056)
+bones/142/scale = Vector3(1.00425, 0.991626, 1.00418)
+bones/143/rotation = Quaternion(-6.78619e-08, -0.0651361, 1.22632e-07, 0.997876)
+bones/144/rotation = Quaternion(0.0478029, -0.0676474, 0.257732, 0.962659)
+bones/144/scale = Vector3(1.00302, 0.98776, 1.0097)
+bones/145/rotation = Quaternion(-0.484594, 0.336378, 0.460367, 0.663386)
+bones/146/rotation = Quaternion(0.103563, -0.61505, -0.727108, 0.286885)
+bones/146/scale = Vector3(0.996361, 0.996361, 0.99636)
+bones/147/rotation = Quaternion(0.245704, 9.1548e-07, -3.07873e-07, 0.969345)
+bones/147/scale = Vector3(1.00095, 1.00095, 1.00095)
+bones/148/rotation = Quaternion(-0.1704, 0.412222, -0.0663698, 0.892542)
+bones/148/scale = Vector3(1.0027, 1.0027, 1.0027)
+bones/151/scale = Vector3(1.0027, 1.0027, 1.0027)
+bones/153/rotation = Quaternion(6.35221e-08, 0.212824, 1.80183e-07, 0.977091)
+bones/153/scale = Vector3(1.0027, 1.0027, 1.0027)
+bones/155/scale = Vector3(1.00365, 1.00365, 1.00365)
+bones/156/rotation = Quaternion(2.65564e-07, 0.136543, -6.12244e-08, 0.990634)
+bones/156/scale = Vector3(1.00365, 1.00365, 1.00365)
+bones/165/rotation = Quaternion(-0.648276, 0.123065, 0.0125035, -0.75129)
+bones/166/rotation = Quaternion(-0.129824, -0.456639, -0.0675556, 0.877532)
+bones/166/scale = Vector3(0.99636, 0.996361, 0.99636)
+bones/167/rotation = Quaternion(0.245704, 9.10791e-07, -3.03021e-07, 0.969345)
+bones/167/scale = Vector3(1.00095, 1.00095, 1.00095)
+bones/168/rotation = Quaternion(0.293562, -0.516371, -0.673225, 0.440398)
+bones/170/rotation = Quaternion(0.293562, -0.516371, -0.673225, 0.440398)
+bones/170/scale = Vector3(1.00182, 0.996361, 1.00182)
+bones/171/rotation = Quaternion(5.71796e-08, -0.132356, -7.35671e-09, 0.991202)
+bones/172/rotation = Quaternion(0.243421, -0.132254, 0.0334299, 0.96028)
+bones/172/scale = Vector3(0.999528, 0.99971, 1.00077)
+bones/173/rotation = Quaternion(1.35058e-07, 0.211559, 1.06692e-07, 0.977365)
+bones/174/rotation = Quaternion(-0.152434, 0.214058, -0.101057, 0.959547)
+bones/174/scale = Vector3(0.998922, 1.00218, 0.998903)
+bones/175/rotation = Quaternion(-0.454763, -0.376058, -0.514241, 0.622356)
+bones/176/rotation = Quaternion(-0.484594, 0.336378, 0.460367, 0.663386)
+bones/179/position = Vector3(-0.403937, -0.380009, 0.328499)
+bones/179/rotation = Quaternion(-0.620899, 0.43025, 0.482025, -0.44387)
+bones/181/position = Vector3(0.52772, 0.854249, -0.143219)
+bones/181/rotation = Quaternion(-0.659308, -0.260323, -0.263615, 0.654257)
+bones/184/position = Vector3(0.481427, 0.219965, 0.400832)
+bones/184/rotation = Quaternion(0.482566, -0.382927, -0.441488, 0.652369)
+bones/186/position = Vector3(0.151665, 0.855411, -0.572378)
+bones/186/rotation = Quaternion(-0.631261, -0.321407, -0.32496, 0.626585)
+bones/189/position = Vector3(-0.0686102, -0.170902, 0.070393)
+bones/189/rotation = Quaternion(0.396042, -0.00141029, -0.261701, 0.880148)
+bones/191/rotation = Quaternion(0.00857483, 0.00171387, 0.000446828, 0.999962)
+bones/193/rotation = Quaternion(6.50522e-19, 0.00171789, 3.7253e-09, 0.999999)
+bones/195/rotation = Quaternion(0.00857405, -3.95789e-06, 0.000461563, 0.999963)
+bones/198/rotation = Quaternion(0.97826, 0.00045298, -8.73144e-05, 0.207381)
+bones/199/rotation = Quaternion(0.000172675, -7.16432e-15, 1, -6.09017e-19)
+bones/200/position = Vector3(-0.322993, 0.198429, 0.275832)
+bones/200/rotation = Quaternion(-0.616578, -0.346167, -0.346167, 0.616578)
+bones/203/position = Vector3(0.083988, 0.204617, 0.0698504)
+bones/203/rotation = Quaternion(0.382758, 0.0737855, -0.476744, 0.787888)
+bones/205/rotation = Quaternion(0.00857483, 0.00171387, 0.000446828, 0.999962)
+bones/206/rotation = Quaternion(0, 0.00171789, 0, 0.999999)
+bones/209/rotation = Quaternion(0.00857405, -3.9576e-06, 0.000461575, 0.999963)
+bones/212/rotation = Quaternion(0.97826, 0.000453265, -8.86066e-05, 0.207381)
+bones/213/rotation = Quaternion(0.000172601, -1.6483e-11, 1, -3.72524e-09)
+bones/214/position = Vector3(-0.455908, 0.198429, 0.0578897)
+bones/214/rotation = Quaternion(-0.616578, -0.346167, -0.346167, 0.616578)
+
+[node name="AnimationPlayer" parent="Fighter Fella" index="1"]
+script = ExtResource("168_ftlcd")
+
+[connection signal="area_exited" from="Blast Zone Checker" to="Blast Zone Checker" method="_on_area_exited"]
+[connection signal="area_entered" from="Ledge Tracking/Ledge Sensor" to="Ledge Tracking/Ledge Sensor" method="_on_area_entered"]
+
+[editable path="Hitboxes/hitbox"]
+[editable path="Hitboxes/hitbox2"]
+[editable path="Hitboxes/hitbox3"]
+[editable path="Hitboxes/hitbox4"]
+[editable path="Hitboxes/hitbox5"]
+[editable path="Hurtboxes/Belly"]
+[editable path="Hurtboxes/Head"]
+[editable path="Hurtboxes/Chest"]
+[editable path="Hurtboxes/Left Thigh"]
+[editable path="Hurtboxes/Left Calf"]
+[editable path="Hurtboxes/Right Thigh"]
+[editable path="Hurtboxes/Right Calf"]
+[editable path="Hurtboxes/Right Upper Arm"]
+[editable path="Hurtboxes/Right Forearm"]
+[editable path="Hurtboxes/Left Upper Arm"]
+[editable path="Hurtboxes/Left Forearm"]
+[editable path="Shield"]
+[editable path="Fighter Fella"]

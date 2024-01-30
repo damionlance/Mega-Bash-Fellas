@@ -28,7 +28,7 @@ func update(delta):
 			return
 		if abs(Input.get_axis(state.player_number + "Left", state.player_number + "Right")) > .7:
 			if sign(Input.get_axis(state.player_number + "Left", state.player_number + "Right")) == body.facing_direction:
-				state.update_state("Cargo Carry")
+				state.update_state("Forward Throw")
 				return
 			else:
 				state.update_state("Back Throw")

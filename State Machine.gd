@@ -29,7 +29,6 @@ func _physics_process(delta):
 	current_state.update(delta)
 
 func update_state( newstate ):
-	if player_number == "P2_": print(newstate)
 	previous_state = current_state
 	current_state = state_dictionary[newstate]
 	current_state.reset(_delta)

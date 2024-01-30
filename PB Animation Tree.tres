@@ -1,19 +1,19 @@
 [gd_resource type="AnimationNodeStateMachine" load_steps=167 format=3 uid="uid://oe7qbmr1p7ld"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_yecre"]
-animation = &"Bair"
+animation = &"B Air"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_uq1xf"]
-animation = &"Dair"
+animation = &"D Air"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_86c1k"]
-animation = &"Fair"
+animation = &"F Air"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_52n5f"]
-animation = &"Nair"
+animation = &"N Air"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_eh8t8"]
-animation = &"Uair"
+animation = &"U Air"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_witp5"]
 advance_mode = 2
@@ -43,29 +43,29 @@ states/Dair/position = Vector2(202.667, 227.667)
 states/Fair/node = SubResource("AnimationNodeAnimation_86c1k")
 states/Fair/position = Vector2(312, 100.333)
 states/Nair/node = SubResource("AnimationNodeAnimation_52n5f")
-states/Nair/position = Vector2(104.667, 1)
+states/Nair/position = Vector2(104.667, 1.66667)
 states/Uair/node = SubResource("AnimationNodeAnimation_eh8t8")
-states/Uair/position = Vector2(200.222, -31.6667)
+states/Uair/position = Vector2(201.704, -30.3334)
 transitions = ["Start", "Uair", SubResource("AnimationNodeStateMachineTransition_witp5"), "Start", "Fair", SubResource("AnimationNodeStateMachineTransition_1ut3o"), "Start", "Bair", SubResource("AnimationNodeStateMachineTransition_fkcmw"), "Start", "Dair", SubResource("AnimationNodeStateMachineTransition_ddv6p"), "Start", "Nair", SubResource("AnimationNodeStateMachineTransition_w2yef")]
-graph_offset = Vector2(-656, -332)
+graph_offset = Vector2(-658, -114)
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_on14t"]
 animation = &"Air Dodge"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6uwk7"]
-animation = &"Double Jump"
+animation = &"Jump 2"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_bprlx"]
-animation = &"Drop Thru"
+animation = &"Fall 2"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wcu3n"]
 animation = &"Drop Thru"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_sfwr0"]
-animation = &"fall"
+animation = &"Fall 1"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pls0h"]
-animation = &"jump 1"
+animation = &"Jump1"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pqaw1"]
 advance_mode = 2
@@ -133,7 +133,7 @@ advance_expression = "state.current_state.state_name == \"Airdodge\""
 "states/Double Jump/node" = SubResource("AnimationNodeAnimation_6uwk7")
 "states/Double Jump/position" = Vector2(384.21, 102.913)
 "states/Drop Thru/node" = SubResource("AnimationNodeAnimation_wcu3n")
-"states/Drop Thru/position" = Vector2(231, 208.333)
+"states/Drop Thru/position" = Vector2(232.778, 216.144)
 "states/Drop Thru 2/node" = SubResource("AnimationNodeAnimation_bprlx")
 "states/Drop Thru 2/position" = Vector2(587.333, 214.741)
 states/Start/position = Vector2(232, 99.5556)
@@ -150,22 +150,20 @@ animation = &"Crouch"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_x1k5y"]
 animation = &"Back Throw"
 
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_l0ad1"]
-
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_kgpqk"]
 animation = &"Down Throw"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ey13c"]
-animation = &"Dtilt"
+animation = &"D Tilt"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7es53"]
-animation = &"Ftilt Down"
+animation = &"F Tilt"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_s5x0b"]
-animation = &"Ftilt Up"
+animation = &"F Tilt"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dtj3q"]
-animation = &"Ftilt"
+animation = &"F Tilt"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_newyh"]
 advance_mode = 2
@@ -181,7 +179,7 @@ advance_expression = "state.current_state.vertical_tilt == \"Down\""
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_1ds5c"]
 states/Ftilt/node = SubResource("AnimationNodeAnimation_dtj3q")
-states/Ftilt/position = Vector2(396, 100)
+states/Ftilt/position = Vector2(396, 99.7778)
 "states/Ftilt Down/node" = SubResource("AnimationNodeAnimation_7es53")
 "states/Ftilt Down/position" = Vector2(350.667, 179)
 "states/Ftilt Up/node" = SubResource("AnimationNodeAnimation_s5x0b")
@@ -189,32 +187,35 @@ states/Ftilt/position = Vector2(396, 100)
 transitions = ["Start", "Ftilt", SubResource("AnimationNodeStateMachineTransition_newyh"), "Start", "Ftilt Up", SubResource("AnimationNodeStateMachineTransition_4ja0w"), "Start", "Ftilt Down", SubResource("AnimationNodeStateMachineTransition_16kpa")]
 graph_offset = Vector2(-50, -109)
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7dcai"]
-animation = &"Gentleman (jab3)"
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1wahw"]
+animation = &"Forward Throw"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_swnr1"]
-animation = &"Grab Fail"
+animation = &"Grab Attempt"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pn2o1"]
-animation = &"Grab hold"
+animation = &"Grab Hold"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_fdq8x"]
 animation = &"Jab1"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_kfepy"]
-animation = &"Jab2"
+animation = &"Jab 2"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_erlxc"]
+animation = &"Rapid Jab End"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_sewq1"]
 animation = &"Up Throw"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xemg2"]
-animation = &"Utilt"
+animation = &"U Tilt"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ekuy7"]
-animation = &"rapid jab loop"
+animation = &"Rapid Jab Continue"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_c0ehy"]
-animation = &"rapid jab start"
+animation = &"Rapid Jab Start"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dtqqu"]
 advance_mode = 2
@@ -223,10 +224,6 @@ advance_expression = "state.current_state.state_name == \"Jab\""
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ihgpo"]
 advance_mode = 2
 advance_expression = "state.current_state.current_jab == 1"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_g1p1j"]
-advance_mode = 2
-advance_expression = "state.current_state.current_jab == 3"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_l1i0g"]
 advance_mode = 2
@@ -268,32 +265,36 @@ advance_expression = "state.current_state.state_name == \"Up Throw\""
 advance_mode = 2
 advance_expression = "state.current_state.state_name == \"Back Throw\""
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hnnm6"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8c004"]
 advance_mode = 2
-advance_expression = "state.current_state.state_name == \"Cargo Carry\""
+advance_expression = "state.current_state.current_jab == 3"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_nlfmn"]
+advance_mode = 2
+advance_expression = "state.current_state.state_name == \"Forward Throw\""
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_swygp"]
 "states/Back Throw/node" = SubResource("AnimationNodeAnimation_x1k5y")
-"states/Back Throw/position" = Vector2(834.667, -22.8889)
-"states/Cargo Carry/node" = SubResource("AnimationNodeStateMachine_l0ad1")
-"states/Cargo Carry/position" = Vector2(519.555, 196)
+"states/Back Throw/position" = Vector2(834.667, -23.4074)
 "states/Down Throw/node" = SubResource("AnimationNodeAnimation_kgpqk")
 "states/Down Throw/position" = Vector2(520, -28.6667)
 states/Dtilt/node = SubResource("AnimationNodeAnimation_ey13c")
 states/Dtilt/position = Vector2(27.6667, -10.6667)
 states/End/position = Vector2(1236, 98.8889)
 states/FTilt/node = SubResource("AnimationNodeStateMachine_1ds5c")
-states/FTilt/position = Vector2(197.333, -115.333)
-"states/Gentleman (jab3)/node" = SubResource("AnimationNodeAnimation_7dcai")
-"states/Gentleman (jab3)/position" = Vector2(370.333, 405.667)
+states/FTilt/position = Vector2(197.185, -114.666)
+"states/Forward Throw/node" = SubResource("AnimationNodeAnimation_1wahw")
+"states/Forward Throw/position" = Vector2(726.667, 103.667)
 "states/Grab Fail/node" = SubResource("AnimationNodeAnimation_swnr1")
-"states/Grab Fail/position" = Vector2(360.667, 96.3333)
+"states/Grab Fail/position" = Vector2(360.667, 99.0988)
 "states/Grab hold/node" = SubResource("AnimationNodeAnimation_pn2o1")
-"states/Grab hold/position" = Vector2(517.333, 95.6667)
+"states/Grab hold/position" = Vector2(518.691, 98.2592)
 states/Jab1/node = SubResource("AnimationNodeAnimation_fdq8x")
-states/Jab1/position = Vector2(198, 287.667)
+states/Jab1/position = Vector2(197.111, 284.654)
 states/Jab2/node = SubResource("AnimationNodeAnimation_kfepy")
 states/Jab2/position = Vector2(369.333, 285)
+"states/Rapid Jab End/node" = SubResource("AnimationNodeAnimation_erlxc")
+"states/Rapid Jab End/position" = Vector2(953.667, 281.667)
 states/Start/position = Vector2(197.778, 98.5926)
 "states/Up Throw/node" = SubResource("AnimationNodeAnimation_sewq1")
 "states/Up Throw/position" = Vector2(676, -23.3333)
@@ -302,9 +303,9 @@ states/Utilt/position = Vector2(325.333, -11.3333)
 "states/rapid jab loop/node" = SubResource("AnimationNodeAnimation_ekuy7")
 "states/rapid jab loop/position" = Vector2(776.333, 283)
 "states/rapid jab start/node" = SubResource("AnimationNodeAnimation_c0ehy")
-"states/rapid jab start/position" = Vector2(563, 286.481)
-transitions = ["Start", "Jab1", SubResource("AnimationNodeStateMachineTransition_dtqqu"), "Jab1", "Jab2", SubResource("AnimationNodeStateMachineTransition_ihgpo"), "Jab2", "Gentleman (jab3)", SubResource("AnimationNodeStateMachineTransition_g1p1j"), "Jab2", "rapid jab start", SubResource("AnimationNodeStateMachineTransition_l1i0g"), "rapid jab start", "rapid jab loop", SubResource("AnimationNodeStateMachineTransition_rf360"), "Start", "Dtilt", SubResource("AnimationNodeStateMachineTransition_ertoo"), "Start", "FTilt", SubResource("AnimationNodeStateMachineTransition_txknl"), "Start", "Utilt", SubResource("AnimationNodeStateMachineTransition_cyh3o"), "Start", "Grab Fail", SubResource("AnimationNodeStateMachineTransition_ic4n0"), "Grab Fail", "Grab hold", SubResource("AnimationNodeStateMachineTransition_sctqr"), "Grab hold", "Down Throw", SubResource("AnimationNodeStateMachineTransition_7g60u"), "Grab hold", "Up Throw", SubResource("AnimationNodeStateMachineTransition_754bl"), "Grab hold", "Back Throw", SubResource("AnimationNodeStateMachineTransition_6ptrl"), "Grab hold", "Cargo Carry", SubResource("AnimationNodeStateMachineTransition_hnnm6")]
-graph_offset = Vector2(-178, -72)
+"states/rapid jab start/position" = Vector2(563, 284.053)
+transitions = ["Start", "Jab1", SubResource("AnimationNodeStateMachineTransition_dtqqu"), "Jab1", "Jab2", SubResource("AnimationNodeStateMachineTransition_ihgpo"), "Jab2", "rapid jab start", SubResource("AnimationNodeStateMachineTransition_l1i0g"), "rapid jab start", "rapid jab loop", SubResource("AnimationNodeStateMachineTransition_rf360"), "Start", "Dtilt", SubResource("AnimationNodeStateMachineTransition_ertoo"), "Start", "FTilt", SubResource("AnimationNodeStateMachineTransition_txknl"), "Start", "Utilt", SubResource("AnimationNodeStateMachineTransition_cyh3o"), "Start", "Grab Fail", SubResource("AnimationNodeStateMachineTransition_ic4n0"), "Grab Fail", "Grab hold", SubResource("AnimationNodeStateMachineTransition_sctqr"), "Grab hold", "Down Throw", SubResource("AnimationNodeStateMachineTransition_7g60u"), "Grab hold", "Up Throw", SubResource("AnimationNodeStateMachineTransition_754bl"), "Grab hold", "Back Throw", SubResource("AnimationNodeStateMachineTransition_6ptrl"), "rapid jab loop", "Rapid Jab End", SubResource("AnimationNodeStateMachineTransition_8c004"), "Grab hold", "Forward Throw", SubResource("AnimationNodeStateMachineTransition_nlfmn")]
+graph_offset = Vector2(-485, 88)
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_53hdo"]
 animation = &"Dash"
@@ -335,7 +336,7 @@ advance_mode = 2
 "states/Roll B/node" = SubResource("AnimationNodeAnimation_j3wxs")
 "states/Roll B/position" = Vector2(298.667, 32.6667)
 "states/Roll F/node" = SubResource("AnimationNodeAnimation_apjnd")
-"states/Roll F/position" = Vector2(322.667, 159.333)
+"states/Roll F/position" = Vector2(323.334, 160)
 transitions = ["Start", "Roll B", SubResource("AnimationNodeStateMachineTransition_xtl0n"), "Start", "Roll F", SubResource("AnimationNodeStateMachineTransition_a6vvy"), "Roll B", "End", SubResource("AnimationNodeStateMachineTransition_2q22b"), "Roll F", "End", SubResource("AnimationNodeStateMachineTransition_85fpa")]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6otpj"]
@@ -348,16 +349,16 @@ animation = &"Drop Shield"
 animation = &"Enter Shield"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_r8rwc"]
-animation = &"shield_U"
+animation = &"Shield U"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jx7ta"]
-animation = &"shield_R"
+animation = &"Shield R"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_n4aad"]
-animation = &"shield_D"
+animation = &"Shield D"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qgkbu"]
-animation = &"shield_L"
+animation = &"Shield L"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_g28p3"]
 blend_point_0/node = SubResource("AnimationNodeAnimation_r8rwc")
@@ -526,7 +527,7 @@ advance_expression = "state.current_state.state_name == \"Idle\""
 states/Dash/node = SubResource("AnimationNodeAnimation_53hdo")
 states/Dash/position = Vector2(486.93, 99.7202)
 "states/Dodge Roll/node" = SubResource("AnimationNodeStateMachine_6jdk6")
-"states/Dodge Roll/position" = Vector2(146, -12.7777)
+"states/Dodge Roll/position" = Vector2(146, -12.2592)
 states/Idle/node = SubResource("AnimationNodeAnimation_6otpj")
 states/Idle/position = Vector2(309.037, 100)
 states/Shield/node = SubResource("AnimationNodeStateMachine_1vn7l")
@@ -542,16 +543,16 @@ states/Teeter/position = Vector2(402.667, -12.3333)
 states/Walk/node = SubResource("AnimationNodeAnimation_8lbqw")
 states/Walk/position = Vector2(310.099, 264.181)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_thpqu"), "Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_2c1sg"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_pppkl"), "Idle", "Dash", SubResource("AnimationNodeStateMachineTransition_so4cn"), "Dash", "Idle", SubResource("AnimationNodeStateMachineTransition_348k7"), "Dash", "Sprint", SubResource("AnimationNodeStateMachineTransition_fdqnh"), "Sprint", "Idle", SubResource("AnimationNodeStateMachineTransition_1c2sn"), "Sprint", "Sprint Pivot", SubResource("AnimationNodeStateMachineTransition_n1hxb"), "Sprint Pivot", "Sprint", SubResource("AnimationNodeStateMachineTransition_dj5t1"), "Dash", "Walk", SubResource("AnimationNodeStateMachineTransition_kvgxi"), "Idle", "Sprint", SubResource("AnimationNodeStateMachineTransition_iraa5"), "Dash", "Shield", SubResource("AnimationNodeStateMachineTransition_nksqx"), "Idle", "Shield", SubResource("AnimationNodeStateMachineTransition_e7s0f"), "Sprint", "Shield", SubResource("AnimationNodeStateMachineTransition_6skot"), "Walk", "Shield", SubResource("AnimationNodeStateMachineTransition_x4mtn"), "Shield", "Idle", SubResource("AnimationNodeStateMachineTransition_n6lvp"), "Shield", "Dodge Roll", SubResource("AnimationNodeStateMachineTransition_lvrra"), "Dodge Roll", "Idle", SubResource("AnimationNodeStateMachineTransition_oh5j2"), "Idle", "Teeter", SubResource("AnimationNodeStateMachineTransition_468bb"), "Walk", "Teeter", SubResource("AnimationNodeStateMachineTransition_gj2ww"), "Teeter", "Dash", SubResource("AnimationNodeStateMachineTransition_b03cd"), "Teeter", "Walk", SubResource("AnimationNodeStateMachineTransition_qongq"), "Dash", "Sprint Pivot 2", SubResource("AnimationNodeStateMachineTransition_pfu2e"), "Walk", "Sprint Pivot 2", SubResource("AnimationNodeStateMachineTransition_doejr"), "Idle", "Sprint Pivot 2", SubResource("AnimationNodeStateMachineTransition_easma"), "Sprint Pivot 2", "Dash", SubResource("AnimationNodeStateMachineTransition_gq6et"), "Sprint Pivot 2", "Walk", SubResource("AnimationNodeStateMachineTransition_7n1n5"), "Sprint Pivot 2", "Idle", SubResource("AnimationNodeStateMachineTransition_yomr2")]
-graph_offset = Vector2(-454, -90)
+graph_offset = Vector2(-470, -239)
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_eidcw"]
-animation = &"Ledge Get up"
+animation = &"Ledge Getup"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_c5nnj"]
-animation = &"Ledge get up jump"
+animation = &"Tournament Winner"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_voj1n"]
-animation = &"ledgegrab"
+animation = &"Ledge Grab"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tlfkx"]
 advance_mode = 2
@@ -587,10 +588,10 @@ transitions = ["Start", "ledgegrab", SubResource("AnimationNodeStateMachineTrans
 graph_offset = Vector2(-18, -156)
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_30343"]
-animation = &"F Special Full"
+animation = &"F Special"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wuf10"]
-animation = &"F Special interrupt"
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_nobfl"]
+animation = &"N Special"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xh1y7"]
 animation = &"Up Special"
@@ -611,26 +612,26 @@ advance_expression = "state.current_state.state_name == \"Side Special\""
 switch_mode = 2
 advance_mode = 2
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_rvu21"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_eyqjj"]
 advance_mode = 2
-advance_expression = "state.current_state.state_name == \"Side Special Interrupt\""
+advance_expression = "state.current_state.current_jab == 2"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3bu5a"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7epg6"]
 switch_mode = 2
 advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_d40qj"]
 "states/F Special Full/node" = SubResource("AnimationNodeAnimation_30343")
 "states/F Special Full/position" = Vector2(381, 94.8889)
-"states/F Special interrupt/node" = SubResource("AnimationNodeAnimation_wuf10")
-"states/F Special interrupt/position" = Vector2(660.333, 173.333)
+"states/Neutral Special/node" = SubResource("AnimationNodeAnimation_nobfl")
+"states/Neutral Special/position" = Vector2(339.667, 188)
 "states/Up Special/node" = SubResource("AnimationNodeAnimation_xh1y7")
 "states/Up Special/position" = Vector2(200.444, -63.3333)
-transitions = ["Start", "Up Special", SubResource("AnimationNodeStateMachineTransition_qiapv"), "Up Special", "End", SubResource("AnimationNodeStateMachineTransition_kenit"), "Start", "F Special Full", SubResource("AnimationNodeStateMachineTransition_yj4tc"), "F Special Full", "End", SubResource("AnimationNodeStateMachineTransition_g6dk4"), "F Special Full", "F Special interrupt", SubResource("AnimationNodeStateMachineTransition_rvu21"), "F Special interrupt", "End", SubResource("AnimationNodeStateMachineTransition_3bu5a")]
-graph_offset = Vector2(-499, -182)
+transitions = ["Start", "Up Special", SubResource("AnimationNodeStateMachineTransition_qiapv"), "Up Special", "End", SubResource("AnimationNodeStateMachineTransition_kenit"), "Start", "F Special Full", SubResource("AnimationNodeStateMachineTransition_yj4tc"), "F Special Full", "End", SubResource("AnimationNodeStateMachineTransition_g6dk4"), "Start", "Neutral Special", SubResource("AnimationNodeStateMachineTransition_eyqjj"), "Neutral Special", "End", SubResource("AnimationNodeStateMachineTransition_7epg6")]
+graph_offset = Vector2(-304, -227)
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_o3qvo"]
-animation = &"jump squat"
+animation = &"Jumpsquat"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_84qpy"]
 priority = 2
@@ -723,12 +724,12 @@ advance_expression = "state.current_state.state_name == \"Ledge Grab\""
 "states/Aerial Attacks/node" = SubResource("AnimationNodeStateMachine_tka06")
 "states/Aerial Attacks/position" = Vector2(697.963, -134.703)
 "states/Aerial Movement/node" = SubResource("AnimationNodeStateMachine_5abvf")
-"states/Aerial Movement/position" = Vector2(400.367, -134.913)
+"states/Aerial Movement/position" = Vector2(400.518, -134.995)
 states/Crouch/node = SubResource("AnimationNodeAnimation_ouudt")
 states/Crouch/position = Vector2(698.778, 344.778)
 states/End/position = Vector2(1516, 164)
 "states/Grounded Attacks/node" = SubResource("AnimationNodeStateMachine_swygp")
-"states/Grounded Attacks/position" = Vector2(401.086, 345.667)
+"states/Grounded Attacks/position" = Vector2(400.594, 344.655)
 "states/Grounded Movement/node" = SubResource("AnimationNodeStateMachine_yqoqx")
 "states/Grounded Movement/position" = Vector2(401.748, 106.312)
 "states/Ledge Interactions/node" = SubResource("AnimationNodeStateMachine_8g8k7")
@@ -737,6 +738,6 @@ states/End/position = Vector2(1516, 164)
 "states/Special Attacks/position" = Vector2(766.333, 19)
 states/Start/position = Vector2(190, 106.667)
 "states/jump squat/node" = SubResource("AnimationNodeAnimation_o3qvo")
-"states/jump squat/position" = Vector2(839, 201.003)
+"states/jump squat/position" = Vector2(838.333, 201.003)
 transitions = ["Start", "Grounded Movement", SubResource("AnimationNodeStateMachineTransition_84qpy"), "Grounded Movement", "Aerial Movement", SubResource("AnimationNodeStateMachineTransition_qqvg2"), "Aerial Movement", "Grounded Movement", SubResource("AnimationNodeStateMachineTransition_u5bct"), "Grounded Movement", "jump squat", SubResource("AnimationNodeStateMachineTransition_mm1gw"), "jump squat", "Aerial Movement", SubResource("AnimationNodeStateMachineTransition_rdlhr"), "Grounded Movement", "Grounded Attacks", SubResource("AnimationNodeStateMachineTransition_g6wtg"), "Grounded Attacks", "Grounded Movement", SubResource("AnimationNodeStateMachineTransition_yk146"), "Grounded Movement", "Crouch", SubResource("AnimationNodeStateMachineTransition_1ui7h"), "Crouch", "Grounded Movement", SubResource("AnimationNodeStateMachineTransition_b108t"), "Crouch", "jump squat", SubResource("AnimationNodeStateMachineTransition_f668o"), "Crouch", "Grounded Attacks", SubResource("AnimationNodeStateMachineTransition_w2nv6"), "Aerial Movement", "Aerial Attacks", SubResource("AnimationNodeStateMachineTransition_c7i5d"), "Aerial Attacks", "Aerial Movement", SubResource("AnimationNodeStateMachineTransition_o220h"), "Aerial Movement", "Ledge Interactions", SubResource("AnimationNodeStateMachineTransition_g812c"), "Ledge Interactions", "Grounded Movement", SubResource("AnimationNodeStateMachineTransition_5ubko"), "Ledge Interactions", "Aerial Movement", SubResource("AnimationNodeStateMachineTransition_641ns"), "Grounded Movement", "Special Attacks", SubResource("AnimationNodeStateMachineTransition_8apkd"), "Aerial Movement", "Special Attacks", SubResource("AnimationNodeStateMachineTransition_dokuk"), "Special Attacks", "Aerial Movement", SubResource("AnimationNodeStateMachineTransition_4ii72"), "Special Attacks", "Grounded Movement", SubResource("AnimationNodeStateMachineTransition_vvfmg"), "Special Attacks", "Ledge Interactions", SubResource("AnimationNodeStateMachineTransition_wokh7")]
-graph_offset = Vector2(-294, 19)
+graph_offset = Vector2(-129, -8)

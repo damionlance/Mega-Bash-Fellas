@@ -23,6 +23,5 @@ collision_layer = 32
 monitorable = true
 hitbox_radius = 0.5
 active = true
-interruptable = null
 hurtbox = true
 invincible = true
