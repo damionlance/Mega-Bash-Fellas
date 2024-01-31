@@ -89,8 +89,8 @@ depth = 2.0
 polygon = PackedVector2Array(-2, 0, 2, 0, 2, -0.1, -2, -0.1)
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 6.25)
-fov = 74.0384
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.394301, 1.5, 6.56437)
+fov = 67.6215
 near = 0.001
 
 [node name="PhantomCameraHost" type="Node" parent="Camera3D"]
@@ -123,7 +123,7 @@ environment = SubResource("Environment_1s338")
 transform = Transform3D(0.732875, 0.25499, -0.630772, -2.54639e-09, 0.927112, 0.374785, 0.680363, -0.27467, 0.679458, 0, 0, 0)
 
 [node name="PhantomCamera3D" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 6.25)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.394301, 1.5, 6.56437)
 script = ExtResource("6_k006f")
 priority_override = false
 priority = 0
@@ -139,10 +139,11 @@ tween_on_load = true
 inactive_update_mode = 0
 camera_3D_resource = null
 
-[node name="Body" parent="." instance=ExtResource("4_d5k7j")]
-player = false
+[node name="Body" parent="." instance=ExtResource("8_2rr05")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0737309, 0, -0.0223012)
 player_number = 2
 
-[node name="Body2" parent="." instance=ExtResource("8_2rr05")]
+[node name="Body2" parent="." instance=ExtResource("4_d5k7j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.862332, 5.96046e-08, 0.651046)
 
 [editable path="Respawner Handler"]

@@ -52,11 +52,14 @@ func regular_aerial_movement_processing(delta, delta_v) -> Vector2:
 
 func decide_attack() -> bool:
 	if Input.is_action_just_pressed(state.player_number + "Special"):
-		if controller.movement_direction.y >= .7:
+		if Input.get_action_strength(state.player_number + "Up") >= .7:
 			state.update_state("Up Special")
 			return true
-		if abs(controller.movement_direction.x) >= .7:
+		if abs(Input.get_axis(state.player_number + "Left", state.player_number + "Right")) >= .7:
 			state.update_state("Side Special")
+			return true
+		if Input.get_vector(state.player_number + "Left", state.player_number + "Right", state.player_number + "Down", state.player_number + "Up").length() < 0.2:
+			state.update_state("Neutral Special")
 			return true
 	if Input.get_vector(state.player_number + "Crush Left", state.player_number + "Crush Right", state.player_number + "Crush Down", state.player_number + "Crush Up") != Vector2.ZERO and can_tilt:
 		if Input.get_action_strength(state.player_number + "Crush Up") > .7:

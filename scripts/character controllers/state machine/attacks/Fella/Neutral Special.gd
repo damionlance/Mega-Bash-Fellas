@@ -10,9 +10,7 @@ var delta_time := 0.0166
 var can_land := false
 var aerial := false
 
-@export var cancellable := false
 @export var animation_finished := false
-@export var middle_charge := false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	state.state_dictionary[state_name] = self
@@ -46,7 +44,5 @@ func reset(_delta):
 	can_drift = false
 	body.velocity = Vector3.ZERO
 	body.special = true
-	cancellable = false
 	animation_finished = false
-	middle_charge = false
 	pass

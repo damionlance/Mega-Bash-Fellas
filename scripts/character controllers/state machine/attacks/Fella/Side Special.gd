@@ -8,7 +8,6 @@ var can_drop_thru_platform := false
 var can_drift := false
 var delta_time := 0.0166
 var can_land := false
-@export var active := false
 
 @export var cancellable := false
 @export var animation_finished := false
@@ -34,7 +33,6 @@ func update(delta):
 	pass
 
 func reset(_delta):
-	active = false
 	can_land = false
 	delta_time = _delta
 	can_drift = false

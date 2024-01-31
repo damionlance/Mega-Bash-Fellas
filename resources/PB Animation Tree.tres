@@ -1,0 +1,71 @@
+[gd_resource type="AnimationNodeBlendTree" load_steps=16 format=3 uid="uid://d2ql7htv8i0ur"]
+
+[ext_resource type="AnimationNodeStateMachine" uid="uid://oe7qbmr1p7ld" path="res://PB Animation Tree.tres" id="1_w1ag7"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2fxgr"]
+animation = &"Get Cargo Carried"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_h3bnw"]
+animation = &"Get Hit Ait High Knock"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_nqh82"]
+animation = &"Grabbed"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_awh4v"]
+advance_mode = 2
+advance_expression = "state.current_state.state_name == \"Grabbed\""
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6ng3w"]
+advance_mode = 2
+advance_expression = "state.current_state.state_name == \"Damage Fly\""
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dg2yu"]
+advance_mode = 2
+advance_expression = "state.current_state.state_name == \"Damage Fly\""
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ncxld"]
+advance_mode = 2
+advance_expression = "state.current_state.state_name == \"Get Cargo Carried\""
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5k12d"]
+advance_mode = 2
+advance_expression = "state.current_state.state_name == \"Damage Fly\""
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_f7s31"]
+"states/Get Cargo Carried/node" = SubResource("AnimationNodeAnimation_2fxgr")
+"states/Get Cargo Carried/position" = Vector2(187.667, 413)
+"states/Get Hit Ait High Knock/node" = SubResource("AnimationNodeAnimation_h3bnw")
+"states/Get Hit Ait High Knock/position" = Vector2(452.333, 247)
+states/Grabbed/node = SubResource("AnimationNodeAnimation_nqh82")
+states/Grabbed/position = Vector2(200.444, 247.556)
+transitions = ["Start", "Grabbed", SubResource("AnimationNodeStateMachineTransition_awh4v"), "Start", "Get Hit Ait High Knock", SubResource("AnimationNodeStateMachineTransition_6ng3w"), "Grabbed", "Get Hit Ait High Knock", SubResource("AnimationNodeStateMachineTransition_dg2yu"), "Grabbed", "Get Cargo Carried", SubResource("AnimationNodeStateMachineTransition_ncxld"), "Get Cargo Carried", "Get Hit Ait High Knock", SubResource("AnimationNodeStateMachineTransition_5k12d")]
+graph_offset = Vector2(-509, 65)
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5k86d"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_a0wnb"]
+advance_mode = 2
+advance_expression = "damaged != false"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_o20qg"]
+advance_mode = 2
+advance_expression = "damaged == false"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_khprv"]
+"states/Damage State/node" = SubResource("AnimationNodeStateMachine_f7s31")
+"states/Damage State/position" = Vector2(455.667, 58.6667)
+states/StateMachine/node = ExtResource("1_w1ag7")
+states/StateMachine/position = Vector2(434.333, 225.333)
+transitions = ["Start", "StateMachine", SubResource("AnimationNodeStateMachineTransition_5k86d"), "StateMachine", "Damage State", SubResource("AnimationNodeStateMachineTransition_a0wnb"), "Damage State", "StateMachine", SubResource("AnimationNodeStateMachineTransition_o20qg")]
+graph_offset = Vector2(-99, -178)
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_1lm6q"]
+
+[resource]
+graph_offset = Vector2(-580, -58.6667)
+nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_khprv")
+nodes/StateMachine/position = Vector2(-320, 40)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_1lm6q")
+nodes/TimeScale/position = Vector2(80, 120)
+node_connections = [&"TimeScale", 0, &"StateMachine", &"output", 0, &"TimeScale"]
