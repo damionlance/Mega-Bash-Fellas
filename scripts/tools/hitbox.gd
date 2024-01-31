@@ -21,6 +21,7 @@ var hitbox_point_position = Vector3.ZERO
 @export_group("Hurtbox Properties")
 @export var hurtbox := false
 @export var shield := false
+@export var counter := false
 @export var invincible := false
 @export var hitbox_start_point : BoneAttachment3D
 @export var hitbox_end_point : BoneAttachment3D
@@ -109,11 +110,12 @@ func hit(launch_angle : float, facing_direction : float, grab : bool = false, _g
 	pass
 
 func _on_area_entered(_area):
-	print("Hey!")
 	var hit_shield := false
 	var hurtbox : Area3D
 	for hit_area in get_overlapping_areas():
 		if hit_area.shield and not grab:
+			if hit_area.counter:
+				hit_area.body.state.current_state.interrupt()
 			hit_shield = true
 		elif hit_area.body.name != body.name and not hit_area.invincible:
 			hurtbox = hit_area

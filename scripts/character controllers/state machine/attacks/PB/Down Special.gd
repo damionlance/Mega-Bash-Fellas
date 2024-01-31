@@ -2,7 +2,7 @@ extends AerialMovement
 
 
 #private variables
-var state_name = "Up Special"
+var state_name = "Down Special"
 
 var can_drop_thru_platform := false
 var can_drift := false
@@ -23,15 +23,14 @@ func update(delta):
 	if body.is_on_floor() == false:
 		can_land = true
 	
-	if can_land and body.is_on_floor():
-		state.update_state("Landing Lag")
-		return
 	if animation_finished:
-		state.update_state("Fall")
+		state.update_state("Idle")
 		return
-	
+	delta_v.y = constants.gravity
 	# Handle all relevant timers
-	# Handle all relevant timers
+	if body.velocity.y - delta_v.y < -constants.falling_speed:
+		delta_v.y = 0
+	# Handle all relevant tim
 	body.delta_v = delta_v
 	# Process physics
 	pass
@@ -48,8 +47,6 @@ func reset(_delta):
 
 func start_jump():
 	body.facing_direction = sign(Input.get_axis(state.player_number + "Left", state.player_number + "Right"))
-	can_drift = true
-	var vector = Input.get_vector(state.player_number + "Left", state.player_number + "Right", state.player_number + "Down", state.player_number + "Up",).normalized()
-	if vector == Vector2.ZERO: vector = Vector2.UP
-	var temp = Vector3(vector.x, vector.y, 0)
-	body.velocity = constants.up_special_velocity * temp * delta_time
+	body.velocity = Vector3.ZERO
+	body.delta_v = Vector3.ZERO
+	

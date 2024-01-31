@@ -1,4 +1,4 @@
-[gd_scene load_steps=182 format=3 uid="uid://bvg8potcgyin4"]
+[gd_scene load_steps=181 format=3 uid="uid://bvg8potcgyin4"]
 
 [ext_resource type="Script" path="res://scripts/character controllers/Test Character.gd" id="1_ffcvg"]
 [ext_resource type="Animation" uid="uid://hc3mj1cnnhqs" path="res://assets/characters/Fella/Idle.res" id="2_2jlc0"]
@@ -147,297 +147,6 @@
 [ext_resource type="Script" path="res://scripts/tools/Ledge Sensor.gd" id="169_fngen"]
 [ext_resource type="Script" path="res://scripts/tools/particles/Particle Handler.gd" id="170_dxt8a"]
 
-[sub_resource type="Animation" id="Animation_u6pqu"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../State Machine/Grounded Movement/Dash:animation_finished")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../State Machine/Aerial Movement/Jump Squat:animation_finished")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../State Machine/Grounded Movement/Up Throw:animation_finished")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("../State Machine/Grounded Movement/Back Throw:animation_finished")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("../State Machine/Grounded Movement/Forward Throw:animation_finished")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("../State Machine/Grounded Movement/Turn:animation_finished")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("../State Machine/Grounded Movement/Jab:animation_finished")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("../State Machine/Grounded Movement/Jab:cancellable")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("../State Machine/Grounded Movement/Forward Tilt:animation_finished")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("../State Machine/Grounded Movement/Up Tilt:animation_finished")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("../State Machine/Grounded Movement/Down Tilt:animation_finished")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/11/type = "value"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("../State Machine/Grounded Movement/Shield:animation_finished")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/12/type = "value"
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/path = NodePath("../State Machine/Grounded Movement/Dodge Roll:animation_finished")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/13/type = "value"
-tracks/13/imported = false
-tracks/13/enabled = true
-tracks/13/path = NodePath("../State Machine/Aerial Movement/Forward Air:animation_finished")
-tracks/13/interp = 1
-tracks/13/loop_wrap = true
-tracks/13/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/14/type = "value"
-tracks/14/imported = false
-tracks/14/enabled = true
-tracks/14/path = NodePath("../State Machine/Aerial Movement/Backward Air:animation_finished")
-tracks/14/interp = 1
-tracks/14/loop_wrap = true
-tracks/14/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/15/type = "value"
-tracks/15/imported = false
-tracks/15/enabled = true
-tracks/15/path = NodePath("../State Machine/Aerial Movement/Up Air:animation_finished")
-tracks/15/interp = 1
-tracks/15/loop_wrap = true
-tracks/15/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/16/type = "value"
-tracks/16/imported = false
-tracks/16/enabled = true
-tracks/16/path = NodePath("../State Machine/Aerial Movement/Down Air:animation_finished")
-tracks/16/interp = 1
-tracks/16/loop_wrap = true
-tracks/16/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/17/type = "value"
-tracks/17/imported = false
-tracks/17/enabled = true
-tracks/17/path = NodePath("../State Machine/Aerial Movement/Neutral Air:animation_finished")
-tracks/17/interp = 1
-tracks/17/loop_wrap = true
-tracks/17/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/18/type = "value"
-tracks/18/imported = false
-tracks/18/enabled = true
-tracks/18/path = NodePath("../State Machine/Aerial Movement/Climb Ledge:animation_finished")
-tracks/18/interp = 1
-tracks/18/loop_wrap = true
-tracks/18/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/19/type = "value"
-tracks/19/imported = false
-tracks/19/enabled = true
-tracks/19/path = NodePath("../State Machine/Aerial Movement/Ledge Jump:animation_finished")
-tracks/19/interp = 1
-tracks/19/loop_wrap = true
-tracks/19/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/20/type = "value"
-tracks/20/imported = false
-tracks/20/enabled = true
-tracks/20/path = NodePath("../State Machine/Aerial Movement/Ledge Jump:ledge_jump")
-tracks/20/interp = 1
-tracks/20/loop_wrap = true
-tracks/20/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/21/type = "value"
-tracks/21/imported = false
-tracks/21/enabled = true
-tracks/21/path = NodePath("../State Machine/Aerial Movement/Up Special:animation_finished")
-tracks/21/interp = 1
-tracks/21/loop_wrap = true
-tracks/21/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/22/type = "value"
-tracks/22/imported = false
-tracks/22/enabled = true
-tracks/22/path = NodePath("../State Machine/Aerial Movement/Side Special:animation_finished")
-tracks/22/interp = 1
-tracks/22/loop_wrap = true
-tracks/22/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/23/type = "value"
-tracks/23/imported = false
-tracks/23/enabled = true
-tracks/23/path = NodePath("../State Machine/Aerial Movement/Neutral Special:animation_finished")
-tracks/23/interp = 1
-tracks/23/loop_wrap = true
-tracks/23/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_f84w3"]
 _data = {
 "Air Dodge": ExtResource("2_wxvwo"),
@@ -497,7 +206,6 @@ _data = {
 "Neutral Getup": ExtResource("48_ir527"),
 "Neutral Getup attack": ExtResource("50_0rxaf"),
 "Pummel": ExtResource("70_wdcwa"),
-"RESET": SubResource("Animation_u6pqu"),
 "Rapid Jab Continue": ExtResource("30_7dy2g"),
 "Rapid Jab End": ExtResource("32_xry1y"),
 "Rapid Jab Start": ExtResource("29_rkw4r"),
@@ -600,65 +308,65 @@ node_connections = [&"TimeScale", 0, &"StateMachine", &"output", 0, &"TimeScale"
 [sub_resource type="SphereShape3D" id="SphereShape3D_nctgj"]
 radius = 0.25
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ynwmn"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xnqnn"]
 radius = 0.474
 height = 1.37087
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_db3wt"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_d03or"]
 radius = 1.0
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3mma8"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_q5y0o"]
 radius = 1.0
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6hokk"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_j7ah3"]
 radius = 1.0
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_o76sx"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l5ut3"]
 radius = 1.0
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tmbip"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ixi3f"]
 radius = 0.234
 height = 0.468
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ckj2c"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_s3uxk"]
 radius = 0.18
 height = 0.36
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4hn53"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_st3n0"]
 radius = 0.267
 height = 0.534
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5wgeu"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_40kj6"]
 radius = 0.113
 height = 0.226
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_r6f0q"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_o1n0y"]
 radius = 0.1
 height = 0.2
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6th37"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4pke5"]
 radius = 0.113
 height = 0.226
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_x3wb4"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_lhvoq"]
 radius = 0.1
 height = 0.2
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hvdjf"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4vlu7"]
 radius = 0.127
 height = 0.254
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sdtyj"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qiral"]
 radius = 0.1
-height = 0.214555
+height = 0.214554
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cxgqy"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6m3hc"]
 radius = 0.127
 height = 0.254
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bacy7"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_i4pm3"]
 radius = 0.1
-height = 0.227931
+height = 0.22793
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uym2n"]
 size = Vector3(1.5, 0.75, 1)
@@ -888,153 +596,158 @@ hitbox_radius = 0.474
 hitstun_frames = 5
 knockback = 24.0
 knockback_scaling = 100.0
+counter = null
 
 [node name="hitbox point" parent="Hitboxes/hitbox" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.203523, -1.35568, 0)
 
 [node name="HitCapsule" parent="Hitboxes/hitbox" index="1"]
 transform = Transform3D(0.988911, -0.148461, 0, 0.148461, 0.988911, 0, 0, 0, 1, 0.101761, -0.67784, 0)
-shape = SubResource("CapsuleShape3D_ynwmn")
+shape = SubResource("CapsuleShape3D_xnqnn")
 
 [node name="hitbox2" parent="Hitboxes" instance=ExtResource("165_a2tf4")]
 collision_mask = 33
+counter = null
 
 [node name="HitCapsule" parent="Hitboxes/hitbox2" index="1"]
 transform = Transform3D(-4.37113e-08, -0.999999, 0, 0.999999, -4.37113e-08, 0, 0, 0, 1, 0, 0, 0)
-shape = SubResource("CapsuleShape3D_db3wt")
+shape = SubResource("CapsuleShape3D_d03or")
 
 [node name="hitbox3" parent="Hitboxes" instance=ExtResource("165_a2tf4")]
 collision_mask = 33
+counter = null
 
 [node name="HitCapsule" parent="Hitboxes/hitbox3" index="1"]
 transform = Transform3D(-4.37113e-08, -0.999999, 0, 0.999999, -4.37113e-08, 0, 0, 0, 1, 0, 0, 0)
-shape = SubResource("CapsuleShape3D_3mma8")
+shape = SubResource("CapsuleShape3D_q5y0o")
 
 [node name="hitbox4" parent="Hitboxes" instance=ExtResource("165_a2tf4")]
 collision_mask = 33
+counter = null
 
 [node name="HitCapsule" parent="Hitboxes/hitbox4" index="1"]
 transform = Transform3D(-4.37113e-08, -0.999999, 0, 0.999999, -4.37113e-08, 0, 0, 0, 1, 0, 0, 0)
-shape = SubResource("CapsuleShape3D_6hokk")
+shape = SubResource("CapsuleShape3D_j7ah3")
 
 [node name="hitbox5" parent="Hitboxes" instance=ExtResource("165_a2tf4")]
 collision_mask = 33
+counter = null
 
 [node name="HitCapsule" parent="Hitboxes/hitbox5" index="1"]
 transform = Transform3D(-4.37113e-08, -0.999999, 0, 0.999999, -4.37113e-08, 0, 0, 0, 1, 0, 0, 0)
-shape = SubResource("CapsuleShape3D_o76sx")
+shape = SubResource("CapsuleShape3D_l5ut3")
 
 [node name="Hurtboxes" type="Node3D" parent="."]
 
 [node name="Bone Attachments" type="Node3D" parent="Hurtboxes"]
 
 [node name="Hips" type="BoneAttachment3D" parent="Hurtboxes/Bone Attachments"]
-transform = Transform3D(0.117356, 0.31103, 0.943127, -0.0101717, 0.950016, -0.312036, -0.993038, 0.0270261, 0.114654, -0.0500011, 0.295524, -0.0758937)
+transform = Transform3D(0.117356, 0.31103, 0.943127, -0.0101717, 0.950016, -0.312036, -0.993038, 0.0270262, 0.114654, -0.0500011, 0.295524, -0.0758937)
 bone_name = "DEF-spine"
 bone_idx = 1
 use_external_skeleton = true
 external_skeleton = NodePath("../../../Fighter Fella/rig/Skeleton3D")
 
 [node name="Ribs" type="BoneAttachment3D" parent="Hurtboxes/Bone Attachments"]
-transform = Transform3D(0.0524779, 0.362482, 0.930512, -0.005058, 0.931881, -0.36273, -0.998609, 0.0143287, 0.0507365, 0.0112288, 0.534062, -0.071101)
+transform = Transform3D(0.0524777, 0.362483, 0.930512, -0.00505793, 0.93188, -0.362731, -0.998609, 0.0143288, 0.0507363, 0.011229, 0.534063, -0.0711009)
 bone_name = "DEF-spine.002"
 bone_idx = 3
 use_external_skeleton = true
 external_skeleton = NodePath("../../../Fighter Fella/rig/Skeleton3D")
 
 [node name="Neck" type="BoneAttachment3D" parent="Hurtboxes/Bone Attachments"]
-transform = Transform3D(-0.00574989, 0.712148, 0.702006, 0.0176104, 0.701981, -0.711978, -0.999828, 0.00826878, -0.0165775, 0.0305927, 0.743875, -0.0625202)
+transform = Transform3D(-0.00574997, 0.712148, 0.702006, 0.0176105, 0.701981, -0.711978, -0.999828, 0.00826882, -0.0165776, 0.0305928, 0.743876, -0.0625202)
 bone_name = "DEF-spine.004"
 bone_idx = 5
 use_external_skeleton = true
 external_skeleton = NodePath("../../../Fighter Fella/rig/Skeleton3D")
 
 [node name="Head" type="BoneAttachment3D" parent="Hurtboxes/Bone Attachments"]
-transform = Transform3D(0.117357, -0.749405, 0.651629, -0.0101721, 0.655222, 0.755368, -0.993038, -0.0952758, 0.0692715, 0.126602, 0.968394, -0.0591179)
+transform = Transform3D(0.117357, -0.749405, 0.651629, -0.010172, 0.655222, 0.755368, -0.993038, -0.0952757, 0.0692716, 0.126602, 0.968394, -0.0591178)
 bone_name = "DEF-spine.006"
 bone_idx = 7
 use_external_skeleton = true
 external_skeleton = NodePath("../../../Fighter Fella/rig/Skeleton3D")
 
 [node name="Left Shoulder" type="BoneAttachment3D" parent="Hurtboxes/Bone Attachments"]
-transform = Transform3D(0.300825, -0.943602, 0.140264, -0.838775, -0.331862, -0.431396, 0.453464, 0.0121327, -0.891006, 0.0398256, 0.701974, -0.240984)
+transform = Transform3D(0.300825, -0.9436, 0.140264, -0.838775, -0.331861, -0.431396, 0.453463, 0.0121328, -0.891006, 0.0398257, 0.701974, -0.240984)
 bone_name = "DEF-upper_arm.L"
 bone_idx = 140
 use_external_skeleton = true
 external_skeleton = NodePath("../../../Fighter Fella/rig/Skeleton3D")
 
 [node name="Left Elbow" type="BoneAttachment3D" parent="Hurtboxes/Bone Attachments"]
-transform = Transform3D(0.260091, -0.784424, 0.56352, -0.715824, -0.548241, -0.432242, 0.647851, -0.290843, -0.703827, -0.11661, 0.646956, -0.238973)
+transform = Transform3D(0.260091, -0.784422, 0.56352, -0.715826, -0.54824, -0.432242, 0.647853, -0.290844, -0.703827, -0.11661, 0.646956, -0.238973)
 bone_name = "DEF-forearm.L"
 bone_idx = 142
 use_external_skeleton = true
 external_skeleton = NodePath("../../../Fighter Fella/rig/Skeleton3D")
 
 [node name="Left Wrist" type="BoneAttachment3D" parent="Hurtboxes/Bone Attachments"]
-transform = Transform3D(0.0699436, -0.499385, 0.863865, -0.332492, -0.82777, -0.451501, 0.940482, -0.255423, -0.223846, -0.303434, 0.516383, -0.308242)
+transform = Transform3D(0.0699448, -0.499383, 0.863862, -0.332495, -0.827769, -0.451501, 0.940482, -0.255424, -0.223845, -0.303433, 0.516384, -0.308242)
 bone_name = "DEF-hand.L"
 bone_idx = 144
 use_external_skeleton = true
 external_skeleton = NodePath("../../../Fighter Fella/rig/Skeleton3D")
 
 [node name="Right Shoulder" type="BoneAttachment3D" parent="Hurtboxes/Bone Attachments"]
-transform = Transform3D(-0.0438731, -0.78089, 0.624063, 0.856596, -0.350955, -0.377071, 0.512743, 0.519493, 0.683338, 0.0571345, 0.692843, 0.0896727)
+transform = Transform3D(-0.0438722, -0.780886, 0.624063, 0.856597, -0.350953, -0.37707, 0.512743, 0.519492, 0.683337, 0.0571348, 0.692844, 0.0896728)
 bone_name = "DEF-upper_arm.R"
 bone_idx = 170
 use_external_skeleton = true
 external_skeleton = NodePath("../../../Fighter Fella/rig/Skeleton3D")
 
 [node name="Right Elbow" type="BoneAttachment3D" parent="Hurtboxes/Bone Attachments"]
-transform = Transform3D(0.542236, -0.633822, 0.552602, 0.0349047, -0.640171, -0.766736, 0.838935, 0.436299, -0.325267, -0.0723257, 0.63466, 0.175797)
+transform = Transform3D(0.542236, -0.633819, 0.5526, 0.0349052, -0.64017, -0.766737, 0.838933, 0.436298, -0.325267, -0.0723248, 0.634661, 0.175797)
 bone_name = "DEF-forearm.R"
 bone_idx = 172
 use_external_skeleton = true
 external_skeleton = NodePath("../../../Fighter Fella/rig/Skeleton3D")
 
 [node name="Right Wrist" type="BoneAttachment3D" parent="Hurtboxes/Bone Attachments"]
-transform = Transform3D(-0.426187, -0.702966, 0.570246, 0.15392, -0.67698, -0.718989, 0.891981, -0.217076, 0.396666, -0.223281, 0.482193, 0.279709)
+transform = Transform3D(-0.426185, -0.702962, 0.570245, 0.153922, -0.67698, -0.718989, 0.891977, -0.217076, 0.396666, -0.223279, 0.482194, 0.279709)
 bone_name = "DEF-hand.R"
 bone_idx = 174
 use_external_skeleton = true
 external_skeleton = NodePath("../../../Fighter Fella/rig/Skeleton3D")
 
 [node name="Left Hip" type="BoneAttachment3D" parent="Hurtboxes/Bone Attachments"]
-transform = Transform3D(0.174338, 0.47376, -0.86518, -0.108563, -0.850377, -0.502458, -0.98407, 0.177745, -0.0978446, -0.00971166, 0.311655, -0.17522)
+transform = Transform3D(0.174338, 0.47376, -0.865177, -0.108562, -0.850376, -0.502457, -0.984067, 0.177745, -0.0978442, -0.00971176, 0.311655, -0.17522)
 bone_name = "DEF-thigh.L"
 bone_idx = 67
 use_external_skeleton = true
 external_skeleton = NodePath("../../../Fighter Fella/rig/Skeleton3D")
 
 [node name="Left Knee" type="BoneAttachment3D" parent="Hurtboxes/Bone Attachments"]
-transform = Transform3D(0.0427943, -0.972788, -0.148905, -0.182599, -0.160631, 0.97853, -0.98928, -0.0124289, -0.187047, 0.0986707, 0.117113, -0.134557)
+transform = Transform3D(0.0427942, -0.972785, -0.148906, -0.182598, -0.160631, 0.978528, -0.989278, -0.0124289, -0.187046, 0.0986706, 0.117114, -0.134557)
 bone_name = "DEF-shin.L"
 bone_idx = 69
 use_external_skeleton = true
 external_skeleton = NodePath("../../../Fighter Fella/rig/Skeleton3D")
 
 [node name="Left Ankle" type="BoneAttachment3D" parent="Hurtboxes/Bone Attachments"]
-transform = Transform3D(0.0680684, 0.110423, -0.989747, -0.1193, -0.986736, -0.126045, -0.990478, 0.126792, -0.0537586, -0.0832261, 0.0870777, -0.136881)
+transform = Transform3D(0.0680681, 0.110424, -0.989746, -0.1193, -0.986733, -0.126044, -0.990476, 0.126792, -0.0537587, -0.0832258, 0.0870783, -0.136881)
 bone_name = "DEF-foot.L"
 bone_idx = 71
 use_external_skeleton = true
 external_skeleton = NodePath("../../../Fighter Fella/rig/Skeleton3D")
 
 [node name="Right Hip" type="BoneAttachment3D" parent="Hurtboxes/Bone Attachments"]
-transform = Transform3D(0.172228, 0.499724, -0.850406, -0.330068, -0.77208, -0.535144, -0.933812, 0.365068, 0.0323089, -0.0339287, 0.313754, 0.0296979)
+transform = Transform3D(0.172227, 0.499724, -0.850404, -0.330067, -0.77208, -0.535142, -0.93381, 0.365068, 0.0323085, -0.0339288, 0.313754, 0.0296979)
 bone_name = "DEF-thigh.R"
 bone_idx = 86
 use_external_skeleton = true
 external_skeleton = NodePath("../../../Fighter Fella/rig/Skeleton3D")
 
 [node name="Right Knee" type="BoneAttachment3D" parent="Hurtboxes/Bone Attachments"]
-transform = Transform3D(-0.0198705, -0.97671, -0.123486, -0.440307, -0.110241, 0.900328, -0.90537, 0.0750565, -0.435128, 0.0803936, 0.137124, 0.113215)
+transform = Transform3D(-0.0198711, -0.976708, -0.123486, -0.440308, -0.11024, 0.90033, -0.905373, 0.0750561, -0.435129, 0.0803934, 0.137125, 0.113215)
 bone_name = "DEF-shin.R"
 bone_idx = 88
 use_external_skeleton = true
 external_skeleton = NodePath("../../../Fighter Fella/rig/Skeleton3D")
 
 [node name="Right Ankle" type="BoneAttachment3D" parent="Hurtboxes/Bone Attachments"]
-transform = Transform3D(0.0710303, 0.117844, -0.988073, -0.111886, -0.986202, -0.136294, -0.991647, 0.121492, -0.057469, -0.102237, 0.116511, 0.127249)
+transform = Transform3D(0.0710292, 0.117844, -0.988072, -0.111886, -0.986204, -0.136292, -0.991649, 0.121492, -0.0574696, -0.102237, 0.116512, 0.127249)
 bone_name = "DEF-foot.R"
 bone_idx = 90
 use_external_skeleton = true
@@ -1047,138 +760,148 @@ monitorable = true
 hitbox_radius = 0.234
 active = true
 hurtbox = true
+counter = null
 hitbox_start_point = NodePath("../Bone Attachments/Hips")
 hitbox_end_point = NodePath("../Bone Attachments/Ribs")
 
 [node name="HitCapsule" parent="Hurtboxes/Belly" index="1"]
 transform = Transform3D(-0.968449, -0.248589, 0, 0.248589, -0.968449, 0, 0, 0, 1, 0.030615, 0.119269, 0)
-shape = SubResource("CapsuleShape3D_tmbip")
+shape = SubResource("CapsuleShape3D_ixi3f")
 
 [node name="Head" parent="Hurtboxes" node_paths=PackedStringArray("hitbox_start_point", "hitbox_end_point") instance=ExtResource("165_a2tf4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0305927, 0.743875, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0305928, 0.743876, 0)
 collision_layer = 32
 monitorable = true
 hitbox_radius = 0.18
 active = true
 hurtbox = true
+counter = null
 hitbox_start_point = NodePath("../Bone Attachments/Neck")
 hitbox_end_point = NodePath("../Bone Attachments/Head")
 
 [node name="HitCapsule" parent="Hurtboxes/Head" index="1"]
-transform = Transform3D(-0.919331, -0.393126, 0, 0.393126, -0.919331, 0, 0, 0, 1, 0.0480046, 0.112259, 0)
-shape = SubResource("CapsuleShape3D_ckj2c")
+transform = Transform3D(-0.919331, -0.393127, 0, 0.393127, -0.919331, 0, 0, 0, 1, 0.0480046, 0.112259, 0)
+shape = SubResource("CapsuleShape3D_s3uxk")
 
 [node name="Chest" parent="Hurtboxes" node_paths=PackedStringArray("hitbox_start_point", "hitbox_end_point") instance=ExtResource("165_a2tf4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0112288, 0.534062, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.011229, 0.534063, 0)
 collision_layer = 32
 monitorable = true
 hitbox_radius = 0.267
 active = true
 hurtbox = true
+counter = null
 hitbox_start_point = NodePath("../Bone Attachments/Ribs")
 hitbox_end_point = NodePath("../Bone Attachments/Neck")
 
 [node name="HitCapsule" parent="Hurtboxes/Chest" index="1"]
-transform = Transform3D(-0.995568, -0.0918819, 0, 0.0918819, -0.995568, 0, 0, 0, 1, 0.00968192, 0.104907, 0)
-shape = SubResource("CapsuleShape3D_4hn53")
+transform = Transform3D(-0.995568, -0.0918819, 0, 0.0918819, -0.995568, 0, 0, 0, 1, 0.00968193, 0.104907, 0)
+shape = SubResource("CapsuleShape3D_st3n0")
 
 [node name="Left Thigh" parent="Hurtboxes" node_paths=PackedStringArray("hitbox_start_point", "hitbox_end_point") instance=ExtResource("165_a2tf4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00971166, 0.311655, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00971176, 0.311655, 0)
 collision_layer = 32
 monitorable = true
 hitbox_radius = 0.113
 active = true
 hurtbox = true
+counter = null
 hitbox_start_point = NodePath("../Bone Attachments/Left Hip")
 hitbox_end_point = NodePath("../Bone Attachments/Left Knee")
 
 [node name="HitCapsule" parent="Hurtboxes/Left Thigh" index="1"]
-transform = Transform3D(0.873432, -0.486604, 0, 0.486604, 0.873432, 0, 0, 0, 1, 0.0541912, -0.0972707, 0)
-shape = SubResource("CapsuleShape3D_5wgeu")
+transform = Transform3D(0.873432, -0.486604, 0, 0.486604, 0.873432, 0, 0, 0, 1, 0.0541912, -0.0972706, 0)
+shape = SubResource("CapsuleShape3D_40kj6")
 
 [node name="Left Calf" parent="Hurtboxes" node_paths=PackedStringArray("hitbox_start_point", "hitbox_end_point") instance=ExtResource("165_a2tf4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0986707, 0.117113, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0986706, 0.117114, 0)
 collision_layer = 32
 monitorable = true
 hitbox_radius = 0.1
 active = true
 hurtbox = true
+counter = null
 hitbox_start_point = NodePath("../Bone Attachments/Left Knee")
 hitbox_end_point = NodePath("../Bone Attachments/Left Ankle")
 
 [node name="HitCapsule" parent="Hurtboxes/Left Calf" index="1"]
-transform = Transform3D(0.162891, 0.986476, 0, -0.986476, 0.162891, 0, 0, 0, 1, -0.0909484, -0.0150178, 0)
-shape = SubResource("CapsuleShape3D_r6f0q")
+transform = Transform3D(0.162891, 0.986476, 0, -0.986476, 0.162891, 0, 0, 0, 1, -0.0909482, -0.0150178, 0)
+shape = SubResource("CapsuleShape3D_o1n0y")
 
 [node name="Right Thigh" parent="Hurtboxes" node_paths=PackedStringArray("hitbox_start_point", "hitbox_end_point") instance=ExtResource("165_a2tf4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0339287, 0.313754, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0339288, 0.313754, 0)
 collision_layer = 32
 monitorable = true
 hitbox_radius = 0.113
 active = true
 hurtbox = true
+counter = null
 hitbox_start_point = NodePath("../Bone Attachments/Right Hip")
 hitbox_end_point = NodePath("../Bone Attachments/Right Knee")
 
 [node name="HitCapsule" parent="Hurtboxes/Right Thigh" index="1"]
-transform = Transform3D(0.839363, -0.543273, 0, 0.543273, 0.839363, 0, 0, 0, 1, 0.0571612, -0.0883146, 0)
-shape = SubResource("CapsuleShape3D_6th37")
+transform = Transform3D(0.839364, -0.543272, 0, 0.543272, 0.839364, 0, 0, 0, 1, 0.0571611, -0.0883147, 0)
+shape = SubResource("CapsuleShape3D_4pke5")
 
 [node name="Right Calf" parent="Hurtboxes" node_paths=PackedStringArray("hitbox_start_point", "hitbox_end_point") instance=ExtResource("165_a2tf4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0803936, 0.137124, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0803934, 0.137125, 0)
 collision_layer = 32
 monitorable = true
 hitbox_radius = 0.1
 active = true
 hurtbox = true
+counter = null
 hitbox_start_point = NodePath("../Bone Attachments/Right Knee")
 hitbox_end_point = NodePath("../Bone Attachments/Right Ankle")
 
 [node name="HitCapsule" parent="Hurtboxes/Right Calf" index="1"]
-transform = Transform3D(0.112139, 0.993527, 0, -0.993527, 0.112139, 0, 0, 0, 1, -0.0913152, -0.0103067, 0)
-shape = SubResource("CapsuleShape3D_x3wb4")
+transform = Transform3D(0.112138, 0.993527, 0, -0.993527, 0.112138, 0, 0, 0, 1, -0.091315, -0.0103066, 0)
+shape = SubResource("CapsuleShape3D_lhvoq")
 
 [node name="Right Upper Arm" parent="Hurtboxes" node_paths=PackedStringArray("hitbox_start_point", "hitbox_end_point") instance=ExtResource("165_a2tf4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0571345, 0.692843, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0571348, 0.692844, 0)
 collision_layer = 32
 monitorable = true
 hitbox_radius = 0.127
 active = true
 hurtbox = true
+counter = null
 hitbox_start_point = NodePath("../Bone Attachments/Right Shoulder")
 hitbox_end_point = NodePath("../Bone Attachments/Right Elbow")
 
 [node name="HitCapsule" parent="Hurtboxes/Right Upper Arm" index="1"]
-transform = Transform3D(0.409858, 0.911954, 0, -0.911954, 0.409858, 0, 0, 0, 1, -0.0647301, -0.0290915, 0)
-shape = SubResource("CapsuleShape3D_hvdjf")
+transform = Transform3D(0.409858, 0.911954, 0, -0.911954, 0.409858, 0, 0, 0, 1, -0.0647298, -0.0290914, 0)
+shape = SubResource("CapsuleShape3D_4vlu7")
 
 [node name="Right Forearm" parent="Hurtboxes" node_paths=PackedStringArray("hitbox_start_point", "hitbox_end_point") instance=ExtResource("165_a2tf4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0723257, 0.63466, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0723248, 0.634661, 0)
 collision_layer = 32
 monitorable = true
 hitbox_radius = 0.1
 active = true
 hurtbox = true
+counter = null
 hitbox_start_point = NodePath("../Bone Attachments/Right Elbow")
 hitbox_end_point = NodePath("../Bone Attachments/Right Wrist")
 
 [node name="HitCapsule" parent="Hurtboxes/Right Forearm" index="1"]
-transform = Transform3D(0.710512, 0.703466, 0, -0.703466, 0.710512, 0, 0, 0, 1, -0.0754777, -0.0762337, 0)
-shape = SubResource("CapsuleShape3D_sdtyj")
+transform = Transform3D(0.710513, 0.703465, 0, -0.703465, 0.710513, 0, 0, 0, 1, -0.0754773, -0.0762336, 0)
+shape = SubResource("CapsuleShape3D_qiral")
 
 [node name="Left Upper Arm" parent="Hurtboxes" node_paths=PackedStringArray("hitbox_start_point", "hitbox_end_point") instance=ExtResource("165_a2tf4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0398256, 0.701974, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0398257, 0.701974, 0)
 collision_layer = 32
 monitorable = true
 hitbox_radius = 0.127
 active = true
 hurtbox = true
+counter = null
 hitbox_start_point = NodePath("../Bone Attachments/Left Shoulder")
 hitbox_end_point = NodePath("../Bone Attachments/Left Elbow")
 
 [node name="HitCapsule" parent="Hurtboxes/Left Upper Arm" index="1"]
-transform = Transform3D(0.331721, 0.943204, 0, -0.943204, 0.331721, 0, 0, 0, 1, -0.0782178, -0.0275089, 0)
-shape = SubResource("CapsuleShape3D_cxgqy")
+transform = Transform3D(0.33172, 0.943204, 0, -0.943204, 0.33172, 0, 0, 0, 1, -0.0782177, -0.0275087, 0)
+shape = SubResource("CapsuleShape3D_6m3hc")
 
 [node name="Left Forearm" parent="Hurtboxes" node_paths=PackedStringArray("hitbox_start_point", "hitbox_end_point") instance=ExtResource("165_a2tf4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.11661, 0.646956, 0)
@@ -1187,12 +910,13 @@ monitorable = true
 hitbox_radius = 0.1
 active = true
 hurtbox = true
+counter = null
 hitbox_start_point = NodePath("../Bone Attachments/Left Elbow")
 hitbox_end_point = NodePath("../Bone Attachments/Left Wrist")
 
 [node name="HitCapsule" parent="Hurtboxes/Left Forearm" index="1"]
-transform = Transform3D(0.572773, 0.819524, 0, -0.819524, 0.572773, 0, 0, 0, 1, -0.0934119, -0.0652864, 0)
-shape = SubResource("CapsuleShape3D_bacy7")
+transform = Transform3D(0.572773, 0.819524, 0, -0.819524, 0.572773, 0, 0, 0, 1, -0.0934116, -0.0652863, 0)
+shape = SubResource("CapsuleShape3D_i4pm3")
 
 [node name="Shield" parent="." instance=ExtResource("166_vp1c8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.100391, 0.788085, 0)
@@ -1202,6 +926,7 @@ color = Color(1, 0, 0, 1)
 
 [node name="hitbox" parent="Shield" index="0"]
 shield = true
+counter = null
 
 [node name="Ledge Tracking" type="Node3D" parent="."]
 

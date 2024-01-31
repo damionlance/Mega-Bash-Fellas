@@ -90,7 +90,7 @@ polygon = PackedVector2Array(-2, 0, 2, 0, 2, -0.1, -2, -0.1)
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.394301, 1.5, 6.56437)
-fov = 67.6215
+fov = 74.8945
 near = 0.001
 
 [node name="PhantomCameraHost" type="Node" parent="Camera3D"]
@@ -141,9 +141,9 @@ camera_3D_resource = null
 
 [node name="Body" parent="." instance=ExtResource("8_2rr05")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0737309, 0, -0.0223012)
-player_number = 2
 
 [node name="Body2" parent="." instance=ExtResource("4_d5k7j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.862332, 5.96046e-08, 0.651046)
+player = false
 
 [editable path="Respawner Handler"]

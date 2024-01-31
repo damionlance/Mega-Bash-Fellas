@@ -24,4 +24,5 @@ monitorable = true
 hitbox_radius = 0.5
 active = true
 hurtbox = true
+counter = null
 invincible = true
