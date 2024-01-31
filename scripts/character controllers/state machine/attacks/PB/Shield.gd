@@ -31,7 +31,7 @@ func update(delta):
 		state.update_state("Idle")
 		return
 	
-	if Input.get_axis(state.player_number + "Left",state.player_number + "Right") > .8 and can_dodge:
+	if abs(Input.get_axis(state.player_number + "Left",state.player_number + "Right")) > .8 and can_dodge:
 		state.update_state("Dodge Roll")
 		shield.visible = false
 		return
