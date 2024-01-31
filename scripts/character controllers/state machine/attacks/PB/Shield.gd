@@ -49,10 +49,9 @@ func update(delta):
 		shield.visible = false
 		return
 	if Input.is_action_pressed(state.player_number + "Attack"):
-		animation_tree["parameters/StateMachine/General State/Grounded Movement/Shield/Shield/blend_position"] = controller.movement_direction
-		can_dodge = false
 		var vec = Input.get_vector(state.player_number + "Left", state.player_number + "Right", state.player_number + "Down", state.player_number + "Up")
-		print(vec)
+		animation_tree["parameters/StateMachine/StateMachine/Grounded Movement/Shield/Shield/blend_position"] = vec
+		can_dodge = false
 		shield.global_position = body.global_position + Vector3(vec.x, vec.y, 0) + mid_point
 	elif Input.get_action_strength(state.player_number + "Down") < -0.8 and not can_dodge:
 		passthru_platform_checker.drop_thru_platform()
