@@ -2,7 +2,7 @@ extends GroundedMovement
 
 
 #private variables
-var state_name = "Tech Roll"
+var state_name = "Tech In Place"
 
 @export var animation_finished := false
 
@@ -29,5 +29,4 @@ func reset(delta):
 	body.slide_off_ledge = false
 	body.attacking = false
 	body.consecutive_jumps = 0
-	body.velocity.x = dodge_roll * 1.25 * Input.get_axis(state.player_number + "Left", state.player_number + "Right") * delta
 	pass

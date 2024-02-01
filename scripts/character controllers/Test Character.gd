@@ -52,8 +52,8 @@ func _process(delta):
 		can_jump = false
 	
 	velocity += Vector3(delta_v.x, delta_v.y, 0) * delta
-	move_and_slide()
 	test_edge(delta)
+	move_and_slide()
 	delta_v = Vector2.ZERO
 	slide_off_ledge = true
 
@@ -72,7 +72,9 @@ func test_edge(delta):
 		var space_state = get_world_3d().direct_space_state
 		var query = PhysicsRayQueryParameters3D.create(global_position + velocity * delta + Vector3(0, 0.01, 0), global_position + velocity * delta - Vector3(0, 0.01, 0))
 		var result = space_state.intersect_ray(query)
+		print(result)
 		if not result:
+			print("Hey!")
 			query = PhysicsRayQueryParameters3D.create(global_position + velocity * delta - Vector3(0, 0.01, 0), global_position - Vector3(0, 0.01, 0), 3)
 			result = space_state.intersect_ray(query)
 			if result:

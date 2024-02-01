@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://clfwbndiph4dn"]
+[gd_scene load_steps=14 format=3 uid="uid://clfwbndiph4dn"]
 
 [ext_resource type="Script" path="res://scripts/Levels/initiate level.gd" id="1_5j3o7"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_6o67q"]
@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://btuch2skaq6tn" path="res://scenes/tools/respawner_handler.tscn" id="3_hw7x1"]
 [ext_resource type="PackedScene" uid="uid://db82jlojuy6qm" path="res://scenes/characters/PB.tscn" id="4_d5k7j"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3D.gd" id="6_k006f"]
-[ext_resource type="PackedScene" uid="uid://bvg8potcgyin4" path="res://scenes/characters/Fella.tscn" id="8_2rr05"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_ob63o"]
 size = Vector3(20, 2, 2)
@@ -89,8 +88,8 @@ depth = 2.0
 polygon = PackedVector2Array(-2, 0, 2, 0, 2, -0.1, -2, -0.1)
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.394301, 1.5, 6.56437)
-fov = 74.8216
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.862332, 1.5, 6.90105)
+fov = 74.5951
 near = 0.001
 
 [node name="PhantomCameraHost" type="Node" parent="Camera3D"]
@@ -123,12 +122,12 @@ environment = SubResource("Environment_1s338")
 transform = Transform3D(0.732875, 0.25499, -0.630772, -2.54639e-09, 0.927112, 0.374785, 0.680363, -0.27467, 0.679458, 0, 0, 0)
 
 [node name="PhantomCamera3D" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.394301, 1.5, 6.56437)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.862332, 1.5, 6.90105)
 script = ExtResource("6_k006f")
 priority_override = false
 priority = 0
 follow_mode = 3
-follow_group = Array[NodePath]([NodePath("../Body"), NodePath("../Body2")])
+follow_group = Array[NodePath]([NodePath(""), NodePath("../Body2")])
 follow_parameters/distance = 6.25
 follow_parameters/auto_distance = false
 follow_parameters/target_offset = Vector3(0, 1.5, 0)
@@ -138,9 +137,6 @@ tween_parameters = null
 tween_on_load = true
 inactive_update_mode = 0
 camera_3D_resource = null
-
-[node name="Body" parent="." instance=ExtResource("8_2rr05")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0737309, 0, -0.0223012)
 
 [node name="Body2" parent="." instance=ExtResource("4_d5k7j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.862332, 5.96046e-08, 0.651046)
