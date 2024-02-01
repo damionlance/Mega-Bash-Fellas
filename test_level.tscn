@@ -88,8 +88,8 @@ depth = 2.0
 polygon = PackedVector2Array(-2, 0, 2, 0, 2, -0.1, -2, -0.1)
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.862332, 1.5, 6.90105)
-fov = 74.5951
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.394301, 1.5, 6.56437)
+fov = 74.8167
 near = 0.001
 
 [node name="PhantomCameraHost" type="Node" parent="Camera3D"]
