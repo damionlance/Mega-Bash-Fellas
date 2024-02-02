@@ -91,7 +91,7 @@ func _process(delta):
 
 
 
-func hit(launch_angle : float, facing_direction : float, grab : bool = false, _grab_position : Node3D = Node3D.new(), damage : float = 0.0, hitstun_frames : float = 0.0, knockback : float = 0.0) :
+func hit(launch_angle : float, facing_direction : float, grab : bool = false, _grab_position : Node3D = Node3D.new(), damage : float = 0.0, hitstun_frames : float = 0.0, knockback : float = 0.0, knockback_scaling : float = 0.0) :
 	if launch_angle != 0:
 		body.velocity = Vector3(1, 0, 0).rotated(Vector3(0,0,1),launch_angle)
 	else: body.velocity = Vector3.ZERO
@@ -99,11 +99,10 @@ func hit(launch_angle : float, facing_direction : float, grab : bool = false, _g
 	body.current_damage += damage * 0.01
 	var adjusted_knockback = ( body.current_damage * .1 + body.current_damage * damage / 20)
 	adjusted_knockback *= (200/(body.weight + 100)) * 1.4
-	adjusted_knockback += 18
+	adjusted_knockback += 1.8
 	adjusted_knockback *= knockback_scaling * 0.01
 	adjusted_knockback += knockback
 	body.velocity *= adjusted_knockback
-	
 	if grab:
 		body.facing_direction = -facing_direction
 	body.emit_signal("has_been_hit", grab, _grab_position, hitstun_frames)
@@ -125,8 +124,7 @@ func _on_area_entered(_area):
 		return
 	if interruptable:
 		body.state.current_state.interrupt()
-		print("Hello!")
-	hurtbox.hit(deg_to_rad(launch_angle), body.facing_direction, grab, body.grab_position, damage, hitstun_frames, knockback)
+	hurtbox.hit(deg_to_rad(launch_angle), body.facing_direction, grab, body.grab_position, damage, hitstun_frames, knockback, knockback_scaling)
 	if grab:
 		body.state.current_state.grab = true
 		body.state.grabbed_body = hurtbox.body

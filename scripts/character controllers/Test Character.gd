@@ -72,7 +72,6 @@ func test_edge(delta):
 	var can_teeter = false
 	if facing_direction == sign(velocity.x): 
 		if abs(velocity.x) < 150 * delta or Input.get_axis(state.player_number + "Left", state.player_number + "Right") == 0:
-			print(velocity.x , " : ", 150 * delta)
 			can_teeter = true
 	if can_teeter or not slide_off_ledge:
 		var space_state = get_world_3d().direct_space_state
