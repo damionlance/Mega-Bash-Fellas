@@ -42,7 +42,7 @@ func update(delta):
 	delta_v = regular_aerial_movement_processing(delta, delta_v)
 	body.delta_v = delta_v
 	# Process physics
-	ready_to_jump = not Input.is_action_pressed("Jump")
+	ready_to_jump = not Input.is_action_pressed(state.player_number + "Jump")
 	pass
 
 func reset(delta):

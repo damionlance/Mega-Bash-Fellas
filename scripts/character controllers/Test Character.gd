@@ -9,6 +9,8 @@ extends CharacterBody3D
 @onready var controller := $"Controller"
 @onready var hitbox_handler := $"Hitboxes"
 @onready var grab_position := $"Grab Position"
+@onready var stage_root := get_tree().get_current_scene()
+@onready var pcam = stage_root.find_child("PhantomCamera3D")
 
 var delta_v := Vector2.ZERO
 var facing_direction := 1
@@ -41,10 +43,11 @@ func _ready():
 		controller.set_script(load("res://scripts/character controllers/AI Inputs.gd"))
 		controller._ready()
 		controller.set_process(true)
+	pcam.append_follow_group_node($"Camera Tracking Node")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _physics_process(delta):
 	rotation.y = PI if facing_direction == -1 else 0
 	
 	can_jump = true
@@ -64,19 +67,22 @@ func apply_friction(friction):
 	velocity.x -= friction * sign(velocity.x)
 
 func test_edge(delta):
+	if not is_on_floor() or velocity.x == 0:
+		return
 	var can_teeter = false
-	if facing_direction == sign(velocity.x) and velocity.y == 0: 
-		if velocity.x < 360 * delta or controller.movement_direction.x == 0:
+	if facing_direction == sign(velocity.x): 
+		if abs(velocity.x) < 150 * delta or Input.get_axis(state.player_number + "Left", state.player_number + "Right") == 0:
+			print(velocity.x , " : ", 150 * delta)
 			can_teeter = true
 	if can_teeter or not slide_off_ledge:
 		var space_state = get_world_3d().direct_space_state
-		var query = PhysicsRayQueryParameters3D.create(global_position + velocity * delta + Vector3(0, 0.01, 0), global_position + velocity * delta - Vector3(0, 0.01, 0))
+		var query = PhysicsRayQueryParameters3D.create(global_position + (velocity * delta) - Vector3(0, 0.05, 0), global_position - (velocity * delta) - Vector3(0, 0.05, 0), 3)
 		var result = space_state.intersect_ray(query)
-		if not result:
-			query = PhysicsRayQueryParameters3D.create(global_position + velocity * delta - Vector3(0, 0.01, 0), global_position - Vector3(0, 0.01, 0), 3)
-			result = space_state.intersect_ray(query)
-			if result:
-				global_position = result.position
-				global_position.x -= facing_direction * 0.01
-				velocity.x = 0
-				state.update_state("Teeter")
+		if result:
+			global_position = result.position
+			global_position.x -= sign(velocity.x) * 0.1
+			velocity.x = 0
+			delta_v.x = 0
+			state.update_state("Teeter")
+			return
+		return

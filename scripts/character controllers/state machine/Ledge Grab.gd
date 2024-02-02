@@ -43,6 +43,7 @@ func update(delta):
 	ready_to_jump = not Input.is_action_pressed(state.player_number + "Jump")
 
 func reset(_delta):
+	body.consecutive_jumps = 0
 	can_climb = false
 	body.velocity = Vector3.ZERO
 	body.delta_v = Vector2.ZERO

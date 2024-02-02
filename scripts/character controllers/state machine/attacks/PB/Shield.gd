@@ -45,7 +45,7 @@ func update(delta):
 		shield.visible = false
 		return
 	if not body.is_on_floor():
-		state.update_state(state.player_number + "Fall")
+		state.update_state("Fall")
 		shield.visible = false
 		return
 	if Input.is_action_pressed(state.player_number + "Attack"):

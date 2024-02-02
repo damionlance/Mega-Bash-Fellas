@@ -92,8 +92,8 @@ depth = 2.0
 polygon = PackedVector2Array(-2, 0, 2, 0, 2, -0.1, -2, -0.1)
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.862, 1.5, 5)
-fov = 69.431
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.862, 1.5, 1)
+fov = 74.4146
 near = 0.001
 
 [node name="PhantomCameraHost" type="Node" parent="Camera3D"]
@@ -125,26 +125,16 @@ environment = SubResource("Environment_1s338")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.732875, 0.25499, -0.630772, -2.54639e-09, 0.927112, 0.374785, 0.680363, -0.27467, 0.679458, 0, 0, 0)
 
-[node name="Area3D" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.63138, 0)
-top_level = true
-collision_layer = 0
-collision_mask = 4
-script = ExtResource("7_hguk8")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-shape = SubResource("BoxShape3D_uqvet")
-
 [node name="PhantomCamera3D" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.862, 1.5, 5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.862, 1.5, 1)
 script = ExtResource("6_k006f")
 priority_override = false
 priority = 0
 follow_mode = 3
-follow_group = Array[NodePath]([NodePath("")])
+follow_group = Array[NodePath]([NodePath("../Body2")])
 follow_parameters/auto_distance = true
-follow_parameters/min_distance = 5.0
-follow_parameters/max_distance = 10.0
+follow_parameters/min_distance = 100.0
+follow_parameters/max_distance = 150.0
 follow_parameters/auto_distance_divisor = 10.0
 follow_parameters/target_offset = Vector3(0, 1.5, 0)
 follow_parameters/damping = false
@@ -154,20 +144,21 @@ tween_on_load = true
 inactive_update_mode = 0
 camera_3D_resource = null
 
+[node name="Area3D" type="Area3D" parent="PhantomCamera3D"]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("7_hguk8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PhantomCamera3D/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.274566, 3.92432, -0.89359)
+shape = SubResource("BoxShape3D_uqvet")
+
 [node name="Body2" parent="." instance=ExtResource("4_d5k7j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.862, 0, 0)
 player = false
 
-[node name="Body3" parent="." instance=ExtResource("4_d5k7j")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.862, 0, 0)
-player = false
-player_number = 2
-
 [node name="RayCast3D" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.66736, 5.35071, 0)
 target_position = Vector3(-1.1, 0, 0)
-
-[connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]
-[connection signal="body_exited" from="Area3D" to="Area3D" method="_on_body_exited"]
 
 [editable path="Respawner Handler"]

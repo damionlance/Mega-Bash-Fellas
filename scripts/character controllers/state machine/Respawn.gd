@@ -25,6 +25,7 @@ func update(delta):
 
 func reset(_delta):
 	body.current_damage = 0.0
+	body.delta_v = Vector2.ZERO
 	body.velocity = Vector3.ZERO
 	can_move = false
 	await get_tree().create_timer(1.0).timeout

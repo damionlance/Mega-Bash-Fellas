@@ -21,12 +21,12 @@ func update(delta):
 	# Handle all relevant timers
 	body.apply_friction(traction)
 	# Process physics
+	body.slide_off_ledge = false
 	pass
 
 func reset(delta):
 	animation_finished = false
 	
-	body.slide_off_ledge = false
 	body.attacking = false
 	body.consecutive_jumps = 0
 	body.velocity.x = dodge_roll * 1.25 * Input.get_axis(state.player_number + "Left", state.player_number + "Right") * delta

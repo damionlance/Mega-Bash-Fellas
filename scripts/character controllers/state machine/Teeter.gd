@@ -16,7 +16,7 @@ func update(delta):
 	
 	if controller.movement_direction.y > -.4:
 		can_drop_thru_platform = true
-	if controller.movement_direction.length() == 0:
+	if abs(Input.get_axis(state.player_number + "Left", state.player_number + "Right")) == 0:
 		can_dash = true
 	
 	var delta_v = Vector2.ZERO
@@ -30,15 +30,15 @@ func update(delta):
 		state.update_state("Jump Squat")
 		return
 	if not body.is_on_floor():
-		state.update_state("Fall")
+		state.update_state("Idle")
 		return
 	if Input.get_action_strength(state.player_number + "Down") > .7:
 		state.update_state("Crouch")
 		return
 	
 	
-	if abs(Input.get_axis(state.player_number + "Left", state.player_number + "Right")) > .2:
-		if abs(Input.get_axis(state.player_number + "Left", state.player_number + "Right")) > 0.4 and can_dash:
+	if abs(Input.get_axis(state.player_number + "Left", state.player_number + "Right")) > .2 and can_dash:
+		if abs(Input.get_axis(state.player_number + "Left", state.player_number + "Right")) > 0.4:
 			state.update_state("Dash")
 			return
 		elif abs(Input.get_axis(state.player_number + "Left", state.player_number + "Right")) != body.facing_direction:
@@ -53,6 +53,7 @@ func update(delta):
 	pass
 
 func reset(_delta):
+	body.velocity.x = 0
 	can_tilt = true
 	can_crush = true
 	can_dash = false
