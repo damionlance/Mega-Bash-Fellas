@@ -68,7 +68,8 @@ func _process(delta):
 			hitcapsule.shape.radius = hitbox_radius
 	else:
 		if not hurtbox:
-			$"hitbox point".position.z = 0
+			$"hitbox point".global_position.z = 0
+			global_position.z = 0
 			hitcapsule.position = ($"hitbox point").position / 2
 			hitcapsule.rotation.z = atan2(($"hitbox point").position.y, ($"hitbox point").position.x) + PI/2
 			hitcapsule.shape.height = hitbox_point_position.length()
