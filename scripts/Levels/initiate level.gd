@@ -7,6 +7,3 @@ var stage_size := Vector3(30, 30, 0)
 func _ready():
 	emit_signal("level_loaded")
 	pass # Replace with function body.
-
-func _process(delta):
-	print(Engine.get_frames_per_second())

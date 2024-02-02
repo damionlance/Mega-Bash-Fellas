@@ -97,11 +97,9 @@ func hit(launch_angle : float, facing_direction : float, grab : bool = false, _g
 	else: body.velocity = Vector3.ZERO
 	body.velocity.x *= facing_direction
 	body.current_damage += damage * 0.01
-	var adjusted_knockback = ( body.current_damage * .1 + body.current_damage * damage / 20)
-	adjusted_knockback *= (200/(body.weight + 100)) * 1.4
-	adjusted_knockback += 1.8
-	adjusted_knockback *= knockback_scaling * 0.01
-	adjusted_knockback += knockback
+	var adjusted_knockback = knockback
+	adjusted_knockback += knockback_scaling * damage * 0.01
+	adjusted_knockback *= body.weight
 	body.velocity *= adjusted_knockback
 	if grab:
 		body.facing_direction = -facing_direction

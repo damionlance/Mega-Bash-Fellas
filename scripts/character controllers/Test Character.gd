@@ -2,7 +2,7 @@ extends CharacterBody3D
 
 @export var player := true
 @export var player_number : int = 1
-@export var weight := 100
+@export var weight := 1
 @export var character_name : String
 
 @onready var state := $"State Machine"
@@ -44,6 +44,7 @@ func _ready():
 		controller._ready()
 		controller.set_process(true)
 	pcam.append_follow_group_node($"Camera Tracking Node")
+	$Hitboxes.reset_hitboxes()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

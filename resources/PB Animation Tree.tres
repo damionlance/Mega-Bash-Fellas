@@ -1,4 +1,4 @@
-[gd_resource type="AnimationNodeBlendTree" load_steps=16 format=3 uid="uid://d2ql7htv8i0ur"]
+[gd_resource type="AnimationNodeBlendTree" load_steps=19 format=3 uid="uid://d2ql7htv8i0ur"]
 
 [ext_resource type="AnimationNodeStateMachine" uid="uid://oe7qbmr1p7ld" path="res://PB Animation Tree.tres" id="1_w1ag7"]
 
@@ -41,6 +41,9 @@ states/Grabbed/position = Vector2(200.444, 247.556)
 transitions = ["Start", "Grabbed", SubResource("AnimationNodeStateMachineTransition_awh4v"), "Start", "Get Hit Ait High Knock", SubResource("AnimationNodeStateMachineTransition_6ng3w"), "Grabbed", "Get Hit Ait High Knock", SubResource("AnimationNodeStateMachineTransition_dg2yu"), "Grabbed", "Get Cargo Carried", SubResource("AnimationNodeStateMachineTransition_ncxld"), "Get Cargo Carried", "Get Hit Ait High Knock", SubResource("AnimationNodeStateMachineTransition_5k12d")]
 graph_offset = Vector2(-509, 65)
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_nsu3f"]
+animation = &"fall"
+
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5k86d"]
 advance_mode = 2
 
@@ -52,18 +55,28 @@ advance_expression = "damaged != false"
 advance_mode = 2
 advance_expression = "damaged == false"
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_10yde"]
+advance_mode = 2
+advance_expression = "state.current_state.state_name == \"Respawn\""
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qbfa5"]
+advance_mode = 2
+advance_expression = "state.current_state.state_name != \"Respawn\""
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_khprv"]
 "states/Damage State/node" = SubResource("AnimationNodeStateMachine_f7s31")
 "states/Damage State/position" = Vector2(455.667, 58.6667)
 states/StateMachine/node = ExtResource("1_w1ag7")
 states/StateMachine/position = Vector2(434.333, 225.333)
-transitions = ["Start", "StateMachine", SubResource("AnimationNodeStateMachineTransition_5k86d"), "StateMachine", "Damage State", SubResource("AnimationNodeStateMachineTransition_a0wnb"), "Damage State", "StateMachine", SubResource("AnimationNodeStateMachineTransition_o20qg")]
-graph_offset = Vector2(-99, -178)
+states/fall/node = SubResource("AnimationNodeAnimation_nsu3f")
+states/fall/position = Vector2(439.333, 374)
+transitions = ["Start", "StateMachine", SubResource("AnimationNodeStateMachineTransition_5k86d"), "StateMachine", "Damage State", SubResource("AnimationNodeStateMachineTransition_a0wnb"), "Damage State", "StateMachine", SubResource("AnimationNodeStateMachineTransition_o20qg"), "StateMachine", "fall", SubResource("AnimationNodeStateMachineTransition_10yde"), "fall", "StateMachine", SubResource("AnimationNodeStateMachineTransition_qbfa5")]
+graph_offset = Vector2(-134, 86)
 
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_1lm6q"]
 
 [resource]
-graph_offset = Vector2(-580, -58.6667)
+graph_offset = Vector2(-466, -118.667)
 nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_khprv")
 nodes/StateMachine/position = Vector2(-320, 40)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_1lm6q")

@@ -5,3 +5,4 @@ func reset_hitboxes():
 		child.active = false
 		child.visible = false
 		child.position = Vector3.ZERO
+		child.grab = false
