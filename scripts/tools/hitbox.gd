@@ -99,7 +99,7 @@ func hit(launch_angle : float, facing_direction : float, grab : bool = false, _g
 	body.current_damage += damage * 0.01
 	var adjusted_knockback = knockback
 	adjusted_knockback += knockback_scaling * damage * 0.01
-	adjusted_knockback *= body.weight
+	adjusted_knockback /= body.weight
 	body.velocity *= adjusted_knockback
 	if grab:
 		body.facing_direction = -facing_direction
