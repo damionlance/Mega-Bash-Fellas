@@ -25,6 +25,8 @@ var can_crush := false
 var can_tilt := false
 var can_fall_thru_platform := true
 
+var can_wall_jump := false
+
 func _ready():
 	constants.jump_force / constants.gravity
 	constants.double_jump_force / constants.gravity
@@ -48,6 +50,9 @@ func regular_aerial_movement_processing(delta, delta_v) -> Vector2:
 		passthru_platform_checker.fall_thru = true
 	else:
 		passthru_platform_checker.fall_thru = false
+	
+	if sign(Input.get_axis(state.player_number + "Left", state.player_number + "Right")) == body.last_wall_normal and body.last_wall_normal != 0:
+		state.update_state("Wall Jump")
 	return delta_v
 
 func decide_attack() -> bool:

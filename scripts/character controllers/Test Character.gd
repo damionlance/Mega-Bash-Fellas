@@ -17,6 +17,8 @@ var facing_direction := 1
 var max_horizontal_velocity := 0.0
 var slide_off_ledge = false
 var previous_grounded_position
+var last_wall_normal := 0.0
+var wall_jump_counter := 0
 
 var can_jump := true
 var consecutive_jumps := 0
@@ -60,6 +62,14 @@ func _physics_process(delta):
 	move_and_slide()
 	delta_v = Vector2.ZERO
 	slide_off_ledge = true
+	
+	if is_on_wall():
+		wall_jump_counter = 0
+		last_wall_normal = get_last_slide_collision().get_normal().x/abs(get_last_slide_collision().get_normal().x)
+	if not is_on_wall():
+		wall_jump_counter += 1
+		if wall_jump_counter == 3:
+			last_wall_normal = 0
 
 func apply_friction(friction):
 	if sign(velocity.x - friction * sign(velocity.x)) != sign(velocity.x):

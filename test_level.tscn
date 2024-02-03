@@ -53,6 +53,17 @@ mesh = SubResource("BoxMesh_ob63o")
 depth = 2.0
 polygon = PackedVector2Array(-10, 0, 10, 0, 10, -2, -10, -2)
 
+[node name="Stage2" type="StaticBody3D" parent="." groups=["pathable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.6647, 4.32566, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Stage2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+mesh = SubResource("BoxMesh_ob63o")
+
+[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="Stage2"]
+depth = 2.0
+polygon = PackedVector2Array(-10, 0, 10, 0, 10, -2, -10, -2)
+
 [node name="Side Plat" type="StaticBody3D" parent="." groups=["pathable"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.99206, 2.375, 0)
 collision_layer = 2
@@ -94,7 +105,7 @@ polygon = PackedVector2Array(-2, 0, 2, 0, 2, -0.1, -2, -0.1)
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.862, 1.5, 5)
-fov = 68.8479
+fov = 73.8545
 near = 0.001
 
 [node name="PhantomCameraHost" type="Node" parent="Camera3D"]

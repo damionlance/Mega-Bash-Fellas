@@ -1,4 +1,4 @@
-[gd_scene load_steps=196 format=3 uid="uid://db82jlojuy6qm"]
+[gd_scene load_steps=197 format=3 uid="uid://db82jlojuy6qm"]
 
 [ext_resource type="Script" path="res://scripts/character controllers/Test Character.gd" id="1_2pr3j"]
 [ext_resource type="Script" path="res://State Machine.gd" id="2_2psf1"]
@@ -159,6 +159,7 @@
 [ext_resource type="Script" path="res://scripts/character controllers/state machine/Ledge Grab.gd" id="133_mr4dx"]
 [ext_resource type="Script" path="res://scripts/character controllers/state machine/Climb Ledge.gd" id="134_x5trx"]
 [ext_resource type="Script" path="res://scripts/character controllers/state machine/Ledge Jump.gd" id="135_bql1o"]
+[ext_resource type="Script" path="res://scripts/character controllers/state machine/Wall Jump.gd" id="139_2edj2"]
 [ext_resource type="Script" path="res://scripts/tools/Ledge Sensor.gd" id="141_khb6i"]
 [ext_resource type="Script" path="res://scripts/character controllers/state machine/attacks/PB/Side Special.gd" id="141_v7p0f"]
 [ext_resource type="Script" path="res://scripts/character controllers/state machine/attacks/PB/Side Special Interrupt.gd" id="142_j1mm0"]
@@ -281,63 +282,63 @@ _data = {
 [sub_resource type="SphereShape3D" id="SphereShape3D_nctgj"]
 radius = 0.25
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_awdhq"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_s4mop"]
 radius = 0.393
 height = 1.12678
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_atl7l"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3aupk"]
 radius = 1.0
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ck2qx"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gf5js"]
 radius = 1.0
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7q86n"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_nidhp"]
 radius = 1.0
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_q71l4"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_p57af"]
 radius = 1.0
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6qyp3"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_by7ck"]
 radius = 0.234
 height = 0.468
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0m5k0"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_e3e6q"]
 radius = 0.18
 height = 0.36
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tlltp"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8j4ah"]
 radius = 0.267
 height = 0.534
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_lrnmo"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bylvd"]
 radius = 0.113
 height = 0.392659
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_33gwn"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6a3v4"]
 radius = 0.1
 height = 0.237516
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_k6058"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_smm1r"]
 radius = 0.113
 height = 0.361549
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kd063"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mfnul"]
 radius = 0.1
 height = 0.314098
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1sfbg"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7ojfm"]
 radius = 0.127
 height = 0.42568
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_y7uel"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bvnqe"]
 radius = 0.1
 height = 0.2
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fjye2"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qs4w4"]
 radius = 0.127
 height = 0.254
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_lwqjm"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_78p85"]
 radius = 0.1
 height = 0.29325
 
@@ -503,6 +504,9 @@ script = ExtResource("11_ud1ho")
 [node name="Jump" type="Node" parent="State Machine/Aerial Movement"]
 script = ExtResource("12_xegvf")
 
+[node name="Wall Jump" type="Node" parent="State Machine/Aerial Movement"]
+script = ExtResource("139_2edj2")
+
 [node name="Double Jump" type="Node" parent="State Machine/Aerial Movement"]
 script = ExtResource("13_b2p5l")
 
@@ -631,35 +635,35 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.12075, 0.11646, 0)
 
 [node name="HitCapsule" parent="Hitboxes/hitbox" index="1"]
 transform = Transform3D(-0.103355, -0.994632, 0, 0.994632, -0.103355, 0, 0, 0, 1, 0.560375, 0.05823, 0)
-shape = SubResource("CapsuleShape3D_awdhq")
+shape = SubResource("CapsuleShape3D_s4mop")
 
 [node name="hitbox2" parent="Hitboxes" instance=ExtResource("21_l8co2")]
 collision_mask = 33
 
 [node name="HitCapsule" parent="Hitboxes/hitbox2" index="1"]
 transform = Transform3D(-4.37113e-08, -0.999999, 0, 0.999999, -4.37113e-08, 0, 0, 0, 1, 0, 0, 0)
-shape = SubResource("CapsuleShape3D_atl7l")
+shape = SubResource("CapsuleShape3D_3aupk")
 
 [node name="hitbox3" parent="Hitboxes" instance=ExtResource("21_l8co2")]
 collision_mask = 33
 
 [node name="HitCapsule" parent="Hitboxes/hitbox3" index="1"]
 transform = Transform3D(-4.37113e-08, -0.999999, 0, 0.999999, -4.37113e-08, 0, 0, 0, 1, 0, 0, 0)
-shape = SubResource("CapsuleShape3D_ck2qx")
+shape = SubResource("CapsuleShape3D_gf5js")
 
 [node name="hitbox4" parent="Hitboxes" instance=ExtResource("21_l8co2")]
 collision_mask = 33
 
 [node name="HitCapsule" parent="Hitboxes/hitbox4" index="1"]
 transform = Transform3D(-4.37113e-08, -0.999999, 0, 0.999999, -4.37113e-08, 0, 0, 0, 1, 0, 0, 0)
-shape = SubResource("CapsuleShape3D_7q86n")
+shape = SubResource("CapsuleShape3D_nidhp")
 
 [node name="hitbox5" parent="Hitboxes" instance=ExtResource("21_l8co2")]
 collision_mask = 33
 
 [node name="HitCapsule" parent="Hitboxes/hitbox5" index="1"]
 transform = Transform3D(-4.37113e-08, -0.999999, 0, 0.999999, -4.37113e-08, 0, 0, 0, 1, 0, 0, 0)
-shape = SubResource("CapsuleShape3D_q71l4")
+shape = SubResource("CapsuleShape3D_p57af")
 
 [node name="Hurtboxes" type="Node3D" parent="."]
 script = ExtResource("167_wvoa3")
@@ -790,7 +794,7 @@ hitbox_end_point = NodePath("../Bone Attachments/Ribs")
 
 [node name="HitCapsule" parent="Hurtboxes/Belly" index="1"]
 transform = Transform3D(-0.984851, 0.172471, 0, -0.172471, -0.984851, 0, 0, 0, 1, -0.0313544, 0.179041, 0)
-shape = SubResource("CapsuleShape3D_6qyp3")
+shape = SubResource("CapsuleShape3D_by7ck")
 
 [node name="Head" parent="Hurtboxes" node_paths=PackedStringArray("hitbox_start_point", "hitbox_end_point") instance=ExtResource("21_l8co2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.294586, 1.34435, 0)
@@ -804,7 +808,7 @@ hitbox_end_point = NodePath("../Bone Attachments/Head")
 
 [node name="HitCapsule" parent="Hurtboxes/Head" index="1"]
 transform = Transform3D(-0.963654, -0.266639, 0, 0.266639, -0.963654, 0, 0, 0, 1, 0.0162283, 0.0586505, 0)
-shape = SubResource("CapsuleShape3D_0m5k0")
+shape = SubResource("CapsuleShape3D_e3e6q")
 
 [node name="Chest" parent="Hurtboxes" node_paths=PackedStringArray("hitbox_start_point", "hitbox_end_point") instance=ExtResource("21_l8co2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.231717, 1.03529, 0)
@@ -818,7 +822,7 @@ hitbox_end_point = NodePath("../Bone Attachments/Neck")
 
 [node name="HitCapsule" parent="Hurtboxes/Chest" index="1"]
 transform = Transform3D(-0.979759, -0.199304, 0, 0.199304, -0.979759, 0, 0, 0, 1, 0.0314343, 0.154528, 0)
-shape = SubResource("CapsuleShape3D_tlltp")
+shape = SubResource("CapsuleShape3D_8j4ah")
 
 [node name="Left Thigh" parent="Hurtboxes" node_paths=PackedStringArray("hitbox_start_point", "hitbox_end_point") instance=ExtResource("21_l8co2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.219834, 0.681808, 0)
@@ -832,7 +836,7 @@ hitbox_end_point = NodePath("../Bone Attachments/Left Knee")
 
 [node name="HitCapsule" parent="Hurtboxes/Left Thigh" index="1"]
 transform = Transform3D(0.896551, 0.442594, 0, -0.442594, 0.896551, 0, 0, 0, 1, -0.0869076, -0.176046, 0)
-shape = SubResource("CapsuleShape3D_lrnmo")
+shape = SubResource("CapsuleShape3D_bylvd")
 
 [node name="Left Calf" parent="Hurtboxes" node_paths=PackedStringArray("hitbox_start_point", "hitbox_end_point") instance=ExtResource("21_l8co2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0460187, 0.329715, 0)
@@ -846,7 +850,7 @@ hitbox_end_point = NodePath("../Bone Attachments/Left Ankle")
 
 [node name="HitCapsule" parent="Hurtboxes/Left Calf" index="1"]
 transform = Transform3D(0.751181, 0.659829, 0, -0.659829, 0.751181, 0, 0, 0, 1, -0.0783738, -0.0892245, 0)
-shape = SubResource("CapsuleShape3D_33gwn")
+shape = SubResource("CapsuleShape3D_6a3v4")
 
 [node name="Right Thigh" parent="Hurtboxes" node_paths=PackedStringArray("hitbox_start_point", "hitbox_end_point") instance=ExtResource("21_l8co2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.423967, 0.662406, 0)
@@ -860,7 +864,7 @@ hitbox_end_point = NodePath("../Bone Attachments/Right Knee")
 
 [node name="HitCapsule" parent="Hurtboxes/Right Thigh" index="1"]
 transform = Transform3D(0.629528, -0.776773, 0, 0.776773, 0.629528, 0, 0, 0, 1, 0.140443, -0.113821, 0)
-shape = SubResource("CapsuleShape3D_k6058")
+shape = SubResource("CapsuleShape3D_smm1r")
 
 [node name="Right Calf" parent="Hurtboxes" node_paths=PackedStringArray("hitbox_start_point", "hitbox_end_point") instance=ExtResource("21_l8co2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.704853, 0.434765, 0)
@@ -874,7 +878,7 @@ hitbox_end_point = NodePath("../Bone Attachments/Right Ankle")
 
 [node name="HitCapsule" parent="Hurtboxes/Right Calf" index="1"]
 transform = Transform3D(0.926697, 0.375387, 0, -0.375387, 0.926697, 0, 0, 0, 1, -0.0589634, -0.14556, 0)
-shape = SubResource("CapsuleShape3D_kd063")
+shape = SubResource("CapsuleShape3D_mfnul")
 
 [node name="Right Upper Arm" parent="Hurtboxes" node_paths=PackedStringArray("hitbox_start_point", "hitbox_end_point") instance=ExtResource("21_l8co2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.347897, 1.2343, 0)
@@ -888,7 +892,7 @@ hitbox_end_point = NodePath("../Bone Attachments/Right Elbow")
 
 [node name="HitCapsule" parent="Hurtboxes/Right Upper Arm" index="1"]
 transform = Transform3D(0.997175, -0.0729204, 0, 0.0729204, 0.997175, 0, 0, 0, 1, 0.0155229, -0.212273, 0)
-shape = SubResource("CapsuleShape3D_1sfbg")
+shape = SubResource("CapsuleShape3D_7ojfm")
 
 [node name="Right Forearm" parent="Hurtboxes" node_paths=PackedStringArray("hitbox_start_point", "hitbox_end_point") instance=ExtResource("21_l8co2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.378943, 0.809752, 0)
@@ -902,7 +906,7 @@ hitbox_end_point = NodePath("../Bone Attachments/Right Wrist")
 
 [node name="HitCapsule" parent="Hurtboxes/Right Forearm" index="1"]
 transform = Transform3D(-4.37047e-08, -0.999846, 0, 0.999846, -4.37047e-08, 0, 0, 0, 1, 0, 0, 0)
-shape = SubResource("CapsuleShape3D_y7uel")
+shape = SubResource("CapsuleShape3D_bvnqe")
 
 [node name="Left Upper Arm" parent="Hurtboxes" node_paths=PackedStringArray("hitbox_start_point", "hitbox_end_point") instance=ExtResource("21_l8co2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.137973, 1.31529, 0)
@@ -916,7 +920,7 @@ hitbox_end_point = NodePath("../Bone Attachments/Left Elbow")
 
 [node name="HitCapsule" parent="Hurtboxes/Left Upper Arm" index="1"]
 transform = Transform3D(0.999755, 0.0135205, 0, -0.0135205, 0.999755, 0, 0, 0, 1, -0.00152934, -0.113085, 0)
-shape = SubResource("CapsuleShape3D_fjye2")
+shape = SubResource("CapsuleShape3D_qs4w4")
 
 [node name="Left Forearm" parent="Hurtboxes" node_paths=PackedStringArray("hitbox_start_point", "hitbox_end_point") instance=ExtResource("21_l8co2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.134915, 1.08912, 0)
@@ -930,7 +934,7 @@ hitbox_end_point = NodePath("../Bone Attachments/Left Wrist")
 
 [node name="HitCapsule" parent="Hurtboxes/Left Forearm" index="1"]
 transform = Transform3D(-0.835993, 0.548457, 0, -0.548457, -0.835993, 0, 0, 0, 1, -0.08043, 0.122597, 0)
-shape = SubResource("CapsuleShape3D_lwqjm")
+shape = SubResource("CapsuleShape3D_78p85")
 
 [node name="Shield" parent="." instance=ExtResource("33_iwn4k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.100391, 0.788085, 0)

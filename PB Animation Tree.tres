@@ -1,4 +1,4 @@
-[gd_resource type="AnimationNodeStateMachine" load_steps=220 format=3 uid="uid://oe7qbmr1p7ld"]
+[gd_resource type="AnimationNodeStateMachine" load_steps=226 format=3 uid="uid://oe7qbmr1p7ld"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_yecre"]
 animation = &"Bair"
@@ -60,6 +60,9 @@ animation = &"Drop Thru"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wcu3n"]
 animation = &"Drop Thru"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qvcsh"]
+animation = &"Wall jump"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_sfwr0"]
 animation = &"fall"
@@ -127,6 +130,26 @@ advance_expression = "state.current_state.state_name == \"Airdodge\""
 advance_mode = 2
 advance_expression = "state.current_state.state_name == \"Airdodge\""
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8oy1i"]
+advance_mode = 2
+advance_expression = "state.current_state.state_name == \"Wall Jump\""
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3w0nv"]
+advance_mode = 2
+advance_expression = "state.current_state.state_name == \"Wall Jump\""
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xnpwt"]
+advance_mode = 2
+advance_expression = "state.current_state.state_name == \"Wall Jump\""
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_fod3e"]
+advance_mode = 2
+advance_expression = "state.current_state.state_name == \"Wall Jump\""
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ajom8"]
+advance_mode = 2
+advance_expression = "state.current_state.state_name == \"Fall\""
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_5abvf"]
 "states/Air Dodge/node" = SubResource("AnimationNodeAnimation_on14t")
 "states/Air Dodge/position" = Vector2(704, 101.597)
@@ -137,11 +160,13 @@ advance_expression = "state.current_state.state_name == \"Airdodge\""
 "states/Drop Thru 2/node" = SubResource("AnimationNodeAnimation_bprlx")
 "states/Drop Thru 2/position" = Vector2(588, 215.61)
 states/Start/position = Vector2(232, 99.5556)
+"states/Wall jump/node" = SubResource("AnimationNodeAnimation_qvcsh")
+"states/Wall jump/position" = Vector2(427.333, 347.667)
 states/fall/node = SubResource("AnimationNodeAnimation_sfwr0")
 states/fall/position = Vector2(390.383, 214.642)
 "states/jump 1/node" = SubResource("AnimationNodeAnimation_pls0h")
 "states/jump 1/position" = Vector2(383.667, -6.66667)
-transitions = ["Start", "fall", SubResource("AnimationNodeStateMachineTransition_pqaw1"), "Start", "jump 1", SubResource("AnimationNodeStateMachineTransition_m42lk"), "Start", "Double Jump", SubResource("AnimationNodeStateMachineTransition_vbit2"), "jump 1", "fall", SubResource("AnimationNodeStateMachineTransition_5p6jf"), "jump 1", "Double Jump", SubResource("AnimationNodeStateMachineTransition_xq6id"), "jump 1", "Air Dodge", SubResource("AnimationNodeStateMachineTransition_55cr5"), "Air Dodge", "fall", SubResource("AnimationNodeStateMachineTransition_jm1ha"), "Double Jump", "Air Dodge", SubResource("AnimationNodeStateMachineTransition_i025e"), "Start", "Air Dodge", SubResource("AnimationNodeStateMachineTransition_nqsfh"), "Start", "Drop Thru", SubResource("AnimationNodeStateMachineTransition_fuix3"), "Drop Thru", "fall", SubResource("AnimationNodeStateMachineTransition_0paps"), "fall", "Double Jump", SubResource("AnimationNodeStateMachineTransition_4el4r"), "Double Jump", "Drop Thru 2", SubResource("AnimationNodeStateMachineTransition_yysxf"), "fall", "Air Dodge", SubResource("AnimationNodeStateMachineTransition_bu1ss"), "Drop Thru 2", "Air Dodge", SubResource("AnimationNodeStateMachineTransition_5pt2h")]
+transitions = ["Start", "fall", SubResource("AnimationNodeStateMachineTransition_pqaw1"), "Start", "jump 1", SubResource("AnimationNodeStateMachineTransition_m42lk"), "Start", "Double Jump", SubResource("AnimationNodeStateMachineTransition_vbit2"), "jump 1", "fall", SubResource("AnimationNodeStateMachineTransition_5p6jf"), "jump 1", "Double Jump", SubResource("AnimationNodeStateMachineTransition_xq6id"), "jump 1", "Air Dodge", SubResource("AnimationNodeStateMachineTransition_55cr5"), "Air Dodge", "fall", SubResource("AnimationNodeStateMachineTransition_jm1ha"), "Double Jump", "Air Dodge", SubResource("AnimationNodeStateMachineTransition_i025e"), "Start", "Air Dodge", SubResource("AnimationNodeStateMachineTransition_nqsfh"), "Start", "Drop Thru", SubResource("AnimationNodeStateMachineTransition_fuix3"), "Drop Thru", "fall", SubResource("AnimationNodeStateMachineTransition_0paps"), "fall", "Double Jump", SubResource("AnimationNodeStateMachineTransition_4el4r"), "Double Jump", "Drop Thru 2", SubResource("AnimationNodeStateMachineTransition_yysxf"), "fall", "Air Dodge", SubResource("AnimationNodeStateMachineTransition_bu1ss"), "Drop Thru 2", "Air Dodge", SubResource("AnimationNodeStateMachineTransition_5pt2h"), "fall", "Wall jump", SubResource("AnimationNodeStateMachineTransition_8oy1i"), "Double Jump", "Wall jump", SubResource("AnimationNodeStateMachineTransition_3w0nv"), "jump 1", "Wall jump", SubResource("AnimationNodeStateMachineTransition_xnpwt"), "Drop Thru 2", "Wall jump", SubResource("AnimationNodeStateMachineTransition_fod3e"), "Wall jump", "fall", SubResource("AnimationNodeStateMachineTransition_ajom8")]
 graph_offset = Vector2(-430, -95)
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ouudt"]

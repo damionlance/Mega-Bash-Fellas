@@ -11,6 +11,7 @@ class_name AerialPhysicsConstants
 @export_group("Single Jump")
 @export var jump_force := 1300.0
 @export var short_force := 860.0 # 1260
+@export var wall_jump_horizontal_speed := 1400
 
 @export_group("Double Jump")
 @export var double_jump_force := 1600.2

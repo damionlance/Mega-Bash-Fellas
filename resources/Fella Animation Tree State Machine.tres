@@ -1,4 +1,4 @@
-[gd_resource type="AnimationNodeStateMachine" load_steps=175 format=3 uid="uid://dkqhasqslw0dg"]
+[gd_resource type="AnimationNodeStateMachine" load_steps=181 format=3 uid="uid://dkqhasqslw0dg"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_yecre"]
 animation = &"B Air"
@@ -60,6 +60,9 @@ animation = &"Fall 2"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wcu3n"]
 animation = &"Drop Thru"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_s4a3s"]
+animation = &"Walljump"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_sfwr0"]
 animation = &"Fall 1"
@@ -127,22 +130,44 @@ advance_expression = "state.current_state.state_name == \"Airdodge\""
 advance_mode = 2
 advance_expression = "state.current_state.state_name == \"Airdodge\""
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_x8d03"]
+advance_mode = 2
+advance_expression = "state.current_state.state_name == \"Wall Jump\""
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ypvv6"]
+advance_mode = 2
+advance_expression = "state.current_state.state_name == \"Wall Jump\""
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3c0mj"]
+advance_mode = 2
+advance_expression = "state.current_state.state_name == \"Wall Jump\""
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dws30"]
+advance_mode = 2
+advance_expression = "state.current_state.state_name == \"Wall Jump\""
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_d66mh"]
+advance_mode = 2
+advance_expression = "state.current_state.state_name == \"Fall\""
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_5abvf"]
 "states/Air Dodge/node" = SubResource("AnimationNodeAnimation_on14t")
 "states/Air Dodge/position" = Vector2(704, 101.597)
 "states/Double Jump/node" = SubResource("AnimationNodeAnimation_6uwk7")
-"states/Double Jump/position" = Vector2(391.659, 100.955)
+"states/Double Jump/position" = Vector2(387.925, 101.605)
 "states/Drop Thru/node" = SubResource("AnimationNodeAnimation_wcu3n")
 "states/Drop Thru/position" = Vector2(232.778, 216.144)
 "states/Drop Thru 2/node" = SubResource("AnimationNodeAnimation_bprlx")
 "states/Drop Thru 2/position" = Vector2(587.333, 214.741)
 states/Start/position = Vector2(232, 99.5556)
+states/Walljump/node = SubResource("AnimationNodeAnimation_s4a3s")
+states/Walljump/position = Vector2(467.667, 350.667)
 states/fall/node = SubResource("AnimationNodeAnimation_sfwr0")
 states/fall/position = Vector2(390.383, 214.642)
 "states/jump 1/node" = SubResource("AnimationNodeAnimation_pls0h")
 "states/jump 1/position" = Vector2(384.334, -5.33334)
-transitions = ["Start", "fall", SubResource("AnimationNodeStateMachineTransition_pqaw1"), "Start", "jump 1", SubResource("AnimationNodeStateMachineTransition_m42lk"), "Start", "Double Jump", SubResource("AnimationNodeStateMachineTransition_vbit2"), "jump 1", "fall", SubResource("AnimationNodeStateMachineTransition_5p6jf"), "jump 1", "Double Jump", SubResource("AnimationNodeStateMachineTransition_xq6id"), "jump 1", "Air Dodge", SubResource("AnimationNodeStateMachineTransition_55cr5"), "Air Dodge", "fall", SubResource("AnimationNodeStateMachineTransition_jm1ha"), "Double Jump", "Air Dodge", SubResource("AnimationNodeStateMachineTransition_i025e"), "Start", "Air Dodge", SubResource("AnimationNodeStateMachineTransition_nqsfh"), "Start", "Drop Thru", SubResource("AnimationNodeStateMachineTransition_fuix3"), "Drop Thru", "fall", SubResource("AnimationNodeStateMachineTransition_0paps"), "fall", "Double Jump", SubResource("AnimationNodeStateMachineTransition_4el4r"), "Double Jump", "Drop Thru 2", SubResource("AnimationNodeStateMachineTransition_yysxf"), "fall", "Air Dodge", SubResource("AnimationNodeStateMachineTransition_bu1ss"), "Drop Thru 2", "Air Dodge", SubResource("AnimationNodeStateMachineTransition_5pt2h")]
-graph_offset = Vector2(-430, -95)
+transitions = ["Start", "fall", SubResource("AnimationNodeStateMachineTransition_pqaw1"), "Start", "jump 1", SubResource("AnimationNodeStateMachineTransition_m42lk"), "Start", "Double Jump", SubResource("AnimationNodeStateMachineTransition_vbit2"), "jump 1", "fall", SubResource("AnimationNodeStateMachineTransition_5p6jf"), "jump 1", "Double Jump", SubResource("AnimationNodeStateMachineTransition_xq6id"), "jump 1", "Air Dodge", SubResource("AnimationNodeStateMachineTransition_55cr5"), "Air Dodge", "fall", SubResource("AnimationNodeStateMachineTransition_jm1ha"), "Double Jump", "Air Dodge", SubResource("AnimationNodeStateMachineTransition_i025e"), "Start", "Air Dodge", SubResource("AnimationNodeStateMachineTransition_nqsfh"), "Start", "Drop Thru", SubResource("AnimationNodeStateMachineTransition_fuix3"), "Drop Thru", "fall", SubResource("AnimationNodeStateMachineTransition_0paps"), "fall", "Double Jump", SubResource("AnimationNodeStateMachineTransition_4el4r"), "Double Jump", "Drop Thru 2", SubResource("AnimationNodeStateMachineTransition_yysxf"), "fall", "Air Dodge", SubResource("AnimationNodeStateMachineTransition_bu1ss"), "Drop Thru 2", "Air Dodge", SubResource("AnimationNodeStateMachineTransition_5pt2h"), "fall", "Walljump", SubResource("AnimationNodeStateMachineTransition_x8d03"), "Double Jump", "Walljump", SubResource("AnimationNodeStateMachineTransition_ypvv6"), "jump 1", "Walljump", SubResource("AnimationNodeStateMachineTransition_3c0mj"), "Drop Thru 2", "Walljump", SubResource("AnimationNodeStateMachineTransition_dws30"), "Walljump", "fall", SubResource("AnimationNodeStateMachineTransition_d66mh")]
+graph_offset = Vector2(-245, -90)
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ouudt"]
 animation = &"Crouch"
@@ -775,4 +800,4 @@ states/Start/position = Vector2(190, 106.667)
 "states/jump squat/node" = SubResource("AnimationNodeAnimation_o3qvo")
 "states/jump squat/position" = Vector2(838.333, 201.67)
 transitions = ["Start", "Grounded Movement", SubResource("AnimationNodeStateMachineTransition_84qpy"), "Grounded Movement", "Aerial Movement", SubResource("AnimationNodeStateMachineTransition_qqvg2"), "Aerial Movement", "Grounded Movement", SubResource("AnimationNodeStateMachineTransition_u5bct"), "Grounded Movement", "jump squat", SubResource("AnimationNodeStateMachineTransition_mm1gw"), "jump squat", "Aerial Movement", SubResource("AnimationNodeStateMachineTransition_rdlhr"), "Grounded Movement", "Grounded Attacks", SubResource("AnimationNodeStateMachineTransition_g6wtg"), "Grounded Attacks", "Grounded Movement", SubResource("AnimationNodeStateMachineTransition_yk146"), "Grounded Movement", "Crouch", SubResource("AnimationNodeStateMachineTransition_1ui7h"), "Crouch", "Grounded Movement", SubResource("AnimationNodeStateMachineTransition_b108t"), "Crouch", "jump squat", SubResource("AnimationNodeStateMachineTransition_f668o"), "Crouch", "Grounded Attacks", SubResource("AnimationNodeStateMachineTransition_w2nv6"), "Aerial Movement", "Aerial Attacks", SubResource("AnimationNodeStateMachineTransition_c7i5d"), "Aerial Attacks", "Aerial Movement", SubResource("AnimationNodeStateMachineTransition_o220h"), "Aerial Movement", "Ledge Interactions", SubResource("AnimationNodeStateMachineTransition_g812c"), "Ledge Interactions", "Grounded Movement", SubResource("AnimationNodeStateMachineTransition_5ubko"), "Ledge Interactions", "Aerial Movement", SubResource("AnimationNodeStateMachineTransition_641ns"), "Grounded Movement", "Special Attacks", SubResource("AnimationNodeStateMachineTransition_8apkd"), "Aerial Movement", "Special Attacks", SubResource("AnimationNodeStateMachineTransition_dokuk"), "Special Attacks", "Aerial Movement", SubResource("AnimationNodeStateMachineTransition_4ii72"), "Special Attacks", "Grounded Movement", SubResource("AnimationNodeStateMachineTransition_vvfmg"), "Special Attacks", "Ledge Interactions", SubResource("AnimationNodeStateMachineTransition_wokh7")]
-graph_offset = Vector2(-241, 129)
+graph_offset = Vector2(-135, -191)
