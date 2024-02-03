@@ -2,7 +2,7 @@ extends CharacterBody3D
 
 @export var player := true
 @export var player_number : int = 1
-@export var weight := 1
+@export var weight : float = 1.0
 @export var character_name : String
 
 @onready var state := $"State Machine"
