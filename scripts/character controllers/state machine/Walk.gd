@@ -11,8 +11,6 @@ func _ready():
 	pass 
 
 func update(delta):
-	if controller.movement_direction.y == 0:
-		can_drop_through_platform == true
 	var delta_v = Vector2.ZERO
 	if Input.is_action_just_pressed(state.player_number + "Shield"):
 		state.update_state("Shield")

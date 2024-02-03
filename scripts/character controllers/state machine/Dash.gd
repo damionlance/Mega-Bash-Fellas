@@ -18,11 +18,13 @@ func update(delta):
 	var delta_v = Vector2.ZERO
 	
 	#Allow some actions to happen early in a dash, like a Bash or dodge
+	print(current_frame)
 	if current_frame <= 3:
+		print("Testin")
 		if Input.is_action_just_pressed(state.player_number + "Shield"):
 			state.update_state("Dodge Roll")
 		if Input.is_action_just_pressed(state.player_number + "Attack") or Input.is_action_just_pressed(state.player_number + "Special") or Input.get_vector(state.player_number + "Crush Left",state.player_number + "Crush Right",state.player_number + "Crush Down",state.player_number + "Crush Up") != Vector2.ZERO:
-			if decide_attack(): return
+			if decide_attack(true): return
 	
 	if current_frame >= frames_to_sprint and Input.get_axis(state.player_number + "Left", state.player_number + "Right") == 0:
 		body.apply_friction(traction)
@@ -49,7 +51,8 @@ func update(delta):
 		state.update_state("Turn")
 		return
 	if Input.is_action_just_pressed(state.player_number + "Attack") or Input.is_action_just_pressed(state.player_number + "Special") or Input.get_vector(state.player_number + "Crush Left",state.player_number + "Crush Right",state.player_number + "Crush Down",state.player_number + "Crush Up") != Vector2.ZERO:
-			if decide_attack(): return
+			print("Hey!")
+			if decide_attack(false): return
 	
 	if abs(body.velocity.x) >= dash_speed * delta and animation_finished and sign(Input.get_axis(state.player_number + "Left", state.player_number + "Right")) != body.facing_direction:
 		state.update_state("Run Turn")

@@ -71,12 +71,12 @@ states/StateMachine/position = Vector2(434.333, 225.333)
 states/fall/node = SubResource("AnimationNodeAnimation_nsu3f")
 states/fall/position = Vector2(439.333, 374)
 transitions = ["Start", "StateMachine", SubResource("AnimationNodeStateMachineTransition_5k86d"), "StateMachine", "Damage State", SubResource("AnimationNodeStateMachineTransition_a0wnb"), "Damage State", "StateMachine", SubResource("AnimationNodeStateMachineTransition_o20qg"), "StateMachine", "fall", SubResource("AnimationNodeStateMachineTransition_10yde"), "fall", "StateMachine", SubResource("AnimationNodeStateMachineTransition_qbfa5")]
-graph_offset = Vector2(-134, 86)
+graph_offset = Vector2(-170, -37)
 
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_1lm6q"]
 
 [resource]
-graph_offset = Vector2(-466, -118.667)
+graph_offset = Vector2(-528, -82.6667)
 nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_khprv")
 nodes/StateMachine/position = Vector2(-320, 40)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_1lm6q")

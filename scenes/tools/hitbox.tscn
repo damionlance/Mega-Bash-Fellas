@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/tools/hitbox.gd" id="1_du57p"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jgltj"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_v68wk"]
 
 [node name="hitbox" type="Area3D"]
 visible = false
@@ -17,6 +17,6 @@ hitstun_frames = 1
 
 [node name="HitCapsule" type="CollisionShape3D" parent="."]
 transform = Transform3D(-4.37113e-08, -0.999999, 0, 0.999999, -4.37113e-08, 0, 0, 0, 1, 0, 0, 0)
-shape = SubResource("CapsuleShape3D_jgltj")
+shape = SubResource("CapsuleShape3D_v68wk")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

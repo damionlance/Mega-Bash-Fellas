@@ -32,10 +32,10 @@ func grounded_movement_processing(delta, delta_v) -> Vector2:
 			body.velocity.x = sign(body.velocity.x) * sprint_speed * delta
 	
 	return delta_v
-	
-	pass
 
-func decide_attack() -> bool:
+func decide_attack(bash : bool = false) -> bool:
+	if bash == true:
+		print("Nice")
 	if Input.is_action_just_pressed(state.player_number + "Special"):
 		if Input.get_action_strength(state.player_number + "Up") >= .7:
 			state.update_state("Up Special")
@@ -59,8 +59,30 @@ func decide_attack() -> bool:
 		if abs(Input.get_axis(state.player_number + "Crush Left", state.player_number + "Crush Right")) > .7:
 			state.update_state("FTilt")
 			return true
-	elif Input.get_vector(state.player_number + "Left", state.player_number + "Right", state.player_number + "Down", state.player_number + "Up").length() < 0.25:
-		if Input.is_action_just_pressed(state.player_number + "Attack"):
-			state.update_state("Jab")
-			return true
+	if Input.is_action_just_pressed(state.player_number + "Attack"):
+		if bash:
+			print("Bashin")
+			if Input.get_action_strength(state.player_number + "Up") > .7:
+				state.update_state("U Bash")
+				return true
+			if Input.get_action_strength(state.player_number + "Down") > .7:
+				state.update_state("D Bash")
+				return true
+			if abs(Input.get_axis(state.player_number + "Left", state.player_number + "Right")) > .7:
+				print("Hey!")
+				state.update_state("F Bash")
+				return true
+		else:
+			if Input.get_action_strength(state.player_number + "Up") > .7:
+				state.update_state("UTilt")
+				return true
+			if Input.get_action_strength(state.player_number + "Down") > .7:
+				state.update_state("DTilt")
+				return true
+			if abs(Input.get_axis(state.player_number + "Left", state.player_number + "Right")) > .7:
+				state.update_state("FTilt")
+				return true
+			else:
+				state.update_state("Jab")
+				return true
 	return false

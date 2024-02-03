@@ -11,8 +11,20 @@ func _ready():
 	state.state_dictionary[state_name] = self
 	
 	pass # Replace with function body.
-
+var current_frame = 0
+var can_bash = false
 func update(delta):
+	
+	if Input.get_action_strength(state.player_number + "Up") > .7 and can_dash:
+		current_frame += 1
+		if current_frame <= 3:
+			can_bash = true
+		else:
+			can_bash = false
+	if not Input.is_action_pressed(state.player_number + "Up"):
+		current_frame = 0
+		can_bash = false
+	
 	if Input.get_vector(state.player_number + "Left", state.player_number + "Right", state.player_number + "Down", state.player_number + "Up").length() <= .20:
 		can_dash = true
 	
@@ -22,9 +34,10 @@ func update(delta):
 		state.update_state("Shield")
 		return
 	if Input.is_action_just_pressed(state.player_number + "Attack") or Input.is_action_just_pressed(state.player_number + "Special") or Input.get_vector(state.player_number + "Crush Left",state.player_number + "Crush Right",state.player_number + "Crush Down",state.player_number + "Crush Up") != Vector2.ZERO:
-		if decide_attack(): return
+		print(can_bash)
+		if decide_attack(can_bash): return
 	if Input.is_action_just_pressed(state.player_number + "Grab"):
-		if decide_attack():return
+		if decide_attack(false):return
 	if Input.is_action_just_pressed(state.player_number + "Jump"):
 		state.update_state("Jump Squat")
 		return

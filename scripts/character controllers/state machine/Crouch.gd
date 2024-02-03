@@ -4,6 +4,9 @@ extends GroundedMovement
 #private variables
 var state_name = "Crouch"
 @export var can_drop_thru_platform := false
+
+var current_frame := 0
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	state.state_dictionary[state_name] = self
@@ -11,10 +14,14 @@ func _ready():
 	pass # Replace with function body.
 
 func update(delta):
-	
+	current_frame += 1
 	var delta_v = Vector2.ZERO
 	# Handle all states
-	
+	if current_frame <= 3:
+		if Input.is_action_just_pressed(state.player_number + "Shield"):
+			state.update_state("Spot Dodge")
+		if Input.is_action_just_pressed(state.player_number + "Attack") or Input.is_action_just_pressed(state.player_number + "Special") or Input.get_vector(state.player_number + "Crush Left",state.player_number + "Crush Right",state.player_number + "Crush Down",state.player_number + "Crush Up") != Vector2.ZERO:
+			if decide_attack(true): return
 	if controller.attempting_jump:
 		state.update_state("Jump Squat")
 		return
@@ -49,6 +56,7 @@ func update(delta):
 	pass
 
 func reset(_delta):
+	current_frame = 0
 	can_drop_thru_platform = false
 	can_tilt = true
 	body.attacking = false
