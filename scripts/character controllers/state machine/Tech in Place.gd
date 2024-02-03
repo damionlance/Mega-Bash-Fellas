@@ -2,7 +2,7 @@ extends GroundedMovement
 
 
 #private variables
-var state_name = "Tech In Place"
+var state_name = "Tech in Place"
 
 @export var animation_finished := false
 

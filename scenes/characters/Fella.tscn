@@ -1,4 +1,4 @@
-[gd_scene load_steps=189 format=3 uid="uid://bvg8potcgyin4"]
+[gd_scene load_steps=207 format=3 uid="uid://bvg8potcgyin4"]
 
 [ext_resource type="Script" path="res://scripts/character controllers/Test Character.gd" id="1_ffcvg"]
 [ext_resource type="Animation" uid="uid://hc3mj1cnnhqs" path="res://assets/characters/Fella/Idle.res" id="2_2jlc0"]
@@ -110,6 +110,7 @@
 [ext_resource type="Resource" uid="uid://vr35t3yd73c2" path="res://resources/Fella Aerial Physics Constants.tres" id="116_ohx14"]
 [ext_resource type="Script" path="res://scripts/character controllers/state machine/Teeter.gd" id="116_x7iyi"]
 [ext_resource type="Script" path="res://scripts/character controllers/state machine/Turn.gd" id="117_fcrhc"]
+[ext_resource type="Script" path="res://scripts/character controllers/state machine/Tech in Place.gd" id="118_a1spl"]
 [ext_resource type="Script" path="res://scripts/character controllers/state machine/Run Turn.gd" id="118_tfx7w"]
 [ext_resource type="Script" path="res://scripts/character controllers/state machine/attacks/PB/Grab.gd" id="119_h6c4h"]
 [ext_resource type="Script" path="res://scripts/character controllers/state machine/attacks/PB/Grab Hold.gd" id="120_pvtsg"]
@@ -132,6 +133,7 @@
 [ext_resource type="Script" path="res://scripts/character controllers/state machine/Respawn.gd" id="140_kstq6"]
 [ext_resource type="Script" path="res://scripts/character controllers/state machine/attacks/PB/Forward Air.gd" id="141_m7hus"]
 [ext_resource type="Script" path="res://scripts/character controllers/state machine/attacks/PB/Backward Air.gd" id="142_70wj6"]
+[ext_resource type="Script" path="res://scripts/character controllers/state machine/Wall Tech.gd" id="143_npk0j"]
 [ext_resource type="Script" path="res://scripts/character controllers/state machine/attacks/PB/Up Air.gd" id="143_xwsqj"]
 [ext_resource type="Script" path="res://scripts/character controllers/state machine/attacks/PB/Down Air.gd" id="144_i7a86"]
 [ext_resource type="Script" path="res://scripts/character controllers/state machine/attacks/PB/Neutral Air.gd" id="145_kc2aa"]
@@ -248,8 +250,54 @@ animation = &"Get Cargo Carried"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_h3bnw"]
 animation = &"Get hit air high knock"
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wyuct"]
+animation = &"Get hit air low knock"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3frdp"]
+animation = &"Get hit ground low knock"
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_nqh82"]
 animation = &"Get Grabbed"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_raeis"]
+animation = &"Roll B"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_153vf"]
+animation = &"Roll F"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ou0ph"]
+animation = &"Tech in Place"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_igc7w"]
+animation = &"Wall Tech"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_l6dms"]
+advance_mode = 2
+advance_expression = "state.current_state.state_name == \"Tech Roll\" and sign(Input.get_axis(state.player_number + \"Left\", state.player_number + \"Right\")) != facing_direction"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_niavj"]
+advance_mode = 2
+advance_expression = "state.current_state.state_name == \"Tech Roll\" and sign(Input.get_axis(state.player_number + \"Left\", state.player_number + \"Right\")) == facing_direction"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mk1lg"]
+advance_mode = 2
+advance_expression = "state.current_state.state_name == \"Tech in Place\""
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_rikbv"]
+advance_mode = 2
+advance_expression = "state.current_state.state_name == \"Wall Tech\""
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_y6o7h"]
+"states/Roll B/node" = SubResource("AnimationNodeAnimation_raeis")
+"states/Roll B/position" = Vector2(441.333, 16)
+"states/Roll F/node" = SubResource("AnimationNodeAnimation_153vf")
+"states/Roll F/position" = Vector2(427.667, 100.333)
+"states/Tech in Place/node" = SubResource("AnimationNodeAnimation_ou0ph")
+"states/Tech in Place/position" = Vector2(397, 195.667)
+"states/Wall Tech/node" = SubResource("AnimationNodeAnimation_igc7w")
+"states/Wall Tech/position" = Vector2(359, 345.667)
+transitions = ["Start", "Roll B", SubResource("AnimationNodeStateMachineTransition_l6dms"), "Start", "Roll F", SubResource("AnimationNodeStateMachineTransition_niavj"), "Start", "Tech in Place", SubResource("AnimationNodeStateMachineTransition_mk1lg"), "Start", "Wall Tech", SubResource("AnimationNodeStateMachineTransition_rikbv")]
+graph_offset = Vector2(-131, -153)
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_awh4v"]
 advance_mode = 2
@@ -271,15 +319,40 @@ advance_expression = "state.current_state.state_name == \"Get Cargo Carried\""
 advance_mode = 2
 advance_expression = "state.current_state.state_name == \"Damage Fly\""
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_l5tts"]
+advance_mode = 2
+advance_expression = "state.current_state.state_name == \"Hitstun\" and not is_on_floor()"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_seer3"]
+advance_mode = 2
+advance_expression = "state.current_state.state_name == \"Hitstun\" and is_on_floor()"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_k1nhj"]
+advance_mode = 2
+advance_expression = "state.current_state.state_name == \"Damage Fly\""
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_60j5q"]
+advance_mode = 2
+advance_expression = "state.current_state.state_name == \"Damage Fly\""
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_x75ac"]
+advance_mode = 2
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_f7s31"]
 "states/Get Cargo Carried/node" = SubResource("AnimationNodeAnimation_2fxgr")
 "states/Get Cargo Carried/position" = Vector2(189, 413)
 "states/Get Hit Ait High Knock/node" = SubResource("AnimationNodeAnimation_h3bnw")
 "states/Get Hit Ait High Knock/position" = Vector2(452.333, 247)
+"states/Get hit air low knock/node" = SubResource("AnimationNodeAnimation_wyuct")
+"states/Get hit air low knock/position" = Vector2(439, 93)
+"states/Get hit ground low knock/node" = SubResource("AnimationNodeAnimation_3frdp")
+"states/Get hit ground low knock/position" = Vector2(643, 95.6667)
 states/Grabbed/node = SubResource("AnimationNodeAnimation_nqh82")
 states/Grabbed/position = Vector2(200.041, 247.342)
-transitions = ["Start", "Grabbed", SubResource("AnimationNodeStateMachineTransition_awh4v"), "Start", "Get Hit Ait High Knock", SubResource("AnimationNodeStateMachineTransition_6ng3w"), "Grabbed", "Get Hit Ait High Knock", SubResource("AnimationNodeStateMachineTransition_dg2yu"), "Grabbed", "Get Cargo Carried", SubResource("AnimationNodeStateMachineTransition_ncxld"), "Get Cargo Carried", "Get Hit Ait High Knock", SubResource("AnimationNodeStateMachineTransition_5k12d")]
-graph_offset = Vector2(-509, 65)
+states/Tech/node = SubResource("AnimationNodeStateMachine_y6o7h")
+states/Tech/position = Vector2(553.667, 401)
+transitions = ["Start", "Grabbed", SubResource("AnimationNodeStateMachineTransition_awh4v"), "Start", "Get Hit Ait High Knock", SubResource("AnimationNodeStateMachineTransition_6ng3w"), "Grabbed", "Get Hit Ait High Knock", SubResource("AnimationNodeStateMachineTransition_dg2yu"), "Grabbed", "Get Cargo Carried", SubResource("AnimationNodeStateMachineTransition_ncxld"), "Get Cargo Carried", "Get Hit Ait High Knock", SubResource("AnimationNodeStateMachineTransition_5k12d"), "Start", "Get hit air low knock", SubResource("AnimationNodeStateMachineTransition_l5tts"), "Start", "Get hit ground low knock", SubResource("AnimationNodeStateMachineTransition_seer3"), "Get hit air low knock", "Get Hit Ait High Knock", SubResource("AnimationNodeStateMachineTransition_k1nhj"), "Get hit ground low knock", "Get Hit Ait High Knock", SubResource("AnimationNodeStateMachineTransition_60j5q"), "Get Hit Ait High Knock", "Tech", SubResource("AnimationNodeStateMachineTransition_x75ac")]
+graph_offset = Vector2(-461, 87)
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_uq8cp"]
 animation = &"Fall 1"
@@ -316,7 +389,7 @@ graph_offset = Vector2(-198, 43)
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_1lm6q"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_tmdq6"]
-graph_offset = Vector2(-406, -24)
+graph_offset = Vector2(-406, -172.667)
 nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_khprv")
 nodes/StateMachine/position = Vector2(-320, 40)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_1lm6q")
@@ -326,63 +399,63 @@ node_connections = [&"TimeScale", 0, &"StateMachine", &"output", 0, &"TimeScale"
 [sub_resource type="SphereShape3D" id="SphereShape3D_nctgj"]
 radius = 0.25
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0ncnj"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5d65h"]
 radius = 0.474
 height = 1.37087
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g0fyg"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8fnmk"]
 radius = 1.0
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ux2ld"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_aui5y"]
 radius = 1.0
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_oigy8"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_o2t3y"]
 radius = 1.0
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_01kou"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vgu7w"]
 radius = 1.0
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g4f8p"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3lvbk"]
 radius = 0.234
 height = 0.468
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_v54k6"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ismsm"]
 radius = 0.18
 height = 0.36
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ja6oq"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4niww"]
 radius = 0.267
 height = 0.534
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jcl1r"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_806ga"]
 radius = 0.113
 height = 0.379515
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_s0vgl"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_i3p4k"]
 radius = 0.1
 height = 0.337797
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_o4tod"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4ynqa"]
 radius = 0.113
 height = 0.318223
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yaql3"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gtewe"]
 radius = 0.1
 height = 0.276507
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vsfue"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jab1u"]
 radius = 0.127
 height = 0.254
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1ggi1"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xkmjx"]
 radius = 0.1
 height = 0.2
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hsqkt"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qjqhc"]
 radius = 0.127
 height = 0.254
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6orrq"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_f4p3u"]
 radius = 0.1
 height = 0.228436
 
@@ -521,6 +594,9 @@ animation_finished = true
 [node name="Tech Roll" type="Node" parent="State Machine/Grounded Movement"]
 script = ExtResource("131_rot6d")
 
+[node name="Tech in Place" type="Node" parent="State Machine/Grounded Movement"]
+script = ExtResource("118_a1spl")
+
 [node name="Aerial Movement" type="Node" parent="State Machine"]
 script = ExtResource("132_jnypa")
 constants = ExtResource("116_ohx14")
@@ -604,6 +680,9 @@ script = ExtResource("154_5jh85")
 script = ExtResource("137_hd80n")
 animation_finished = true
 
+[node name="Wall Tech" type="Node" parent="State Machine/Aerial Movement"]
+script = ExtResource("143_npk0j")
+
 [node name="Controller" type="Node" parent="."]
 
 [node name="Passable Platform Checker" type="RayCast3D" parent="."]
@@ -636,35 +715,35 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.203523, -1.35568, 0)
 
 [node name="HitCapsule" parent="Hitboxes/hitbox" index="1"]
 transform = Transform3D(0.988911, -0.148461, 0, 0.148461, 0.988911, 0, 0, 0, 1, 0.101761, -0.67784, 0)
-shape = SubResource("CapsuleShape3D_0ncnj")
+shape = SubResource("CapsuleShape3D_5d65h")
 
 [node name="hitbox2" parent="Hitboxes" instance=ExtResource("165_a2tf4")]
 collision_mask = 33
 
 [node name="HitCapsule" parent="Hitboxes/hitbox2" index="1"]
 transform = Transform3D(-4.37113e-08, -0.999999, 0, 0.999999, -4.37113e-08, 0, 0, 0, 1, 0, 0, 0)
-shape = SubResource("CapsuleShape3D_g0fyg")
+shape = SubResource("CapsuleShape3D_8fnmk")
 
 [node name="hitbox3" parent="Hitboxes" instance=ExtResource("165_a2tf4")]
 collision_mask = 33
 
 [node name="HitCapsule" parent="Hitboxes/hitbox3" index="1"]
 transform = Transform3D(-4.37113e-08, -0.999999, 0, 0.999999, -4.37113e-08, 0, 0, 0, 1, 0, 0, 0)
-shape = SubResource("CapsuleShape3D_ux2ld")
+shape = SubResource("CapsuleShape3D_aui5y")
 
 [node name="hitbox4" parent="Hitboxes" instance=ExtResource("165_a2tf4")]
 collision_mask = 33
 
 [node name="HitCapsule" parent="Hitboxes/hitbox4" index="1"]
 transform = Transform3D(-4.37113e-08, -0.999999, 0, 0.999999, -4.37113e-08, 0, 0, 0, 1, 0, 0, 0)
-shape = SubResource("CapsuleShape3D_oigy8")
+shape = SubResource("CapsuleShape3D_o2t3y")
 
 [node name="hitbox5" parent="Hitboxes" instance=ExtResource("165_a2tf4")]
 collision_mask = 33
 
 [node name="HitCapsule" parent="Hitboxes/hitbox5" index="1"]
 transform = Transform3D(-4.37113e-08, -0.999999, 0, 0.999999, -4.37113e-08, 0, 0, 0, 1, 0, 0, 0)
-shape = SubResource("CapsuleShape3D_01kou")
+shape = SubResource("CapsuleShape3D_vgu7w")
 
 [node name="Hurtboxes" type="Node3D" parent="."]
 
@@ -794,7 +873,7 @@ hitbox_end_point = NodePath("../Bone Attachments/Ribs")
 
 [node name="HitCapsule" parent="Hurtboxes/Belly" index="1"]
 transform = Transform3D(-0.996695, -0.0794417, 0, 0.0794417, -0.996695, 0, 0, 0, 1, 0.00966197, 0.121221, 0)
-shape = SubResource("CapsuleShape3D_g4f8p")
+shape = SubResource("CapsuleShape3D_3lvbk")
 
 [node name="Head" parent="Hurtboxes" node_paths=PackedStringArray("hitbox_start_point", "hitbox_end_point") instance=ExtResource("165_a2tf4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.166354, 1.10872, 0)
@@ -808,7 +887,7 @@ hitbox_end_point = NodePath("../Bone Attachments/Head")
 
 [node name="HitCapsule" parent="Hurtboxes/Head" index="1"]
 transform = Transform3D(-0.812888, -0.582169, 0, 0.582169, -0.812888, 0, 0, 0, 1, 0.0700834, 0.0978582, 0)
-shape = SubResource("CapsuleShape3D_v54k6")
+shape = SubResource("CapsuleShape3D_ismsm")
 
 [node name="Chest" parent="Hurtboxes" node_paths=PackedStringArray("hitbox_start_point", "hitbox_end_point") instance=ExtResource("165_a2tf4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.219996, 0.901998, 0)
@@ -822,7 +901,7 @@ hitbox_end_point = NodePath("../Bone Attachments/Neck")
 
 [node name="HitCapsule" parent="Hurtboxes/Chest" index="1"]
 transform = Transform3D(-0.967777, -0.251122, 0, 0.251122, -0.967777, 0, 0, 0, 1, 0.0268207, 0.103362, 0)
-shape = SubResource("CapsuleShape3D_ja6oq")
+shape = SubResource("CapsuleShape3D_4niww")
 
 [node name="Left Thigh" parent="Hurtboxes" node_paths=PackedStringArray("hitbox_start_point", "hitbox_end_point") instance=ExtResource("165_a2tf4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.186388, 0.669092, 0)
@@ -836,7 +915,7 @@ hitbox_end_point = NodePath("../Bone Attachments/Left Knee")
 
 [node name="HitCapsule" parent="Hurtboxes/Left Thigh" index="1"]
 transform = Transform3D(0.808243, 0.588564, 0, -0.588564, 0.808243, 0, 0, 0, 1, -0.111703, -0.153396, 0)
-shape = SubResource("CapsuleShape3D_jcl1r")
+shape = SubResource("CapsuleShape3D_806ga")
 
 [node name="Left Calf" parent="Hurtboxes" node_paths=PackedStringArray("hitbox_start_point", "hitbox_end_point") instance=ExtResource("165_a2tf4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.409795, 0.3623, 0)
@@ -850,7 +929,7 @@ hitbox_end_point = NodePath("../Bone Attachments/Left Ankle")
 
 [node name="HitCapsule" parent="Hurtboxes/Left Calf" index="1"]
 transform = Transform3D(0.808248, 0.588568, 0, -0.588568, 0.808248, 0, 0, 0, 1, -0.0994242, -0.136534, 0)
-shape = SubResource("CapsuleShape3D_s0vgl")
+shape = SubResource("CapsuleShape3D_i3p4k")
 
 [node name="Right Thigh" parent="Hurtboxes" node_paths=PackedStringArray("hitbox_start_point", "hitbox_end_point") instance=ExtResource("165_a2tf4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.240118, 0.689638, 0)
@@ -864,7 +943,7 @@ hitbox_end_point = NodePath("../Bone Attachments/Right Knee")
 
 [node name="HitCapsule" parent="Hurtboxes/Right Thigh" index="1"]
 transform = Transform3D(0.97135, -0.236861, 0, 0.236861, 0.97135, 0, 0, 0, 1, 0.0376944, -0.154582, 0)
-shape = SubResource("CapsuleShape3D_o4tod")
+shape = SubResource("CapsuleShape3D_4ynqa")
 
 [node name="Right Calf" parent="Hurtboxes" node_paths=PackedStringArray("hitbox_start_point", "hitbox_end_point") instance=ExtResource("165_a2tf4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.164729, 0.380474, 0)
@@ -878,7 +957,7 @@ hitbox_end_point = NodePath("../Bone Attachments/Right Ankle")
 
 [node name="HitCapsule" parent="Hurtboxes/Right Calf" index="1"]
 transform = Transform3D(0.971377, -0.236868, 0, 0.236868, 0.971377, 0, 0, 0, 1, 0.0327531, -0.134318, 0)
-shape = SubResource("CapsuleShape3D_yaql3")
+shape = SubResource("CapsuleShape3D_gtewe")
 
 [node name="Right Upper Arm" parent="Hurtboxes" node_paths=PackedStringArray("hitbox_start_point", "hitbox_end_point") instance=ExtResource("165_a2tf4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.152218, 1.05897, 0)
@@ -892,7 +971,7 @@ hitbox_end_point = NodePath("../Bone Attachments/Right Elbow")
 
 [node name="HitCapsule" parent="Hurtboxes/Right Upper Arm" index="1"]
 transform = Transform3D(0.885061, -0.46516, 0, 0.46516, 0.885061, 0, 0, 0, 1, 0.0321382, -0.0611495, 0)
-shape = SubResource("CapsuleShape3D_vsfue")
+shape = SubResource("CapsuleShape3D_jab1u")
 
 [node name="Right Forearm" parent="Hurtboxes" node_paths=PackedStringArray("hitbox_start_point", "hitbox_end_point") instance=ExtResource("165_a2tf4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0879414, 0.936676, 0)
@@ -906,7 +985,7 @@ hitbox_end_point = NodePath("../Bone Attachments/Right Wrist")
 
 [node name="HitCapsule" parent="Hurtboxes/Right Forearm" index="1"]
 transform = Transform3D(0.885059, -0.465158, 0, 0.465158, 0.885059, 0, 0, 0, 1, 0.0437635, -0.0832689, 0)
-shape = SubResource("CapsuleShape3D_1ggi1")
+shape = SubResource("CapsuleShape3D_xkmjx")
 
 [node name="Left Upper Arm" parent="Hurtboxes" node_paths=PackedStringArray("hitbox_start_point", "hitbox_end_point") instance=ExtResource("165_a2tf4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.172678, 1.05638, 0)
@@ -920,7 +999,7 @@ hitbox_end_point = NodePath("../Bone Attachments/Left Elbow")
 
 [node name="HitCapsule" parent="Hurtboxes/Left Upper Arm" index="1"]
 transform = Transform3D(0.930565, -0.365682, 0, 0.365682, 0.930565, 0, 0, 0, 1, 0.0147607, -0.0375621, 0)
-shape = SubResource("CapsuleShape3D_hsqkt")
+shape = SubResource("CapsuleShape3D_qjqhc")
 
 [node name="Left Forearm" parent="Hurtboxes" node_paths=PackedStringArray("hitbox_start_point", "hitbox_end_point") instance=ExtResource("165_a2tf4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.143157, 0.981254, 0)
@@ -934,7 +1013,7 @@ hitbox_end_point = NodePath("../Bone Attachments/Left Wrist")
 
 [node name="HitCapsule" parent="Hurtboxes/Left Forearm" index="1"]
 transform = Transform3D(0.646817, -0.762438, 0, 0.762438, 0.646817, 0, 0, 0, 1, 0.0870977, -0.0738896, 0)
-shape = SubResource("CapsuleShape3D_6orrq")
+shape = SubResource("CapsuleShape3D_f4p3u")
 
 [node name="Shield" parent="." instance=ExtResource("166_vp1c8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.100391, 0.788085, 0)

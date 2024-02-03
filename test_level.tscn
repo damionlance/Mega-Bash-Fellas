@@ -53,17 +53,6 @@ mesh = SubResource("BoxMesh_ob63o")
 depth = 2.0
 polygon = PackedVector2Array(-10, 0, 10, 0, 10, -2, -10, -2)
 
-[node name="Stage2" type="StaticBody3D" parent="." groups=["pathable"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.6647, 4.32566, 0)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Stage2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
-mesh = SubResource("BoxMesh_ob63o")
-
-[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="Stage2"]
-depth = 2.0
-polygon = PackedVector2Array(-10, 0, 10, 0, 10, -2, -10, -2)
-
 [node name="Side Plat" type="StaticBody3D" parent="." groups=["pathable"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.99206, 2.375, 0)
 collision_layer = 2
@@ -105,7 +94,7 @@ polygon = PackedVector2Array(-2, 0, 2, 0, 2, -0.1, -2, -0.1)
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.862, 1.5, 5)
-fov = 73.8545
+fov = 72.9666
 near = 0.001
 
 [node name="PhantomCameraHost" type="Node" parent="Camera3D"]
@@ -167,16 +156,16 @@ inactive_update_mode = 0
 camera_3D_resource = null
 
 [node name="Body2" parent="." instance=ExtResource("4_d5k7j")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.862, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.862, 18.6187, 0)
 player = false
-player_number = 2
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.66736, 5.35071, 0)
 target_position = Vector3(-1.1, 0, 0)
 
 [node name="Body" parent="." instance=ExtResource("9_acq56")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.78166, -2.38419e-07, 0.111119)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.78166, 19.0207, 0.111119)
+player_number = 2
 
 [connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]
 [connection signal="body_exited" from="Area3D" to="Area3D" method="_on_body_exited"]
