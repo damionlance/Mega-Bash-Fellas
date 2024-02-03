@@ -22,6 +22,10 @@ func update(delta):
 			state.update_state("Spot Dodge")
 		if Input.is_action_just_pressed(state.player_number + "Attack") or Input.is_action_just_pressed(state.player_number + "Special") or Input.get_vector(state.player_number + "Crush Left",state.player_number + "Crush Right",state.player_number + "Crush Down",state.player_number + "Crush Up") != Vector2.ZERO:
 			if decide_attack(true): return
+		if Input.get_action_strength(state.player_number + "Down") > 0.7 and passthru_platform_checker.on_passthru_platform:
+			passthru_platform_checker.drop_thru_platform()
+			state.update_state("Drop Through Platform")
+			return
 	if controller.attempting_jump:
 		state.update_state("Jump Squat")
 		return
@@ -29,10 +33,6 @@ func update(delta):
 		state.update_state("Fall")
 		return
 	
-	if Input.get_action_strength(state.player_number + "Down") > 0.7 and passthru_platform_checker.on_passthru_platform and can_drop_thru_platform:
-		passthru_platform_checker.drop_thru_platform()
-		state.update_state("Drop Through Platform")
-		return
 	
 	if controller.movement_direction.x != 0 and sign(controller.movement_direction.x) != sign(body.facing_direction):
 		body.velocity.x *= -1
