@@ -11,6 +11,7 @@ gravity = 3000.0
 falling_speed = 1280.0
 jump_force = 1000.0
 short_force = 700.0
+wall_jump_horizontal_speed = 1400
 double_jump_force = 1300.0
 double_jump_speed_cap = 495
 traction = 1.3

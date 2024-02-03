@@ -15,7 +15,7 @@ func update(delta):
 		body.velocity = velocity
 		wait_time = 100
 		if body.velocity.length() > 15.0:
-			if body.is_on_floor():
+			if body.is_on_floor() and body.velocity.y < 0:
 				body.velocity.y *= -1
 			state.update_state("Damage Fly")
 			return
