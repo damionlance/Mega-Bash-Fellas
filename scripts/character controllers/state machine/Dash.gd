@@ -18,9 +18,7 @@ func update(delta):
 	var delta_v = Vector2.ZERO
 	
 	#Allow some actions to happen early in a dash, like a Bash or dodge
-	print(current_frame)
 	if current_frame <= 3:
-		print("Testin")
 		if Input.is_action_just_pressed(state.player_number + "Shield"):
 			state.update_state("Dodge Roll")
 		if Input.is_action_just_pressed(state.player_number + "Attack") or Input.is_action_just_pressed(state.player_number + "Special") or Input.get_vector(state.player_number + "Crush Left",state.player_number + "Crush Right",state.player_number + "Crush Down",state.player_number + "Crush Up") != Vector2.ZERO:

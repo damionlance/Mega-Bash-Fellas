@@ -25,7 +25,7 @@ func update(delta):
 		current_frame = 0
 		can_bash = false
 	
-	if Input.get_vector(state.player_number + "Left", state.player_number + "Right", state.player_number + "Down", state.player_number + "Up").length() <= .20:
+	if Input.get_vector(state.player_number + "Left", state.player_number + "Right", state.player_number + "Down", state.player_number + "Up").length() <= .2:
 		can_dash = true
 	
 	var delta_v = Vector2.ZERO
@@ -53,6 +53,7 @@ func update(delta):
 		if abs(Input.get_axis(state.player_number + "Left", state.player_number + "Right")) > 0.7 and can_dash:
 			state.update_state("Dash")
 			return
+		print(abs(Input.get_axis(state.player_number + "Left", state.player_number + "Right")))
 		state.update_state("Walk")
 		return
 	

@@ -26,7 +26,6 @@ func update(delta):
 
 func reset(delta):
 	animation_finished = false
-	print("Hey!")
 	body.attacking = false
 	body.consecutive_jumps = 0
 	body.velocity.x = dodge_roll * 1.25 * Input.get_axis(state.player_number + "Left", state.player_number + "Right") * delta

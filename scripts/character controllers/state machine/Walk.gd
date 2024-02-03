@@ -12,6 +12,12 @@ func _ready():
 
 func update(delta):
 	var delta_v = Vector2.ZERO
+	
+	if frame_one:
+		if abs(Input.get_axis(state.player_number + "Left", state.player_number + "Right")) > 0.7:
+			state.update_state("Dash")
+			return
+	
 	if Input.is_action_just_pressed(state.player_number + "Shield"):
 		state.update_state("Shield")
 		return
@@ -41,10 +47,11 @@ func update(delta):
 		delta_v.x = sign(Input.get_axis(state.player_number + "Left", state.player_number + "Right"))
 	
 	body.delta_v = delta_v
-	
+	frame_one = false
 	pass
 
 func reset(_delta):
+	frame_one = true
 	can_tilt = true
 	var turn = sign(Input.get_axis(state.player_number + "Left", state.player_number + "Right")) 
 	body.facing_direction = turn if turn != 0 else body.facing_direction

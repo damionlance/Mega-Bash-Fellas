@@ -24,7 +24,6 @@ func update(delta):
 	
 	if (state.target_body.global_position - body.global_position).length() > 5:
 		state.update_state("Approach Target")
-		print("Hello!")
 		return
 	
 	#Check if there's ground where you're dashing

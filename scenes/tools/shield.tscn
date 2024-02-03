@@ -15,6 +15,7 @@ size = Vector2(1.994, 1.994)
 
 [node name="Shield" type="MeshInstance3D"]
 top_level = true
+visible = false
 mesh = SubResource("QuadMesh_cuxre")
 script = ExtResource("2_trm01")
 
@@ -22,6 +23,5 @@ script = ExtResource("2_trm01")
 collision_layer = 32
 monitorable = true
 hitbox_radius = 0.5
-active = true
 hurtbox = true
 invincible = true

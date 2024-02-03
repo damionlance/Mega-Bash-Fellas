@@ -47,7 +47,6 @@ func update(delta):
 
 func reset(_delta):
 	aerial = not body.is_on_floor()
-	print(body.is_on_floor())
 	var new_snowball
 	if aerial:
 		new_snowball = snowball.instantiate()

@@ -1,0 +1,54 @@
+[gd_scene load_steps=7 format=3 uid="uid://c4tuo2x8umk2g"]
+
+[ext_resource type="Script" path="res://scripts/character controllers/state machine/attacks/Fella/Shine.gd" id="1_vjhl5"]
+[ext_resource type="PackedScene" uid="uid://ugrfkn6s0brw" path="res://scenes/tools/hitbox.tscn" id="3_f03yq"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_eoyei"]
+height = 1.5567
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pu3oy"]
+height = 1.56259
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oocfs"]
+albedo_color = Color(1, 1, 0.101961, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_plfum"]
+material = SubResource("StandardMaterial3D_oocfs")
+height = 0.25
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_vjhl5")
+
+[node name="hitbox" parent="." instance=ExtResource("3_f03yq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0493563, -0.765157, 0)
+collision_layer = 32
+hitbox_radius = 0.5
+launch_angle = 170.0
+knockback = 10.0
+
+[node name="hitbox point" parent="hitbox" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5567, 0)
+
+[node name="HitCapsule" parent="hitbox" index="1"]
+transform = Transform3D(-0.999999, 8.74227e-08, 0, -8.74227e-08, -0.999999, 0, 0, 0, 1, 0, 0.778352, 0)
+shape = SubResource("CapsuleShape3D_eoyei")
+
+[node name="hitbox2" parent="." instance=ExtResource("3_f03yq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.169385, -0.768965, 0)
+collision_layer = 32
+hitbox_radius = 0.5
+launch_angle = 10.0
+
+[node name="hitbox point" parent="hitbox2" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.56259, 0)
+
+[node name="HitCapsule" parent="hitbox2" index="1"]
+transform = Transform3D(-0.999999, 8.74227e-08, 0, -8.74227e-08, -0.999999, 0, 0, 0, 1, 0, 0.781296, 0)
+shape = SubResource("CapsuleShape3D_pu3oy")
+
+[node name="mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_plfum")
+
+[editable path="hitbox"]
+[editable path="hitbox2"]
