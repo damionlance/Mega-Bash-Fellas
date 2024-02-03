@@ -34,7 +34,6 @@ func update(delta):
 		state.update_state("Shield")
 		return
 	if Input.is_action_just_pressed(state.player_number + "Attack") or Input.is_action_just_pressed(state.player_number + "Special") or Input.get_vector(state.player_number + "Crush Left",state.player_number + "Crush Right",state.player_number + "Crush Down",state.player_number + "Crush Up") != Vector2.ZERO:
-		print(can_bash)
 		if decide_attack(can_bash): return
 	if Input.is_action_just_pressed(state.player_number + "Grab"):
 		if decide_attack(false):return

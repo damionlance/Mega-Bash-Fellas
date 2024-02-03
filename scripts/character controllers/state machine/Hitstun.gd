@@ -20,9 +20,11 @@ func update(delta):
 			state.update_state("Damage Fly")
 			return
 		elif not body.is_on_floor:
+			body.damaged = false
 			state.update_state("Fall")
 			return
 		else:
+			body.damaged = false
 			state.update_state("Idle")
 		return
 	hitlag_frames += 1

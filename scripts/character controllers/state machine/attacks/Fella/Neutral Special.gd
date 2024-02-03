@@ -10,6 +10,8 @@ var delta_time := 0.0166
 var can_land := false
 var aerial := false
 
+@onready var snowball := preload("res://scenes/tools/snow_ball.tscn")
+
 @export var animation_finished := false
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -26,6 +28,12 @@ func update(delta):
 	if animation_finished:
 		state.update_state("Idle")
 		return
+	if body.is_on_floor():
+		if aerial:
+			state.update_state("Idle")
+			return
+		if Input.is_action_just_pressed(state.player_number + "Special"):
+			if decide_attack(): return
 	# Handle all relevant timers
 	# Handle all relevant timers
 	delta_v.y -= constants.gravity * delta
@@ -38,11 +46,20 @@ func update(delta):
 	pass
 
 func reset(_delta):
-	aerial = body.is_on_floor()
+	aerial = not body.is_on_floor()
+	print(body.is_on_floor())
+	var new_snowball
+	if aerial:
+		new_snowball = snowball.instantiate()
+		new_snowball.set_attributes(body.facing_direction, true)
+	else:
+		new_snowball = snowball.instantiate()
+		new_snowball.set_attributes(body.facing_direction, false)
+	body.add_child(new_snowball)
+	new_snowball.global_position = body.global_position + Vector3.UP
 	can_land = false
 	delta_time = _delta
 	can_drift = false
-	body.velocity = Vector3.ZERO
 	body.special = true
 	animation_finished = false
 	pass

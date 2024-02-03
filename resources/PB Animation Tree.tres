@@ -83,7 +83,7 @@ advance_expression = "if not is_on_floor() and state.current_state.state_name ==
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_x7s7q"]
 advance_mode = 2
-advance_expression = "if is_on_floor() and state.current_state.state_name == \"Hitstun\""
+advance_expression = "state.current_state.state_name == \"Hitstun\""
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_t32ib"]
 advance_mode = 2
@@ -100,11 +100,11 @@ advance_mode = 2
 "states/Get Cargo Carried/node" = SubResource("AnimationNodeAnimation_2fxgr")
 "states/Get Cargo Carried/position" = Vector2(187.667, 413)
 "states/Get Hit Air Low Knock/node" = SubResource("AnimationNodeAnimation_qp1ji")
-"states/Get Hit Air Low Knock/position" = Vector2(438, 101)
+"states/Get Hit Air Low Knock/position" = Vector2(445.333, 141.667)
 "states/Get Hit Ait High Knock/node" = SubResource("AnimationNodeAnimation_h3bnw")
 "states/Get Hit Ait High Knock/position" = Vector2(452.333, 247)
 "states/Get Hit Ground Low Knock/node" = SubResource("AnimationNodeAnimation_4m0hi")
-"states/Get Hit Ground Low Knock/position" = Vector2(675.333, 99.4445)
+"states/Get Hit Ground Low Knock/position" = Vector2(675.333, 99.8148)
 states/Grabbed/node = SubResource("AnimationNodeAnimation_nqh82")
 states/Grabbed/position = Vector2(200.444, 247.556)
 states/Tech/node = SubResource("AnimationNodeStateMachine_djbbg")

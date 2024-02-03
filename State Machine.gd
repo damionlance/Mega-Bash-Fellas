@@ -38,6 +38,8 @@ func enter_hitstun(grab, grab_position, hitstun_frames):
 		update_state("Grabbed")
 		current_state.grab_position = grab_position
 		return
+	if hitstun_frames == 0:
+		return
 	update_state("Hitstun")
 	current_state.wait_time = hitstun_frames
 

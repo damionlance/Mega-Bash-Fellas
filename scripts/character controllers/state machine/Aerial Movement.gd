@@ -60,6 +60,9 @@ func decide_attack() -> bool:
 		if Input.get_action_strength(state.player_number + "Up") >= .7:
 			state.update_state("Up Special")
 			return true
+		if Input.get_action_strength(state.player_number + "Down") >= .7:
+			state.update_state("Down Special")
+			return true
 		if abs(Input.get_axis(state.player_number + "Left", state.player_number + "Right")) >= .7:
 			state.update_state("Side Special")
 			return true

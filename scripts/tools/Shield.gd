@@ -8,6 +8,7 @@ func _ready():
 	mesh.size = Vector2(radius, radius)
 	mesh.material.set_shader_parameter("color", color)
 	set_as_top_level(true)
+	deactivate()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -15,3 +16,16 @@ func _process(delta):
 	if Engine.is_editor_hint():
 		mesh.size = Vector2(radius, radius)
 		mesh.material.set_shader_parameter("color", color)
+
+func counter():
+	$hitbox.active = true
+	$hitbox.counter = true
+	visible = false
+
+func activate():
+	$hitbox.active = true
+	visible = true
+
+func deactivate():
+	$hitbox.active = false
+	visible = false

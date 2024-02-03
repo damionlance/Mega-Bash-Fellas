@@ -684,11 +684,11 @@ advance_mode = 2
 "states/F Special/node" = SubResource("AnimationNodeAnimation_h8dkq")
 "states/F Special/position" = Vector2(397.222, 111.667)
 "states/N Special/node" = SubResource("AnimationNodeAnimation_famt5")
-"states/N Special/position" = Vector2(199.111, 288.666)
+"states/N Special/position" = Vector2(356.444, 229.999)
 "states/Up Special/node" = SubResource("AnimationNodeAnimation_xh1y7")
 "states/Up Special/position" = Vector2(200.444, -63.3333)
 transitions = ["Start", "Up Special", SubResource("AnimationNodeStateMachineTransition_qiapv"), "Up Special", "End", SubResource("AnimationNodeStateMachineTransition_kenit"), "Start", "F Special", SubResource("AnimationNodeStateMachineTransition_ooqdr"), "F Special", "End", SubResource("AnimationNodeStateMachineTransition_cq3ep"), "Start", "N Special", SubResource("AnimationNodeStateMachineTransition_pkb8g"), "N Special", "End", SubResource("AnimationNodeStateMachineTransition_52rot")]
-graph_offset = Vector2(-592, -251)
+graph_offset = Vector2(-588, -144)
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_o3qvo"]
 animation = &"Jumpsquat"
@@ -800,4 +800,4 @@ states/Start/position = Vector2(190, 106.667)
 "states/jump squat/node" = SubResource("AnimationNodeAnimation_o3qvo")
 "states/jump squat/position" = Vector2(838.333, 201.67)
 transitions = ["Start", "Grounded Movement", SubResource("AnimationNodeStateMachineTransition_84qpy"), "Grounded Movement", "Aerial Movement", SubResource("AnimationNodeStateMachineTransition_qqvg2"), "Aerial Movement", "Grounded Movement", SubResource("AnimationNodeStateMachineTransition_u5bct"), "Grounded Movement", "jump squat", SubResource("AnimationNodeStateMachineTransition_mm1gw"), "jump squat", "Aerial Movement", SubResource("AnimationNodeStateMachineTransition_rdlhr"), "Grounded Movement", "Grounded Attacks", SubResource("AnimationNodeStateMachineTransition_g6wtg"), "Grounded Attacks", "Grounded Movement", SubResource("AnimationNodeStateMachineTransition_yk146"), "Grounded Movement", "Crouch", SubResource("AnimationNodeStateMachineTransition_1ui7h"), "Crouch", "Grounded Movement", SubResource("AnimationNodeStateMachineTransition_b108t"), "Crouch", "jump squat", SubResource("AnimationNodeStateMachineTransition_f668o"), "Crouch", "Grounded Attacks", SubResource("AnimationNodeStateMachineTransition_w2nv6"), "Aerial Movement", "Aerial Attacks", SubResource("AnimationNodeStateMachineTransition_c7i5d"), "Aerial Attacks", "Aerial Movement", SubResource("AnimationNodeStateMachineTransition_o220h"), "Aerial Movement", "Ledge Interactions", SubResource("AnimationNodeStateMachineTransition_g812c"), "Ledge Interactions", "Grounded Movement", SubResource("AnimationNodeStateMachineTransition_5ubko"), "Ledge Interactions", "Aerial Movement", SubResource("AnimationNodeStateMachineTransition_641ns"), "Grounded Movement", "Special Attacks", SubResource("AnimationNodeStateMachineTransition_8apkd"), "Aerial Movement", "Special Attacks", SubResource("AnimationNodeStateMachineTransition_dokuk"), "Special Attacks", "Aerial Movement", SubResource("AnimationNodeStateMachineTransition_4ii72"), "Special Attacks", "Grounded Movement", SubResource("AnimationNodeStateMachineTransition_vvfmg"), "Special Attacks", "Ledge Interactions", SubResource("AnimationNodeStateMachineTransition_wokh7")]
-graph_offset = Vector2(-135, -191)
+graph_offset = Vector2(-141, -101)

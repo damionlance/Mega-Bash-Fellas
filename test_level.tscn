@@ -94,7 +94,7 @@ polygon = PackedVector2Array(-2, 0, 2, 0, 2, -0.1, -2, -0.1)
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.862, 1.5, 5)
-fov = 74.9679
+fov = 74.4152
 near = 0.001
 
 [node name="PhantomCameraHost" type="Node" parent="Camera3D"]
@@ -157,7 +157,7 @@ camera_3D_resource = null
 
 [node name="Body2" parent="." instance=ExtResource("4_d5k7j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.13934, 0.51968, 0)
-player = false
+player_number = 2
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.66736, 5.35071, 0)
@@ -165,7 +165,6 @@ target_position = Vector3(-1.1, 0, 0)
 
 [node name="Body" parent="." instance=ExtResource("9_acq56")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.84923, 1.03169, 0.111119)
-player_number = 2
 
 [connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]
 [connection signal="body_exited" from="Area3D" to="Area3D" method="_on_body_exited"]

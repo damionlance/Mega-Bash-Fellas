@@ -2,7 +2,7 @@ extends AerialMovement
 
 
 #private variables
-var state_name = "Down Special"
+var state_name = "Down Special Interrupt"
 
 var can_drop_thru_platform := false
 var can_drift := false
@@ -18,20 +18,10 @@ func _ready():
 	pass # Replace with function body.
 
 func update(delta):
-	var delta_v = Vector2.ZERO
-	
-	if body.is_on_floor() == false:
-		can_land = true
 	
 	if animation_finished:
 		state.update_state("Idle")
 		return
-	delta_v.y = constants.gravity
-	# Handle all relevant timers
-	if body.velocity.y - delta_v.y < -constants.falling_speed:
-		delta_v.y = 0
-	# Handle all relevant tim
-	body.delta_v = delta_v
 	# Process physics
 	pass
 
@@ -44,6 +34,3 @@ func reset(_delta):
 	cancellable = false
 	animation_finished = false
 	pass
-
-func interrupt():
-	state.update_state("Down Special Interrupt")
