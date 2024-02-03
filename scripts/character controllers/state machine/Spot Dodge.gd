@@ -2,7 +2,7 @@ extends GroundedMovement
 
 
 #private variables
-var state_name = "Tech Roll"
+var state_name = "Dodge Roll"
 
 @export var animation_finished := false
 
@@ -18,6 +18,9 @@ func update(delta):
 	if animation_finished:
 		state.update_state("Idle")
 		return
+	if not body.is_on_floor():
+		state.update_state("Fall")
+		return
 	# Handle all relevant timers
 	body.apply_friction(traction)
 	# Process physics
@@ -26,8 +29,8 @@ func update(delta):
 
 func reset(delta):
 	animation_finished = false
-	print("Hey!")
+	
 	body.attacking = false
 	body.consecutive_jumps = 0
-	body.velocity.x = dodge_roll * 1.25 * Input.get_axis(state.player_number + "Left", state.player_number + "Right") * delta
+	body.velocity.x = dodge_roll * Input.get_axis(state.player_number + "Left", state.player_number + "Right") * delta
 	pass

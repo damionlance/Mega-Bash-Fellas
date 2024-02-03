@@ -21,7 +21,7 @@ func _ready():
 		queue_free()
 		return
 	await get_tree().get_current_scene().level_loaded
-	update_state("Idle")
+	update_state("Damage Fly")
 	body.connect("has_been_hit", enter_hitstun)
 
 func _physics_process(delta):

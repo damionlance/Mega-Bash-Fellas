@@ -1,15 +1,61 @@
-[gd_resource type="AnimationNodeBlendTree" load_steps=19 format=3 uid="uid://d2ql7htv8i0ur"]
+[gd_resource type="AnimationNodeBlendTree" load_steps=35 format=3 uid="uid://d2ql7htv8i0ur"]
 
 [ext_resource type="AnimationNodeStateMachine" uid="uid://oe7qbmr1p7ld" path="res://PB Animation Tree.tres" id="1_w1ag7"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2fxgr"]
 animation = &"Get Cargo Carried"
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qp1ji"]
+animation = &"Get Hit Air Low Knock"
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_h3bnw"]
 animation = &"Get Hit Ait High Knock"
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4m0hi"]
+animation = &"Get Hit Ground Low Knock"
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_nqh82"]
 animation = &"Grabbed"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_d5pc7"]
+animation = &"Roll B"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wnvx4"]
+animation = &"Roll F"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_w1eub"]
+animation = &"Tech in Place"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_mupoj"]
+animation = &"Wall Tech"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hwr4x"]
+advance_mode = 2
+advance_expression = "state.current_state.state_name == \"Tech Roll\" and sign(Input.get_axis(state.player_number + \"Left\", state.player_number + \"Right\")) != facing_direction"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ca83h"]
+advance_mode = 2
+advance_expression = "state.current_state.state_name == \"Tech Roll\" and sign(Input.get_axis(state.player_number + \"Left\", state.player_number + \"Right\")) == facing_direction"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_gii0f"]
+advance_mode = 2
+advance_expression = "state.current_state.state_name == \"Tech in Place\" "
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_t4ayn"]
+advance_mode = 2
+advance_expression = "state.current_state.state_name == \"Wall Tech\""
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_djbbg"]
+"states/Roll B/node" = SubResource("AnimationNodeAnimation_d5pc7")
+"states/Roll B/position" = Vector2(322.667, -73)
+"states/Roll F/node" = SubResource("AnimationNodeAnimation_wnvx4")
+"states/Roll F/position" = Vector2(323.333, 21.6667)
+"states/Tech in Place/node" = SubResource("AnimationNodeAnimation_w1eub")
+"states/Tech in Place/position" = Vector2(326, 95.6667)
+"states/Wall Tech/node" = SubResource("AnimationNodeAnimation_mupoj")
+"states/Wall Tech/position" = Vector2(322.444, 199)
+transitions = ["Start", "Roll B", SubResource("AnimationNodeStateMachineTransition_hwr4x"), "Start", "Roll F", SubResource("AnimationNodeStateMachineTransition_ca83h"), "Start", "Tech in Place", SubResource("AnimationNodeStateMachineTransition_gii0f"), "Start", "Wall Tech", SubResource("AnimationNodeStateMachineTransition_t4ayn")]
+graph_offset = Vector2(-476, -235)
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_awh4v"]
 advance_mode = 2
@@ -31,15 +77,40 @@ advance_expression = "state.current_state.state_name == \"Get Cargo Carried\""
 advance_mode = 2
 advance_expression = "state.current_state.state_name == \"Damage Fly\""
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_i2lp2"]
+advance_mode = 2
+advance_expression = "if not is_on_floor() and state.current_state.state_name == \"Hitstun\""
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_x7s7q"]
+advance_mode = 2
+advance_expression = "if is_on_floor() and state.current_state.state_name == \"Hitstun\""
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_t32ib"]
+advance_mode = 2
+advance_expression = "state.current_state.state_name == \"Damage Fly\""
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_s4o12"]
+advance_mode = 2
+advance_expression = "state.current_state.state_name == \"Damage Fly\""
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_m0qvb"]
+advance_mode = 2
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_f7s31"]
 "states/Get Cargo Carried/node" = SubResource("AnimationNodeAnimation_2fxgr")
 "states/Get Cargo Carried/position" = Vector2(187.667, 413)
+"states/Get Hit Air Low Knock/node" = SubResource("AnimationNodeAnimation_qp1ji")
+"states/Get Hit Air Low Knock/position" = Vector2(438, 101)
 "states/Get Hit Ait High Knock/node" = SubResource("AnimationNodeAnimation_h3bnw")
 "states/Get Hit Ait High Knock/position" = Vector2(452.333, 247)
+"states/Get Hit Ground Low Knock/node" = SubResource("AnimationNodeAnimation_4m0hi")
+"states/Get Hit Ground Low Knock/position" = Vector2(675.333, 99.4445)
 states/Grabbed/node = SubResource("AnimationNodeAnimation_nqh82")
 states/Grabbed/position = Vector2(200.444, 247.556)
-transitions = ["Start", "Grabbed", SubResource("AnimationNodeStateMachineTransition_awh4v"), "Start", "Get Hit Ait High Knock", SubResource("AnimationNodeStateMachineTransition_6ng3w"), "Grabbed", "Get Hit Ait High Knock", SubResource("AnimationNodeStateMachineTransition_dg2yu"), "Grabbed", "Get Cargo Carried", SubResource("AnimationNodeStateMachineTransition_ncxld"), "Get Cargo Carried", "Get Hit Ait High Knock", SubResource("AnimationNodeStateMachineTransition_5k12d")]
-graph_offset = Vector2(-509, 65)
+states/Tech/node = SubResource("AnimationNodeStateMachine_djbbg")
+states/Tech/position = Vector2(643.333, 411.667)
+transitions = ["Start", "Grabbed", SubResource("AnimationNodeStateMachineTransition_awh4v"), "Start", "Get Hit Ait High Knock", SubResource("AnimationNodeStateMachineTransition_6ng3w"), "Grabbed", "Get Hit Ait High Knock", SubResource("AnimationNodeStateMachineTransition_dg2yu"), "Grabbed", "Get Cargo Carried", SubResource("AnimationNodeStateMachineTransition_ncxld"), "Get Cargo Carried", "Get Hit Ait High Knock", SubResource("AnimationNodeStateMachineTransition_5k12d"), "Start", "Get Hit Air Low Knock", SubResource("AnimationNodeStateMachineTransition_i2lp2"), "Start", "Get Hit Ground Low Knock", SubResource("AnimationNodeStateMachineTransition_x7s7q"), "Get Hit Ground Low Knock", "Get Hit Ait High Knock", SubResource("AnimationNodeStateMachineTransition_t32ib"), "Get Hit Air Low Knock", "Get Hit Ait High Knock", SubResource("AnimationNodeStateMachineTransition_s4o12"), "Get Hit Ait High Knock", "Tech", SubResource("AnimationNodeStateMachineTransition_m0qvb")]
+graph_offset = Vector2(-388, 47)
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_nsu3f"]
 animation = &"fall"
@@ -65,7 +136,7 @@ advance_expression = "state.current_state.state_name != \"Respawn\""
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_khprv"]
 "states/Damage State/node" = SubResource("AnimationNodeStateMachine_f7s31")
-"states/Damage State/position" = Vector2(455.667, 58.6667)
+"states/Damage State/position" = Vector2(455.667, 58)
 states/StateMachine/node = ExtResource("1_w1ag7")
 states/StateMachine/position = Vector2(434.333, 225.333)
 states/fall/node = SubResource("AnimationNodeAnimation_nsu3f")
@@ -76,7 +147,7 @@ graph_offset = Vector2(-170, -37)
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_1lm6q"]
 
 [resource]
-graph_offset = Vector2(-528, -82.6667)
+graph_offset = Vector2(-528, -116.667)
 nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_khprv")
 nodes/StateMachine/position = Vector2(-320, 40)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_1lm6q")
