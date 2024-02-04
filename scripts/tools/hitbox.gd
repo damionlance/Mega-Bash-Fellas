@@ -121,7 +121,8 @@ func _on_area_entered(_area):
 	if not hurtbox:
 		return
 	if interruptable:
-		body.state.current_state.interrupt()
+		if body.state.current_state.has_method("interrupt"):
+			body.state.current_state.interrupt()
 	hurtbox.hit(deg_to_rad(launch_angle), body.facing_direction, grab, body.grab_position, damage, hitstun_frames, knockback, knockback_scaling)
 	active = false
 	if grab:

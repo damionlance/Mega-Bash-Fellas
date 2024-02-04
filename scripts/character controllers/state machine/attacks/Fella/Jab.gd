@@ -17,6 +17,9 @@ func _ready():
 
 func update(delta):
 	
+	if not body.is_on_floor():
+		state.update_state("Fall")
+		return
 	# Process inputs
 	match current_jab:
 		3:
