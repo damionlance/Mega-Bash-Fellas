@@ -24,8 +24,11 @@ size = Vector3(45, 45, 2)
 sky_material = SubResource("ProceduralSkyMaterial_w0hmw")
 
 [sub_resource type="Environment" id="Environment_1s338"]
-background_mode = 2
+background_mode = 1
+background_color = Color(0.0666667, 0.0235294, 0.0627451, 1)
 sky = SubResource("Sky_whvvx")
+ambient_light_color = Color(0.239216, 0.156863, 0.470588, 1)
+ambient_light_energy = 1.7
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uqvet"]
 size = Vector3(29.3002, 24.6514, 5.09458)
