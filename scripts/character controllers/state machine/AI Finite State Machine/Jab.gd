@@ -15,6 +15,7 @@ func _ready():
 
 func update(delta):
 	if wait_frames >= 5:
+		state.release_attacks()
 		if body.state.current_state.state_name == "Idle": 
 			state.update_state("Idle")
 			return
