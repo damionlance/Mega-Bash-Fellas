@@ -31,6 +31,8 @@ func _ready():
 	body.connect("has_been_hit", enter_hitstun)
 
 func _physics_process(delta):
+	if body.state.current_state.state_name == "Respawn":
+		update_state("Walk Towards Opponent")
 	if list_of_possible_actions.size()> 0:
 		var rand = randi()%list_of_possible_actions.size() * 1.3
 		if rand < list_of_possible_actions.size():

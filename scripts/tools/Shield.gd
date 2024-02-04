@@ -6,6 +6,7 @@ extends MeshInstance3D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	mesh.size = Vector2(radius, radius)
+	mesh.material = mesh.material.duplicate()
 	mesh.material.set_shader_parameter("color", color)
 	set_as_top_level(true)
 	deactivate()

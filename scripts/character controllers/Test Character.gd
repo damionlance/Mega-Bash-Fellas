@@ -35,6 +35,9 @@ signal has_been_hit
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	
+	
+	
 	$"Animation Tree".active = true
 	if player:
 		controller.set_script(load("res://scripts/character controllers/Controller Inputs.gd"))
