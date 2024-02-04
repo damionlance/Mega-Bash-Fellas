@@ -3,10 +3,10 @@
 [ext_resource type="Script" path="res://scripts/character controllers/state machine/attacks/Fella/Shine.gd" id="1_vjhl5"]
 [ext_resource type="PackedScene" uid="uid://ugrfkn6s0brw" path="res://scenes/tools/hitbox.tscn" id="3_f03yq"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_faqf7"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_u8faj"]
 height = 1.5567
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_aidho"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pgglg"]
 height = 1.56259
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oocfs"]
@@ -23,28 +23,35 @@ script = ExtResource("1_vjhl5")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0493563, -0.765157, 0)
 collision_layer = 32
 hitbox_radius = 0.5
-launch_angle = 170.0
-knockback = 10.0
+launch_angle = 175.0
+damage = 2.0
+hitstun_frames = 10
+knockback = 11.0
+knockback_scaling = 0.0
 
 [node name="hitbox point" parent="hitbox" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5567, 0)
 
 [node name="HitCapsule" parent="hitbox" index="1"]
 transform = Transform3D(-0.999999, 8.74227e-08, 0, -8.74227e-08, -0.999999, 0, 0, 0, 1, 0, 0.77835, 0)
-shape = SubResource("CapsuleShape3D_faqf7")
+shape = SubResource("CapsuleShape3D_u8faj")
 
 [node name="hitbox2" parent="." instance=ExtResource("3_f03yq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.169385, -0.768965, 0)
 collision_layer = 32
 hitbox_radius = 0.5
-launch_angle = 10.0
+launch_angle = 5.0
+damage = 2.0
+hitstun_frames = 10
+knockback = 11.0
+knockback_scaling = 0.0
 
 [node name="hitbox point" parent="hitbox2" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.56259, 0)
 
 [node name="HitCapsule" parent="hitbox2" index="1"]
 transform = Transform3D(-0.999999, 8.74227e-08, 0, -8.74227e-08, -0.999999, 0, 0, 0, 1, 0, 0.781295, 0)
-shape = SubResource("CapsuleShape3D_aidho")
+shape = SubResource("CapsuleShape3D_pgglg")
 
 [node name="mesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
