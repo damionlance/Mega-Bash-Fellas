@@ -51,7 +51,7 @@ advance_expression = "state.current_state.state_name == \"Wall Tech\""
 "states/Roll F/node" = SubResource("AnimationNodeAnimation_wnvx4")
 "states/Roll F/position" = Vector2(323.333, 21.6667)
 "states/Tech in Place/node" = SubResource("AnimationNodeAnimation_w1eub")
-"states/Tech in Place/position" = Vector2(326, 95.6667)
+"states/Tech in Place/position" = Vector2(396.667, 99)
 "states/Wall Tech/node" = SubResource("AnimationNodeAnimation_mupoj")
 "states/Wall Tech/position" = Vector2(322.444, 199)
 transitions = ["Start", "Roll B", SubResource("AnimationNodeStateMachineTransition_hwr4x"), "Start", "Roll F", SubResource("AnimationNodeStateMachineTransition_ca83h"), "Start", "Tech in Place", SubResource("AnimationNodeStateMachineTransition_gii0f"), "Start", "Wall Tech", SubResource("AnimationNodeStateMachineTransition_t4ayn")]
@@ -82,6 +82,7 @@ advance_mode = 2
 advance_expression = "if not is_on_floor() and state.current_state.state_name == \"Hitstun\""
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_x7s7q"]
+priority = 2
 advance_mode = 2
 advance_expression = "state.current_state.state_name == \"Hitstun\""
 
@@ -95,6 +96,7 @@ advance_expression = "state.current_state.state_name == \"Damage Fly\""
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_m0qvb"]
 advance_mode = 2
+advance_expression = "state.current_state.state_name == \"Tech in Place\" or state.current_state.state_name == \"Tech Roll\" "
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_f7s31"]
 "states/Get Cargo Carried/node" = SubResource("AnimationNodeAnimation_2fxgr")
@@ -142,12 +144,12 @@ states/StateMachine/position = Vector2(434.333, 225.333)
 states/fall/node = SubResource("AnimationNodeAnimation_nsu3f")
 states/fall/position = Vector2(439.333, 374)
 transitions = ["Start", "StateMachine", SubResource("AnimationNodeStateMachineTransition_5k86d"), "StateMachine", "Damage State", SubResource("AnimationNodeStateMachineTransition_a0wnb"), "Damage State", "StateMachine", SubResource("AnimationNodeStateMachineTransition_o20qg"), "StateMachine", "fall", SubResource("AnimationNodeStateMachineTransition_10yde"), "fall", "StateMachine", SubResource("AnimationNodeStateMachineTransition_qbfa5")]
-graph_offset = Vector2(-170, -37)
+graph_offset = Vector2(-116, -189)
 
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_1lm6q"]
 
 [resource]
-graph_offset = Vector2(-528, -116.667)
+graph_offset = Vector2(-670.309, 0.330312)
 nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_khprv")
 nodes/StateMachine/position = Vector2(-320, 40)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_1lm6q")

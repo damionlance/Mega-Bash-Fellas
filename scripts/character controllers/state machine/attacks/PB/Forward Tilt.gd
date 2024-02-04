@@ -18,6 +18,9 @@ func _ready():
 func update(delta):
 	var delta_v = Vector2.ZERO
 	
+	if not body.is_on_floor():
+		state.update_state("Fall")
+		return
 	# Process inputs
 	if animation_finished:
 		state.update_state("Idle")

@@ -32,6 +32,7 @@ func _ready():
 
 func _physics_process(delta):
 	if body.state.current_state.state_name == "Respawn":
+		reset_inputs()
 		update_state("Walk Towards Opponent")
 	if list_of_possible_actions.size()> 0:
 		var rand = randi()%list_of_possible_actions.size() * 1.3
@@ -42,7 +43,6 @@ func _physics_process(delta):
 	list_of_possible_actions.clear()
 
 func update_state( newstate ):
-	print(newstate)
 	previous_state = current_state
 	current_state = state_dictionary[newstate]
 	current_state.reset(_delta)

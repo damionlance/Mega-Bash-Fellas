@@ -19,13 +19,12 @@ func update(delta):
 		state.update_state("Idle")
 		return
 	# Handle all relevant timers
-	body.apply_friction(traction)
 	# Process physics
 	pass
 
 func reset(delta):
 	animation_finished = false
-	
+	body.velocity = Vector3.ZERO
 	body.slide_off_ledge = false
 	body.attacking = false
 	body.consecutive_jumps = 0
