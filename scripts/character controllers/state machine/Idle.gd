@@ -36,7 +36,6 @@ func update(delta):
 	if Input.is_action_just_pressed(state.player_number + "Shield"):
 		state.update_state("Shield")
 		return
-	print(Input.get_vector(state.player_number + "Crush Left",state.player_number + "Crush Right",state.player_number + "Crush Down",state.player_number + "Crush Up"))
 	if Input.is_action_just_pressed(state.player_number + "Attack") or Input.is_action_just_pressed(state.player_number + "Special") or Input.get_vector(state.player_number + "Crush Left",state.player_number + "Crush Right",state.player_number + "Crush Down",state.player_number + "Crush Up") != Vector2.ZERO:
 		if decide_attack(can_bash): return
 	if Input.is_action_just_pressed(state.player_number + "Grab"):
@@ -54,7 +53,6 @@ func update(delta):
 		if abs(Input.get_axis(state.player_number + "Left", state.player_number + "Right")) > 0.7 and can_dash:
 			state.update_state("Dash")
 			return
-		print(abs(Input.get_axis(state.player_number + "Left", state.player_number + "Right")))
 		state.update_state("Walk")
 		return
 	
@@ -67,6 +65,9 @@ func update(delta):
 	pass
 
 func reset(_delta):
+	if not body.is_on_floor():
+		state.update_state("Fall")
+		return
 	body.hitbox_handler.reset_hitboxes()
 	can_tilt = true
 	can_crush = true

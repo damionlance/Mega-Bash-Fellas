@@ -23,7 +23,7 @@ func _ready():
 		queue_free()
 		return
 	await get_tree().get_current_scene().level_loaded
-	update_state("Damage Fly")
+	update_state("Idle")
 	body.connect("has_been_hit", enter_hitstun)
 
 func _physics_process(delta):
@@ -31,7 +31,7 @@ func _physics_process(delta):
 	current_state.update(delta)
 
 func update_state( newstate ):
-	if player_number == "P2_":
+	if player_number == "P1_":
 		print(newstate)
 	previous_state = current_state
 	current_state = state_dictionary[newstate]

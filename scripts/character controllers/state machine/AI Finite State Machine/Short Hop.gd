@@ -24,14 +24,14 @@ func update(delta):
 	var controller_strength = clampf(.2 + distance / 5, .2, 1.0)
 	if direction == -1:
 		state.release_movement()
-		var last_action = player_number + "Left"
+		last_action = player_number + "Left"
 		Input.action_press(last_action, controller_strength)
 	if direction == 1:
 		state.release_movement()
 		Input.action_release(player_number + "Left")
-		var last_action = player_number + "Right"
+		last_action = player_number + "Right"
 		Input.action_press(last_action,  controller_strength)
 
 func reset(_delta):
-	var last_action = state.player_number + "Jump"
+	last_action = state.player_number + "Jump"
 	Input.action_press(last_action)

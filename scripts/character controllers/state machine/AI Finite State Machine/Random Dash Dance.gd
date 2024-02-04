@@ -33,7 +33,6 @@ func update(delta):
 	collision_mask = 3
 	if state.probe_for_object(from, to, collision_mask).size() == 0:
 		random_time = dash_dance.current_frame
-		print("Pivot")
 	match waiting_for_dash:
 		0:
 			if dash_dance.current_frame >= random_time:
