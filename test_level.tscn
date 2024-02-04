@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://clfwbndiph4dn"]
+[gd_scene load_steps=16 format=3 uid="uid://clfwbndiph4dn"]
 
 [ext_resource type="Script" path="res://scripts/Levels/initiate level.gd" id="1_5j3o7"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_6o67q"]
@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://db82jlojuy6qm" path="res://scenes/characters/PB.tscn" id="4_d5k7j"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3D.gd" id="6_k006f"]
 [ext_resource type="Script" path="res://scripts/tools/Dynamic Camera Target Tracker.gd" id="7_hguk8"]
-[ext_resource type="PackedScene" uid="uid://bvg8potcgyin4" path="res://scenes/characters/Fella.tscn" id="9_acq56"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_ob63o"]
 size = Vector3(20, 2, 2)
@@ -94,7 +93,7 @@ polygon = PackedVector2Array(-2, 0, 2, 0, 2, -0.1, -2, -0.1)
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.862, 1.5, 5)
-fov = 74.7861
+fov = 73.9086
 near = 0.001
 
 [node name="PhantomCameraHost" type="Node" parent="Camera3D"]
@@ -148,7 +147,8 @@ follow_parameters/min_distance = 5.0
 follow_parameters/max_distance = 10.0
 follow_parameters/auto_distance_divisor = 10.0
 follow_parameters/target_offset = Vector3(0, 1.5, 0)
-follow_parameters/damping = false
+follow_parameters/damping = true
+follow_parameters/damping_value = 34.411
 look_at_mode = 0
 tween_parameters = null
 tween_on_load = true
@@ -156,15 +156,15 @@ inactive_update_mode = 0
 camera_3D_resource = null
 
 [node name="Body2" parent="." instance=ExtResource("4_d5k7j")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.13934, 0.51968, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.324136, 1.14018, 0)
 player_number = 2
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.66736, 5.35071, 0)
 target_position = Vector3(-1.1, 0, 0)
 
-[node name="Body" parent="." instance=ExtResource("9_acq56")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.84923, 1.03169, 0.111119)
+[node name="Body" parent="." instance=ExtResource("4_d5k7j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.626, 0, 0)
 
 [connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]
 [connection signal="body_exited" from="Area3D" to="Area3D" method="_on_body_exited"]

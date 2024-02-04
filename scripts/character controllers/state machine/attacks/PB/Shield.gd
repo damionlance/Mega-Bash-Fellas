@@ -43,6 +43,7 @@ func update(delta):
 		can_dodge = false
 		drop_shield = true
 		shield.visible = false
+		state.update_state("Idle")
 		return
 	if Input.is_action_just_pressed(state.player_number + "Jump"):
 		state.update_state("Jump Squat")

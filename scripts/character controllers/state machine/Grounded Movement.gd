@@ -62,7 +62,6 @@ func decide_attack(bash : bool = false) -> bool:
 			return true
 	if Input.is_action_just_pressed(state.player_number + "Attack"):
 		if bash:
-			print("Bashin")
 			if Input.get_action_strength(state.player_number + "Up") > .7:
 				state.update_state("U Bash")
 				return true

@@ -7,9 +7,14 @@ var previous_state = null
 
 var target_body
 
+@onready var ledge = get_tree().get_current_scene().find_child("Ledge")
+@onready var ledge2 = get_tree().get_current_scene().find_child("Ledge2")
+
 #onready variables
 @onready var body = get_parent().get_parent()
 @onready var astar = get_tree().get_current_scene().get_node("%AStar")
+@onready var player_state := $"../../State Machine"
+@onready var player_number : String = player_state.player_number
 var point_path := []
 
 var _delta := 0.0166
@@ -52,4 +57,19 @@ func enter_hitstun(hitstun_frames):
 func probe_for_object(from, to, collision_mask) -> Dictionary:
 	var space_state = body.get_world_3d().direct_space_state
 	var query = PhysicsRayQueryParameters3D.create(from, to, collision_mask)
+	var result = space_state.intersect_ray(query)
 	return space_state.intersect_ray(query)
+
+func reset_inputs():
+	Input.action_release(player_number + "Up")
+	Input.action_release(player_number + "Down")
+	Input.action_release(player_number + "Left")
+	Input.action_release(player_number + "Right")
+	Input.action_release(player_number + "Crush Up")
+	Input.action_release(player_number + "Crush Down")
+	Input.action_release(player_number + "Crush Left")
+	Input.action_release(player_number + "Crush Right")
+	Input.action_release(player_number + "Attack")
+	Input.action_release(player_number + "Special")
+	Input.action_release(player_number + "Shield")
+	Input.action_release(player_number + "Grab")

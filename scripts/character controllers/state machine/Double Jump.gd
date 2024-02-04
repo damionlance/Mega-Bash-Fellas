@@ -48,7 +48,7 @@ func update(delta):
 func reset(delta):
 	can_tilt = true
 	body.consecutive_jumps += 1
-	ready_to_jump = not controller.attempting_jump
+	ready_to_jump = not Input.is_action_pressed(state.player_number + "Jump")
 	
 	body.velocity.y = constants.double_jump_force * delta
 	body.velocity.x *= -1 if sign(Input.get_axis(state.player_number + "Left", state.player_number + "Right")) != sign(body.velocity.x) and abs(Input.get_axis(state.player_number + "Left", state.player_number + "Right")) > .3 else 1

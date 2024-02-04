@@ -1,7 +1,5 @@
 extends Node
 
-class_name AI_RandomDashDance
-
 @onready var state = get_parent()
 @onready var body = get_parent().get_parent().get_parent()
 @onready var controller = get_parent().get_parent()
@@ -11,7 +9,7 @@ class_name AI_RandomDashDance
 
 @onready var player_number = get_parent().player_number
 #private variables
-var state_name = "Random Dash Dance"
+var state_name = "Walk Towards Opponent"
 
 var random_time := 0
 var waiting_for_dash := 0
@@ -27,28 +25,16 @@ func update(delta):
 	var collision_mask
 	
 	#Check if there's ground where you're dashing
-	var axis = Input.get_axis(player_number + "Left", player_number + "Right")
-	from = body.global_position + Vector3(axis, 0, 0)
-	to = body.global_position + Vector3(axis, -1, 0)
-	collision_mask = 3
-	if state.probe_for_object(from, to, collision_mask).size() == 0:
-		random_time = dash_dance.current_frame
-		print("Pivot")
-	match waiting_for_dash:
-		0:
-			if dash_dance.current_frame >= random_time:
-				waiting_for_dash = 1
-				Input.action_release(last_action)
-		1:
-			match body.facing_direction:
-				-1:
-					last_action = player_number + "Right"
-					Input.action_press(last_action)
-				1:
-					last_action = player_number + "Left"
-					Input.action_press(last_action)
-			random_time = randi() % 5
-			waiting_for_dash = 0
+	if state.target_body.is_on_floor() and state.target_body.global_position.y != body.global_position.y:
+		#Pathfind
+		pass
+	var direction = sign(state.target_body.global_position.x - body.global_position.x)
+	if direction == -1:
+		last_action = player_number + "Left"
+		Input.action_press(last_action, 0.5)
+	if direction == 1:
+		last_action = player_number + "Right"
+		Input.action_press(last_action, 0.5)
 
 func reset(_delta):
 	player_number = get_parent().player_number

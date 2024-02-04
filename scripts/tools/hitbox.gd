@@ -96,9 +96,9 @@ func hit(launch_angle : float, facing_direction : float, grab : bool = false, _g
 		body.velocity = Vector3(1, 0, 0).rotated(Vector3(0,0,1),launch_angle)
 	else: body.velocity = Vector3.ZERO
 	body.velocity.x *= facing_direction
-	body.current_damage += damage * 0.01
+	body.current_damage += damage
 	var adjusted_knockback = knockback
-	adjusted_knockback += knockback_scaling * damage * 0.01
+	adjusted_knockback += knockback_scaling * body.current_damage * 0.01
 	adjusted_knockback /= body.weight
 	body.velocity *= adjusted_knockback
 	if grab:
@@ -123,6 +123,7 @@ func _on_area_entered(_area):
 	if interruptable:
 		body.state.current_state.interrupt()
 	hurtbox.hit(deg_to_rad(launch_angle), body.facing_direction, grab, body.grab_position, damage, hitstun_frames, knockback, knockback_scaling)
+	active = false
 	if grab:
 		body.state.current_state.grab = true
 		body.state.grabbed_body = hurtbox.body

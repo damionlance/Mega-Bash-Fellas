@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cbumli8wbtwox"]
+[gd_scene load_steps=9 format=3 uid="uid://cbumli8wbtwox"]
 
 [ext_resource type="Script" path="res://scripts/character controllers/state machine/AI Finite State Machine/AI Finite State Machine.gd" id="1_ubygn"]
 [ext_resource type="Script" path="res://scripts/character controllers/state machine/AI Finite State Machine/Idle.gd" id="2_p85bk"]
@@ -6,6 +6,8 @@
 [ext_resource type="Script" path="res://scripts/character controllers/state machine/AI Finite State Machine/Approach Target.gd" id="5_cbjik"]
 [ext_resource type="Script" path="res://scripts/character controllers/state machine/AI Finite State Machine/Hitstun.gd" id="5_vn2fb"]
 [ext_resource type="Script" path="res://scripts/character controllers/state machine/AI Finite State Machine/Shield.gd" id="6_ap0y0"]
+[ext_resource type="Script" path="res://scripts/character controllers/state machine/AI Finite State Machine/Walk Towards Opponent.gd" id="7_pc5lp"]
+[ext_resource type="Script" path="res://scripts/character controllers/state machine/AI Finite State Machine/FTilt.gd" id="8_kgly1"]
 
 [node name="State Machine" type="Node"]
 script = ExtResource("1_ubygn")
@@ -24,3 +26,15 @@ script = ExtResource("5_vn2fb")
 
 [node name="Shield" type="Node" parent="."]
 script = ExtResource("6_ap0y0")
+
+[node name="Walk Towards Opponent" type="Node" parent="."]
+script = ExtResource("7_pc5lp")
+
+[node name="FTilt" type="Node" parent="."]
+script = ExtResource("8_kgly1")
+
+[node name="UTilt" type="Node" parent="."]
+script = ExtResource("8_kgly1")
+
+[node name="DTilt" type="Node" parent="."]
+script = ExtResource("8_kgly1")

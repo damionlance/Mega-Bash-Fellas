@@ -18,10 +18,10 @@ func _ready():
 
 func update(delta):
 	
-	if body.is_on_floor() and body.state.current_state.state_name == "Idle" and false: 
-		state.update_state("Shield")
+	if body.is_on_floor() and body.state.current_state.state_name == "Idle": 
+		state.update_state("Walk Towards Opponent")
 		return
 	pass
 
 func reset(_delta):
-	controller.jump_input = false
+	state.reset_inputs()
