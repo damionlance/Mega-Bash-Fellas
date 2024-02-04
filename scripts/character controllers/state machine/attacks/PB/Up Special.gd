@@ -50,7 +50,6 @@ func reset(_delta):
 	body.special = true
 	cancellable = false
 	animation_finished = false
-	pass
 
 func start_jump():
 	body.facing_direction = sign(Input.get_axis(state.player_number + "Left", state.player_number + "Right"))

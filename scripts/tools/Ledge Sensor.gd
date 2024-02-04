@@ -13,7 +13,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	monitoring = true
-	if body.velocity.y > 0 or not enabled:
+	if body.velocity.y > 0 or not enabled or state.current_state.state_name == "Damage Fly":
 		monitoring = false
 
 

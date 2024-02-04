@@ -31,6 +31,7 @@ func _ready():
 	body.connect("has_been_hit", enter_hitstun)
 
 func _physics_process(delta):
+	calculate_recovery()
 	if body.state.current_state.state_name == "Respawn":
 		reset_inputs()
 		update_state("Walk Towards Opponent")
@@ -58,7 +59,13 @@ func update_path( target : Vector3 ):
 		else:
 			x+=1
 
-func enter_hitstun(hitstun_frames):
+func enter_hitstun(grab, grab_position, hitstun_frames):
+	if grab:
+		update_state("Grabbed")
+		current_state.grab_position = grab_position
+		return
+	if hitstun_frames == 0:
+		return
 	update_state("Hitstun")
 	current_state.wait_time = hitstun_frames
 
@@ -73,6 +80,13 @@ func insert_action(action : String):
 	if list_of_possible_actions.has(action):
 		return
 	list_of_possible_actions.append(action)
+
+func calculate_recovery():
+	if current_state.state_name == "Recover":
+		return
+	if abs(body.global_position.x) > 10 or body.global_position.y < 0:
+		if abs(target_body.global_position.x) < abs(body.global_position.x):
+			update_state("Recover")
 
 func release_movement():
 	Input.action_release(player_number + "Up")
