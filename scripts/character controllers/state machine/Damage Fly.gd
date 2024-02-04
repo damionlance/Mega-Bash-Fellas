@@ -31,6 +31,10 @@ func update(delta):
 		if body.is_on_floor():
 			state.update_state("Landing Lag")
 			return
+		else:
+			state.update_state("Fall")
+			body.damaged = false
+			return
 	delta_v.x = sign(Input.get_axis(state.player_number + "Left", state.player_number + "Right")) * (constants.base_air_acceleration + abs(constants.additional_air_acceleration * Input.get_axis(state.player_number + "Left", state.player_number + "Right"))) * delta
 	delta_v.y -= constants.gravity * delta
 	body.delta_v = delta_v
@@ -50,6 +54,7 @@ func reset(_delta):
 	body.attacking = false
 	hitlag_frames = 0
 	wait_time = body.velocity.length()
+
 
 func attempt_tech():
 	can_tech = false
