@@ -11,6 +11,7 @@ func _process(delta):
 			return
 		if abs($"../../".velocity.x) > 5:
 			return
-		
+		if not $"../../".is_on_floor():
+			return
 		if area.body.state.current_state.state_name != "Shield":
-			AI_state_machine.insert_action("FTilt")
+			AI_state_machine.insert_action("Short Hop")

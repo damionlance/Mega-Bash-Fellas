@@ -29,12 +29,12 @@ func update(delta):
 	if Input.get_vector(state.player_number + "Left", state.player_number + "Right", state.player_number + "Down", state.player_number + "Up").length() <= 0.7:
 		can_dash = true
 	
+	if Input.is_action_just_pressed(state.player_number + "Jump"):
+		state.update_state("Jump Squat")
+		return
 	if Input.is_action_just_pressed(state.player_number + "Shield"):
 		body.velocity.x = 0
 		state.update_state("Shield")
-		return
-	if Input.is_action_just_pressed(state.player_number + "Jump"):
-		state.update_state("Jump")
 		return
 	if not body.is_on_floor():
 		state.update_state("Fall")

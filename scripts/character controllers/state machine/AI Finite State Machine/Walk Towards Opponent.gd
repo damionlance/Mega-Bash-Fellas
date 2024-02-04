@@ -29,12 +29,15 @@ func update(delta):
 		#Pathfind
 		pass
 	var direction = sign(state.target_body.global_position.x - body.global_position.x)
+	var distance = abs(state.target_body.global_position.x - body.global_position.x)
 	if direction == -1:
+		state.reset_inputs()
 		last_action = player_number + "Left"
-		Input.action_press(last_action, 0.5)
+		Input.action_press(last_action, distance / 5)
 	if direction == 1:
+		state.reset_inputs()
 		last_action = player_number + "Right"
-		Input.action_press(last_action, 0.5)
+		Input.action_press(last_action, distance / 5)
 
 func reset(_delta):
 	player_number = get_parent().player_number

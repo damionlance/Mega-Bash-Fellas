@@ -2,7 +2,7 @@ extends GroundedMovement
 
 
 #private variables
-var state_name = "Dodge Roll"
+var state_name = "Spot Dodge"
 
 @export var animation_finished := false
 

@@ -19,7 +19,7 @@ var point_path := []
 
 var _delta := 0.0166
 
-
+var list_of_possible_actions := []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -31,8 +31,12 @@ func _ready():
 	body.connect("has_been_hit", enter_hitstun)
 
 func _physics_process(delta):
+	var rand = randi()%10
+	if rand < list_of_possible_actions.size():
+		update_state(list_of_possible_actions[rand])
 	_delta = delta
 	current_state.update(delta)
+	list_of_possible_actions.clear()
 
 func update_state( newstate ):
 	previous_state = current_state
@@ -59,6 +63,12 @@ func probe_for_object(from, to, collision_mask) -> Dictionary:
 	var query = PhysicsRayQueryParameters3D.create(from, to, collision_mask)
 	var result = space_state.intersect_ray(query)
 	return space_state.intersect_ray(query)
+	
+
+func insert_action(action : String):
+	if list_of_possible_actions.has(action):
+		return
+	list_of_possible_actions.append(action)
 
 func reset_inputs():
 	Input.action_release(player_number + "Up")

@@ -14,6 +14,8 @@ signal animation_finished
 var grabbed_body = null
 var _delta := 0.0166
 
+var list_of_possible_actions := []
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	player_number = "P" + str(body.player_number) + "_"
@@ -29,8 +31,6 @@ func _physics_process(delta):
 	current_state.update(delta)
 
 func update_state( newstate ):
-	if player_number == "P2_":
-		print(newstate)
 	previous_state = current_state
 	current_state = state_dictionary[newstate]
 	current_state.reset(_delta)

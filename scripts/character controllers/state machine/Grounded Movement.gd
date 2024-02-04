@@ -48,6 +48,7 @@ func decide_attack(bash : bool = false) -> bool:
 			state.update_state("Neutral Special")
 			return true
 	if Input.is_action_just_pressed(state.player_number + "Grab"):
+		return false
 		state.update_state("Grab")
 		return true
 	if Input.get_vector(state.player_number + "Crush Left", state.player_number + "Crush Right", state.player_number + "Crush Down", state.player_number + "Crush Up") != Vector2.ZERO and can_tilt:
