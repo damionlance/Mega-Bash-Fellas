@@ -50,7 +50,9 @@ func update(delta):
 		return
 	if Input.is_action_just_pressed(state.player_number + "Attack") or Input.is_action_just_pressed(state.player_number + "Special") or Input.get_vector(state.player_number + "Crush Left",state.player_number + "Crush Right",state.player_number + "Crush Down",state.player_number + "Crush Up") != Vector2.ZERO:
 			if decide_attack(false): return
-	
+	if Input.get_action_strength(state.player_number + "Down") > .7:
+		state.update_state("Crouch")
+		return
 	if abs(body.velocity.x) >= dash_speed * delta and animation_finished and sign(Input.get_axis(state.player_number + "Left", state.player_number + "Right")) != body.facing_direction:
 		state.update_state("Run Turn")
 		return

@@ -28,16 +28,20 @@ func update(delta):
 	if state.target_body.is_on_floor() and state.target_body.global_position.y != body.global_position.y:
 		#Pathfind
 		pass
-	var direction = sign(state.target_body.global_position.x - body.global_position.x)
 	var distance = abs(state.target_body.global_position.x - body.global_position.x)
+	if distance < 2 and abs(body.velocity.x) > 7:
+		state.reset_inputs()
+		Input.action_press(player_number + "Down")
+	else:
+		Input.action_release(player_number + "Down")
+	var direction = sign(state.target_body.global_position.x - body.global_position.x)
+	var controller_strength = clampf(.2 + distance / 5, .2, 1.0)
 	if direction == -1:
-		state.reset_inputs()
 		last_action = player_number + "Left"
-		Input.action_press(last_action, distance / 5)
+		Input.action_press(last_action, controller_strength)
 	if direction == 1:
-		state.reset_inputs()
 		last_action = player_number + "Right"
-		Input.action_press(last_action, distance / 5)
+		Input.action_press(last_action,  controller_strength)
 
 func reset(_delta):
 	player_number = get_parent().player_number

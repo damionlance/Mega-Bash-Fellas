@@ -7,6 +7,7 @@ extends Node
 #private variables
 var state_name = "FTilt"
 
+var wait_frames = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -14,13 +15,16 @@ func _ready():
 	
 
 func update(delta):
-	if body.state.current_state.state_name == "Idle": 
-		state.update_state("Idle")
-		return
+	if wait_frames >= 5:
+		if body.state.current_state.state_name == "Idle": 
+			state.update_state("Idle")
+			return
 	#state.reset_inputs()
+	wait_frames += 1
 
 func reset(_delta):
-	state.reset_inputs()
+	wait_frames = 0
+	state.release_attacks()
 	var direction = sign(state.target_body.global_position.x - body.global_position.x)
 	if direction == -1:
 		var last_action = state.player_number + "Crush Left"

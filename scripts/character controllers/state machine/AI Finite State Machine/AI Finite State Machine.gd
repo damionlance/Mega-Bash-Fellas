@@ -31,14 +31,16 @@ func _ready():
 	body.connect("has_been_hit", enter_hitstun)
 
 func _physics_process(delta):
-	var rand = randi()%10
-	if rand < list_of_possible_actions.size():
-		update_state(list_of_possible_actions[rand])
+	if list_of_possible_actions.size()> 0:
+		var rand = randi()%list_of_possible_actions.size() * 1.3
+		if rand < list_of_possible_actions.size():
+			update_state(list_of_possible_actions[rand])
 	_delta = delta
 	current_state.update(delta)
 	list_of_possible_actions.clear()
 
 func update_state( newstate ):
+	print(newstate)
 	previous_state = current_state
 	current_state = state_dictionary[newstate]
 	current_state.reset(_delta)
@@ -70,6 +72,23 @@ func insert_action(action : String):
 		return
 	list_of_possible_actions.append(action)
 
+func release_movement():
+	Input.action_release(player_number + "Up")
+	Input.action_release(player_number + "Down")
+	Input.action_release(player_number + "Left")
+	Input.action_release(player_number + "Right")
+
+func release_attacks():
+	Input.action_release(player_number + "Crush Up")
+	Input.action_release(player_number + "Crush Down")
+	Input.action_release(player_number + "Crush Left")
+	Input.action_release(player_number + "Crush Right")
+	Input.action_release(player_number + "Attack")
+	Input.action_release(player_number + "Special")
+	Input.action_release(player_number + "Shield")
+	Input.action_release(player_number + "Grab")
+	Input.action_release(player_number + "Jump")
+
 func reset_inputs():
 	Input.action_release(player_number + "Up")
 	Input.action_release(player_number + "Down")
@@ -83,3 +102,4 @@ func reset_inputs():
 	Input.action_release(player_number + "Special")
 	Input.action_release(player_number + "Shield")
 	Input.action_release(player_number + "Grab")
+	Input.action_release(player_number + "Jump")

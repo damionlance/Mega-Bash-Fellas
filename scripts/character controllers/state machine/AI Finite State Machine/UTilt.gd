@@ -5,7 +5,7 @@ extends Node
 @onready var controller = get_parent().get_parent()
 #private variables
 var state_name = "UTilt"
-
+var wait_frames = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -13,13 +13,15 @@ func _ready():
 	
 
 func update(delta):
-	
-	if body.state.current_state.state_name == "Idle": 
-		state.update_state("Idle")
-		return
+	if wait_frames >= 5:
+		if body.state.current_state.state_name == "Idle": 
+			state.update_state("Idle")
+			return
+	wait_frames += 1
 
 func reset(_delta):
-	print("Hey!")
+	wait_frames = 0
+	state.release_attacks()
 	state.reset_inputs()
 	var last_action = state.player_number + "Crush Up"
 	Input.action_press(last_action)

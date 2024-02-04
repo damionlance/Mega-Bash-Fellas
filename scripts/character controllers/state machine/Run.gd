@@ -21,14 +21,16 @@ func update(delta):
 	if Input.is_action_just_pressed(state.player_number + "Jump"):
 		state.update_state("Jump Squat")
 		return
+	print(Input.get_action_strength(state.player_number + "Down"))
+	if Input.get_action_strength(state.player_number + "Down") > .7:
+		state.update_state("Crouch")
+		print("Hello!")
+		return
 	if not body.is_on_floor():
 		state.update_state("Fall")
 		return
 	if body.velocity.x == 0.0:
 		state.update_state("Idle")
-		return
-	if Input.get_action_strength(state.player_number + "Down") > .7:
-		state.update_state("Crouch")
 		return
 	
 	

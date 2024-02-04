@@ -30,16 +30,17 @@ func update(delta):
 	
 	var delta_v = Vector2.ZERO
 	# Handle all states
+	if Input.is_action_just_pressed(state.player_number + "Jump"):
+		state.update_state("Jump Squat")
+		return
 	if Input.is_action_just_pressed(state.player_number + "Shield"):
 		state.update_state("Shield")
 		return
+	print(Input.get_vector(state.player_number + "Crush Left",state.player_number + "Crush Right",state.player_number + "Crush Down",state.player_number + "Crush Up"))
 	if Input.is_action_just_pressed(state.player_number + "Attack") or Input.is_action_just_pressed(state.player_number + "Special") or Input.get_vector(state.player_number + "Crush Left",state.player_number + "Crush Right",state.player_number + "Crush Down",state.player_number + "Crush Up") != Vector2.ZERO:
 		if decide_attack(can_bash): return
 	if Input.is_action_just_pressed(state.player_number + "Grab"):
 		if decide_attack(false):return
-	if Input.is_action_just_pressed(state.player_number + "Jump"):
-		state.update_state("Jump Squat")
-		return
 	if not body.is_on_floor():
 		state.update_state("Fall")
 		return

@@ -6,6 +6,7 @@ extends Node
 #private variables
 var state_name = "Jab"
 
+var wait_frames = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -13,12 +14,14 @@ func _ready():
 	
 
 func update(delta):
-	
-	if body.state.current_state.state_name == "Idle": 
-		state.update_state("Idle")
-		return
+	if wait_frames >= 5:
+		if body.state.current_state.state_name == "Idle": 
+			state.update_state("Idle")
+			return
+	wait_frames += 1
 
 func reset(_delta):
-	state.reset_inputs()
+	wait_frames = 0
+	state.release_attacks()
 	var last_action = state.player_number + "Attack"
 	Input.action_press(last_action)

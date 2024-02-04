@@ -26,7 +26,7 @@ func update(delta):
 			passthru_platform_checker.drop_thru_platform()
 			state.update_state("Drop Through Platform")
 			return
-	if controller.attempting_jump:
+	if Input.is_action_just_pressed(state.player_number + "Jump"):
 		state.update_state("Jump Squat")
 		return
 	if not body.is_on_floor():
