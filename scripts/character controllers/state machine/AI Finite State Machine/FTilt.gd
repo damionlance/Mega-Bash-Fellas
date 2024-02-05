@@ -16,7 +16,7 @@ func _ready():
 
 func update(delta):
 	if wait_frames >= 5:
-		if body.state.current_state.state_name == "Idle": 
+		if body.attacking == false: 
 			state.update_state("Idle")
 			return
 	#state.reset_inputs()

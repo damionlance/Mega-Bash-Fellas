@@ -111,7 +111,6 @@ func _on_area_entered(_area):
 	var hit_shield := false
 	var hurtbox : Area3D
 	for hit_area in get_overlapping_areas():
-		print(hit_area.body.name)
 		if hit_area.shield and not grab:
 			if hit_area.counter:
 				hit_area.body.state.current_state.interrupt()

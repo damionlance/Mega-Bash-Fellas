@@ -31,7 +31,7 @@ var damaged := false
 
 var active_attack : Node
 
-var stocks = 2
+var stocks = 6
 
 signal has_been_hit
 

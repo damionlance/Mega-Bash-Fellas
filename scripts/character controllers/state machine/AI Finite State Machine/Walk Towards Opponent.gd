@@ -29,7 +29,7 @@ func update(delta):
 		#Pathfind
 		pass
 	var distance = abs(state.target_body.global_position.x - body.global_position.x)
-	if distance < 2 and abs(body.velocity.x) > 7:
+	if distance < 2 and abs(body.velocity.x) > 7 or state.target_body.global_position.y < body.global_position.x and state.target_body.global_position.y > 0:
 		state.reset_inputs()
 		Input.action_press(player_number + "Down")
 	else:
