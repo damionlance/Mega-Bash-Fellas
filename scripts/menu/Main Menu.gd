@@ -30,3 +30,21 @@ func _on_fella_button_pressed():
 	var packed_scene = PackedScene.new()
 	get_tree().change_scene_to_packed(packed_scene)
 	get_parent().queue_free()
+
+
+func _on_pb_button_pressed():
+	get_tree().get_root().add_child(level)
+	character_PB.name = "Body"
+	character_fella.name = "Body2"
+	character_fella.player_number = 2
+	character_PB.player_number = 1
+	character_fella.player = false
+	character_PB.player = true
+	level.add_child(character_fella)
+	level.add_child(character_PB)
+	character_fella.owner = level
+	character_PB.owner = level
+	var packed_scene = PackedScene.new()
+	get_tree().change_scene_to_packed(packed_scene)
+	get_parent().queue_free()
+	pass # Replace with function body.

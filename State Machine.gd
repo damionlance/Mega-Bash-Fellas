@@ -19,7 +19,7 @@ var list_of_possible_actions := []
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	player_number = "P" + str(body.player_number) + "_"
-	update_state("Idle")
+	update_state("Respawn")
 	await get_tree().get_current_scene().ready
 	body.connect("has_been_hit", enter_hitstun)
 

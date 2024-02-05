@@ -27,7 +27,7 @@ func update(delta):
 		state.update_state("Landing Lag")
 		return
 	if animation_finished:
-		state.update_state("Unactionable Fall")
+		state.update_state("Inactive Fall")
 		return
 	
 	# Handle all relevant timers

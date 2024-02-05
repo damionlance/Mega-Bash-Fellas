@@ -11,10 +11,13 @@ var state_name = "Respawn"
 func _ready():
 	state.state_dictionary[state_name] = self
 	await get_tree().node_added
-	respawner = get_node("/root/Test Level/Respawner Handler")
-	respawner.respawn.connect(ready_to_move)
+	await get_node("/root/Test Level/Respawner Handler").ready
+	print("Hey!")
+	get_node("/root/Test Level/Respawner Handler").respawn.connect(ready_to_move)
 
 func update(delta):
+	if abs(body.position.x) <= 10:
+		can_move = true
 	if not can_move:
 		return
 	
@@ -26,12 +29,14 @@ func update(delta):
 		return
 
 func reset(_delta):
+	body.stocks -= 1
+	body.consecutive_jumps = 0
 	body.current_damage = 0.0
 	body.delta_v = Vector2.ZERO
 	body.velocity = Vector3.ZERO
 	can_move = false
 	await get_tree().create_timer(1.0).timeout
-	respawner.respawn_entity(body, false)
+	get_node("/root/Test Level/Respawner Handler").respawn_entity(body, false)
 
 func ready_to_move(body_name):
 	if body_name == body.name:

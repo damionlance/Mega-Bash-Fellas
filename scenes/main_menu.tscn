@@ -49,3 +49,4 @@ theme_override_font_sizes/font_size = 25
 text = "Play as PB"
 
 [connection signal="pressed" from="Main Menu/Fella Button" to="Main Menu" method="_on_fella_button_pressed"]
+[connection signal="pressed" from="Main Menu/PB Button" to="Main Menu" method="_on_pb_button_pressed"]

@@ -31,6 +31,8 @@ var damaged := false
 
 var active_attack : Node
 
+var stocks = 2
+
 signal has_been_hit
 
 # Called when the node enters the scene tree for the first time.

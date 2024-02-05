@@ -23,7 +23,6 @@ var move_control_stick_allowed := true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	await get_tree().node_added
 	var state = load("res://scenes/tools/AI Finite State Machine.tscn").instantiate()
 	add_child(state)
 

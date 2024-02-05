@@ -35,7 +35,8 @@ func update(delta):
 		state.update_state("Dodge Roll")
 		shield.visible = false
 		return
-	if Input.get_action_strength(state.player_number + "Down") > .8 and can_dodge:
+	if Input.get_action_strength(state.player_number + "Down") > .8 and can_dodge and false:
+		
 		state.update_state("Spot Dodge")
 		shield.visible = false
 		return
