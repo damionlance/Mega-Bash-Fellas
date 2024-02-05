@@ -9,7 +9,7 @@ extends CharacterBody3D
 @onready var controller := $"Controller"
 @onready var hitbox_handler := $"Hitboxes"
 @onready var grab_position := $"Grab Position"
-@onready var stage_root := get_tree().get_current_scene()
+@onready var stage_root := get_node("/root/Test Level")
 @onready var pcam = stage_root.find_child("PhantomCamera3D")
 
 var delta_v := Vector2.ZERO
@@ -35,10 +35,8 @@ signal has_been_hit
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	
-	
-	
 	$"Animation Tree".active = true
+	print(name)
 	if player:
 		controller.set_script(load("res://scripts/character controllers/Controller Inputs.gd"))
 		controller._ready()
@@ -51,7 +49,6 @@ func _ready():
 		controller.set_process(true)
 	pcam.append_follow_group_node($"Camera Tracking Node")
 	$Hitboxes.reset_hitboxes()
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):

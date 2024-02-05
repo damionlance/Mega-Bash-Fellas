@@ -1,0 +1,51 @@
+[gd_scene load_steps=3 format=3 uid="uid://cb52x8s1x0e3e"]
+
+[ext_resource type="Script" path="res://scripts/menu/Main Menu.gd" id="1_2o2bf"]
+[ext_resource type="Script" path="res://scripts/tools/bandaid.gd" id="1_p431g"]
+
+[node name="Node" type="Node"]
+script = ExtResource("1_p431g")
+
+[node name="Main Menu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2o2bf")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Main Menu"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+theme_override_font_sizes/normal_font_size = 25
+bbcode_enabled = true
+text = "[center]Welcome to Mega Bash Fellas!
+Select a character to get started!
+If you know how Super Smash Bros kinda plays, you'll probably feel right at home here.
+Just so you know, shields are kinda busted and grabs are kinda busted. There's a ton of stuff that's busted actually. Try plugging in a second controller to play with a friend!
+You got 5 stocks (I never made a UI for it) and you'll die very very fast.
+If you beat your first opponent, you must then fight yourself..."
+fit_content = true
+
+[node name="Fella Button" type="Button" parent="Main Menu"]
+layout_mode = 0
+offset_left = 213.0
+offset_top = 272.0
+offset_right = 221.0
+offset_bottom = 280.0
+theme_override_font_sizes/font_size = 25
+text = "Play as Fella"
+
+[node name="PB Button" type="Button" parent="Main Menu"]
+layout_mode = 0
+offset_left = 815.0
+offset_top = 272.0
+offset_right = 917.0
+offset_bottom = 303.0
+theme_override_font_sizes/font_size = 25
+text = "Play as PB"
+
+[connection signal="pressed" from="Main Menu/Fella Button" to="Main Menu" method="_on_fella_button_pressed"]

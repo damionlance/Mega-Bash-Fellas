@@ -1,6 +1,6 @@
 extends AerialMovement
 
-@onready var respawner := get_tree().get_current_scene().find_child("Respawner Handler")
+@onready var respawner
 
 var can_move := false
 
@@ -10,6 +10,8 @@ var state_name = "Respawn"
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	state.state_dictionary[state_name] = self
+	await get_tree().node_added
+	respawner = get_node("/root/Test Level/Respawner Handler")
 	respawner.respawn.connect(ready_to_move)
 
 func update(delta):

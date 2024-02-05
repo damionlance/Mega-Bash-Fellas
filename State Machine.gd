@@ -19,14 +19,13 @@ var list_of_possible_actions := []
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	player_number = "P" + str(body.player_number) + "_"
-	if not "level_loaded" in get_tree().get_current_scene():
-		queue_free()
-		return
-	await get_tree().get_current_scene().level_loaded
 	update_state("Idle")
+	await get_tree().get_current_scene().ready
 	body.connect("has_been_hit", enter_hitstun)
 
 func _physics_process(delta):
+	if current_state == null:
+		return
 	_delta = delta
 	current_state.update(delta)
 

@@ -1,11 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://clfwbndiph4dn"]
+[gd_scene load_steps=15 format=3 uid="uid://clfwbndiph4dn"]
 
 [ext_resource type="Script" path="res://scripts/Levels/initiate level.gd" id="1_5j3o7"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_6o67q"]
 [ext_resource type="Script" path="res://scripts/tools/AStar.gd" id="2_crqly"]
 [ext_resource type="PackedScene" uid="uid://bxe52o1h4f8en" path="res://scenes/tools/ledge.tscn" id="2_jj0m5"]
 [ext_resource type="PackedScene" uid="uid://btuch2skaq6tn" path="res://scenes/tools/respawner_handler.tscn" id="3_hw7x1"]
-[ext_resource type="PackedScene" uid="uid://db82jlojuy6qm" path="res://scenes/characters/PB.tscn" id="4_d5k7j"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3D.gd" id="6_k006f"]
 [ext_resource type="Script" path="res://scripts/tools/Dynamic Camera Target Tracker.gd" id="7_hguk8"]
 
@@ -96,7 +95,6 @@ polygon = PackedVector2Array(-2, 0, 2, 0, 2, -0.1, -2, -0.1)
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.862, 1.5, 5)
-fov = 74.1041
 near = 0.001
 
 [node name="PhantomCameraHost" type="Node" parent="Camera3D"]
@@ -161,14 +159,6 @@ camera_3D_resource = null
 [node name="RayCast3D" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.66736, 5.35071, 0)
 target_position = Vector3(-1.1, 0, 0)
-
-[node name="Body" parent="." instance=ExtResource("4_d5k7j")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.626, 0, 0)
-
-[node name="Body2" parent="." instance=ExtResource("4_d5k7j")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.0396, 0, 0.121284)
-player = false
-player_number = 2
 
 [connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]
 [connection signal="body_exited" from="Area3D" to="Area3D" method="_on_body_exited"]

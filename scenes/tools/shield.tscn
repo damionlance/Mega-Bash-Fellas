@@ -4,13 +4,13 @@
 [ext_resource type="Script" path="res://scripts/tools/Shield.gd" id="2_trm01"]
 [ext_resource type="PackedScene" uid="uid://ugrfkn6s0brw" path="res://scenes/tools/hitbox.tscn" id="3_brrpg"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_v50uy"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g1on0"]
 render_priority = 0
 shader = ExtResource("1_cssjg")
 shader_parameter/color = Color(1, 0, 0, 1)
 
 [sub_resource type="QuadMesh" id="QuadMesh_cuxre"]
-material = SubResource("ShaderMaterial_v50uy")
+material = SubResource("ShaderMaterial_g1on0")
 size = Vector2(1.994, 1.994)
 
 [node name="Shield" type="MeshInstance3D"]

@@ -23,12 +23,10 @@ var list_of_possible_actions := []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	if not "level_loaded" in get_tree().get_current_scene():
-		queue_free()
-		return
-	await get_tree().get_current_scene().level_loaded
+	await get_tree().node_added
 	update_state("Idle")
 	body.connect("has_been_hit", enter_hitstun)
+	target_body = get_node("/root/Test Level/Body")
 
 func _physics_process(delta):
 	calculate_recovery()

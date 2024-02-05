@@ -15,9 +15,9 @@ func _ready():
 
 func update(delta):
 	
-	if controller.movement_direction.y > -.4:
+	if Input.get_action_strength(state.player_number + "Down") > -.4:
 		can_drop_thru_platform = true
-	if controller.movement_direction.length() == 0:
+	if Input.get_axis(state.player_number + "Left", state.player_number + "Right") == 0:
 		can_dash = true
 	
 	var delta_v = Vector2.ZERO

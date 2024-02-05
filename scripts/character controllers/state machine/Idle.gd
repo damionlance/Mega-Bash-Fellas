@@ -9,7 +9,6 @@ var can_dash := false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	state.state_dictionary[state_name] = self
-	
 	pass # Replace with function body.
 var current_frame = 0
 var can_bash = false
