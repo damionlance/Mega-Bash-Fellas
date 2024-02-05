@@ -27,9 +27,11 @@ func _on_fella_button_pressed():
 	level.add_child(character_fella)
 	character_fella.owner = level
 	character_PB.owner = level
+	level.set_owner(get_tree().root)
 	var packed_scene = PackedScene.new()
+	packed_scene.pack(level)
+	level.queue_free()
 	get_tree().change_scene_to_packed(packed_scene)
-	get_parent().queue_free()
 
 
 func _on_pb_button_pressed():
@@ -44,7 +46,9 @@ func _on_pb_button_pressed():
 	level.add_child(character_PB)
 	character_fella.owner = level
 	character_PB.owner = level
+	level.set_owner(get_tree().root)
 	var packed_scene = PackedScene.new()
+	packed_scene.pack(level)
+	level.queue_free()
 	get_tree().change_scene_to_packed(packed_scene)
-	get_parent().queue_free()
 	pass # Replace with function body.

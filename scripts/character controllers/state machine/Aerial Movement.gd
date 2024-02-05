@@ -13,7 +13,7 @@ var time_of_double_jump
 var delta_v
 var entering_jump_angle
 
-@onready var body := find_parent("Body*")
+@onready var body := find_parent("*Body*")
 @onready var state = find_parent("State Machine")
 @onready var controller = body.find_child("Controller", false)
 @onready var animation_tree = body.find_child("Animation Tree")

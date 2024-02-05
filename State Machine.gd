@@ -20,7 +20,7 @@ var list_of_possible_actions := []
 func _ready():
 	player_number = "P" + str(body.player_number) + "_"
 	update_state("Respawn")
-	await get_tree().get_current_scene().ready
+	await get_tree().node_added
 	body.connect("has_been_hit", enter_hitstun)
 
 func _physics_process(delta):
@@ -30,8 +30,6 @@ func _physics_process(delta):
 	current_state.update(delta)
 
 func update_state( newstate ):
-	if player_number == "P1_":
-		print(newstate)
 	previous_state = current_state
 	current_state = state_dictionary[newstate]
 	current_state.reset(_delta)

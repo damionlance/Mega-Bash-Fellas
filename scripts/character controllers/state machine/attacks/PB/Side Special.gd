@@ -23,8 +23,9 @@ func _ready():
 func update(delta):
 	if active and not can_land:
 		body.velocity.x = constants.side_special_velocity * 1.5 * body.facing_direction * delta
+		print(body.velocity.x)
 		tween = create_tween()
-		tween.tween_property(body, "velocity:x", 0, .5).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
+		tween.tween_property(body, "velocity:x", 0, 1.0).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
 	
 	if animation_finished:
 		body.special = false

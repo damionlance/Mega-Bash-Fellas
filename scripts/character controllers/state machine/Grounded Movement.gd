@@ -17,7 +17,7 @@ var grabbing := false
 
 @export var traction := 2.2
 
-@onready var body := find_parent("Body*")
+@onready var body := find_parent("*Body*")
 @onready var state = find_parent("State Machine")
 @onready var controller = body.find_child("Controller", false)
 @onready var animation_tree = body.find_child("Animation Tree")

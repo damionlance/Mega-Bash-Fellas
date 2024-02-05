@@ -27,6 +27,7 @@ func update(delta):
 		state.update_state("Landing Lag")
 		return
 	if animation_finished:
+		body.velocity = Vector3.ZERO
 		state.update_state("Inactive Fall")
 		return
 	

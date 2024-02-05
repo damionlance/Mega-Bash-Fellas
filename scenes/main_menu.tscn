@@ -25,8 +25,8 @@ bbcode_enabled = true
 text = "[center]Welcome to Mega Bash Fellas!
 Select a character to get started!
 If you know how Super Smash Bros kinda plays, you'll probably feel right at home here.
-Just so you know, shields are kinda busted and grabs are kinda busted. There's a ton of stuff that's busted actually. Try plugging in a second controller to play with a friend!
-You got 5 stocks (I never made a UI for it) and you'll die very very fast.
+Just so you know, shields are kinda busted and grabs are kinda busted. There's a ton of stuff that's busted actually.
+You got 5 stocks (I never made a UI for it) and matches go very very fast.
 If you beat your first opponent, you must then fight yourself..."
 fit_content = true
 
